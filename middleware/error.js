@@ -1,12 +1,11 @@
 const ERRORS = require('../constants/errors');
 const logger = require('../libs/logger');
 
-module.exports = (err, req, res) =>{
-    if (err.childError) {
-        logger.error(err.childError.stack);
-    } else {
-        logger.error(err.stack);
-    }
-
-    return res.status(err.status || 500).json({message: err.message || ERRORS.SERVER});
+module.exports = (err, req, res, next) => {
+    logger.error(err);
+    logger.log(213);
+    return res.status(err.status || 500).json({
+        success: false,
+        message: err.message || 'upalo'
+    });
 };

@@ -1,7 +1,6 @@
 const express = require('express');
-const morgan = require('morgan');
 const mobileRouter = express.Router();
 
-mobileRouter.use(morgan('dev'));
+mobileRouter.use('/user', require('../api/user/user.router'));
 
 module.exports = mobileRouter;

@@ -1,5 +1,4 @@
-const express = require('express');
-const mobileRouter = express.Router();
+const mobileRouter = require('express').Router();
 
 
 module.exports = mobileRouter;

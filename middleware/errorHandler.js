@@ -1,5 +1,5 @@
 const logger = require('../libs/logger');
-const {INTERNAL_SERVER_ERROR: SERVER_ERROR} = require('http-statuses');
+const { INTERNAL_SERVER_ERROR: SERVER_ERROR } = require('http-statuses');
 
 module.exports = (err, req, res, next) => {
     logger.error(err.stack);
@@ -8,6 +8,8 @@ module.exports = (err, req, res, next) => {
 
     const status = (err.httpStatus && err.httpStatus.code) || err.status || SERVER_ERROR.code;
     const message = (err.message && err.message.msg) || err.message || SERVER_ERROR.message;
+
+    logger.warn(message);
 
     return res.status(status).json({
         message,

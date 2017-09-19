@@ -1,5 +1,4 @@
-const express = require('express');
-const mobileRouter = express.Router();
+const mobileRouter = require('express').Router();
 
 mobileRouter.use('/user', require('../api/user/user.router'));
 

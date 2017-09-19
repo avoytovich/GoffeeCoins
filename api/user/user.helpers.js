@@ -1,3 +1,5 @@
+'use strict';
+
 const { FirebaseAuth } = require('../../libs/firebase');
 const ERRORS = require('../../constants/errors');
 const logger = require('../../libs/logger');

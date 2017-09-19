@@ -8,7 +8,7 @@ module.exports = {
     },
     FORBIDDEN: {
         EMAIL: 'First, please confirm your email',
-        DISABLED: 'Sorry, your account has been blocked',
+        DISABLED: 'Sorry, your account has been blocked or removed',
     },
     USER: {
         NOT_FOUND: 'No such account found'

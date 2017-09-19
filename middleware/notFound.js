@@ -1,8 +1,8 @@
-const ERRORS = require('../constants/errors');
+const { NOT_FOUND: { code, message } } = require('http-statuses');
 
 module.exports = (req, res) => {
-    res.status(404);
+    res.status(code);
     if (req.accepts('json')) {
-        res.json({ message:  ERRORS.NOT_FOUND });
+        res.json({ message });
     }
 };

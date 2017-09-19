@@ -1,8 +1,11 @@
 const User = require('./user.model.js');
+const logger = require('../../libs/logger');
 
 const userApiMethods = {
-    async create({ body }) {
-        return body;
+
+    create(ctx) {
+        // logger.log(ctx);
+        return ctx.body;
     }
 };
 

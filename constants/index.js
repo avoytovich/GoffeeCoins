@@ -1,5 +1,5 @@
 module.exports = {
-    REQEX: {
-        firebaseId: /[a-zA-Z0-9]{28}/g,
+    REGEX: {
+        firebaseId: ['^[a-zA-Z0-9]{28}$', 'g'],
     },
 };

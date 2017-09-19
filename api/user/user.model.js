@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
     name: String,
     avatarUrl: String,
     referalId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'users'
     }
 });

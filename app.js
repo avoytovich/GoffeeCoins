@@ -16,7 +16,7 @@ app.use(require('./middleware/cors'));
 app.use(express.static('public/src'));
 app.use(require('./routes'));
 app.use(require('./middleware/notFound'));
-app.use(require('./middleware/error'));
+app.use(require('./middleware/errorHandler'));
 
 
 module.exports = app;

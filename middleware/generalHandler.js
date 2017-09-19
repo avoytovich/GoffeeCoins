@@ -2,7 +2,7 @@ const HTTP_STATUSES = require('http-statuses');
 const logger = require('../libs/logger');
 const _ = require('lodash');
 
-module.exports = (ctrlHandler, options) => (req, res, next) => {
+module.exports = (ctrlHandler, options = {}) => (req, res, next) => {
     const ctx = _.pick(req, ['body', 'params', 'query', 'user']);
 
     req.getValidationResult()

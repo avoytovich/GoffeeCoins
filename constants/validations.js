@@ -6,8 +6,7 @@ const GENERAL = {
         notEmpty: true,
         matches: {
             options: Constants.REGEX.firebaseId
-        },
-        errorMessage: ERRORS.VALIDATION.ID
+        }
     },
     email: {
         notEmpty: true,
@@ -27,14 +26,10 @@ const GENERAL = {
 
 module.exports = {
     USER: {
-        _id: GENERAL.firebaseId,
+        _id: Object.assign({ errorMessage: ERRORS.VALIDATION.ID }, GENERAL.firebaseId),
         email: GENERAL.email,
         name: GENERAL.name,
         avatarUrl: GENERAL.url,
-        referalId: Object.assign(
-            { optional: true },
-            GENERAL.firebaseId,
-            { errorMessage: undefined }
-        )
+        referalId: Object.assign({ optional: true }, GENERAL.firebaseId)
     }
 };

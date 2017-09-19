@@ -4,8 +4,6 @@ const app = require('./app');
 const config = require('./env');
 const logger = require('./libs/logger');
 
-global.Promise = require('bluebird');
-
 require('./libs/mongoose');
 
 // Memory usage

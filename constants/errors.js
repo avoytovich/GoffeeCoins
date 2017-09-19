@@ -6,4 +6,11 @@ module.exports = {
         NAME: 'Name is required!',
         URL: 'Invalid URL!'
     },
+    FORBIDDEN: {
+        EMAIL: 'First, please confirm your email',
+        DISABLED: 'Sorry, your account has been blocked',
+    },
+    USER: {
+        NOT_FOUND: 'No such account found'
+    }
 };

@@ -2,13 +2,14 @@
 
 const admin = require('firebase-admin');
 const config = require('../env');
+const serviceAccount = require(`../env/${config.nodeEnv}/firebase.json`);
 
 admin.initializeApp({
-    credential: admin.credential.cert(require("../generalConfig/firebase-generalConfig.json")),
-    databaseURL: config.get("firebaseURL")
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: config.firebaseURL
 });
 
 module.exports = {
-    db: admin.database().ref(),
-    auth: admin.auth()
+    FirebaseRef: admin.database().ref(),
+    FirebaseAuth: admin.auth()
 };

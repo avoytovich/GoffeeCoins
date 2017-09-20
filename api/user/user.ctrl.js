@@ -11,12 +11,16 @@ const Promise = require('bluebird');
 
 const userApiMethods = {
 
-    signup({ body: { _id, email, name, avatarUrl, referalId } }) {
-        return checkUserOnFirebase(_id)
-            .then(firebaseUser => User.findById(_id))
+    signup({ body }) {
+        const data  = _.pick(body, ['_id', 'name', 'avatarUrl', 'referalId']);
+        return checkUserOnFirebase(data._id)
+            .then(firebaseUser => {
+                data.email = firebaseUser.providerData[0] && firebaseUser.providerData[0].email;
+                User.findById(data._id)
+            })
             .then(user => {
                 if (user) return user;
-                user = new User({ _id, email, name, avatarUrl, referalId });
+                user = new User(data);
                 return user.save();
             })
             .then(user => {
@@ -26,7 +30,7 @@ const userApiMethods = {
                     user,
                     token: user.generateJWT()
                 }
-            })
+            });
     },
 
     login({ body: { _id } }) {

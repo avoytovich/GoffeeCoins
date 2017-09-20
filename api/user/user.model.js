@@ -7,15 +7,12 @@ const { modelOptions } = require('../../constants');
 const config = require('../../env');
 
 const UserSchema = new mongoose.Schema({
-    _id: {
-        type: String,
-        required: true
-    },
+    _id: String,
     email: {
         type: String,
-        unique: true,
-        required: true,
-        lowercase: true
+        lowercase: true,
+        /*unique: true,
+        required: true,*/
     },
     name: {
         type: String,

@@ -16,12 +16,13 @@ module.exports = {
             })
             .then(userRecord => userRecord.toJSON())
             .then(firebaseUser => {
+                logger.log(firebaseUser);
                 if (firebaseUser.disabled) {
                     throw FORBIDDEN.createError(ERRORS.FORBIDDEN.DISABLED);
                 }
-                if (!firebaseUser.emailVerified) {
+                /*if (!firebaseUser.emailVerified) {
                     throw FORBIDDEN.createError(ERRORS.FORBIDDEN.EMAIL);
-                }
+                }*/
                 return firebaseUser;
             });
     }

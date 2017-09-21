@@ -26,6 +26,8 @@
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
     "serve-favicon": "^2.4.4",
+    "socket.io": "^2.0.3",
+    "socketio-jwt": "^4.5.0",
     "tracer": "^0.8.11"
   }
 }

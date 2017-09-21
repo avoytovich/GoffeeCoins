@@ -7,5 +7,15 @@ module.exports = {
     modelOptions: {
         timestamps: true,
         versionKey: false
-    }
+    },
+    MODELS: {
+        USER: 'User',
+        COIN: 'Coin',
+        COFFEEHOUSE: 'CoffeeHouse',
+    },
+    COFFEEHOUSESTATUSES: {
+        ONLINE: 'online',
+        OFFLINE: 'offline',
+        DEBT: 'debt'
+    },
 };

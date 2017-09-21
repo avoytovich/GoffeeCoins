@@ -16,7 +16,7 @@ const userApiMethods = {
         return helpers.checkUserOnFirebase(data._id)
             .then(firebaseUser => {
                 data.email = firebaseUser.email;
-                User.findById(data._id)
+                return User.findById(data._id)
             })
             .then(user => {
                 if (user) return user;

@@ -16,7 +16,6 @@ module.exports = {
             })
             .then(userRecord => userRecord.toJSON())
             .then(firebaseUser => {
-                logger.log(firebaseUser);
                 if (firebaseUser.disabled) {
                     throw UNAUTHORIZED.createError(ERRORS.FORBIDDEN.DISABLED);
                 }

@@ -16,11 +16,8 @@ options.secretOrKey = config.secret;
 passport.use(new Strategy(options, ({ _id, iat }, done) => {
     return checkUserOnFirebase(_id)
         .then(firebaseUser => User.findOne({ _id }))
-        .then((user) => {
-            if (user) {
-                return done(null, user);
-            }
-
+        .then(user => {
+            if (user) return done(null, user);
             return done(error, false);
         })
         .catch(done);

@@ -17,5 +17,5 @@ module.exports = (ctrlHandler, options = {}) => (req, res, next) => {
             res.status(options.status || HTTP_STATUSES.OK.code)
                 .json(data);
         })
-        .catch(err => next(err));
+        .catch(next);
 };

@@ -3,7 +3,7 @@
 const User = require('./user.model.js');
 const logger = require('../../libs/logger');
 const ERRORS = require('../../constants/errors');
-const { checkUserOnFirebase } = require('./user.helpers');
+const helpers = require('./user.helpers');
 
 const HTTP_STATUSES = require('http-statuses');
 const _ = require('lodash');
@@ -13,9 +13,9 @@ const userApiMethods = {
 
     signup({ body }) {
         const data  = _.pick(body, ['_id', 'name', 'avatarUrl', 'referalId']);
-        return checkUserOnFirebase(data._id)
+        return helpers.checkUserOnFirebase(data._id)
             .then(firebaseUser => {
-                data.email = firebaseUser.providerData[0] && firebaseUser.providerData[0].email;
+                data.email = firebaseUser.email;
                 User.findById(data._id)
             })
             .then(user => {
@@ -34,7 +34,7 @@ const userApiMethods = {
     },
 
     login({ body: { _id } }) {
-        return checkUserOnFirebase(_id)
+        return helpers.checkUserOnFirebase(_id)
             .then(firebaseUser => User.findById(_id))
             .then(user => {
                 if (!user) {

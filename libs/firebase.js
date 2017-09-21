@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const admin = require('firebase-admin');
 const config = require('../env');
@@ -11,5 +11,6 @@ admin.initializeApp({
 
 module.exports = {
     FirebaseRef: admin.database().ref(),
-    FirebaseAuth: admin.auth()
+    FirebaseAuth: admin.auth(),
+    Notifications: admin.messaging(),
 };

@@ -6,6 +6,8 @@ const config = require('../env');
 const logger = require('../libs/logger');
 const passport = require('passport');
 const { ExtractJwt, Strategy } = require("passport-jwt");
+const { UNAUTHORIZED } = require('http-statuses');
+const error = UNAUTHORIZED.createError();
 
 let options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
@@ -18,11 +20,10 @@ passport.use(new Strategy(options, ({ _id, iat }, done) => {
             if (user) {
                 return done(null, user);
             }
-            return done(null, false);
+
+            return done(error, false);
         })
-        .catch((err) => {
-            return done(err);
-        });
+        .catch(done);
 }));
 
 module.exports = passport;

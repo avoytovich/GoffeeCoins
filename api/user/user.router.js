@@ -11,7 +11,7 @@ const generalHandler = require('../../middleware/generalHandler');
 
 userRouter.post('/', (req, res, next) => {
     req.sanitizeBody('name').trim();
-    req.sanitizeBody('email').normalizeEmail();
+    // req.sanitizeBody('email').normalizeEmail();
     req.checkBody(
         _.pick(VALIDATIONS.USER, ['_id', /*'email',*/ 'name', 'avatarUrl', 'referalId'])
     );

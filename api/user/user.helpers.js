@@ -18,12 +18,16 @@ module.exports = {
             .then(firebaseUser => {
                 logger.log(firebaseUser);
                 if (firebaseUser.disabled) {
-                    throw FORBIDDEN.createError(ERRORS.FORBIDDEN.DISABLED);
+                    throw UNAUTHORIZED.createError(ERRORS.FORBIDDEN.DISABLED);
                 }
                 /*if (!firebaseUser.emailVerified) {
                     throw FORBIDDEN.createError(ERRORS.FORBIDDEN.EMAIL);
                 }*/
+                if (!firebaseUser.email) {
+                    const { providerData: [ provider ] } = firebaseUser;
+                    firebaseUser.email = provider && provider.email;
+                }
                 return firebaseUser;
             });
-    }
+    },
 };

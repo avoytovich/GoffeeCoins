@@ -6,6 +6,14 @@ const logger = require('./libs/logger');
 
 require('./libs/mongoose');
 
+if (process.env.NODE_ENV !== 'production') {
+  const apiDoc = require('apidoc');
+  apiDoc.createDoc({
+    src: 'api',
+    dest: 'apidoc'
+  })
+}
+
 // Memory usage
 setInterval(function(){
     logger.log("Memory usage: " + (process.memoryUsage().heapUsed/1024/1024).toFixed(2) + " mb");

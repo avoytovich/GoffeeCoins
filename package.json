@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "apidoc": {
+    "title": "CoffeeCoins API docs",
+    "url": "http://localhost:8030"
+  },
   "author": "Yevhen Kravets <krava2108@gmail.com>",
   "license": "ISC",
   "dependencies": {
@@ -27,5 +31,8 @@
     "passport-jwt": "^3.0.0",
     "serve-favicon": "^2.4.4",
     "tracer": "^0.8.11"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.6"
   }
 }

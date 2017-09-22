@@ -11,6 +11,7 @@ module.exports = {
         DISABLED: 'Sorry, your account has been blocked or removed',
     },
     USER: {
-        NOT_FOUND: 'No such account found'
+        NOT_FOUND: 'No such account found',
+        ALREADY_REGISTERED: 'User with {PATH} `{VALUE}` already registered.',
     }
 };

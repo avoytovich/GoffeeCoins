@@ -3,7 +3,7 @@
 const mongoose = require('../../libs/mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
-const { modelOptions, MODELS } = require('../../constants');
+const { modelOptions, MODELS, UNIQUE_VL_OPTIONS } = require('../../constants');
 const config = require('../../env');
 
 const UserSchema = new mongoose.Schema({
@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         lowercase: true,
+        select: false,
         /*unique: true,
         required: true,*/
     },
@@ -46,7 +47,7 @@ UserSchema.methods.generateJWT = function() {
     );
 };
 
-UserSchema.plugin(uniqueValidator, { message: 'User with {PATH} `{VALUE}` already registered.' });
+UserSchema.plugin(uniqueValidator, UNIQUE_VL_OPTIONS);
 
 const User = mongoose.model(MODELS.USER, UserSchema);
 

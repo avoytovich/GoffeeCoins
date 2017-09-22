@@ -1,3 +1,5 @@
+'use strict';
+
 const http = require('http');
 const config = require('./env');
 const logger = require('./libs/logger');
@@ -6,6 +8,14 @@ const httpServer = http.createServer(app);
 require('./io')(httpServer);
 require('./libs/mongoose');
 require('./libs/firebase');
+
+if (process.env.NODE_ENV !== 'production') {
+  const apiDoc = require('apidoc');
+  apiDoc.createDoc({
+    src: 'api',
+    dest: 'apidoc'
+  })
+}
 
 // Memory usage
 setInterval(function(){

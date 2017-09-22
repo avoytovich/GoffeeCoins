@@ -1,5 +1,7 @@
-"use strict";
+'use strict';
 
-module.exports = require('tracer').colorConsole({
-    format : "{{file}}:{{line}} {{message}}"
+const { colorConsole } = require('tracer');
+
+module.exports = colorConsole({
+    format : '{{file}}:{{line}} {{message}}',
 });

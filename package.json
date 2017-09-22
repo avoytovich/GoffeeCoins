@@ -4,7 +4,12 @@
   "description": "Backend for CoffeeCoins",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "apidoc": {
+    "title": "CoffeeCoins API docs",
+    "url": "http://localhost:8030"
   },
   "author": "Yevhen Kravets <krava2108@gmail.com>",
   "license": "ISC",
@@ -23,11 +28,16 @@
     "mongoose": "^4.11.11",
     "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.8.2",
+    "node-mailjet": "^3.2.1",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
     "serve-favicon": "^2.4.4",
     "socket.io": "^2.0.3",
     "socketio-jwt": "^4.5.0",
-    "tracer": "^0.8.11"
+    "tracer": "^0.8.11",
+    "validator": "^8.2.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.6"
   }
 }

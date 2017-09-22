@@ -1,7 +1,11 @@
 'use strict';
 
 const mongoose = require('../../libs/mongoose');
-const { modelOptions, MODELS, COFFEEHOUSESTATUSES } = require('../../constants');
+const {
+    modelOptions,
+    MODELS,
+    COFFEEHOUSESTATUSES
+} = require('../../constants');
 const { values } = require('lodash');
 
 const coffeeHouseSchema = new mongoose.Schema({
@@ -12,6 +16,7 @@ const coffeeHouseSchema = new mongoose.Schema({
     avatarUrl: String,
     bannersUrls: [String],
     description: String,
+    coins: Number,
     location: {
         type: [Number],  // [<longitude>, <latitude>]
         index: '2d',      // create the geospatial index
@@ -20,6 +25,8 @@ const coffeeHouseSchema = new mongoose.Schema({
     socials: {
         facebook: String,
         instagram: String,
+        twitter: String,
+        google: String
     },
     status: {
         type: String,
@@ -31,6 +38,16 @@ const coffeeHouseSchema = new mongoose.Schema({
         ssid: String,
         wifiPassword: String,
         welcomeMessage: String,
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+        select: false,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        select: false,
     }
 }, modelOptions);
 

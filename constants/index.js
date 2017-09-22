@@ -8,10 +8,12 @@ module.exports = {
         timestamps: true,
         versionKey: false
     },
+    UNIQUE_VL_OPTIONS: { message: 'User with {PATH} `{VALUE}` already registered.' },
     MODELS: {
         USER: 'User',
         COIN: 'Coin',
         COFFEEHOUSE: 'CoffeeHouse',
+        ADMIN: 'Admin',
     },
     COFFEEHOUSESTATUSES: {
         ONLINE: 'online',

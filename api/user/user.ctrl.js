@@ -45,6 +45,10 @@ const userApiMethods = {
                     token: user.generateJWT()
                 }
             });
+    },
+
+    update({ user: {_id }, body: { name, avatarUrl } }) {
+        return User.findByIdAndUpdate(_id, { name, avatarUrl }, {new: true});
     }
 };
 

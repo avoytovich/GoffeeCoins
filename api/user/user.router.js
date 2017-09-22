@@ -20,13 +20,25 @@ userRouter.post('/', (req, res, next) => {
     status: HTTP_STATUSES.CREATED.code,
 }));
 
+
 userRouter.post('/login', (req, res, next) => {
     req.checkBody(_.pick(VALIDATIONS.USER, ['_id']));
     next();
 }, generalHandler(userCtrl.login));
 
+
 userRouter.use(passport.authenticate('jwt', { session: false }));
 
-userRouter.get('/', (req, res) => res.json(req.user));
+
+userRouter.route('/')
+    .get((req, res) => res.json(req.user))
+    .put((req, res, next) => {
+        req.sanitizeBody('name').trim();
+        req.checkBody(
+            _.pick(VALIDATIONS.USER, ['name', 'avatarUrl'])
+        );
+        next();
+    }, generalHandler(userCtrl.update)
+    );
 
 module.exports = userRouter;

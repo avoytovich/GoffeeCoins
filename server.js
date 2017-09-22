@@ -5,6 +5,7 @@ const app = require('./app');
 const httpServer = http.createServer(app);
 require('./io')(httpServer);
 require('./libs/mongoose');
+require('./libs/firebase');
 
 // Memory usage
 setInterval(function(){

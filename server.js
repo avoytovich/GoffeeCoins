@@ -1,3 +1,5 @@
+'use strict';
+
 const http = require('http');
 const config = require('./env');
 const logger = require('./libs/logger');

@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 const env = process.env;
-const nodeEnv = process.env.NODE_ENV || 'development';
+const nodeEnv = env.NODE_ENV = env.NODE_ENV || 'development';
 const envConfig = require(`./${nodeEnv}`);
 
 const generalConfig = {

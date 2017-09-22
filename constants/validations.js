@@ -21,7 +21,7 @@ const GENERAL = {
         notEmpty: true,
         isURL: true,
         errorMessage: ERRORS.VALIDATION.URL
-    }
+    },
 };
 
 module.exports = {

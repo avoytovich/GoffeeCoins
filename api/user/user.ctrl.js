@@ -5,14 +5,14 @@ const logger = require('../../libs/logger');
 const ERRORS = require('../../constants/errors');
 const helpers = require('./user.helpers');
 
-const HTTP_STATUSES = require('http-statuses');
-const _ = require('lodash');
+const { NOT_FOUND } = require('http-statuses');
+const { pick } = require('lodash');
 const Promise = require('bluebird');
 
 const userApiMethods = {
 
     signup({ body }) {
-        const data  = _.pick(body, ['_id', 'name', 'avatarUrl', 'referalId']);
+        const data  = pick(body, ['_id', 'name', 'avatarUrl', 'referalId']);
         return helpers.checkUserOnFirebase(data._id)
             .then(firebaseUser => {
                 data.email = firebaseUser.email;
@@ -38,7 +38,7 @@ const userApiMethods = {
             .then(firebaseUser => User.findById(_id))
             .then(user => {
                 if (!user) {
-                    throw HTTP_STATUSES.NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+                    throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
                 }
                 return {
                     user,
@@ -47,8 +47,8 @@ const userApiMethods = {
             });
     },
 
-    update({ user: {_id }, body: { name, avatarUrl } }) {
-        return User.findByIdAndUpdate(_id, { name, avatarUrl }, {new: true});
+    update({ user: { _id }, body: { name, avatarUrl } }) {
+        return User.findByIdAndUpdate(_id, { name, avatarUrl }, { new: true });
     }
 };
 

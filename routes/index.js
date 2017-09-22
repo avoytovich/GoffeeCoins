@@ -1,20 +1,10 @@
-const express = require('express');
 const morgan = require('morgan');
-const expressValidator = require('express-validator');
+const validatorMiddleware = require('../libs/express-validator');
 
-const generalRouter = express.Router();
-
-const { DEFAULT_ERROR } = require('../constants/errors');
+const generalRouter = require('express').Router();
 
 generalRouter.use(morgan('dev'));
-generalRouter.use(expressValidator({
-    errorFormatter (param, msg) {
-        if (msg === DEFAULT_ERROR) {
-            return `Invalid ${param}!`;
-        }
-        return msg;
-    }
-}));
+generalRouter.use(validatorMiddleware);
 
 generalRouter.use('/api/v1', require('./mobileRouter'));
 generalRouter.use('/adminApi/v1', require('./adminRouter'));

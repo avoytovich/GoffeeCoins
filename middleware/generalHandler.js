@@ -1,20 +1,20 @@
-const HTTP_STATUSES = require('http-statuses');
+const { BAD_REQUEST, OK } = require('http-statuses');
+const { pick } = require('lodash');
 const logger = require('../libs/logger');
-const _ = require('lodash');
 
 module.exports = (ctrlHandler, options = {}) => (req, res, next) => {
-    const ctx = _.pick(req, ['body', 'params', 'query', 'user']);
+    const ctx = pick(req, ['body', 'params', 'query', 'user']);
 
     req.getValidationResult()
         .then(validationResult => validationResult.array())
         .then(errors => {
             if (errors && errors.length) {
-                throw HTTP_STATUSES.BAD_REQUEST.createError(errors[0]);
+                throw BAD_REQUEST.createError(errors[0]);
             }
         })
         .then(() => ctrlHandler(ctx))
         .then(data => {
-            res.status(options.status || HTTP_STATUSES.OK.code)
+            res.status(options.status || OK.code)
                 .json(data);
         })
         .catch(next);

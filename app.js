@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(require('./middleware/cors'));
 app.use(express.static('public'));
+app.use('/apidoc', express.static('apidoc'));
 app.use(require('./routes'));
 app.use(require('./middleware/notFound'));
 app.use(require('./middleware/errorHandler'));

@@ -10,7 +10,19 @@ const { pick } = require('lodash');
 const Promise = require('bluebird');
 
 const userApiMethods = {
-
+  /**
+   * @api {post} /user/signup Request User information
+   * @apiName SignUp
+   * @apiGroup User
+   *
+   * @apiParam {String} _id Users unique ID.
+   * @apiParam {String} name Users Name.
+   * @apiParam {String} avatarUrl avatar url link.
+   * @apiParam {String} referalId referal id. (optional)
+   *
+   * @apiSuccess {Object} user User data object.
+   * @apiSuccess {String} token  User access token (JWT).
+   */
     signup({ body }) {
         const data  = pick(body, ['_id', 'name', 'avatarUrl', 'referalId']);
         return helpers.checkUserOnFirebase(data._id)

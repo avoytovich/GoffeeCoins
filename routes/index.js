@@ -1,3 +1,5 @@
+'use strict';
+
 const morgan = require('morgan');
 const validatorMiddleware = require('../libs/express-validator');
 

@@ -1,7 +1,7 @@
 'use strict';
 
-const mongoose = require('../../libs/mongoose');
-const { modelOptions, MODELS } = require('../../constants');
+const mongoose = require('../libs/mongoose');
+const { modelOptions, MODELS } = require('../constants/index');
 
 const CoinSchema = new mongoose.Schema({
     coffeeHouseID: {

@@ -1,10 +1,10 @@
 'use strict';
 
-const mongoose = require('../../libs/mongoose');
+const mongoose = require('../libs/mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
-const { modelOptions, MODELS, UNIQUE_VL_OPTIONS } = require('../../constants');
-const config = require('../../env');
+const { modelOptions, MODELS, UNIQUE_VL_OPTIONS } = require('../constants/index');
+const config = require('../env/index');
 
 const UserSchema = new mongoose.Schema({
     _id: String,

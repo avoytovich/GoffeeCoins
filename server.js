@@ -8,17 +8,22 @@ const httpServer = http.createServer(app);
 require('./io')(httpServer);
 require('./libs/mongoose');
 
-if (process.env.NODE_ENV !== 'production') {
+if (!config.isProduction) {
   const apiDoc = require('apidoc');
   apiDoc.createDoc({
     src: 'api',
-    dest: 'apidoc'
-  })
+    dest: 'apidoc/api'
+  });
+  /*apiDoc.createDoc({
+    src: 'adminApi',
+    dest: 'apidoc/adminApi'
+  });*/
 }
 
 // Memory usage
-setInterval(function(){
-    logger.log("Memory usage: " + (process.memoryUsage().heapUsed/1024/1024).toFixed(2) + " mb");
+setInterval(() => {
+    const memory = (process.memoryUsage().heapUsed/1024/1024).toFixed(2);
+    logger.info(`Memory usage: ${memory} mb`);
 }, 2000000);
 
 // =================================================================
@@ -26,4 +31,6 @@ setInterval(function(){
 // =================================================================
 httpServer.listen(config.port)
     .on('error', (err) => logger.error(err))
-    .on('listening', () => logger.log('Listening on port ' + config.port));
+    .on('listening', () => {
+      logger.info('Listening on port ' + config.port);
+    });

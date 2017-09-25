@@ -1,3 +1,5 @@
+'use strict';
+
 const logger = require('../libs/logger');
 const { INTERNAL_SERVER_ERROR: SERVER_ERROR } = require('http-statuses');
 const { isProduction } = require('../env');

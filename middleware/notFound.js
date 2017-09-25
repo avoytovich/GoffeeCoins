@@ -1,3 +1,5 @@
+'use strict';
+
 const { NOT_FOUND: { code, message } } = require('http-statuses');
 
 module.exports = (req, res) => {

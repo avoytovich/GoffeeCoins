@@ -1,3 +1,5 @@
+'use strict';
+
 const { BAD_REQUEST, OK } = require('http-statuses');
 const { pick } = require('lodash');
 const logger = require('../libs/logger');

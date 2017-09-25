@@ -1,12 +1,13 @@
 'use strict';
 
-const mongoose = require('../../libs/mongoose');
+const mongoose = require('../libs/mongoose');
 const {
     modelOptions,
     MODELS,
     COFFEEHOUSESTATUSES
-} = require('../../constants');
+} = require('../constants/index');
 const { values } = require('lodash');
+
 
 const coffeeHouseSchema = new mongoose.Schema({
     name: {

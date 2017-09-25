@@ -1,4 +1,9 @@
-const mobileRouter = require('express').Router();
+'use strict';
 
+const adminRouter = require('express').Router();
 
-module.exports = mobileRouter;
+const housesRoter = require('../adminApi/coffeeHouse/coffeeHouse.router');
+
+adminRouter.use('/coffeeHouse', housesRoter);
+
+module.exports = adminRouter;

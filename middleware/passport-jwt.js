@@ -1,7 +1,7 @@
 'use strict';
 
-const User = require('../api/user/user.model');
-const { checkUserOnFirebase } = require('../api/user/user.helpers');
+const User = require('../models/user.model.js');
+const { checkUserOnFirebase } = require('../helpers/auth.helper.js');
 const config = require('../env');
 const logger = require('../libs/logger');
 const passport = require('passport');

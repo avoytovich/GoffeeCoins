@@ -1,7 +1,10 @@
+'use strict';
+
 const Constants = require('./index');
 const ERRORS = require('./errors');
 
 const GENERAL = {
+
     firebaseId: {
         notEmpty: true,
         matches: {
@@ -22,6 +25,14 @@ const GENERAL = {
         isURL: true,
         errorMessage: ERRORS.VALIDATION.URL
     },
+    coord: {
+        notEmpty: true,
+        isFloat: true,
+    },
+    mongoId: {
+        notEmpty: true,
+        isMongoId: true,
+    },
 };
 
 module.exports = {
@@ -31,5 +42,9 @@ module.exports = {
         name: GENERAL.name,
         avatarUrl: GENERAL.url,
         referalId: Object.assign({ optional: true }, GENERAL.firebaseId)
-    }
+    },
+    HOUSES: {
+        coord: GENERAL.coord,
+        _id: GENERAL.mongoId
+    },
 };

@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     DEFAULT_ERROR: 'Invalid value',
     VALIDATION: {

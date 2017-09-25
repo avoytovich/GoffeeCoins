@@ -14,6 +14,7 @@ module.exports = {
         COIN: 'Coin',
         COFFEEHOUSE: 'CoffeeHouse',
         ADMIN: 'Admin',
+        VISITOR: 'Visitor',
     },
     COFFEEHOUSESTATUSES: {
         ONLINE: 'online',

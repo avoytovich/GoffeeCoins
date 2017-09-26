@@ -34,6 +34,22 @@ const CoinSchema = new mongoose.Schema({
     }
 }, Object.assign({}, modelOptions, {timestamps: false} ));
 
+CoinSchema.statics.getCountForUserInHouse = function (userID, coffeeHouseID) {
+    return this.count({
+        userID,
+        coffeeHouseID
+    });
+};
+
+CoinSchema.statics.getUnusedCoinCount = function (userID) {
+    return this.count({
+        userID,
+        usedTimestamp: {
+            $exists: false
+        }
+    });
+};
+
 const Coin = mongoose.model(MODELS.COIN, CoinSchema);
 
 module.exports = Coin;

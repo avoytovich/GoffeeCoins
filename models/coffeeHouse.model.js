@@ -4,10 +4,21 @@ const mongoose = require('../libs/mongoose');
 const {
     modelOptions,
     MODELS,
-    COFFEEHOUSESTATUSES
+    COFFEE_HOUSE_STATUSES
 } = require('../constants/index');
 const { values } = require('lodash');
 
+const createGeoQuery = ({ lng, lat }, radius) => ({
+    status: COFFEE_HOUSE_STATUSES.ONLINE,
+    location: {
+        $geoWithin: {
+            $centerSphere: [
+                [lng, lat],
+                radius / 6371    //radius in km / radius of The Earth
+            ]
+        }
+    }
+});
 
 const coffeeHouseSchema = new mongoose.Schema({
     name: {
@@ -33,8 +44,8 @@ const coffeeHouseSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: values(COFFEEHOUSESTATUSES),
-        default: COFFEEHOUSESTATUSES.ONLINE,
+        enum: values(COFFEE_HOUSE_STATUSES),
+        default: COFFEE_HOUSE_STATUSES.ONLINE,
         select: false,
     },
     wifi: {
@@ -55,25 +66,24 @@ const coffeeHouseSchema = new mongoose.Schema({
     }
 }, modelOptions);
 
-coffeeHouseSchema.statics.getHousesByLocation = function ({ lng, lat }) {
-    return this.find({
-        status: COFFEEHOUSESTATUSES.ONLINE,
-        location: {
-            $geoWithin: {
-                $centerSphere: [
-                    [lng, lat],
-                    5 / 6371    //radius 5 km / radius of The Earth
-                ]
-            }
-        }
-    })
+coffeeHouseSchema.statics.getHousesByLocation = function (coords) {
+    return this.find(createGeoQuery(coords, 5))
         .select({
             name: 1,
             avatarUrl: 1,
             location: 1,
-            address: 1
+            address: 1,
         })
         .lean()
+};
+
+coffeeHouseSchema.statics.getWifiInfo = function (coords) {
+    return this.find(createGeoQuery(coords, 100))
+        .select({
+            name: 1,
+            avatarUrl: 1,
+            wifi: 1,
+        })
 };
 
 const CoffeeHouse = mongoose.model(MODELS.COFFEEHOUSE, coffeeHouseSchema);

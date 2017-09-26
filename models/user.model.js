@@ -22,7 +22,6 @@ const UserSchema = new mongoose.Schema({
     avatarUrl: {
         type: String,
         required: true,
-        lowercase: true
     },
     referalId: {
         type: String,

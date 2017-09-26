@@ -21,7 +21,6 @@ const AdminSchema = new mongoose.Schema({
     avatarUrl: {
         type: String,
         required: true,
-        lowercase: true
     },
     hash: {
         type: String,

@@ -1,6 +1,7 @@
 'use strict';
 
 const CoffeeHouse = require('../../models/coffeeHouse.model');
+const Visitor = require('../../models/visitor.model');
 const logger = require('../../libs/logger');
 const Promise = require('bluebird');
 
@@ -68,7 +69,15 @@ const defaultData = [ {
     }
 } ];
 
-/*
-Promise.map(defaultData, item => CoffeeHouse.create(item))
-    .then(result => logger.log(result))
-    .catch(err => logger.error(err));*/
+module.exports = {
+
+    createDefault() {
+        return Promise
+            .map(defaultData, item => CoffeeHouse.create(item))
+            .then(result => logger.log(result));
+    },
+
+    createVisit({ body: { userID, coffeeHouseID } }) {
+        return Visitor.create({ userID, coffeeHouseID });
+    }
+};

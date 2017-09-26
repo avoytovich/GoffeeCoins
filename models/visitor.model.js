@@ -24,7 +24,7 @@ const VisitorSchema = new mongoose.Schema({
 
 
 VisitorSchema.statics.getLastVisit = function(userID, coffeeHouseID) {
-    return this.find({ userID, coffeeHouseID})
+    return this.find({ userID, coffeeHouseID })
         .sort({arrivalTime: -1})
         .limit(1)
         .then(([visit]) => visit);
@@ -33,9 +33,3 @@ VisitorSchema.statics.getLastVisit = function(userID, coffeeHouseID) {
 const Visitor = mongoose.model(MODELS.VISITOR, VisitorSchema);
 
 module.exports = Visitor;
-/*
-var visit = new Visitor({
-    userID: 'pgotPEVQcgUsjlHjUImxkq9nQEO2',
-    coffeeHouseID: '59c9d506ce0e011b6d53d0c8',
-});
-visit.save();*/

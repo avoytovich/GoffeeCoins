@@ -1,9 +1,11 @@
 'use strict';
 
 const CoffeeHouse = require('../../models/coffeeHouse.model');
+const Coin = require('../../models/coin.model');
 const logger = require('../../libs/logger');
-const Promise = require('bluebird');
 const { getHouseWithLastVisit } = require('./coffeeHouse.helpers');
+const Promise = require('bluebird');
+const { NOT_FOUND } = require('http-statuses');
 
 const housesApiMethods = {
 
@@ -16,12 +18,27 @@ const housesApiMethods = {
             });
     },
 
-    getHouse({ params: { _id: houseId }, user: { _id } }) {
-        return CoffeeHouse.findById(houseId)
+    getHouse({ params: { _id: coffeeHouseID }, user: { _id: userID } }) {
+        return CoffeeHouse.findById(coffeeHouseID)
             .select('-wifi')
             .lean()
-            .then(house => getHouseWithLastVisit(_id, house));
-        // TODO get user coins count for this house
+            .then(house => {
+                if (!house) {
+                    throw NOT_FOUND.createError();
+                }
+                return Promise.join(
+                    getHouseWithLastVisit(userID, house),
+                    Coin.count({ coffeeHouseID, userID })
+                );
+            })
+            .then(([house, allCoinsCount]) => {
+                house.allCoinsCount = allCoinsCount;
+                return house;
+            });
+    },
+
+    wifiInfo({ query: { lng, lat } }) {
+        return CoffeeHouse.getWifiInfo({ lng, lat });
     }
 };
 

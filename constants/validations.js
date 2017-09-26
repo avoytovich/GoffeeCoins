@@ -44,7 +44,7 @@ module.exports = {
         referalId: Object.assign({ optional: true }, GENERAL.firebaseId)
     },
     HOUSES: {
-        coord: GENERAL.coord,
-        _id: GENERAL.mongoId
+        coord: GENERAL.coord
     },
+    MONGOID: GENERAL.mongoId,
 };

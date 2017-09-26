@@ -15,10 +15,20 @@ module.exports = {
         COFFEEHOUSE: 'CoffeeHouse',
         ADMIN: 'Admin',
         VISITOR: 'Visitor',
+        BONUS_REQUEST: 'BonusRequest',
     },
-    COFFEEHOUSESTATUSES: {
-        ONLINE: 'online',
-        OFFLINE: 'offline',
-        DEBT: 'debt'
+    COFFEE_HOUSE_STATUSES: {
+        ONLINE: 'ONLINE',
+        OFFLINE: 'OFFLINE',
+        DEBT: 'DEBTOR',
+    },
+    REQUEST_STATUSES: {
+        CREATED: 'CREATED',
+        ACCEPTED: 'ACCEPTED',
+        DECLINED: 'DECLINED',
+    },
+    BONUS_TYPES: {
+        COIN: 'COIN',
+        FREE: 'FREE',
     },
 };

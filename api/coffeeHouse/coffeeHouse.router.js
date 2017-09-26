@@ -18,10 +18,20 @@ housesRouter.get('/coords', (req, res, next) => {
     next();
 }, generalHandler(housesCtrl.getHousesList));
 
+housesRouter.get('/wifi', (req, res, next) => {
+    req.checkQuery({
+        lat: VALIDATIONS.HOUSES.coord,
+        lng: VALIDATIONS.HOUSES.coord,
+    });
+    req.sanitizeQuery('lat').toFloat();
+    req.sanitizeQuery('lng').toFloat();
+    next();
+}, generalHandler(housesCtrl.wifiInfo));
+
 
 housesRouter.get('/:_id', (req, res, next) => {
     req.checkParams({
-        _id: VALIDATIONS.HOUSES._id
+        _id: VALIDATIONS.MONGOID
     });
     next();
 }, generalHandler(housesCtrl.getHouse));

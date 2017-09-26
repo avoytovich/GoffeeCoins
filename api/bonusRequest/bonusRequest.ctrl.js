@@ -20,7 +20,7 @@ module.exports = {
                 count || (count = 1);
             })
             .then(() => {
-                return BonusRequest.create({
+                BonusRequest.create({
                     coffeeHouseID,
                     type,
                     count,

@@ -33,10 +33,9 @@ VisitorSchema.statics.getLastVisit = function(userID, coffeeHouseID) {
 const Visitor = mongoose.model(MODELS.VISITOR, VisitorSchema);
 
 module.exports = Visitor;
-/*
 
 var visit = new Visitor({
-    userID: '5BX9K2ul4gZruIOsLXJoEXBfuhR2',
-    coffeeHouseID: '59c8eb3e088cbb5fc2cef59b',
+    userID: 'pgotPEVQcgUsjlHjUImxkq9nQEO2',
+    coffeeHouseID: '59c9d506ce0e011b6d53d0c8',
 });
-visit.save();*/
+visit.save();

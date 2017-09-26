@@ -8,7 +8,7 @@ const housesCtrl = require('./coffeeHouse.ctrl');
 const VALIDATIONS = require('../../constants/validations');
 const generalHandler = require('../../middleware/generalHandler');
 
-housesRouter.get('/', (req, res, next) => {
+housesRouter.get('/coords', (req, res, next) => {
     req.checkQuery({
         lat: VALIDATIONS.HOUSES.coord,
         lng: VALIDATIONS.HOUSES.coord,

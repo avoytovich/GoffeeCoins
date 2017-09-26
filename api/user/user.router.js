@@ -1,6 +1,6 @@
 'use strict';
 
-const HTTP_STATUSES = require('http-statuses');
+const { CREATED } = require('http-statuses');
 const _ = require('lodash');
 const userRouter = require('express').Router();
 const userCtrl = require('./user.ctrl');
@@ -17,7 +17,7 @@ userRouter.post('/', (req, res, next) => {
     );
     next();
 }, generalHandler(userCtrl.signup, {
-    status: HTTP_STATUSES.CREATED.code,
+    status: CREATED.code,
 }));
 
 

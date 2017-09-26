@@ -36,7 +36,7 @@ const userApiMethods = {
 
     login({ body: { _id } }) {
         return checkUserOnFirebase(_id)
-            .then(firebaseUser => User.findById(_id))
+            .then(firebaseUser => User.getUser(_id))
             .then(user => {
                 if (!user) {
                     throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);

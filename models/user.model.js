@@ -1,6 +1,8 @@
 'use strict';
 
 const mongoose = require('../libs/mongoose');
+const Coin = require('./coin.model');
+const Promise = require('bluebird');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
 const { modelOptions, MODELS, UNIQUE_VL_OPTIONS } = require('../constants/index');
@@ -38,6 +40,17 @@ const UserSchema = new mongoose.Schema({
         select: false,
     }
 }, modelOptions);
+
+UserSchema.statics.getUser = function (id) {
+    const self = this;
+    return Promise.join(
+        self.findById(id).lean(),
+        Coin.getUnusedCoinCount(id)
+    ).then(([user, coins]) => {
+        user.coins = coins;
+        return user;
+    })
+};
 
 UserSchema.methods.generateJWT = function() {
     return jwt.sign(

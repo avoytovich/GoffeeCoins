@@ -22,7 +22,7 @@ const VisitorSchema = new mongoose.Schema({
 }, Object.assign({}, modelOptions, {timestamps: false}));
 
 
-VisitorSchema.statics.getLastVisit = function(userID, coffeeHouseID) {
+VisitorSchema.statics.getLastVisit = function (userID, coffeeHouseID) {
     return this.find({ userID, coffeeHouseID })
         .sort({arrivalTime: -1})
         .limit(1)

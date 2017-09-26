@@ -16,5 +16,8 @@ module.exports = {
         NOT_FOUND: 'No such account found',
         ALREADY_REGISTERED: 'User with {PATH} `{VALUE}` already registered.',
     },
-    NOT_ENOUGHT_BONUSES: 'Not enough CoffeeCoins!',
+    BONUS_REQUESTS: {
+        NOT_ENOUGHT_BONUSES: 'Not enough CoffeeCoins!',
+        NOT_IN: 'Sorry, but you can request only from coffee house.'
+    }
 };

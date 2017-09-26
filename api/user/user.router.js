@@ -10,10 +10,10 @@ const generalHandler = require('../../middleware/generalHandler');
 
 
 userRouter.post('/', (req, res, next) => {
-    req.sanitizeBody('name').trim();
     // req.sanitizeBody('email').normalizeEmail();
+    req.sanitizeBody('name').trim();
     req.checkBody(
-        _.pick(VALIDATIONS.USER, ['_id', /*'email',*/ 'name', 'avatarUrl', 'referalId'])
+        _.pick(VALIDATIONS.USER, ['_id', 'name', 'avatarUrl', 'referalId'])
     );
     next();
 }, generalHandler(userCtrl.signup, {

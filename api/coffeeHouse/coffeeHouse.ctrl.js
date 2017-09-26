@@ -18,6 +18,7 @@ const housesApiMethods = {
 
     getHouse({ params: { _id: houseId }, user: { _id } }) {
         return CoffeeHouse.findById(houseId)
+            .select('-wifi')
             .lean()
             .then(house => getHouseWithLastVisit(_id, house));
         // TODO get user coins count for this house

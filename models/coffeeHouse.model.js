@@ -8,12 +8,6 @@ const {
 } = require('../constants/index');
 const { values } = require('lodash');
 
-const wifiSchema = new mongoose.Schema({
-    bssid: String,
-    ssid: String,
-    wifiPassword: String,
-    welcomeMessage: String,
-});
 
 const coffeeHouseSchema = new mongoose.Schema({
     name: {
@@ -44,8 +38,10 @@ const coffeeHouseSchema = new mongoose.Schema({
         select: false,
     },
     wifi: {
-        type: wifiSchema,
-        select: false,
+        bssid: String,
+        ssid: String,
+        wifiPassword: String,
+        welcomeMessage: String,
     },
     updatedAt: {
         type: Date,

@@ -1,7 +1,4 @@
-'use strict';/**
- * Created by yevhen-kravets on 25.09.17.
- */
-
+'use strict';
 
 const User = require('./../../models/user.model.js');
 const logger = require('../../libs/logger');

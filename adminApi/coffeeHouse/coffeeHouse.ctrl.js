@@ -68,8 +68,6 @@ const defaultData = [ {
     }
 } ];
 
-/*
 Promise.map(defaultData, item => CoffeeHouse.create(item))
     .then(result => logger.log(result))
     .catch(err => logger.error(err));
-*/

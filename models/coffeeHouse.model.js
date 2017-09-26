@@ -6,7 +6,6 @@ const {
     MODELS,
     COFFEE_HOUSE_STATUSES
 } = require('../constants/index');
-const { values } = require('lodash');
 
 const createGeoQuery = ({ lng, lat }, radius) => ({
     status: COFFEE_HOUSE_STATUSES.ONLINE,
@@ -44,7 +43,7 @@ const coffeeHouseSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: values(COFFEE_HOUSE_STATUSES),
+        enum: Object.values(COFFEE_HOUSE_STATUSES),
         default: COFFEE_HOUSE_STATUSES.ONLINE,
         select: false,
     },

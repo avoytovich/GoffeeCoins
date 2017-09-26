@@ -1,6 +1,5 @@
 'use strict';
 
-const HTTP_STATUSES = require('http-statuses');
 const _ = require('lodash');
 const logger = require('../../libs/logger');
 const housesRouter = require('express').Router();

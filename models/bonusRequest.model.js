@@ -7,7 +7,6 @@ const {
     REQUEST_STATUSES,
     BONUS_TYPES
 } = require('../constants/index');
-const { values } = require('lodash');
 
 const bonusRequestSchema = new mongoose.Schema({
     userID: {
@@ -20,14 +19,15 @@ const bonusRequestSchema = new mongoose.Schema({
         ref: MODELS.COFFEEHOUSE,
         required: true,
     },
+    count: Number,
     status: {
         type: String,
-        enum: values(REQUEST_STATUSES),
+        enum: Object.values(REQUEST_STATUSES),
         default: REQUEST_STATUSES.ACCEPTED,
     },
     type: {
         type: String,
-        enum: values(BONUS_TYPES),
+        enum: Object.values(BONUS_TYPES),
         default: BONUS_TYPES.COIN,
     },
 }, modelOptions);

@@ -2,7 +2,6 @@
 
 const mongoose = require('../libs/mongoose');
 const { modelOptions, MODELS } = require('../constants/index');
-const { values } = require('lodash');
 
 const VisitorSchema = new mongoose.Schema({
     userID: {

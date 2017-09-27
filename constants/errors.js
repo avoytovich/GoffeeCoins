@@ -19,5 +19,11 @@ module.exports = {
     BONUS_REQUESTS: {
         NOT_ENOUGHT_BONUSES: 'Not enough CoffeeCoins!',
         NOT_IN: 'Sorry, but you can request only from coffee house.',
-    }
+    },
+    REQUESTS: {
+        NOT_FOR_YOU: 'The request was not addressed to you!',
+    },
+    COFFEEHOUSE: {
+        NOT_FOUND: 'Coffee house not found!',
+    },
 };

@@ -1,7 +1,6 @@
 'use strict';
 
 const { CREATED } = require('http-statuses');
-const logger = require('../../libs/logger');
 const bonusesRouter = require('express').Router();
 const bonusesCtrl = require('./bonusRequest.ctrl');
 const { BONUS_TYPES } = require('../../constants');

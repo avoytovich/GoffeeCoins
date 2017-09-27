@@ -18,6 +18,11 @@ const adminRequestSchema = new mongoose.Schema({
         ref: MODELS.USER,
         required: true,
     },
+    coffeeHouseID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: MODELS.COFFEEHOUSE,
+        required: true,
+    },
     status: {
         type: String,
         enum: Object.values(REQUEST_STATUSES),

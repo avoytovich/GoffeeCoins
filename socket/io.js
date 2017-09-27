@@ -4,7 +4,12 @@ const { secret } = require('./../env/index');
 const logger = require('./../libs/logger');
 const pick = require('lodash/pick');
 
-const { getUser, createVisit} = require('./io.helpers');
+const {
+    getUser,
+    createVisit,
+    defaultFields,
+    getVisitors
+} = require('./io.helpers');
 
 module.exports = server => {
 
@@ -16,7 +21,8 @@ module.exports = server => {
     }));
 
     io.on('connection', socket => {
-        logger.log(socket);
+        logger.log(socket.userId, socket.user, socket.houseId);
+
         socket.userId = socket.decoded_token._id;
 
         if (!socket.user) {
@@ -30,16 +36,41 @@ module.exports = server => {
         socket.on('hello', mes => socket.emit('world', `${mes} world`));
 
         socket.on('inCoffeeHouse', houseId => {
+
             const isAdmin = socket.user.isAdminInCoffeeHouse(houseId);
+
             if (isAdmin) {
                 socket.join(houseId);
+
+                const houseVisitors = io.sockets
+                    .clients()
+                    .filter(sock => {
+                        return sock.houseId.toString() === houseId.toString();
+                    })
+                    .map(sock => sock.userId);
+
+                const currentVisitors = getVisitors(houseId);
+                socket.emit('listOfCurrentVisitors', currentVisitors);
+
             } else {
+
                 const userId = socket.userId || socket.decoded_token._id;
+                const userToSend = pick(socket.user, defaultFields);
+
+                socket.houseId = houseId;
                 socket.currentVisit = createVisit(userId, houseId);
-                const userToSend = pick(socket.user, ['_id', 'name', 'coins', 'avatarUrl']);
                 socket.to(houseId).broadcast.emit('newUserInCoffeeHouse', userToSend);
             }
         });
+
+        /*socket.on('getListOfVisitors', houseId => {
+
+            const isAdmin = socket.user.isAdminInCoffeeHouse(houseId);
+
+            if (isAdmin) {
+
+            }
+        });*/
 
         socket.on('disconnect', () => {
             if (socket.currentVisit) {

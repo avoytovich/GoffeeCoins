@@ -14,8 +14,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         lowercase: true,
         select: false,
-        /*unique: true,
-        required: true,*/
     },
     name: {
         type: String,
@@ -27,7 +25,7 @@ const UserSchema = new mongoose.Schema({
     },
     referalId: {
         type: String,
-        ref: 'users'
+        ref: MODELS.USER,
     },
     updatedAt: {
         type: Date,
@@ -38,13 +36,16 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
         select: false,
-    }
+    },
+    adminInCoffeeHouses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: MODELS.COFFEEHOUSE
+    }],
 }, modelOptions);
 
 UserSchema.statics.getUser = function (id) {
-    const self = this;
     return Promise.join(
-        self.findById(id).lean(),
+        this.findById(id).lean(),
         Coin.getUnusedCoinCount(id)
     ).then(([user, coins]) => {
         user.coins = coins;
@@ -52,11 +53,17 @@ UserSchema.statics.getUser = function (id) {
     })
 };
 
-UserSchema.methods.generateJWT = function() {
+UserSchema.methods.generateJWT = function () {
     return jwt.sign(
         { _id: this._id },
         config.secret
     );
+};
+
+UserSchema.methods.isAdminInCoffeeHouse = function (houseId) {
+    return this.adminInCoffeeHouses.some(item => {
+        return item.toString() === houseId.toString();
+    });
 };
 
 UserSchema.plugin(uniqueValidator, UNIQUE_VL_OPTIONS);

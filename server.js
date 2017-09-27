@@ -5,7 +5,7 @@ const config = require('./env');
 const logger = require('./libs/logger');
 const app = require('./app');
 const httpServer = http.createServer(app);
-require('./io')(httpServer);
+require('./socket/io')(httpServer);
 require('./libs/mongoose');
 require('./libs/firebase');
 

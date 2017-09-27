@@ -43,8 +43,6 @@ module.exports = {
         avatarUrl: GENERAL.url,
         referalId: Object.assign({ optional: true }, GENERAL.firebaseId)
     },
-    HOUSES: {
-        coord: GENERAL.coord
-    },
     MONGOID: GENERAL.mongoId,
+    COORD: GENERAL.coord
 };

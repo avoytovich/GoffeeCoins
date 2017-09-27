@@ -18,6 +18,6 @@ module.exports = {
     },
     BONUS_REQUESTS: {
         NOT_ENOUGHT_BONUSES: 'Not enough CoffeeCoins!',
-        NOT_IN: 'Sorry, but you can request only from coffee house.'
+        NOT_IN: 'Sorry, but you can request only from coffee house.',
     }
 };

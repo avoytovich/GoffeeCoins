@@ -1,7 +1,7 @@
 'use strict';
 
 const { CREATED } = require('http-statuses');
-const _ = require('lodash');
+const pick = require('lodash/pick');
 const userRouter = require('express').Router();
 const userCtrl = require('./user.ctrl');
 const passport = require('../../middleware/passport-jwt');
@@ -13,7 +13,7 @@ userRouter.post('/', (req, res, next) => {
     // req.sanitizeBody('email').normalizeEmail();
     req.sanitizeBody('name').trim();
     req.checkBody(
-        _.pick(VALIDATIONS.USER, ['_id', 'name', 'avatarUrl', 'referalId'])
+        pick(VALIDATIONS.USER, ['_id', 'name', 'avatarUrl', 'referalId'])
     );
     next();
 }, generalHandler(userCtrl.signup, {
@@ -22,7 +22,7 @@ userRouter.post('/', (req, res, next) => {
 
 
 userRouter.post('/login', (req, res, next) => {
-    req.checkBody(_.pick(VALIDATIONS.USER, ['_id']));
+    req.checkBody(pick(VALIDATIONS.USER, ['_id']));
     next();
 }, generalHandler(userCtrl.login));
 
@@ -35,7 +35,7 @@ userRouter.route('/')
     .put((req, res, next) => {
         req.sanitizeBody('name').trim();
         req.checkBody(
-            _.pick(VALIDATIONS.USER, ['name', 'avatarUrl'])
+            pick(VALIDATIONS.USER, ['name', 'avatarUrl'])
         );
         next();
     }, generalHandler(userCtrl.update)

@@ -1,3 +1,20 @@
-/**
- * Created by yevhen-kravets on 26.09.17.
- */
+'use strict';
+
+const DeviceToken = require('../../models/deviceToken.model');
+
+module.exports = {
+
+    updateToken({ body: { deviceUId, deviceToken }, user }) {
+        DeviceToken.findByIdAndUpdate(
+            deviceUId,
+            {
+                token: deviceToken,
+                userID: user._id
+            }, {
+                upsert: true,
+                new: true
+            }
+        );
+    }
+
+};

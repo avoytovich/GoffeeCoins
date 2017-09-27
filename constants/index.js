@@ -16,7 +16,8 @@ module.exports = {
         ADMIN: 'Admin',
         VISITOR: 'Visitor',
         BONUS_REQUEST: 'BonusRequest',
-        DEVICE_TOKEN: 'DeviceToken'
+        ADMIN_REQUEST: 'AdminRequest',
+        DEVICE_TOKEN: 'DeviceToken',
     },
     COFFEE_HOUSE_STATUSES: {
         ONLINE: 'ONLINE',

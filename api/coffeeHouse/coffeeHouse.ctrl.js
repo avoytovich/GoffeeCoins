@@ -2,10 +2,9 @@
 
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Coin = require('../../models/coin.model');
-const logger = require('../../libs/logger');
 const { getHouseWithLastVisit } = require('./coffeeHouse.helpers');
-const Promise = require('bluebird');
 const { NOT_FOUND } = require('http-statuses');
+const Promise = require('bluebird');
 
 const housesApiMethods = {
 
@@ -20,7 +19,7 @@ const housesApiMethods = {
 
     getHouse({ params: { _id: coffeeHouseID }, user: { _id: userID } }) {
         return CoffeeHouse.findById(coffeeHouseID)
-            .select('-wifi')
+            .select('-wifi -admins')
             .lean()
             .then(house => {
                 if (!house) {

@@ -1,7 +1,7 @@
 'use strict';
 
 const { BAD_REQUEST, OK } = require('http-statuses');
-const { pick } = require('lodash');
+const pick = require('lodash/pick');
 const logger = require('../libs/logger');
 
 module.exports = (ctrlHandler, options = {}) => (req, res, next) => {

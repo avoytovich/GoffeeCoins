@@ -29,6 +29,11 @@ VisitorSchema.statics.getLastVisit = function (userID, coffeeHouseID) {
         .then(([visit]) => visit);
 };
 
+VisitorSchema.methods.getOut = function () {
+    this.exitTime = Date.now();
+    this.save();
+};
+
 const Visitor = mongoose.model(MODELS.VISITOR, VisitorSchema);
 
 module.exports = Visitor;

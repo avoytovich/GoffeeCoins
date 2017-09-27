@@ -1,13 +1,10 @@
 'use strict';
 
 const User = require('./../../models/user.model.js');
-const logger = require('../../libs/logger');
 const ERRORS = require('../../constants/errors');
 const { checkUserOnFirebase } = require('./../../helpers/auth.helper.js');
-
 const { NOT_FOUND } = require('http-statuses');
-const { pick } = require('lodash');
-const Promise = require('bluebird');
+const pick = require('lodash/pick');
 
 const userApiMethods = {
 
@@ -20,8 +17,7 @@ const userApiMethods = {
             })
             .then(user => {
                 if (user) return user;
-                user = new User(data);
-                return user.save();
+                return User.create(data);
             })
             .then(user => {
                 user.createdAt = undefined;

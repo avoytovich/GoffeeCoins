@@ -23,7 +23,7 @@ const bonusRequestSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: Object.values(REQUEST_STATUSES),
-        default: REQUEST_STATUSES.ACCEPTED,
+        default: REQUEST_STATUSES.CREATED,
     },
     type: {
         type: String,

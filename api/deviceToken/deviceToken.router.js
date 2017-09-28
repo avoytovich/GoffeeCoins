@@ -2,7 +2,7 @@
 
 const tokenRouter = require('express').Router();
 const tokenCtrl = require('./deviceToken.ctrl');
-const generalHandler = require('../../middleware/responseHandler');
+const responseHandler = require('../../middleware/responseHandler');
 
 tokenRouter.put('/', (req, res, next) => {
     req.sanitizeBody('deviceUId').trim();
@@ -10,6 +10,6 @@ tokenRouter.put('/', (req, res, next) => {
     req.checkBody('deviceUId').notEmpty();
     req.checkBody('deviceToken').notEmpty();
     next();
-}, generalHandler(tokenCtrl.updateToken));
+}, responseHandler(tokenCtrl.updateToken));
 
 module.exports = tokenRouter;

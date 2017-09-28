@@ -6,7 +6,7 @@ const userRouter = require('express').Router();
 const userCtrl = require('./user.ctrl');
 const passport = require('../../middleware/passport-jwt');
 const VALIDATIONS = require('../../constants/validations');
-const generalHandler = require('../../middleware/responseHandler');
+const responseHandler = require('../../middleware/responseHandler');
 
 
 userRouter.post('/', (req, res, next) => {
@@ -16,7 +16,7 @@ userRouter.post('/', (req, res, next) => {
         pick(VALIDATIONS.USER, ['_id', 'name', 'avatarUrl', 'referalId'])
     );
     next();
-}, generalHandler(userCtrl.signup, {
+}, responseHandler(userCtrl.signup, {
     status: CREATED.code,
 }));
 
@@ -24,7 +24,7 @@ userRouter.post('/', (req, res, next) => {
 userRouter.post('/login', (req, res, next) => {
     req.checkBody(pick(VALIDATIONS.USER, ['_id']));
     next();
-}, generalHandler(userCtrl.login));
+}, responseHandler(userCtrl.login));
 
 
 userRouter.use(passport.authenticate('jwt', { session: false }));
@@ -38,7 +38,7 @@ userRouter.route('/')
             pick(VALIDATIONS.USER, ['name', 'avatarUrl'])
         );
         next();
-    }, generalHandler(userCtrl.update)
+    }, responseHandler(userCtrl.update)
     );
 
 module.exports = userRouter;

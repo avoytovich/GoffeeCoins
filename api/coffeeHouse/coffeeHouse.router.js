@@ -2,7 +2,7 @@
 
 const housesRouter = require('express').Router();
 const housesCtrl = require('./coffeeHouse.ctrl');
-const generalHandler = require('../../middleware/responseHandler');
+const responseHandler = require('../../middleware/responseHandler');
 
 
 housesRouter.get('/coords', (req, res, next) => {
@@ -11,7 +11,7 @@ housesRouter.get('/coords', (req, res, next) => {
     req.sanitizeQuery('lat').toFloat();
     req.sanitizeQuery('lng').toFloat();
     next();
-}, generalHandler(housesCtrl.getHousesList));
+}, responseHandler(housesCtrl.getHousesList));
 
 housesRouter.get('/wifi', (req, res, next) => {
     req.checkQuery('lat').notEmpty().isFloat();
@@ -19,13 +19,13 @@ housesRouter.get('/wifi', (req, res, next) => {
     req.sanitizeQuery('lat').toFloat();
     req.sanitizeQuery('lng').toFloat();
     next();
-}, generalHandler(housesCtrl.wifiInfo));
+}, responseHandler(housesCtrl.wifiInfo));
 
 
 housesRouter.get('/:_id', (req, res, next) => {
     req.checkParams('_id').notEmpty().isMongoId();
     next();
-}, generalHandler(housesCtrl.getHouse));
+}, responseHandler(housesCtrl.getHouse));
 
 
 module.exports = housesRouter;

@@ -15,6 +15,10 @@ if (!config.isProduction) {
     src: 'api',
     dest: 'apidoc/api'
   });
+  apiDoc.createDoc({
+    src: 'socket',
+    dest: 'apidoc/socket'
+  });
   /*apiDoc.createDoc({
     src: 'adminApi',
     dest: 'apidoc/adminApi'

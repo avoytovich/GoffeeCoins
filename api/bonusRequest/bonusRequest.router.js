@@ -4,7 +4,7 @@ const { CREATED } = require('http-statuses');
 const bonusesRouter = require('express').Router();
 const bonusesCtrl = require('./bonusRequest.ctrl');
 const { BONUS_TYPES } = require('../../constants');
-const generalHandler = require('../../middleware/generalHandler');
+const generalHandler = require('../../middleware/responseHandler');
 
 
 bonusesRouter.post('/', (req, res, next) => {

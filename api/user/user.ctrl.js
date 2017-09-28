@@ -13,7 +13,7 @@ const userApiMethods = {
         return checkUserOnFirebase(data._id)
             .then(firebaseUser => {
                 data.email = firebaseUser.email;
-                return User.findById(data._id)
+                return User.getUser(data._id)
             })
             .then(user => {
                 if (user) return user;
@@ -23,6 +23,7 @@ const userApiMethods = {
                 user.createdAt = undefined;
                 user.updatedAt = undefined;
                 user.email = undefined;
+                user.coins || (user._doc.coins = 0);
                 return {
                     user,
                     token: user.generateJWT()

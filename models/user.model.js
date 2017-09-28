@@ -5,9 +5,13 @@ const Coin = require('./coin.model');
 const Promise = require('bluebird');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
-const { modelOptions, MODELS, UNIQUE_VL_OPTIONS } = require('../constants/index');
+const {
+    modelOptions,
+    MODELS,
+    UNIQUE_VL_OPTIONS
+} = require('../constants/index');
 const config = require('../env/index');
-const { NOT_FOUND } = require('http-statuses');
+
 
 const UserSchema = new mongoose.Schema({
     _id: String,
@@ -44,18 +48,19 @@ const UserSchema = new mongoose.Schema({
     }],
 }, modelOptions);
 
+
 UserSchema.statics.getUser = function (id) {
     return Promise.join(
-        this.findById(id).lean(),
+        this.findById(id),
         Coin.getUnusedCoinCount(id)
     ).then(([user, coins]) => {
-        if (!user) {
-            throw NOT_FOUND.createError();
+        if (user) {
+            user._doc.coins = coins;
+            return user;
         }
-        user.coins = coins;
-        return user;
-    })
+    });
 };
+
 
 UserSchema.methods.generateJWT = function () {
     return jwt.sign(
@@ -64,11 +69,13 @@ UserSchema.methods.generateJWT = function () {
     );
 };
 
+
 UserSchema.methods.isAdminInCoffeeHouse = function (houseId) {
     return this.adminInCoffeeHouses.some(item => {
         return item.toString() === houseId.toString();
     });
 };
+
 
 UserSchema.plugin(uniqueValidator, UNIQUE_VL_OPTIONS);
 

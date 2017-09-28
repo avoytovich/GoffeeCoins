@@ -3,7 +3,7 @@
 const adminRequestRouter = require('express').Router();
 const adminRequestCtrl = require('./adminRequest.ctrl');
 const { REQUEST_STATUSES } = require('../../constants');
-const generalHandler = require('../../middleware/generalHandler');
+const generalHandler = require('../../middleware/responseHandler');
 
 adminRequestRouter.post('/', (req, res, next) => {
     req.checkBody('requestID').isMongoId();

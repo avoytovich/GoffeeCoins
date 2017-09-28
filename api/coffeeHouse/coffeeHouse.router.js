@@ -2,7 +2,7 @@
 
 const housesRouter = require('express').Router();
 const housesCtrl = require('./coffeeHouse.ctrl');
-const generalHandler = require('../../middleware/generalHandler');
+const generalHandler = require('../../middleware/responseHandler');
 
 
 housesRouter.get('/coords', (req, res, next) => {

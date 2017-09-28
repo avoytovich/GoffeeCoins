@@ -3,7 +3,7 @@
 const housesRouter = require('express').Router();
 const housesCtrl = require('./coffeeHouse.ctrl');
 const VALIDATIONS = require('../../constants/validations');
-const generalHandler = require('../../middleware/generalHandler');
+const generalHandler = require('../../middleware/responseHandler');
 
 const HTTP_STATUSES = require('http-statuses');
 const _ = require('lodash');

@@ -6,7 +6,7 @@ const userRouter = require('express').Router();
 const userCtrl = require('./user.ctrl');
 const passport = require('../../middleware/passport-jwt');
 const VALIDATIONS = require('../../constants/validations');
-const generalHandler = require('../../middleware/generalHandler');
+const generalHandler = require('../../middleware/responseHandler');
 
 
 userRouter.post('/', (req, res, next) => {

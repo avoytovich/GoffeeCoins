@@ -7,6 +7,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
 const { modelOptions, MODELS, UNIQUE_VL_OPTIONS } = require('../constants/index');
 const config = require('../env/index');
+const { NOT_FOUND } = require('http-statuses');
 
 const UserSchema = new mongoose.Schema({
     _id: String,
@@ -48,6 +49,9 @@ UserSchema.statics.getUser = function (id) {
         this.findById(id).lean(),
         Coin.getUnusedCoinCount(id)
     ).then(([user, coins]) => {
+        if (!user) {
+            throw NOT_FOUND.createError();
+        }
         user.coins = coins;
         return user;
     })

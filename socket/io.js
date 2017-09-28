@@ -63,19 +63,11 @@ module.exports = server => {
             }
         });
 
-        /*socket.on('getListOfVisitors', houseId => {
-
-            const isAdmin = socket.user.isAdminInCoffeeHouse(houseId);
-
-            if (isAdmin) {
-
-            }
-        });*/
-
         socket.on('disconnect', () => {
             if (socket.currentVisit) {
                 socket.currentVisit.getOut();
                 socket.currentVisit = null;
+                socket.leave(socket.houseId);
             }
         });
 

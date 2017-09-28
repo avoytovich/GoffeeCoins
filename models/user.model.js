@@ -31,6 +31,7 @@ const UserSchema = new mongoose.Schema({
     referalId: {
         type: String,
         ref: MODELS.USER,
+        select: false,
     },
     updatedAt: {
         type: Date,

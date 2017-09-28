@@ -86,6 +86,7 @@ coffeeHouseSchema.statics.getWifiInfo = function (coords) {
             name: 1,
             avatarUrl: 1,
             wifi: 1,
+            location: 1,
         })
 };
 

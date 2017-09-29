@@ -28,17 +28,32 @@ const adminRequestSchema = new mongoose.Schema({
         enum: Object.values(REQUEST_STATUSES),
         default: REQUEST_STATUSES.CREATED,
     },
-    updatedAt: {
-        type: Date,
-        default: Date.now,
-        select: false,
-    },
+    updatedAt: Number,
     createdAt: {
-        type: Date,
+        type: Number,
         default: Date.now,
-        select: false,
     },
 }, modelOptions);
+
+adminRequestSchema.statics.getAdminData = function (userID) {
+    return this.find({
+        userID,
+        status: {
+            $in: [REQUEST_STATUSES.CREATED, REQUEST_STATUSES.ACCEPTED]
+        }
+    })
+        .populate({
+            path: 'coffeeHouseID',
+            select: {
+                name: 1,
+                avatarUrl: 1,
+                address: 1,
+                status: 1,
+            },
+            model: MODELS.COFFEEHOUSE,
+        })
+        .select('-adminID')
+};
 
 const AdminRequest = mongoose.model(MODELS.ADMIN_REQUEST, adminRequestSchema);
 

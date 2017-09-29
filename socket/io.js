@@ -35,7 +35,10 @@ module.exports = server => {
             logger.err(error.type, error.code, error.message);
         });
 
-        socket.on('hello', mes => socket.emit('world', `${mes} world`));
+        socket.on('hello', mes => {
+            logger.log(mes);
+            socket.emit('world', `${mes} world`)
+        });
 
         socket.on('inCoffeeHouse', houseId => {
             socket.houseId = houseId;

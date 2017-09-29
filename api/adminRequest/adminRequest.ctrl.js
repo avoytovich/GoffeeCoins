@@ -63,6 +63,10 @@ const adminRequestApi = {
 
     decline(request) {
         request.update({ status: REQUEST_STATUSES.DECLINED })
+    },
+
+    adminPanel({ user: { _id } }) {
+        return AdminRequest.getAdminData(_id);
     }
 };
 

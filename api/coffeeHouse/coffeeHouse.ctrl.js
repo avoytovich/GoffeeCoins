@@ -2,6 +2,7 @@
 
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Coin = require('../../models/coin.model');
+const AdminRequest = require('../../models/adminRequest.model');
 const { getHouseWithLastVisit } = require('./coffeeHouse.helpers');
 const { NOT_FOUND } = require('http-statuses');
 const Promise = require('bluebird');
@@ -17,7 +18,7 @@ const housesApiMethods = {
             });
     },
 
-    getHouse({ params: { _id: coffeeHouseID }, user: { _id: userID } }) {
+    getHouse({ params: { coffeeHouseID }, user: { _id: userID } }) {
         return CoffeeHouse.findById(coffeeHouseID)
             .select('-wifi -admins')
             .lean()
@@ -38,7 +39,23 @@ const housesApiMethods = {
 
     wifiInfo({ query: { lng, lat } }) {
         return CoffeeHouse.getWifiInfo({ lng, lat });
-    }
+    },
+
+    discharge({ query: { coffeeHouseID }, user }) {
+        return Promise.join(
+            AdminRequest.deleteMany({
+                coffeeHouseID,
+                userID: user._id
+            }),
+
+            user.update({$pull: {
+                adminInCoffeeHouses: coffeeHouseID
+            }}),
+            CoffeeHouse.findByIdAndUpdate(coffeeHouseID, {$pull: {
+                admins: user._id
+            }}, {new: true})
+        ).then(result => {});
+    },
 };
 
 module.exports = housesApiMethods;

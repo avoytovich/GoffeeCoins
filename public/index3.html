@@ -11,38 +11,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js.map"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
-    var socket = io.connect('http://192.168.88.157:8030', {
-        'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2NjY1ODU1fQ.TONakGSh1533SwiYtf_ClM5De_WG52HKHQcve4u41jE'
-    });
+    (function InOut() {
+        var socket = io.connect('http://192.168.88.157:8030', {
+            'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2NjY1ODU1fQ.TONakGSh1533SwiYtf_ClM5De_WG52HKHQcve4u41jE'
+        });
 
-    socket.on('connect', function() {
+        socket.on('connect', function() {
 
-        socket.emit('hello', 'Tanchi');
+            socket.emit('hello', 'Tanchi');
 
-        setTimeout(function () {
-            socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
-        }, 10000);
+            setTimeout(function () {
+                socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
+            }, 10000);
 
-        /*setTimeout(function () {
-            socket.destroy();
-        }, 20000);*/
-    });
+            setTimeout(function () {
+                socket.destroy();
+                InOut();
+            }, 20000);
+        });
 
-    socket.on('world', function (mes) {
-        console.log('world', mes);
-    });
+        socket.on('world', function (mes) {
+            console.log('world', mes);
+        });
 
-    socket.on('listOfCurrentVisitors', function (mes) {
-        console.log('listOfCurrentVisitors', mes);
-    });
+        socket.on('listOfCurrentVisitors', function (mes) {
+            console.log('listOfCurrentVisitors', mes);
+        });
 
-    socket.on('newUserInCoffeeHouse', function (mes) {
-        console.log('newUserInCoffeeHouse', mes);
-    });
+        socket.on('newUserInCoffeeHouse', function (mes) {
+            console.log('newUserInCoffeeHouse', mes);
+        });
 
-    socket.on('error', function (err) {
-        console.log('error', err.message);
-    });
+        socket.on('error', function (err) {
+            console.log('error', err.message);
+        });
+    })();
 </script>
 </body>
 </html>

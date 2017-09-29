@@ -22,10 +22,16 @@ housesRouter.get('/wifi', (req, res, next) => {
 }, responseHandler(housesCtrl.wifiInfo));
 
 
-housesRouter.get('/:_id', (req, res, next) => {
-    req.checkParams('_id').notEmpty().isMongoId();
+housesRouter.get('/:coffeeHouseID', (req, res, next) => {
+    req.checkParams('coffeeHouseID').notEmpty().isMongoId();
     next();
 }, responseHandler(housesCtrl.getHouse));
+
+
+housesRouter.post('/discharge/:coffeeHouseID', (req, res, next) => {
+    req.checkParams('coffeeHouseID').notEmpty().isMongoId();
+    next();
+}, responseHandler(housesCtrl.discharge));
 
 
 module.exports = housesRouter;

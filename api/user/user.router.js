@@ -41,4 +41,6 @@ userRouter.route('/')
     }, responseHandler(userCtrl.update)
     );
 
+userRouter.get('/invited', responseHandler(userCtrl.invited));
+
 module.exports = userRouter;

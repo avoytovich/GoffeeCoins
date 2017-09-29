@@ -27,7 +27,10 @@ const coffeeHouseSchema = new mongoose.Schema({
     avatarUrl: String,
     bannerUrls: [String],
     description: String,
-    coins: Number,
+    coins: {
+        type: Number,
+        default: 10,
+    },
     location: {
         type: [Number],  // [<longitude>, <latitude>]
         index: '2d',      // create the geospatial index

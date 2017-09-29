@@ -8,7 +8,8 @@ const {
     getUser,
     createVisit,
     defaultFields,
-    getVisitors
+    getVisitors,
+    getRequests,
 } = require('./io.helpers');
 
 module.exports = server => {
@@ -21,12 +22,13 @@ module.exports = server => {
     }));
 
     io.on('connection', socket => {
-        logger.log(socket.userId, socket.user, socket.houseId);
+
+        logger.log(Object.values(io.sockets.clients().connected).map(sock => sock.user));
 
         socket.userId = socket.decoded_token._id;
 
         if (!socket.user) {
-            socket.user = getUser(socket.decoded_token._id);
+            getUser(socket.decoded_token._id, socket);
         }
 
         socket.on('error', error => {
@@ -36,40 +38,61 @@ module.exports = server => {
         socket.on('hello', mes => socket.emit('world', `${mes} world`));
 
         socket.on('inCoffeeHouse', houseId => {
-
+            socket.houseId = houseId;
             const isAdmin = socket.user.isAdminInCoffeeHouse(houseId);
 
             if (isAdmin) {
                 socket.join(houseId);
+                socket.adminFor = houseId;
+                const sockets = Object.values(io.sockets.clients().sockets);
+                const visitorsSockets = sockets.filter(sock => {
+                    return (sock.adminFor === undefined) &&
+                        (String(sock.houseId) === String(houseId));
+                }).map(sock => sock.userId);
 
-                const houseVisitors = io.sockets
-                    .clients()
-                    .filter(sock => {
-                        return sock.houseId.toString() === houseId.toString();
-                    })
-                    .map(sock => sock.userId);
-
-                const currentVisitors = getVisitors(houseId);
-                socket.emit('listOfCurrentVisitors', currentVisitors);
-
+                getVisitors(visitorsSockets)
+                    .then(currentVisitors => {
+                        logger.log(currentVisitors);
+                        socket.emit('listOfCurrentVisitors', currentVisitors);
+                    });
             } else {
 
                 const userId = socket.userId || socket.decoded_token._id;
                 const userToSend = pick(socket.user, defaultFields);
 
-                socket.houseId = houseId;
-                socket.currentVisit = createVisit(userId, houseId);
-                socket.to(houseId).broadcast.emit('newUserInCoffeeHouse', userToSend);
+                if (!socket.currentVisit) {
+                    createVisit(userId, houseId, socket);
+                }
+                io.to(houseId).emit('newUserInCoffeeHouse', userToSend);
+            }
+        });
+
+        socket.on('getRequests', () => {
+            if (socket.adminFor) {
+                getRequests(socket.adminFor)
+                    .then(requests => {
+                        logger.log(requests);
+                        socket.emit('requests', requests)
+                    });
+            } else {
+                socket.emit('requests', []);
             }
         });
 
         socket.on('disconnect', () => {
+            logger.log('disconnect');
             if (socket.currentVisit) {
                 socket.currentVisit.getOut();
                 socket.currentVisit = null;
+            }
+            if (!socket.adminFor) {
+                io.to(socket.houseId).emit('userLeaveCoffeeHouse', socket.userId);
+            } else {
                 socket.leave(socket.houseId);
             }
         });
 
     });
+
+    return io;
 };

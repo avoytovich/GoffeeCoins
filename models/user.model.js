@@ -50,13 +50,14 @@ const UserSchema = new mongoose.Schema({
 }, modelOptions);
 
 
-UserSchema.statics.getUser = function (id) {
+UserSchema.statics.getUser = function (id, selection) {
     return Promise.join(
-        this.findById(id),
+        this.findById(id).select(selection),
         Coin.getUnusedCoinCount(id)
     ).then(([user, coins]) => {
         if (user) {
             user._doc.coins = coins;
+            user.coins = coins;
             return user;
         }
     });

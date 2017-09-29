@@ -1,10 +1,12 @@
 'use strict';
 
-const User = require('./../../models/user.model.js');
+const User = require('../../models/user.model');
+const Coin = require('../../models/coin.model');
 const ERRORS = require('../../constants/errors');
-const { checkUserOnFirebase } = require('./../../helpers/auth.helper.js');
+const { checkUserOnFirebase } = require('../../helpers/auth.helper');
 const { NOT_FOUND } = require('http-statuses');
 const pick = require('lodash/pick');
+const Promise = require('bluebird');
 
 const userApiMethods = {
 
@@ -47,6 +49,15 @@ const userApiMethods = {
 
     update({ user: { _id }, body: { name, avatarUrl } }) {
         return User.findByIdAndUpdate(_id, { name, avatarUrl }, { new: true });
+    },
+
+    invited({ user: { _id } }) {
+        return User.find({ referalId: _id })
+            .lean()
+            .then(users => Promise.map(users, async user => {
+                user.coins = await Coin.getUnusedCoinCount(user._id);
+                return user;
+            }));
     }
 };
 

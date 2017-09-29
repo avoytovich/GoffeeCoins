@@ -30,6 +30,16 @@ const bonusRequestSchema = new mongoose.Schema({
         enum: Object.values(BONUS_TYPES),
         default: BONUS_TYPES.COIN,
     },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+        select: false,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        select: false,
+    },
 }, modelOptions);
 
 const BonusRequest = mongoose.model(MODELS.BONUS_REQUEST, bonusRequestSchema);

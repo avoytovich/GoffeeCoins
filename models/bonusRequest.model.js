@@ -37,6 +37,13 @@ const bonusRequestSchema = new mongoose.Schema({
     },
 }, Object.assign({}, modelOptions, {timestamps: false}));
 
+bonusRequestSchema.statics.getRequests = function (coffeeHouseID) {
+    return this.find({
+        coffeeHouseID,
+        status: REQUEST_STATUSES.CREATED
+    }).populate('userID')
+};
+
 const BonusRequest = mongoose.model(MODELS.BONUS_REQUEST, bonusRequestSchema);
 
 module.exports = BonusRequest;

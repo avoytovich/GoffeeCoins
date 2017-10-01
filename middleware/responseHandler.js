@@ -13,9 +13,9 @@ module.exports = (ctrlHandler, options = {}) => (req, res, next) => {
 
     req.getValidationResult()
         .then(validationResult => validationResult.array())
-        .then(errors => {
-            if (errors && errors.length) {
-                throw BAD_REQUEST.createError(errors[0]);
+        .then(([error]) => {
+            if (error) {
+                throw BAD_REQUEST.createError(error);
             }
         })
         .then(() => ctrlHandler(ctx))

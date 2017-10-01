@@ -3,7 +3,6 @@
 const User = require('./../models/user.model');
 const Visitor = require('./../models/visitor.model');
 const BonusRequest = require('./../models/bonusRequest.model');
-const { REQUEST_STATUSES } = require('../constants');
 const Promise = require('bluebird');
 
 const socketHelpers = {
@@ -27,10 +26,7 @@ const socketHelpers = {
     },
 
     getRequests(coffeeHouseID) {
-        return BonusRequest.find({
-            coffeeHouseID,
-            status: REQUEST_STATUSES.CREATED
-        }).populate('userID')
+        return BonusRequest.getRequests(coffeeHouseID);
     }
 };
 

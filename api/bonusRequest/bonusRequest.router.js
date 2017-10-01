@@ -14,4 +14,10 @@ bonusesRouter.post('/', (req, res, next) => {
     next();
 }, responseHandler(bonusesCtrl.createRequest, { status: CREATED.code }));
 
+
+bonusesRouter.get('/:coffeeHouseID', (req, res, next) => {
+    req.checkParam('coffeeHouseID').isMongoId();
+    next();
+}, responseHandler(bonusesCtrl.getRequests));
+
 module.exports = bonusesRouter;

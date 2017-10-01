@@ -24,3 +24,18 @@
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
  */
+
+
+/**
+ * @api {get} /api/v1/bonusRequest/:coffeeHouseID Get Bonus Requests if you are admin
+ * @apiName Get Bonus Requests
+ * @apiDescription ## Get Bonus Requests if you are admin
+ * @apiGroup Bonus Request
+ *
+ * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
+ *
+ * @apiParam {String} coffeeHouseID mongoId (url param)
+ *
+ * @apiError {Boolean} success `false`
+ * @apiError {String} message Error message
+ */

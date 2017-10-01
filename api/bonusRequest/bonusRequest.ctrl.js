@@ -3,11 +3,12 @@
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const BonusRequest = require('../../models/bonusRequest.model');
 const { BONUS_TYPES }  = require('../../constants');
+const { COFFEEHOUSE: { NOT_ADMIN } }  = require('../../constants/errors');
 const {
     hasEnoughBonuses,
     isInCoffeeHouseNow
 } = require('./bonusRequest.helpers');
-const { NOT_FOUND } = require('http-statuses');
+const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 
 module.exports = {
 
@@ -36,5 +37,12 @@ module.exports = {
                     userID: user._id
                 });
             });
+    },
+
+    getRequests({ params: { coffeeHouseID }, user }) {
+        if (!user.isAdminInCoffeeHouse(coffeeHouseID)) {
+            throw FORBIDDEN.createError(NOT_ADMIN);
+        }
+        return BonusRequest.getRequests(coffeeHouseID);
     }
 };

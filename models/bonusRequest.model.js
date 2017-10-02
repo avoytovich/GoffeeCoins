@@ -1,5 +1,6 @@
 'use strict';
 
+const Coin = require('./coin.model');
 const mongoose = require('../libs/mongoose');
 const {
     modelOptions,
@@ -7,6 +8,7 @@ const {
     REQUEST_STATUSES,
     BONUS_TYPES
 } = require('../constants/index');
+const Promise = require('bluebird');
 
 const bonusRequestSchema = new mongoose.Schema({
     userID: {
@@ -42,6 +44,48 @@ bonusRequestSchema.statics.getRequests = function (coffeeHouseID) {
         coffeeHouseID,
         status: REQUEST_STATUSES.CREATED
     }).populate('userID')
+};
+
+bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
+    const { type, count, coffeeHouseID, userID } = this;
+    const self = this;
+    switch (type) {
+        case BONUS_TYPES.COIN:
+            let coinPromises = [];
+            for (let i = 0; i <= count; i++) {
+                coinPromises.push({
+                    coffeeHouseAdminID,
+                    coffeeHouseID,
+                    userID,
+                });
+            }
+            return Promise.map(coinPromises, item => Coin.create(item))
+                .then(results => {
+                    self.status = REQUEST_STATUSES.ACCEPTED;
+                    return self.save();
+                });
+
+        case BONUS_TYPES.FREE:
+            self.update({status: REQUEST_STATUSES.ACCEPTED});
+    }
+};
+
+bonusRequestSchema.methods.reject = function () {
+    const { type, count, coffeeHouseID, userID } = this;
+    const self = this;
+    switch (type) {
+        case BONUS_TYPES.COIN:
+            return self.update({status: REQUEST_STATUSES.DECLINED});
+
+        case BONUS_TYPES.FREE:
+            return Coin.find({ coffeeHouseID, userID })
+                .sort({creationTimestamp: -1})
+                .limit(count)
+                .then(coins => Promise.map(coins, coin => coin.remove()))
+                .then(results => {
+                    return self.update({status: REQUEST_STATUSES.DECLINED});
+                });
+    }
 };
 
 const BonusRequest = mongoose.model(MODELS.BONUS_REQUEST, bonusRequestSchema);

@@ -4,7 +4,8 @@ const mongoose = require('../libs/mongoose');
 const {
     modelOptions,
     MODELS,
-    COFFEE_HOUSE_STATUSES
+    COFFEE_HOUSE_STATUSES,
+    DEFAULT_COIN_COUNT,
 } = require('../constants/index');
 
 const createGeoQuery = ({ lng, lat }, radius) => ({
@@ -29,7 +30,7 @@ const coffeeHouseSchema = new mongoose.Schema({
     description: String,
     coins: {
         type: Number,
-        default: 10,
+        default: DEFAULT_COIN_COUNT,
     },
     location: {
         type: [Number],  // [<longitude>, <latitude>]
@@ -87,6 +88,7 @@ coffeeHouseSchema.statics.getWifiInfo = function (coords) {
     return this.find(createGeoQuery(coords, 100))
         .select({
             name: 1,
+            address: 1,
             avatarUrl: 1,
             wifi: 1,
             location: 1,

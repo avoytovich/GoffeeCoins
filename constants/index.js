@@ -33,4 +33,5 @@ module.exports = {
         COIN: 'COIN',
         FREE: 'FREE',
     },
+    DEFAULT_COIN_COUNT: 10,
 };

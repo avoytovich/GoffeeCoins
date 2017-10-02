@@ -19,7 +19,7 @@ const adminRequestApi = {
                 }
                 if (request.status !== REQUEST_STATUSES.CREATED) {
                     throw FORBIDDEN.createError(
-                        `Request was already ${request.status.toLowerCase()}!`
+                        ERRORS.REQUESTS.HAS_BEEN_PROCESSED(request.status)
                     );
                 }
                 if (request.userID.toString() !== user._id.toString()) {

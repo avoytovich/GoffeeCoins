@@ -31,7 +31,7 @@ userRouter.use(passport.authenticate('jwt', { session: false }));
 
 
 userRouter.route('/')
-    .get((req, res) => res.json(req.user))
+    .get(responseHandler(userCtrl.me))
     .put((req, res, next) => {
         req.sanitizeBody('name').trim();
         req.checkBody(
@@ -41,6 +41,13 @@ userRouter.route('/')
     }, responseHandler(userCtrl.update)
     );
 
+
 userRouter.get('/invited', responseHandler(userCtrl.invited));
+
+
+userRouter.post('/invited/:_id', (req, res, next) => {
+    req.checkParam('_id').isMongoId();
+    next();
+},responseHandler(userCtrl.getBonusForInvited));
 
 module.exports = userRouter;

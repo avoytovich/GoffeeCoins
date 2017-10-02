@@ -47,7 +47,6 @@ const housesApiMethods = {
                 coffeeHouseID,
                 userID: user._id
             }),
-
             user.update({$pull: {
                 adminInCoffeeHouses: coffeeHouseID
             }}),

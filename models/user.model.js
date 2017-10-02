@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const {
     modelOptions,
     MODELS,
-    UNIQUE_VL_OPTIONS
+    UNIQUE_VL_OPTIONS,
 } = require('../constants/index');
 const config = require('../env/index');
 

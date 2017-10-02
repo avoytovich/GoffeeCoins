@@ -3,8 +3,10 @@
 const User = require('../../models/user.model');
 const Coin = require('../../models/coin.model');
 const ERRORS = require('../../constants/errors');
+const { DEFAULT_COIN_COUNT } = require('../../constants');
 const { checkUserOnFirebase } = require('../../helpers/auth.helper');
-const { NOT_FOUND } = require('http-statuses');
+const { createFreeRequest } = require('../bonusRequest/bonusRequest.ctrl');
+const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const pick = require('lodash/pick');
 const Promise = require('bluebird');
 
@@ -47,6 +49,11 @@ const userApiMethods = {
             });
     },
 
+    me({ user }) {
+        Object.assign(user._doc, {coffeeHouseCoins: DEFAULT_COIN_COUNT});
+        return user;
+    },
+
     update({ user: { _id }, body: { name, avatarUrl } }) {
         return User.findByIdAndUpdate(_id, { name, avatarUrl }, { new: true });
     },
@@ -58,7 +65,31 @@ const userApiMethods = {
                 user.coins = await Coin.getUnusedCoinCount(user._id);
                 return user;
             }));
-    }
+    },
+
+    getBonusForInvited({ params: { _id }, user }) {
+        const ctx = {};
+        return User.getUser(_id, '+referalId')
+            .then(friend => {
+                if (!friend) throw NOT_FOUND.createError();
+                if (String(friend.referalId) !== String(user._id)) {
+                    throw FORBIDDEN.createError(ERRORS.USER.NOT_INVITED);
+                }
+                if (friend.coins < DEFAULT_COIN_COUNT) {
+                    throw FORBIDDEN.createError(
+                        ERRORS.BONUS_REQUESTS.NOT_ENOUGHT_BONUSES
+                    );
+                }
+                ctx.friend = friend;
+                return Promise.join(
+                    createFreeRequest("59c9d506ce0e011b6d53d0c8", DEFAULT_COIN_COUNT, user._id), //TODO
+                    createFreeRequest("59c9d506ce0e011b6d53d0c8", DEFAULT_COIN_COUNT, friend._id),
+                );
+            })
+            .then(requests => ctx.friend.update({ $unset: { referalId: 1 } }))
+            .then(() => Coin.getUnusedCoinCount(user._id))
+            .then(coins => ({ coins }));
+    },
 };
 
 module.exports = userApiMethods;

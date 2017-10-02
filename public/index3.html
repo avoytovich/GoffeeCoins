@@ -13,7 +13,7 @@
 <script>
     (function InOut() {
         var socket = io.connect('http://192.168.88.157:8030', {
-            'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2NjY1ODU1fQ.TONakGSh1533SwiYtf_ClM5De_WG52HKHQcve4u41jE'
+            'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2OTI4NTQ1fQ.SdMD1zo91-SalbYH4VsluBAUjBQlPh3J2GVQuNrBo2Y'
         });
 
         socket.on('connect', function() {
@@ -22,12 +22,12 @@
 
             setTimeout(function () {
                 socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
-            }, 10000);
+            }, 800000);
 
             setTimeout(function () {
                 socket.destroy();
                 InOut();
-            }, 20000);
+            }, 200000);
         });
 
         socket.on('world', function (mes) {

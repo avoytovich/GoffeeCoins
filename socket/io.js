@@ -1,3 +1,5 @@
+'use strict';
+
 const socketIO = require('socket.io');
 const socketioJwt = require('socketio-jwt');
 const { secret } = require('./../env/index');

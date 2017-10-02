@@ -20,4 +20,17 @@ bonusesRouter.get('/:coffeeHouseID', (req, res, next) => {
     next();
 }, responseHandler(bonusesCtrl.getRequests));
 
+
+bonusesRouter.post('/comfirm/:requestID', (req, res, next) => {
+    req.checkParam('requestID').isMongoId();
+    next();
+}, responseHandler(bonusesCtrl.confirmRequest));
+
+
+bonusesRouter.post('/reject/:requestID', (req, res, next) => {
+    req.checkParam('requestID').isMongoId();
+    next();
+}, responseHandler(bonusesCtrl.rejectRequest));
+
+
 module.exports = bonusesRouter;

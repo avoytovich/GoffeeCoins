@@ -22,12 +22,12 @@
 
             setTimeout(function () {
                 socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
-            }, 6000);
+            }, 60000);
 
             setTimeout(function () {
                 socket.destroy();
                 InOut();
-            }, 15000);
+            }, 150000);
         });
 
         socket.on('world', function (mes) {

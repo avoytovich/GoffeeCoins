@@ -12,7 +12,7 @@ const CoinSchema = new mongoose.Schema({
     coffeeHouseAdminID: {
         type: String,
         ref: MODELS.USER,
-        required: true,
+        // required: true,
     },
     userID: {
         type: String,

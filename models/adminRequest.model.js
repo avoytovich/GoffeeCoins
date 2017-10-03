@@ -35,26 +35,6 @@ const adminRequestSchema = new mongoose.Schema({
     },
 }, modelOptions);
 
-adminRequestSchema.statics.getAdminData = function (userID) {
-    return this.find({
-        userID,
-        status: {
-            $in: [REQUEST_STATUSES.CREATED, REQUEST_STATUSES.ACCEPTED]
-        }
-    })
-        .populate({
-            path: 'coffeeHouseID',
-            select: {
-                name: 1,
-                avatarUrl: 1,
-                address: 1,
-                status: 1,
-            },
-            model: MODELS.COFFEEHOUSE,
-        })
-        .select('-adminID')
-};
-
 const AdminRequest = mongoose.model(MODELS.ADMIN_REQUEST, adminRequestSchema);
 
 module.exports = AdminRequest;

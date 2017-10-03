@@ -2,6 +2,7 @@
 
 const housesRouter = require('express').Router();
 const housesCtrl = require('./coffeeHouse.ctrl');
+const { param } = require('express-validator/check');
 const responseHandler = require('../../middleware/responseHandler');
 
 
@@ -22,16 +23,16 @@ housesRouter.get('/wifi', (req, res, next) => {
 }, responseHandler(housesCtrl.wifiInfo));
 
 
-housesRouter.get('/:coffeeHouseID', (req, res, next) => {
-    req.checkParams('coffeeHouseID').notEmpty().isMongoId();
-    next();
-}, responseHandler(housesCtrl.getHouse));
+housesRouter.get('/:coffeeHouseID',
+    param('coffeeHouseID').isMongoId(),
+    responseHandler(housesCtrl.getHouse)
+);
 
 
-housesRouter.post('/discharge/:coffeeHouseID', (req, res, next) => {
-    req.checkParams('coffeeHouseID').notEmpty().isMongoId();
-    next();
-}, responseHandler(housesCtrl.discharge));
+housesRouter.post('/discharge/:coffeeHouseID',
+    param('coffeeHouseID').isMongoId(),
+    responseHandler(housesCtrl.discharge)
+);
 
 
 module.exports = housesRouter;

@@ -1,6 +1,7 @@
 'use strict';
 
 const { CREATED } = require('http-statuses');
+const { param } = require('express-validator/check');
 const bonusesRouter = require('express').Router();
 const bonusesCtrl = require('./bonusRequest.ctrl');
 const { BONUS_TYPES } = require('../../constants');
@@ -15,22 +16,22 @@ bonusesRouter.post('/', (req, res, next) => {
 }, responseHandler(bonusesCtrl.createRequest, { status: CREATED.code }));
 
 
-bonusesRouter.get('/:coffeeHouseID', (req, res, next) => {
-    req.checkParam('coffeeHouseID').isMongoId();
-    next();
-}, responseHandler(bonusesCtrl.getRequests));
+bonusesRouter.get('/:coffeeHouseID',
+    param('coffeeHouseID').isMongoId(),
+    responseHandler(bonusesCtrl.getRequests)
+);
 
 
-bonusesRouter.post('/comfirm/:requestID', (req, res, next) => {
-    req.checkParam('requestID').isMongoId();
-    next();
-}, responseHandler(bonusesCtrl.confirmRequest));
+bonusesRouter.post('/comfirm/:requestID',
+    param('requestID').isMongoId(),
+    responseHandler(bonusesCtrl.confirmRequest)
+);
 
 
-bonusesRouter.post('/reject/:requestID', (req, res, next) => {
-    req.checkParam('requestID').isMongoId();
-    next();
-}, responseHandler(bonusesCtrl.rejectRequest));
+bonusesRouter.post('/reject/:requestID',
+    param('requestID').isMongoId(),
+    responseHandler(bonusesCtrl.rejectRequest)
+);
 
 
 module.exports = bonusesRouter;

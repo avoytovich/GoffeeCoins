@@ -66,7 +66,7 @@ bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
                 });
 
         case BONUS_TYPES.FREE:
-            self.update({status: REQUEST_STATUSES.ACCEPTED});
+            return self.update({status: REQUEST_STATUSES.ACCEPTED});
     }
 };
 

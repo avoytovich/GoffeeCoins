@@ -19,6 +19,7 @@
  * @apiError {String} message Error message
  */
 
+
 /**
  * @api {post} /api/v1/user/login Login
  * @apiName Login
@@ -37,6 +38,7 @@
  * @apiError {String} message Error message
  */
 
+
 /**
  * @api {get} /api/v1/user/ Get Me
  * @apiName Get Me
@@ -48,16 +50,18 @@
  * @apiSuccess {String} _id UID.
  * @apiSuccess {String} name
  * @apiSuccess {Number} coins
+ * @apiSuccess {Number} coffeeHouseCoins Default coin count to get free coffee
  * @apiSuccess {String} avatarUrl
  * @apiSuccess {String} referalId (optional)
  * @apiSuccess {String[]} adminInCoffeeHouses (optional)
  *
  * @apiSuccessExample {json} Success-Response
- * {"coins":0,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]}
+ * {"coins":0,"coffeeHouseCoins":10,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
  */
+
 
 /**
  * @api {put} /api/v1/user/ Update Me
@@ -79,6 +83,47 @@
  *
  * @apiSuccessExample {json} Success-Response
  * {"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]}
+ *
+ * @apiError {Boolean} success `false`
+ * @apiError {String} message Error message
+ */
+
+
+/**
+ * @api {get} /api/v1/user/invited Get invited friends
+ * @apiName Get invited friends
+ * @apiDescription ## Get invited friends
+ * @apiGroup User
+ *
+ * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
+ *
+ * @apiSuccess {Array} Users `[{_id, name, avatarUrl, coins}]`
+ *
+ * @apiSuccessExample {json} Success-Response
+ * [{"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","coins":17000000000}]
+ *
+ * @apiError {Boolean} success `false`
+ * @apiError {String} message Error message
+ */
+
+
+/**
+ * @api {post} /api/v1/user/invited/:_id Get invited friends
+ * @apiName Get invited friends
+ * @apiDescription ## Get invited friends
+ * @apiGroup User
+ *
+ * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
+ *
+ * @apiParam {String} _id your friend UID. (url param)
+ *
+ * @apiParamExample {url} Url-Example
+ * http://54.72.192.165:8030/api/v1/user/invited/5BX9K2ul4gZruIOsLXJoEXBfuhR2
+ *
+ * @apiSuccess {Number} coins your coins
+ *
+ * @apiSuccessExample {json} Success-Response
+ * {"coins":17000000000}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message

@@ -4,13 +4,12 @@ const { CREATED } = require('http-statuses');
 const pick = require('lodash/pick');
 const userRouter = require('express').Router();
 const userCtrl = require('./user.ctrl');
-const passport = require('../../middleware/passport-jwt');
 const VALIDATIONS = require('../../constants/validations');
+const passport = require('../../middleware/passport-jwt');
 const responseHandler = require('../../middleware/responseHandler');
 
 
 userRouter.post('/', (req, res, next) => {
-    // req.sanitizeBody('email').normalizeEmail();
     req.sanitizeBody('name').trim();
     req.checkBody(
         pick(VALIDATIONS.USER, ['_id', 'name', 'avatarUrl', 'referalId'])
@@ -46,8 +45,8 @@ userRouter.get('/invited', responseHandler(userCtrl.invited));
 
 
 userRouter.post('/invited/:_id', (req, res, next) => {
-    req.checkParam('_id').isMongoId();
+    req.checkParam(pick(VALIDATIONS.USER, ['_id']));
     next();
-},responseHandler(userCtrl.getBonusForInvited));
+}, responseHandler(userCtrl.getBonusForInvited));
 
 module.exports = userRouter;

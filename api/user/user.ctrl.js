@@ -60,6 +60,7 @@ const userApiMethods = {
 
     invited({ user: { _id } }) {
         return User.find({ referalId: _id })
+            .select('name avatarUrl')
             .lean()
             .then(users => Promise.map(users, async user => {
                 user.coins = await Coin.getUnusedCoinCount(user._id);
@@ -83,7 +84,7 @@ const userApiMethods = {
                 ctx.friend = friend;
                 return Promise.join(
                     createFreeRequest("59c9d506ce0e011b6d53d0c8", DEFAULT_COIN_COUNT, user._id), //TODO
-                    createFreeRequest("59c9d506ce0e011b6d53d0c8", DEFAULT_COIN_COUNT, friend._id),
+                    createFreeRequest("59c9d506ce0e011b6d53d0c8", DEFAULT_COIN_COUNT, friend._id)
                 );
             })
             .then(requests => ctx.friend.update({ $unset: { referalId: 1 } }))

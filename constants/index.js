@@ -18,6 +18,7 @@ module.exports = {
         BONUS_REQUEST: 'BonusRequest',
         ADMIN_REQUEST: 'AdminRequest',
         DEVICE_TOKEN: 'DeviceToken',
+        NOTIFICATION: 'Notification',
     },
     COFFEE_HOUSE_STATUSES: {
         ONLINE: 'ONLINE',

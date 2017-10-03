@@ -1,14 +1,24 @@
 'use strict';
 
 const adminRequestRouter = require('express').Router();
-const adminRequestCtrl = require('./adminRequest.ctrl');
-const { REQUEST_STATUSES } = require('../../constants');
+const { param } = require('express-validator/check');
+const Ctrl = require('./adminRequest.ctrl');
 const responseHandler = require('../../middleware/responseHandler');
 
-adminRequestRouter.post('/', (req, res, next) => {
-    req.checkBody('requestID').isMongoId();
-    req.checkBody('status').isIn(Object.values(REQUEST_STATUSES));
-    next();
-}, responseHandler(adminRequestCtrl.acceptOrDecline));
+
+adminRequestRouter.post('/accept/:requestID',
+    param('requestID').isMongoId(),
+    responseHandler(Ctrl.accept)
+);
+
+
+adminRequestRouter.post('/decline/:requestID',
+    param('requestID').isMongoId(),
+    responseHandler(Ctrl.decline)
+);
+
+
+adminRequestRouter.get('/', responseHandler(Ctrl.adminPanel));
+
 
 module.exports = adminRequestRouter;

@@ -8,10 +8,7 @@ const {
     COFFEEHOUSE: { NOT_ADMIN },
     REQUESTS: { HAS_BEEN_PROCESSED },
 }  = require('../../constants/errors');
-const {
-    hasEnoughBonuses,
-    isInCoffeeHouseNow
-} = require('./bonusRequest.helpers');
+const helpers = require('./bonusRequest.helpers');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const Promise = require('bluebird');
 
@@ -27,12 +24,15 @@ module.exports = {
                     throw NOT_FOUND.createError();
                 }
                 ctx.house = house;
-                // return isInCoffeeHouseNow(user._id, house._id);
+                // return helpers.isInCoffeeHouseNow(user._id, house._id);
             })
             .then(() => {
                 if (type === BONUS_TYPES.FREE) {
                     count = ctx.house.coins;
-                    return hasEnoughBonuses(user.coins, ctx.house.coins);
+                    return helpers.hasEnoughBonuses(
+                        user.coins,
+                        ctx.house.coins
+                    );
                 }
                 count || (count = 1);
             })
@@ -83,12 +83,14 @@ module.exports = {
 
     confirmRequest({ params: { requestID }, user }) {
         return this.getRequest(requestID, user)
-            .then(request => request.confirm(user._id));
+            .then(request => request.confirm(user._id))
+            .then(result => {});
     },
 
     rejectRequest({ params: { requestID }, user }) {
         return this.getRequest(requestID, user)
-            .then(request => request.reject(user._id));
+            .then(request => request.reject(user._id))
+            .then(result => {});
     },
 
     getRequest(id, user) {

@@ -12,5 +12,5 @@ admin.initializeApp({
 module.exports = {
     FirebaseRef: admin.database().ref(),
     FirebaseAuth: admin.auth(),
-    Notifications: admin.messaging(),
+    Messaging: admin.messaging(),
 };

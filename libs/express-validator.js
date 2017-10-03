@@ -1,6 +1,7 @@
-const { isURL } = require('validator');
-const expressValidator = require('express-validator');
+'use strict';
 
+const expressValidator = require('express-validator');
+const { isURL } = require('validator');
 const { DEFAULT_ERROR } = require('../constants/errors');
 
 const options = {

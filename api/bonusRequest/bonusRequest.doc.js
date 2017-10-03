@@ -26,7 +26,7 @@
 
 
 /**
- * @api {get} /api/v1/bonusRequest/:coffeeHouseID Get Bonus Requests if you are admin
+ * @api {get} /api/v1/bonusRequest/:coffeeHouseID Get Bonus Requests
  * @apiName Get Bonus Requests
  * @apiDescription ## Get Bonus Requests if you are admin
  * @apiGroup Bonus Request
@@ -46,7 +46,7 @@
 
 
 /**
- * @api {post} /api/v1/bonusRequest/comfirm/:requestID Confirm Bonus Request if you are admin
+ * @api {post} /api/v1/bonusRequest/comfirm/:requestID Confirm Bonus Request
  * @apiName Confirm Bonus Request
  * @apiDescription ## Confirm Bonus Request if you are admin
  * @apiGroup Bonus Request
@@ -67,7 +67,7 @@
 
 
 /**
- * @api {post} /api/v1/bonusRequest/reject/:requestID Reject Bonus Request if you are admin
+ * @api {post} /api/v1/bonusRequest/reject/:requestID Reject Bonus Request
  * @apiName Reject Bonus Request
  * @apiDescription ## Reject Bonus Request if you are admin
  * @apiGroup Bonus Request

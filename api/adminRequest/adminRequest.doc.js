@@ -1,5 +1,5 @@
 /**
- * @api {post} /api/v1/adminRequest/accept/:requestID Confirm Admin Request if you are admin
+ * @api {post} /api/v1/adminRequest/accept/:requestID Confirm Admin Request
  * @apiName Confirm Admin Request
  * @apiDescription ## Confirm Admin Request if you are admin
  * @apiGroup Admin Request
@@ -20,7 +20,7 @@
 
 
 /**
- * @api {post} /api/v1/adminRequest/decline/:requestID Reject Admin Request if you are admin
+ * @api {post} /api/v1/adminRequest/decline/:requestID Reject Admin Request
  * @apiName Reject Admin Request
  * @apiDescription ## Reject Admin Request if you are admin
  * @apiGroup Admin Request
@@ -41,7 +41,7 @@
 
 
 /**
- * @api {get} /api/v1/adminRequest/ Get info for Admin Panel (if you are admin)
+ * @api {get} /api/v1/adminRequest/ Get info for Admin Panel
  * @apiName Get info for Admin Panel
  * @apiDescription ## Get info for Admin Panel (if you are admin)
  * @apiGroup Admin Request

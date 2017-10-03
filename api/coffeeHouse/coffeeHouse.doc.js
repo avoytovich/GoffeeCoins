@@ -79,7 +79,7 @@
 
 
 /**
- * @api {post} /api/v1/coffeeHouse/discharge/:id Discharge from coffee house
+ * @api {post} /api/v1/coffeeHouse/discharge/:id Discharge
  * @apiName Discharge
  * @apiDescription ## Discharge from coffee house if you are admin
  * @apiGroup Coffee House

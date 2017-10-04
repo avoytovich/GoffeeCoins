@@ -9,7 +9,6 @@ const {
     GLOBAL_ADMIN,
     COFFEEHOUSE,
     OWNER_ADMIN,
-    CHE,
 } = require('../constants/default');
 
 
@@ -88,5 +87,3 @@ Promise.join(
         })
     }
 }).then(house => logger.info('Owner and house created'));
-
-CoffeeHouse.create(CHE);

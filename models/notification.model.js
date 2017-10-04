@@ -24,11 +24,17 @@ const NoteSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: MODELS.COFFEEHOUSE,
     },
-    sender: {
-        type: mongoose.Schema.Types.Mixed
+    coffeeHouseAdminID: {
+        type: String,
+        ref: MODELS.USER,
     },
-    request: {
-        type: mongoose.Schema.Types.Mixed
+    adminRequest: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: MODELS.ADMIN_REQUEST,
+    },
+    bonusRequest: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: MODELS.BONUS_REQUEST,
     },
     createdAt: {
         type: Number,

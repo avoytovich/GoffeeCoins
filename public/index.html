@@ -21,16 +21,11 @@
 
         setTimeout(function () {
             socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
-            socket.emit('getRequests');
         }, 3000);
     });
 
     socket.on('world', function (mes) {
         console.log('world', mes);
-    });
-
-    socket.on('requests', function (mes) {
-        console.log('requests', mes);
     });
 
     socket.on('listOfCurrentVisitors', function (mes) {

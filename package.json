@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
-    "production": "NODE_ENV=production node server"
+    "prod": "NODE_ENV=production node server"
   },
   "apidoc": {
     "title": "CoffeeCoins API docs",

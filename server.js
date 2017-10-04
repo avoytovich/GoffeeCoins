@@ -11,20 +11,21 @@ require('./libs/firebase');
 require('./helpers/cronjob.helper');
 require('./helpers/defaultData.helper');
 
+
 if (!config.isProduction) {
-  const apiDoc = require('apidoc');
-  apiDoc.createDoc({
-    src: 'api',
-    dest: 'apidoc/api'
-  });
-  apiDoc.createDoc({
-    src: 'socket',
-    dest: 'apidoc/socket'
-  });
-  /*apiDoc.createDoc({
-    src: 'adminApi',
-    dest: 'apidoc/adminApi'
-  });*/
+    const apiDoc = require('apidoc');
+    apiDoc.createDoc({
+        src: 'api',
+        dest: 'apidoc/api'
+    });
+    apiDoc.createDoc({
+        src: 'socket',
+        dest: 'apidoc/socket'
+    });
+    /*apiDoc.createDoc({
+     src: 'adminApi',
+     dest: 'apidoc/adminApi'
+     });*/
 }
 
 // Memory usage

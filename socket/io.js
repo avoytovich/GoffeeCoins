@@ -25,7 +25,7 @@ module.exports = server => {
 
     io.on('connection', socket => {
 
-        logger.log(Object.values(io.sockets.clients().connected).map(sock => sock.user));
+        logger.log(socket.decoded_token);
 
         socket.userId = socket.decoded_token._id;
 

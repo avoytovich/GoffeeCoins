@@ -1,10 +1,12 @@
 'use strict';
 
 const DeviceToken = require('../../models/deviceToken.model');
+const logger = require('../../libs/logger');
 
 module.exports = {
 
     updateToken({ body: { deviceUId, deviceToken }, user }) {
+        logger.log(deviceUId, deviceToken);
         DeviceToken.findByIdAndUpdate(
             deviceUId,
             {

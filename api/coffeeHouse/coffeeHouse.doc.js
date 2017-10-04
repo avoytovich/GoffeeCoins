@@ -95,7 +95,7 @@
  * @apiSuccess {String} message `OK`
  *
  * @apiSuccessExample {json} Success-Response
- * {"status":true,message:"OK"}
+ * {"status":true,"message":"OK"}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message

@@ -71,6 +71,10 @@ const coffeeHouseSchema = new mongoose.Schema({
         type: String,
         ref: MODELS.USER,
     }],
+    owner: {
+        type: String,
+        ref: MODELS.ADMIN,
+    },
 }, modelOptions);
 
 coffeeHouseSchema.statics.getHousesByLocation = function (coords) {

@@ -13,7 +13,7 @@ const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const Promise = require('bluebird');
 
 
-module.exports = {
+const bonusRequestApi = {
 
     createRequest({ body: { coffeeHouseID, type, count }, user }) {
         const ctx = {};
@@ -82,13 +82,13 @@ module.exports = {
     },
 
     confirmRequest({ params: { requestID }, user }) {
-        return this.getRequest(requestID, user)
+        return bonusRequestApi.getRequest(requestID, user)
             .then(request => request.confirm(user._id))
             .then(result => {});
     },
 
     rejectRequest({ params: { requestID }, user }) {
-        return this.getRequest(requestID, user)
+        return bonusRequestApi.getRequest(requestID, user)
             .then(request => request.reject(user._id))
             .then(result => {});
     },
@@ -112,3 +112,5 @@ module.exports = {
     },
 
 };
+
+module.exports = bonusRequestApi;

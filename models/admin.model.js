@@ -4,10 +4,16 @@ const mongoose = require('../libs/mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const { modelOptions, MODELS, UNIQUE_VL_OPTIONS } = require('../constants/index');
 const config = require('../env/index');
+const {
+    modelOptions,
+    MODELS,
+    UNIQUE_VL_OPTIONS,
+    ADMIN_TYPES,
+} = require('../constants');
 
 const AdminSchema = new mongoose.Schema({
+    _id: String,
     email: {
         type: String,
         lowercase: true,
@@ -18,18 +24,18 @@ const AdminSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    coffeeHouseID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: MODELS.COFFEEHOUSE,
+    },
     avatarUrl: {
         type: String,
-        required: true,
+        // required: true,
     },
-    hash: {
+    type: {
         type: String,
-        select: false,
-    },
-    salt: {
-        type: String,
-        select: false,
-    },
+        default: ADMIN_TYPES.OWNER,
+    }
 }, modelOptions);
 
 AdminSchema.methods.validPassword = function(password) {

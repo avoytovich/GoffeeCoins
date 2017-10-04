@@ -9,6 +9,7 @@ const io = require('./socket/io')(httpServer);
 require('./libs/mongoose');
 require('./libs/firebase');
 require('./helpers/cronjob.helper');
+require('./helpers/defaultData.helper');
 
 if (!config.isProduction) {
   const apiDoc = require('apidoc');

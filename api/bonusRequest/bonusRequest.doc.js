@@ -46,7 +46,7 @@
 
 
 /**
- * @api {post} /api/v1/bonusRequest/comfirm/:requestID Confirm Bonus Request
+ * @api {post} /api/v1/bonusRequest/confirm/:requestID Confirm Bonus Request
  * @apiName Confirm Bonus Request
  * @apiDescription ## Confirm Bonus Request if you are admin
  * @apiGroup Bonus Request
@@ -59,7 +59,7 @@
  * @apiSuccess {String} message `OK`
  *
  * @apiSuccessExample {json} Success-Response
- * {"status":true,message:"OK"}
+ * {"status":true,"message":"OK"}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
@@ -80,7 +80,7 @@
  * @apiSuccess {String} message `OK`
  *
  * @apiSuccessExample {json} Success-Response
- * {"status":true,message:"OK"}
+ * {"status":true,"message":"OK"}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message

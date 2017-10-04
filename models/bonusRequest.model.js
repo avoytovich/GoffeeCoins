@@ -42,6 +42,7 @@ const bonusRequestSchema = new mongoose.Schema({
     },
 }, Object.assign({}, modelOptions, {timestamps: false}));
 
+
 bonusRequestSchema.statics.getRequests = function (coffeeHouseID) {
     const query = {
         coffeeHouseID,
@@ -51,6 +52,7 @@ bonusRequestSchema.statics.getRequests = function (coffeeHouseID) {
         .select('userID count type createdAt')
         .populate('userID', 'name avatarUrl')
 };
+
 
 bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
     const { type, count, coffeeHouseID, userID } = this;
@@ -76,6 +78,7 @@ bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
     }
 };
 
+
 bonusRequestSchema.methods.reject = function () {
     const { type, count, coffeeHouseID, userID } = this;
     const self = this;
@@ -93,6 +96,7 @@ bonusRequestSchema.methods.reject = function () {
                 });
     }
 };
+
 
 const BonusRequest = mongoose.model(MODELS.BONUS_REQUEST, bonusRequestSchema);
 

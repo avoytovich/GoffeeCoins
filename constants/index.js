@@ -20,6 +20,10 @@ module.exports = {
         DEVICE_TOKEN: 'DeviceToken',
         NOTIFICATION: 'Notification',
     },
+    ADMIN_TYPES: {
+        GLOBAL: 'GLOBAL',
+        OWNER: 'OWNER',
+    },
     COFFEE_HOUSE_STATUSES: {
         ONLINE: 'ONLINE',
         OFFLINE: 'OFFLINE',

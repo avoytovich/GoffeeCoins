@@ -6,7 +6,7 @@ const envConfig = require(`./${nodeEnv}`);
 
 const generalConfig = {
     nodeEnv,
-    isProduction: env.NODE_ENV === 'production'
+    isProduction: env.NODE_ENV === 'production',
 };
 
 module.exports = Object.assign({}, generalConfig, envConfig);

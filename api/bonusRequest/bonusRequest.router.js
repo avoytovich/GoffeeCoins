@@ -22,7 +22,7 @@ bonusesRouter.get('/:coffeeHouseID',
 );
 
 
-bonusesRouter.post('/comfirm/:requestID',
+bonusesRouter.post('/confirm/:requestID',
     param('requestID').isMongoId(),
     responseHandler(bonusesCtrl.confirmRequest)
 );

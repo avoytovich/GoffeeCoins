@@ -60,7 +60,7 @@ bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
     switch (type) {
         case BONUS_TYPES.COIN:
             let coinPromises = [];
-            for (let i = 0; i <= count; i++) {
+            for (let i = 0; i < count; i++) {
                 coinPromises.push({
                     coffeeHouseAdminID,
                     coffeeHouseID,

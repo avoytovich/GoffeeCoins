@@ -63,7 +63,7 @@ const bonusRequestApi = {
             type: BONUS_TYPES.FREE
         }).then(request => {
             const promises = [];
-            for (let i = 0; i <= count; i++) {
+            for (let i = 0; i < count; i++) {
                 promises.push({
                     coffeeHouseID,
                     userID,

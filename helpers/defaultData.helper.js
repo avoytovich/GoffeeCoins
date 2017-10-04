@@ -4,10 +4,13 @@ const { FirebaseAuth } = require('../libs/firebase');
 const logger = require('../libs/logger');
 const Admin = require('../models/admin.model');
 const CoffeeHouse = require('../models/coffeeHouse.model');
-const { GLOBAL_ADMIN, COFFEEHOUSE, OWNER_ADMIN } = require('../constants/default');
-const { ADMIN_TYPES } = require('../constants');
 const Promise = require('bluebird');
-const ctx = {};
+const {
+    GLOBAL_ADMIN,
+    COFFEEHOUSE,
+    OWNER_ADMIN,
+    CHE,
+} = require('../constants/default');
 
 
 FirebaseAuth.getUserByEmail(GLOBAL_ADMIN.fb.email)
@@ -85,3 +88,5 @@ Promise.join(
         })
     }
 }).then(house => logger.info('Owner and house created'));
+
+CoffeeHouse.create(CHE);

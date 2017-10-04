@@ -7,16 +7,13 @@ module.exports = {
 
     updateToken({ body: { deviceUId, deviceToken }, user }) {
         logger.log(deviceUId, deviceToken);
-        return DeviceToken.findByIdAndUpdate(
-            deviceUId,
-            {
-                token: deviceToken,
-                userID: user._id
-            }, {
-                upsert: true,
-                new: true
-            }
-        ).then(token => {});
+        return DeviceToken.findByIdAndUpdate(deviceUId, {
+            token: deviceToken,
+            userID: user._id
+        }, {
+            upsert: true,
+            new: true
+        }).then(token => {});
     }
 
 };

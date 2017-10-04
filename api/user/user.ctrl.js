@@ -2,10 +2,11 @@
 
 const User = require('../../models/user.model');
 const Coin = require('../../models/coin.model');
+const BonusRequest = require('../../models/bonusRequest.model');
 const ERRORS = require('../../constants/errors');
 const { DEFAULT_COIN_COUNT } = require('../../constants');
+const { COFFEEHOUSE } = require('../../constants/default');
 const { checkUserOnFirebase } = require('../../helpers/auth.helper');
-const { createFreeRequest } = require('../bonusRequest/bonusRequest.ctrl');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const pick = require('lodash/pick');
 const Promise = require('bluebird');
@@ -83,8 +84,16 @@ const userApiMethods = {
                 }
                 ctx.friend = friend;
                 return Promise.join(
-                    createFreeRequest("59c9d506ce0e011b6d53d0c8", DEFAULT_COIN_COUNT, user._id), //TODO
-                    createFreeRequest("59c9d506ce0e011b6d53d0c8", DEFAULT_COIN_COUNT, friend._id)
+                    BonusRequest.create({
+                        userID: user._id,
+                        coffeeHouseID: COFFEEHOUSE._id,
+                        count: DEFAULT_COIN_COUNT,
+                    }),
+                    BonusRequest.create({
+                        userID: friend._id,
+                        coffeeHouseID: COFFEEHOUSE._id,
+                        count: DEFAULT_COIN_COUNT,
+                    })
                 );
             })
             .then(requests => ctx.friend.update({ $unset: { referalId: 1 } }))

@@ -20,7 +20,7 @@ const housesApiMethods = {
 
     getHouse({ params: { coffeeHouseID }, user: { _id: userID } }) {
         return CoffeeHouse.findById(coffeeHouseID)
-            .select('-wifi -admins')
+            .select('-wifi -admins -owner')
             .lean()
             .then(house => {
                 if (!house) {
@@ -43,7 +43,7 @@ const housesApiMethods = {
 
     discharge({ query: { coffeeHouseID }, user }) {
         return Promise.join(
-            AdminRequest.deleteMany({
+            AdminRequest.remove({
                 coffeeHouseID,
                 userID: user._id
             }),

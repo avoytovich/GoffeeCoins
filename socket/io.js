@@ -44,7 +44,7 @@ module.exports = server => {
 
         socket.on('inCoffeeHouse', houseId => {
             socket.houseId = houseId;
-            const isAdmin = socket.user.isAdminInCoffeeHouse(houseId);
+            const isAdmin = socket.user && socket.user.isAdminInCoffeeHouse(houseId);
 
             if (isAdmin) {
                 socket.join(houseId);

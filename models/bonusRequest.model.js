@@ -32,7 +32,10 @@ const bonusRequestSchema = new mongoose.Schema({
         enum: Object.values(BONUS_TYPES),
         default: BONUS_TYPES.COIN,
     },
-    updatedAt: Number,
+    updatedAt: {
+        type: Number,
+        select: false,
+    },
     createdAt: {
         type: Number,
         default: Date.now,
@@ -40,10 +43,13 @@ const bonusRequestSchema = new mongoose.Schema({
 }, Object.assign({}, modelOptions, {timestamps: false}));
 
 bonusRequestSchema.statics.getRequests = function (coffeeHouseID) {
-    return this.find({
+    const query = {
         coffeeHouseID,
         status: REQUEST_STATUSES.CREATED
-    }).populate('userID')
+    };
+    return this.find(query)
+        .select('userID count type createdAt')
+        .populate('userID', 'name avatarUrl')
 };
 
 bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {

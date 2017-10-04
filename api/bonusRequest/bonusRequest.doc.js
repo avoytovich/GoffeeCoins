@@ -35,10 +35,10 @@
  *
  * @apiParam {String} coffeeHouseID mongoId (url param)
  *
- * @apiSuccess {Number} coins
+ * @apiSuccess {Array} Requests `[{_id, count, type, createdAt, userID: { _id, name, avatarUrl }}]`
  *
  * @apiSuccessExample {json} Success-Response
- * {"coins":10}
+ * [{"_id":"59ca53f8061c020dbf51f98d","count":16,"userID":{"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"https://pbs.twimg.com/profile_images/903926754489880576/jmBtVUwD_400x400.jpg"},"createdAt":1506691675784,"type":"COIN"}]
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message

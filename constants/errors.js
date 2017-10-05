@@ -28,5 +28,6 @@ module.exports = {
     COFFEEHOUSE: {
         NOT_FOUND: 'Coffee house not found!',
         NOT_ADMIN: 'This action is only allowed to administrators!',
+        NOT_USER: 'This action is only allowed to users, not administrators!',
     },
 };

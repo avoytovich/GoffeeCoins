@@ -2,6 +2,7 @@
 
 const AdminRequest = require('../../models/adminRequest.model');
 const CoffeeHouse = require('../../models/coffeeHouse.model');
+const { checkHouse } = require('../bonusRequest/bonusRequest.helpers');
 const { REQUEST_STATUSES } = require('../../constants');
 const ERRORS = require('../../constants/errors');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
@@ -24,10 +25,7 @@ const adminRequestHelpers = {
                 if (String(request.userID) !== String(userId)) {
                     throw FORBIDDEN.createError(ERRORS.REQUESTS.NOT_FOR_YOU);
                 }
-                const house = await CoffeeHouse.findById(request.coffeeHouseID);
-                if (!house) {
-                    throw NOT_FOUND.createError(ERRORS.COFFEEHOUSE.NOT_FOUND);
-                }
+                await checkHouse(request.coffeeHouseID);
                 return request;
             })
     },

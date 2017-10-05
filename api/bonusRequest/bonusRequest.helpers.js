@@ -69,6 +69,7 @@ const bonusHelpers = {
                     userID: admin,
                     bonusRequest: ctx.request._id,
                     coffeeHouseID: house._id,
+                    sender: ctx.request.userID,
                 })
             })
         });
@@ -86,6 +87,7 @@ const bonusHelpers = {
                     userID: admin,
                     bonusRequest: request._id,
                     coffeeHouseID: house._id,
+                    sender: request.userID,
                 })
             })
         });

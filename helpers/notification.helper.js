@@ -43,11 +43,11 @@ const NotificationHelper = {
                     NotificationHelper.getMessage(data, lang)
                 );
             })
-            .then(tokens => {
+            .then((tokens, body) => {
                 const payload = {
                     notification: {
                         title: TITLE,
-                        body: ''
+                        body
                     },
                     data
                 };

@@ -9,7 +9,7 @@ const {
 
 const adminRequestSchema = new mongoose.Schema({
     adminID: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: MODELS.ADMIN,
         required: true,
     },

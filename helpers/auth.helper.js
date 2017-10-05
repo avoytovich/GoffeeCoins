@@ -1,8 +1,9 @@
 'use strict';
 
 const { FirebaseAuth } = require('../libs/firebase');
+const { UNAUTHORIZED } = require('http-statuses');
 const ERRORS = require('../constants/errors');
-const { UNAUTHORIZED, FORBIDDEN } = require('http-statuses');
+const logger = require('../libs/logger');
 
 module.exports = {
 
@@ -17,9 +18,6 @@ module.exports = {
                 if (firebaseUser.disabled) {
                     throw UNAUTHORIZED.createError(ERRORS.FORBIDDEN.DISABLED);
                 }
-                /*if (!firebaseUser.emailVerified) {
-                    throw FORBIDDEN.createError(ERRORS.FORBIDDEN.EMAIL);
-                }*/
                 if (!firebaseUser.email) {
                     const { providerData: [ provider ] } = firebaseUser;
                     firebaseUser.email = provider && provider.email;
@@ -27,4 +25,18 @@ module.exports = {
                 return firebaseUser;
             });
     },
+
+    getOrCreateAuthUser(data) {
+        return FirebaseAuth.getUserByEmail(data.email)
+            .catch(error => {
+                logger.log(error);
+            })
+            .then(userRecord =>  {
+                if (!userRecord) {
+                    return FirebaseAuth.createUser(data);
+                }
+                return userRecord;
+            });
+    },
+
 };

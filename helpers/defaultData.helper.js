@@ -1,6 +1,5 @@
 'use strict';
 
-const { FirebaseAuth } = require('../libs/firebase');
 const logger = require('../libs/logger');
 const Admin = require('../models/admin.model');
 const CoffeeHouse = require('../models/coffeeHouse.model');
@@ -12,38 +11,12 @@ const {
 } = require('../constants/default');
 
 
-FirebaseAuth.getUserByEmail(GLOBAL_ADMIN.fb.email)
-    .catch(error => {
-        logger.log(error);
-    })
-    .then(userRecord =>  {
-        if (!userRecord) {
-            return FirebaseAuth.createUser(GLOBAL_ADMIN.fb);
-        }
-        return userRecord;
-    })
-    .then(firebaseUser => {
-        Object.assign(GLOBAL_ADMIN, { id: firebaseUser.uid });
-        return Admin.findById(firebaseUser.uid);
-    })
-    .then(admin => {
-        if (!admin) {
-            return Admin.create(
-                Object.assign(
-                    { _id: GLOBAL_ADMIN.id },
-                    GLOBAL_ADMIN.mongo
-                )
-            );
-        }
-        return admin;
-    })
-    .then(admin => logger.info('Global Admin created'));
-
-
+Admin.getOrCreate(GLOBAL_ADMIN)
+    .then(admin => logger.info('Global Admin created'))
+    .catch(err => logger.error(err));
 
 
 Promise.join(
-
     CoffeeHouse.findById(COFFEEHOUSE._id)
         .then(house => {
             if (!house) {
@@ -51,33 +24,7 @@ Promise.join(
             }
             return house;
         }),
-
-    FirebaseAuth.getUserByEmail(OWNER_ADMIN.fb.email)
-        .catch(error => {
-            logger.log(error);
-        })
-        .then(userRecord =>  {
-            if (!userRecord) {
-                return FirebaseAuth.createUser(OWNER_ADMIN.fb);
-            }
-            return userRecord;
-        })
-        .then(firebaseUser => {
-            Object.assign(OWNER_ADMIN, { id: firebaseUser.uid });
-            return Admin.findById(firebaseUser.uid);
-        })
-        .then(admin => {
-            if (!admin) {
-                return Admin.create(
-                    Object.assign(
-                        { _id: OWNER_ADMIN.id },
-                        OWNER_ADMIN.mongo
-                    )
-                );
-            }
-            return admin;
-        })
-
+    Admin.getOrCreate(OWNER_ADMIN)
 ).then(([ house, admin ]) => {
     if (!house.owner) {
         return house.update({
@@ -86,4 +33,5 @@ Promise.join(
             }
         })
     }
-}).then(house => logger.info('Owner and house created'));
+}).then(house => logger.info('Owner and house created'))
+    .catch(err => logger.error(err));

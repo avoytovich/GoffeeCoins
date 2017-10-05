@@ -56,7 +56,12 @@ const userApiMethods = {
     },
 
     update({ user: { _id }, body: { name, avatarUrl } }) {
-        return User.findByIdAndUpdate(_id, { name, avatarUrl }, { new: true });
+        return User.findByIdAndUpdate(_id, { name, avatarUrl }, { new: true })
+            .then(user => User.getUser(_id))
+            .then(user => {
+                Object.assign(user._doc, {coffeeHouseCoins: DEFAULT_COIN_COUNT});
+                return user;
+            });
     },
 
     invited({ user: { _id } }) {

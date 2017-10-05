@@ -41,7 +41,10 @@ const bonusHelpers = {
             userID: user._id,
             type: BONUS_TYPES.FREE
         }).then(request => {
-            const promises = [];
+            return Coin.find({ userID: user._id })
+                .sort({createdAt: 1})
+                .limit(count);
+            /*const promises = [];
             for (let i = 0; i < count; i++) {
                 promises.push({
                     coffeeHouseID,
@@ -49,8 +52,13 @@ const bonusHelpers = {
                     userID: user._id,
                 });
             }
-            return Promise.map(promises, item => Coin.create(item));
-        });
+            return Promise.map(promises, item => Coin.create(item));*/
+        }).then(coins => Promise.map(coins, coin => coin.update({
+            $set: {
+                usedTimestamp: Date.now(),
+                usedCoffeeHouseID: coffeeHouseID,
+            }
+        })));
     },
 
     getRequest(id, user) {

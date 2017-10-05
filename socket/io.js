@@ -43,6 +43,7 @@ module.exports = server => {
         });
 
         socket.on('inCoffeeHouse', houseId => {
+            logger.log(houseId);
             socket.houseId = houseId;
             const isAdmin = socket.user && socket.user.isAdminInCoffeeHouse(houseId);
 

@@ -108,9 +108,9 @@
 
 
 /**
- * @api {post} /api/v1/user/invited/:_id Get invited friends
- * @apiName Get invited friends
- * @apiDescription ## Get invited friends
+ * @api {post} /api/v1/user/invited/:_id Get bonus for invite
+ * @apiName Get bonus for invite
+ * @apiDescription ## Get bonus for invited friends
  * @apiGroup User
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`

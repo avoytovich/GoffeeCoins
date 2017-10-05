@@ -16,6 +16,10 @@ const NoteSchema = new mongoose.Schema({
         ref: MODELS.USER,
         required: true,
     },
+    sender: {
+        type: String,
+        ref: MODELS.USER,
+    },
     text: {
         type: String,
         required: true,

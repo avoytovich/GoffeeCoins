@@ -41,18 +41,13 @@ const bonusHelpers = {
             userID: user._id,
             type: BONUS_TYPES.FREE
         }).then(request => {
-            return Coin.find({ userID: user._id })
+            const query = {
+                userID: user._id,
+                usedTimestamp: {$exists: false}
+            };
+            return Coin.find(query)
                 .sort({createdAt: 1})
                 .limit(count);
-            /*const promises = [];
-            for (let i = 0; i < count; i++) {
-                promises.push({
-                    coffeeHouseID,
-                    coffeeHouseAdminID,
-                    userID: user._id,
-                });
-            }
-            return Promise.map(promises, item => Coin.create(item));*/
         }).then(coins => Promise.map(coins, coin => coin.update({
             $set: {
                 usedTimestamp: Date.now(),

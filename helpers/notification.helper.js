@@ -7,8 +7,11 @@ const DeviceToken = require('../models/deviceToken.model');
 
 const NotificationHelper = {
 
-    createNote(key, data) {
-
+    createNote(data) {
+        return Note.create(data)
+            .then(note => {
+                return NotificationHelper.pushNotification(data.userID, note)
+            })
     },
 
     pushNotification(userID, data) {
@@ -21,7 +24,7 @@ const NotificationHelper = {
             .catch(function(error) {
                 logger.error("Error sending message:", error);
             });
-    }
+    },
 };
 
 module.exports = NotificationHelper;

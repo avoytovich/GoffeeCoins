@@ -18,23 +18,16 @@ const bonusRequestApi = {
                     throw FORBIDDEN.createError(COFFEEHOUSE.NOT_USER);
                 }
                 if (type === BONUS_TYPES.FREE) {
-                    return helpers.createFreeRequest(
-                        coffeeHouseID,
-                        house.coins,
-                        user,
-                        house.admins[0]
-                    );
+                    return helpers.createFreeRequest(user, house);
                 }
                 count || (count = 1);
-                return BonusRequest.create({
-                    coffeeHouseID,
-                    type,
-                    count,
-                    userID: user._id,
-                });
+                return helpers.createCoinRequest(user._id, house, count);
             })
             .then(() => Coin.getUnusedCoinCount(user._id))
-            .then(coins => ({ coins }));
+            .then(coins => {
+                createNote({});
+                return { coins }
+            });
     },
 
     getRequests({ params: { coffeeHouseID }, user }) {

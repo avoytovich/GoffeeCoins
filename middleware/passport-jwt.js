@@ -3,7 +3,6 @@
 const User = require('../models/user.model.js');
 const { checkUserOnFirebase } = require('../helpers/auth.helper.js');
 const config = require('../env');
-const logger = require('../libs/logger');
 const passport = require('passport');
 const { ExtractJwt, Strategy } = require("passport-jwt");
 const { UNAUTHORIZED } = require('http-statuses');

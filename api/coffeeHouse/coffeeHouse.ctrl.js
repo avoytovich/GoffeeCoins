@@ -44,8 +44,7 @@ const housesApiMethods = {
         return CoffeeHouse.getWifiInfo({ lng, lat });
     },
 
-    discharge({ query: { coffeeHouseID }, user }) {
-        logger.log(user);
+    discharge({ params: { coffeeHouseID }, user }) {
         if (!user.isAdminInCoffeeHouse(coffeeHouseID)) {
             throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
         }

@@ -4,8 +4,10 @@ const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Coin = require('../../models/coin.model');
 const AdminRequest = require('../../models/adminRequest.model');
 const { getHouseWithLastVisit } = require('./coffeeHouse.helpers');
-const { NOT_FOUND } = require('http-statuses');
+const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
+const { COFFEEHOUSE } = require('../../constants/errors');
 const Promise = require('bluebird');
+
 
 const housesApiMethods = {
 
@@ -42,6 +44,9 @@ const housesApiMethods = {
     },
 
     discharge({ query: { coffeeHouseID }, user }) {
+        if (!user.isAdminInCoffeeHouse(coffeeHouseID)) {
+            throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
+        }
         return Promise.join(
             AdminRequest.remove({
                 coffeeHouseID,
@@ -52,7 +57,7 @@ const housesApiMethods = {
             }}),
             CoffeeHouse.findByIdAndUpdate(coffeeHouseID, {$pull: {
                 admins: user._id
-            }}, {new: true})
+            }})
         ).then(result => {});
     },
 };

@@ -9,6 +9,7 @@ const {
     modelOptions,
     MODELS,
     UNIQUE_VL_OPTIONS,
+    DEFAULT_COIN_COUNT,
 } = require('../constants/index');
 const config = require('../env/index');
 
@@ -56,8 +57,12 @@ UserSchema.statics.getUser = function (id, selection) {
         Coin.getUnusedCoinCount(id)
     ).then(([user, coins]) => {
         if (user) {
-            user._doc.coins = coins;
-            user.coins = coins;
+            const additionalData = {
+                coins,
+                coffeeHouseCoins: DEFAULT_COIN_COUNT
+            };
+            Object.assign(user._doc, additionalData);
+            Object.assign(user, additionalData);
             return user;
         }
     });

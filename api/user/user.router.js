@@ -45,7 +45,7 @@ userRouter.get('/invited', responseHandler(userCtrl.invited));
 
 
 userRouter.post('/invited/:_id', (req, res, next) => {
-    req.checkParam(pick(VALIDATIONS.USER, ['_id']));
+    req.checkParams(pick(VALIDATIONS.USER, ['_id']));
     next();
 }, responseHandler(userCtrl.getBonusForInvited));
 

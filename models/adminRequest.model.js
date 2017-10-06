@@ -28,12 +28,15 @@ const adminRequestSchema = new mongoose.Schema({
         enum: Object.values(REQUEST_STATUSES),
         default: REQUEST_STATUSES.CREATED,
     },
-    updatedAt: Number,
+    updatedAt: {
+        type: Number,
+        select: false,
+    },
     createdAt: {
         type: Number,
         default: Date.now,
     },
-}, modelOptions);
+}, Object.assign({}, modelOptions, {timestamps: false}));
 
 const AdminRequest = mongoose.model(MODELS.ADMIN_REQUEST, adminRequestSchema);
 

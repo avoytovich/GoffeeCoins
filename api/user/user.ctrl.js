@@ -20,20 +20,15 @@ const userApiMethods = {
                 data.email = firebaseUser.email;
                 return User.getUser(data._id)
             })
-            .then(user => {
+            .then(async user => {
                 if (user) return user;
-                return User.create(data);
+                user = await User.create(data);
+                return User.getUser(user._id);
             })
-            .then(user => {
-                user.createdAt = undefined;
-                user.updatedAt = undefined;
-                user.email = undefined;
-                user.coins || (user._doc.coins = 0);
-                return {
-                    user,
-                    token: user.generateJWT()
-                }
-            });
+            .then(user => ({
+                user,
+                token: user.generateJWT()
+            }));
     },
 
     login({ body: { _id } }) {
@@ -51,17 +46,12 @@ const userApiMethods = {
     },
 
     me({ user }) {
-        Object.assign(user._doc, {coffeeHouseCoins: DEFAULT_COIN_COUNT});
         return user;
     },
 
     update({ user: { _id }, body: { name, avatarUrl } }) {
-        return User.findByIdAndUpdate(_id, { name, avatarUrl }, { new: true })
-            .then(user => User.getUser(_id))
-            .then(user => {
-                Object.assign(user._doc, {coffeeHouseCoins: DEFAULT_COIN_COUNT});
-                return user;
-            });
+        return User.findByIdAndUpdate(_id, { name, avatarUrl })
+            .then(user => User.getUser(_id));
     },
 
     invited({ user: { _id } }) {

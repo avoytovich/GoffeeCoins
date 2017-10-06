@@ -56,7 +56,7 @@ bonusRequestSchema.statics.getRequests = function (coffeeHouseID) {
 
 bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
     const { type, count, coffeeHouseID, userID } = this;
-    const self = this;
+    const request = this;
     switch (type) {
         case BONUS_TYPES.COIN:
             let coinPromises = [];
@@ -68,13 +68,13 @@ bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
                 });
             }
             return Promise.map(coinPromises, item => Coin.create(item))
-                .then(results => {
-                    self.status = REQUEST_STATUSES.ACCEPTED;
-                    return self.save();
-                });
+                .then(() => request.update({$set: {
+                    status: REQUEST_STATUSES.ACCEPTED
+                }}))
+                .then(() => {});
 
         case BONUS_TYPES.FREE:
-            return self.update({status: REQUEST_STATUSES.ACCEPTED});
+            return request.update({status: REQUEST_STATUSES.ACCEPTED});
     }
 };
 

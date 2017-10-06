@@ -13,32 +13,12 @@ const { NOTIFICATIONS: {
 } } = require('../constants');
 
 
-const NoteHelper = {
+const privateMethods = {
 
     createNote(data) {
         return Note.create(data)
             .then(note => Note.getNote(note._id))
-            .then(note => NoteHelper.pushNotification(data.userID, note))
-    },
-
-    createFreeRequestNote(userID, request) {
-        return NoteHelper.createNote({
-            userID,
-            key: KEYS.bonusRequestFree,
-            bonusRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-            sender: request.userID,
-        })
-    },
-
-    createCoinRequestNote(userID, request) {
-        return NoteHelper.createNote({
-            userID,
-            key: KEYS.bonusRequestCoin,
-            bonusRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-            sender: request.userID,
-        })
+            .then(note => privateMethods.pushNotification(data.userID, note))
     },
 
     getMessage(data, lang) {
@@ -59,7 +39,7 @@ const NoteHelper = {
                 const lang = (tokens[0] && tokens[0].language) || LANGUAGES.UA;
                 return Promise.map(
                     tokens.map(item => item.token),
-                    NoteHelper.getMessage(note, lang)
+                    privateMethods.getMessage(note, lang)
                 );
             })
             .then((tokens, message) => {
@@ -84,4 +64,30 @@ const NoteHelper = {
     },
 };
 
-module.exports = NoteHelper;
+const publicMethods = {
+
+    createFreeRequestNote(userID, request) {
+        return privateMethods.createNote({
+            userID,
+            key: KEYS.bonusRequestFree,
+            bonusRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+            sender: request.userID,
+        })
+    },
+
+    createCoinRequestNote(userID, request) {
+        return privateMethods.createNote({
+            userID,
+            key: KEYS.bonusRequestCoin,
+            bonusRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+            sender: request.userID,
+        })
+    },
+
+
+
+};
+
+module.exports = publicMethods;

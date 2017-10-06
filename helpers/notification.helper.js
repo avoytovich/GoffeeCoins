@@ -86,6 +86,24 @@ const publicMethods = {
         })
     },
 
+    createCoinRequestConfirmedNote(request) {
+        return privateMethods.createNote({
+            key: KEYS.bonusRequestCoinConfirmed,
+            userID: request.userID,
+            bonusRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+        })
+    },
+
+    createCoinRequestRejectedNote(request) {
+        return privateMethods.createNote({
+            key: KEYS.bonusRequestCoinRejected,
+            userID: request.userID,
+            bonusRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+        })
+    },
+
 
 
 };

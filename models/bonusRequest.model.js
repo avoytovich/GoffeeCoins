@@ -8,6 +8,7 @@ const {
     REQUEST_STATUSES,
     BONUS_TYPES
 } = require('../constants/index');
+const noteHelper = require('../helpers/notification.helper');
 const Promise = require('bluebird');
 
 const bonusRequestSchema = new mongoose.Schema({
@@ -71,6 +72,7 @@ bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
                 .then(() => request.update({$set: {
                     status: REQUEST_STATUSES.ACCEPTED
                 }}))
+                .then(() => noteHelper.createCoinRequestConfirmedNote(request))
                 .then(() => {});
 
         case BONUS_TYPES.FREE:

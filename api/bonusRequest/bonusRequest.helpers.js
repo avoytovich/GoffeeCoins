@@ -4,7 +4,7 @@ const Visitor = require('../../models/visitor.model');
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const BonusRequest = require('../../models/bonusRequest.model');
 const Coin = require('../../models/coin.model');
-const { createNote } = require('../../helpers/notification.helper');
+const { createNote, createCoinRequestNote, createFreeRequestNote } = require('../../helpers/notification.helper');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const Promise = require('bluebird');
 const {
@@ -63,14 +63,8 @@ const bonusHelpers = {
                 }
             }))
         }).then(() => {
-            return Promise.map(house.admins, admin => {
-                /*return createNote({
-                    key: NOTIFICATIONS.KEYS.bonusRequestFree,
-                    userID: admin,
-                    bonusRequest: ctx.request._id,
-                    coffeeHouseID: house._id,
-                    sender: ctx.request.userID,
-                })*/
+            return Promise.map(house.admins, userID => {
+                return createFreeRequestNote(userID, ctx.request)
             })
         });
     },
@@ -81,14 +75,8 @@ const bonusHelpers = {
             count,
             userID,
         }).then(request => {
-            return Promise.map(house.admins, admin => {
-                /*return createNote({
-                    key: NOTIFICATIONS.KEYS.bonusRequestCoin,
-                    userID: admin,
-                    bonusRequest: request._id,
-                    coffeeHouseID: house._id,
-                    sender: request.userID,
-                })*/
+            return Promise.map(house.admins, userID => {
+                return createCoinRequestNote(userID, request);
             })
         });
     },

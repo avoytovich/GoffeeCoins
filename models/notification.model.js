@@ -28,10 +28,10 @@ const NoteSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: MODELS.COFFEEHOUSE,
     },
-    coffeeHouseAdminID: {
+    /*coffeeHouseAdminID: {
         type: String,
         ref: MODELS.USER,
-    },
+    },*/
     adminRequest: {
         type: mongoose.Schema.Types.ObjectId,
         ref: MODELS.ADMIN_REQUEST,
@@ -45,6 +45,15 @@ const NoteSchema = new mongoose.Schema({
         default: Date.now,
     },
 }, Object.assign({}, modelOptions, {timestamps: false}));
+
+NoteSchema.statics.getNote = function (id) {
+    return this.findById(id)
+        .select('-userID')
+        .populate('bonusRequest', 'count type')
+        .populate('coffeeHouseID', 'name avatarUrl')
+        .populate('sender', 'name avatarUrl')
+        .populate('avatarUrl', '_id')
+};
 
 const Note = mongoose.model(MODELS.NOTIFICATION, NoteSchema);
 

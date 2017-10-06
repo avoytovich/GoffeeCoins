@@ -13,13 +13,32 @@ const { NOTIFICATIONS: {
 } } = require('../constants');
 
 
-const NotificationHelper = {
+const NoteHelper = {
 
     createNote(data) {
         return Note.create(data)
-            .then(note => {
-                return NotificationHelper.pushNotification(data.userID, note)
-            })
+            .then(note => Note.getNote(note._id))
+            .then(note => NoteHelper.pushNotification(data.userID, note))
+    },
+
+    createFreeRequestNote(userID, request) {
+        return NoteHelper.createNote({
+            userID,
+            key: KEYS.bonusRequestFree,
+            bonusRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+            sender: request.userID,
+        })
+    },
+
+    createCoinRequestNote(userID, request) {
+        return NoteHelper.createNote({
+            userID,
+            key: KEYS.bonusRequestCoin,
+            bonusRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+            sender: request.userID,
+        })
     },
 
     getMessage(data, lang) {
@@ -34,22 +53,25 @@ const NotificationHelper = {
         }
     },
 
-    pushNotification(userID, data) {
+    pushNotification(userID, note) {
         return DeviceToken.find({ userID })
             .then(tokens => {
                 const lang = (tokens[0] && tokens[0].language) || LANGUAGES.UA;
                 return Promise.map(
                     tokens.map(item => item.token),
-                    NotificationHelper.getMessage(data, lang)
+                    NoteHelper.getMessage(note, lang)
                 );
             })
-            .then((tokens, body) => {
+            .then((tokens, message) => {
+                note.update({
+                    $set: {text: message}
+                });
                 const payload = {
                     notification: {
                         title: TITLE,
-                        body
+                        body: message,
                     },
-                    data
+                    data: note
                 };
                 return Messaging.sendToDevice(tokens, payload);
             })
@@ -62,4 +84,4 @@ const NotificationHelper = {
     },
 };
 
-module.exports = NotificationHelper;
+module.exports = NoteHelper;

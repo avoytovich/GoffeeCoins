@@ -7,6 +7,7 @@ const { getHouseWithLastVisit } = require('./coffeeHouse.helpers');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const { COFFEEHOUSE } = require('../../constants/errors');
 const Promise = require('bluebird');
+const logger = require('../../libs/logger');
 
 
 const housesApiMethods = {
@@ -44,6 +45,7 @@ const housesApiMethods = {
     },
 
     discharge({ query: { coffeeHouseID }, user }) {
+        logger.log(user);
         if (!user.isAdminInCoffeeHouse(coffeeHouseID)) {
             throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
         }

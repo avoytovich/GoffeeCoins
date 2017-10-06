@@ -57,6 +57,7 @@ const privateMethods = {
                 );
             })
             .then(([tokens, message]) => {
+                logger.log(message);
                 Note.findByIdAndUpdate(note._id, {
                     $set: {text: message}
                 });
@@ -65,7 +66,10 @@ const privateMethods = {
                         title: TITLE,
                         body: message,
                     },
-                    data: Object.assign({}, privateMethods.stringifyNote(note))
+                    data: Object.assign({
+                        title: TITLE,
+                        body: message,
+                    }, privateMethods.stringifyNote(note))
                 };
                 return Messaging.sendToDevice(tokens, payload, {
                     priority: "high",

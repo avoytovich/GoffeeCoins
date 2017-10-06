@@ -79,7 +79,7 @@ UserSchema.methods.generateJWT = function () {
 
 UserSchema.methods.isAdminInCoffeeHouse = function (houseId) {
     return this.adminInCoffeeHouses.some(item => {
-        return item.toString() === houseId.toString();
+        return String(item) === String(houseId);
     });
 };
 

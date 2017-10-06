@@ -50,7 +50,7 @@ module.exports = {
             bonusRequestCoinConfirmed: 'bonusRequestCoinConfirmed',
             bonusRequestCoinRejected: 'bonusRequestCoinRejected',
             adminRequest: 'adminRequest',
-            referalId: 'referalId',
+            friendRegistered: 'friendRegistered',
         },
         LANGUAGES: {
             UA: 'UA',

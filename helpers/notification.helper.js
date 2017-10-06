@@ -33,17 +33,31 @@ const privateMethods = {
         }
     },
 
+    stringifyNote(note) {
+        note._id = note._id.toString();
+        if (note.bonusRequest) note.bonusRequest._id = note.bonusRequest._id.toString();
+        if (note.coffeeHouseID) note.coffeeHouseID._id = note.coffeeHouseID._id.toString();
+        if (note.sender) note.sender._id = note.sender._id.toString();
+        if (note.adminRequest) note.adminRequest._id = note.adminRequest._id.toString();
+
+        if (note.bonusRequest) note.bonusRequest = JSON.stringify(note.bonusRequest);
+        if (note.coffeeHouseID) note.coffeeHouseID = JSON.stringify(note.coffeeHouseID);
+        if (note.sender) note.sender = JSON.stringify(note.sender);
+        if (note.adminRequest) note.adminRequest = JSON.stringify(note.adminRequest);
+        return note;
+    },
+
     pushNotification(userID, note) {
         return DeviceToken.find({ userID })
             .then(tokens => {
                 const lang = (tokens[0] && tokens[0].language) || LANGUAGES.UA;
-                return Promise.map(
+                return Promise.join(
                     tokens.map(item => item.token),
                     privateMethods.getMessage(note, lang)
                 );
             })
-            .then((tokens, message) => {
-                note.update({
+            .then(([tokens, message]) => {
+                Note.findByIdAndUpdate(note._id, {
                     $set: {text: message}
                 });
                 const payload = {
@@ -51,9 +65,12 @@ const privateMethods = {
                         title: TITLE,
                         body: message,
                     },
-                    data: note
+                    data: Object.assign({}, privateMethods.stringifyNote(note))
                 };
-                return Messaging.sendToDevice(tokens, payload);
+                return Messaging.sendToDevice(tokens, payload, {
+                    priority: "high",
+                    timeToLive: 60 * 60 * 24
+                });
             })
             .then(response => {
                 logger.info("Successfully sent message:", response);
@@ -104,7 +121,40 @@ const publicMethods = {
         })
     },
 
+    createFreeRequestConfirmedNote(request) {
+        return privateMethods.createNote({
+            key: KEYS.bonusRequestFreeConfirmed,
+            userID: request.userID,
+            bonusRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+        })
+    },
 
+    createFreeRequestRejectedNote(request) {
+        return privateMethods.createNote({
+            key: KEYS.bonusRequestFreeRejected,
+            userID: request.userID,
+            bonusRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+        })
+    },
+
+    createAdminRequestNote(request) {
+        return privateMethods.createNote({
+            key: KEYS.adminRequest,
+            userID: request.userID,
+            adminRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+        })
+    },
+
+    createFriendRegisteredNote(userID, sender) {
+        return privateMethods.createNote({
+            userID,
+            sender,
+            key: KEYS.friendRegistered,
+        })
+    },
 
 };
 

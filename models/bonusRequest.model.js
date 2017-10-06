@@ -72,21 +72,27 @@ bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
                 .then(() => request.update({$set: {
                     status: REQUEST_STATUSES.ACCEPTED
                 }}))
-                .then(() => noteHelper.createCoinRequestConfirmedNote(request))
+                .then(() => {
+                    return noteHelper.createCoinRequestConfirmedNote(request);
+                })
                 .then(() => {});
 
         case BONUS_TYPES.FREE:
-            return request.update({status: REQUEST_STATUSES.ACCEPTED});
+            return request.update({status: REQUEST_STATUSES.ACCEPTED})
+                .then(() => {
+                    return noteHelper.createFreeRequestConfirmedNote(request);
+                });
     }
 };
 
 
 bonusRequestSchema.methods.reject = function () {
     const { type, count, coffeeHouseID, userID } = this;
-    const self = this;
+    const request = this;
     switch (type) {
         case BONUS_TYPES.COIN:
-            return self.update({status: REQUEST_STATUSES.DECLINED});
+            return request.update({status: REQUEST_STATUSES.DECLINED})
+                .then(() => noteHelper.createCoinRequestRejectedNote(request));
 
         case BONUS_TYPES.FREE:
             return Coin.find({ coffeeHouseID, userID })
@@ -94,8 +100,9 @@ bonusRequestSchema.methods.reject = function () {
                 .limit(count)
                 .then(coins => Promise.map(coins, coin => coin.remove()))
                 .then(results => {
-                    return self.update({status: REQUEST_STATUSES.DECLINED});
-                });
+                    return request.update({status: REQUEST_STATUSES.DECLINED});
+                })
+                .then(() => noteHelper.createFreeRequestRejectedNote(request));
     }
 };
 

@@ -57,7 +57,7 @@ const housesApiMethods = {
             }}),
             CoffeeHouse.findByIdAndUpdate(coffeeHouseID, {$pull: {
                 admins: user._id
-            }}, {new: true})
+            }})
         ).then(result => {});
     },
 };

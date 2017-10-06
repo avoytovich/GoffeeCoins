@@ -49,11 +49,11 @@ const NoteSchema = new mongoose.Schema({
 
 NoteSchema.statics.getNote = function (id) {
     return this.findById(id)
-        .select('-userID -createdAt')
+        .select('-userID -createdAt -_id -text')
         .populate('bonusRequest', 'count type')
         .populate('coffeeHouseID', 'name avatarUrl')
         .populate('sender', 'name avatarUrl')
-        .populate('adminRequest', '_id')
+        //.populate('adminRequest', '_id')
         .lean()
         .then(note => {
             if (note.key === NOTIFICATIONS.KEYS.bonusRequestFree) {

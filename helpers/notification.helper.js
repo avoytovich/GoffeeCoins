@@ -34,7 +34,7 @@ const privateMethods = {
     },
 
     stringifyNote(note) {
-        note._id = note._id.toString();
+        if (note._id) note._id = note._id.toString();
         if (note.bonusRequest) note.bonusRequest._id = note.bonusRequest._id.toString();
         if (note.coffeeHouseID) note.coffeeHouseID._id = note.coffeeHouseID._id.toString();
         if (note.sender) note.sender._id = note.sender._id.toString();

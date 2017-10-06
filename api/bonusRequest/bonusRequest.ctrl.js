@@ -25,7 +25,7 @@ const bonusRequestApi = {
             })
             .then(() => Coin.getUnusedCoinCount(user._id))
             .then(coins => {
-                createNote({});
+                // createNote({});
                 return { coins }
             });
     },

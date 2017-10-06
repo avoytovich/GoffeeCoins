@@ -64,13 +64,13 @@ const bonusHelpers = {
             }))
         }).then(() => {
             return Promise.map(house.admins, admin => {
-                return createNote({
+                /*return createNote({
                     key: NOTIFICATIONS.KEYS.bonusRequestFree,
                     userID: admin,
                     bonusRequest: ctx.request._id,
                     coffeeHouseID: house._id,
                     sender: ctx.request.userID,
-                })
+                })*/
             })
         });
     },
@@ -82,13 +82,13 @@ const bonusHelpers = {
             userID,
         }).then(request => {
             return Promise.map(house.admins, admin => {
-                return createNote({
+                /*return createNote({
                     key: NOTIFICATIONS.KEYS.bonusRequestCoin,
                     userID: admin,
                     bonusRequest: request._id,
                     coffeeHouseID: house._id,
                     sender: request.userID,
-                })
+                })*/
             })
         });
     },

@@ -1,16 +1,17 @@
 'use strict';
 
-const { Messaging } = require('../libs/firebase');
-const logger = require('../libs/logger');
-const Note = require('../models/notification.model');
-const DeviceToken = require('../models/deviceToken.model');
+const sendPush = require('./sendPush');
+// const { Messaging } = require('../../libs/firebase');
+const logger = require('../../libs/logger');
+const Note = require('../../models/notification.model.js');
+const DeviceToken = require('../../models/deviceToken.model.js');
 const Promise = require('bluebird');
 const { NOTIFICATIONS: {
     TITLE,
     KEYS,
     LANGUAGES,
     MESSAGES,
-} } = require('../constants');
+} } = require('../../constants/index');
 
 
 const privateMethods = {
@@ -56,12 +57,16 @@ const privateMethods = {
                     privateMethods.getMessage(note, lang)
                 );
             })
-            .then(([tokens, message]) => {
-                logger.log(message);
+            .then(([tokens, body]) => {
                 Note.findByIdAndUpdate(note._id, {
-                    $set: {text: message}
+                    $set: {text: body}
                 });
-                const payload = {
+                const data = Object.assign({
+                    title: TITLE,
+                    body,
+                }, note);
+                return Promise.map(tokens, token => sendPush(token, data));
+                /*const payload = {
                     notification: {
                         title: TITLE,
                         body: message,
@@ -74,7 +79,7 @@ const privateMethods = {
                 return Messaging.sendToDevice(tokens, payload, {
                     priority: "high",
                     timeToLive: 60 * 60 * 24
-                });
+                });*/
             })
             .then(response => {
                 logger.info("Successfully sent message:", response);
@@ -85,81 +90,4 @@ const privateMethods = {
     },
 };
 
-const publicMethods = {
-
-    createFreeRequestNote(userID, request) {
-        return privateMethods.createNote({
-            userID,
-            key: KEYS.bonusRequestFree,
-            bonusRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-            sender: request.userID,
-        })
-    },
-
-    createCoinRequestNote(userID, request) {
-        return privateMethods.createNote({
-            userID,
-            key: KEYS.bonusRequestCoin,
-            bonusRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-            sender: request.userID,
-        })
-    },
-
-    createCoinRequestConfirmedNote(request) {
-        return privateMethods.createNote({
-            key: KEYS.bonusRequestCoinConfirmed,
-            userID: request.userID,
-            bonusRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-        })
-    },
-
-    createCoinRequestRejectedNote(request) {
-        return privateMethods.createNote({
-            key: KEYS.bonusRequestCoinRejected,
-            userID: request.userID,
-            bonusRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-        })
-    },
-
-    createFreeRequestConfirmedNote(request) {
-        return privateMethods.createNote({
-            key: KEYS.bonusRequestFreeConfirmed,
-            userID: request.userID,
-            bonusRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-        })
-    },
-
-    createFreeRequestRejectedNote(request) {
-        return privateMethods.createNote({
-            key: KEYS.bonusRequestFreeRejected,
-            userID: request.userID,
-            bonusRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-        })
-    },
-
-    createAdminRequestNote(request) {
-        return privateMethods.createNote({
-            key: KEYS.adminRequest,
-            userID: request.userID,
-            adminRequest: request._id,
-            coffeeHouseID: request.coffeeHouseID,
-        })
-    },
-
-    createFriendRegisteredNote(userID, sender) {
-        return privateMethods.createNote({
-            userID,
-            sender,
-            key: KEYS.friendRegistered,
-        })
-    },
-
-};
-
-module.exports = publicMethods;
+module.exports = privateMethods;

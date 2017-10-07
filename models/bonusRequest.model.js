@@ -8,7 +8,7 @@ const {
     REQUEST_STATUSES,
     BONUS_TYPES
 } = require('../constants/index');
-const noteHelper = require('../helpers/notification.helper');
+const noteHelper = require('../helpers/notification/index.js');
 const Promise = require('bluebird');
 
 const bonusRequestSchema = new mongoose.Schema({

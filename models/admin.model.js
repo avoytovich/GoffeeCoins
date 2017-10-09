@@ -60,22 +60,11 @@ AdminSchema.statics.getOrCreate = function(data) {
         });
 };
 
-
-/*AdminSchema.methods.validPassword = function(password) {
-    const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-    return this.hash === hash;
-};
-
-AdminSchema.methods.setPassword = function(password) {
-    this.salt = crypto.randomBytes(16).toString('hex');
-    this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-};*/
-
 AdminSchema.methods.generateJWT = function() {
-    return jwt.sign(
-        { _id: this._id },
-        config.secret
-    );
+    return jwt.sign({
+        _id: this._id,
+        type: MODELS.ADMIN,
+    }, config.secret);
 };
 
 AdminSchema.plugin(uniqueValidator, UNIQUE_VL_OPTIONS);

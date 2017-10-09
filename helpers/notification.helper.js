@@ -58,22 +58,20 @@ const privateMethods = {
             })
             .then(([tokens, message]) => {
                 logger.log(message);
-                Note.findByIdAndUpdate(note._id, {
-                    $set: {text: message}
-                });
+                Note.findByIdAndUpdate(note._id, {body: message}).then(() => {});
                 const payload = {
                     notification: {
                         title: TITLE,
                         body: message,
                     },
                     data: Object.assign({
-                        title: TITLE,
-                        body: message,
+                        /*title: TITLE,
+                        body: message,*/
                     }, privateMethods.stringifyNote(note))
                 };
                 return Messaging.sendToDevice(tokens, payload, {
                     priority: "high",
-                    timeToLive: 60 * 60 * 24
+                    timeToLive: 60 * 60
                 });
             })
             .then(response => {

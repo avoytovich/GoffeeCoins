@@ -70,10 +70,10 @@ UserSchema.statics.getUser = function (id, selection) {
 
 
 UserSchema.methods.generateJWT = function () {
-    return jwt.sign(
-        { _id: this._id },
-        config.secret
-    );
+    return jwt.sign({
+        _id: this._id,
+        type: MODELS.USER,
+    }, config.secret);
 };
 
 

@@ -9,6 +9,7 @@ const housesRouter = require('../api/coffeeHouse/coffeeHouse.router');
 const adminRequestRouter = require('../api/adminRequest/adminRequest.router');
 const bonusesRouter = require('../api/bonusRequest/bonusRequest.router');
 const tokenRouter = require('../api/deviceToken/deviceToken.router');
+const noteRouter = require('../api/notification/notification.router');
 
 
 mobileRouter.use('/user', userRouter);
@@ -18,6 +19,7 @@ mobileRouter.use('/coffeeHouse', housesRouter);
 mobileRouter.use('/adminRequest', adminRequestRouter);
 mobileRouter.use('/bonusRequest', bonusesRouter);
 mobileRouter.use('/deviceToken', tokenRouter);
+mobileRouter.use('/notification', noteRouter);
 
 
 module.exports = mobileRouter;

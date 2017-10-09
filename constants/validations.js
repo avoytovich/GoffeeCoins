@@ -44,5 +44,6 @@ module.exports = {
         referalId: Object.assign({ optional: true }, GENERAL.firebaseId)
     },
     MONGOID: GENERAL.mongoId,
-    COORD: GENERAL.coord
+    COORD: GENERAL.coord,
+    USERID: Object.assign({ errorMessage: ERRORS.VALIDATION.ID }, GENERAL.firebaseId),
 };

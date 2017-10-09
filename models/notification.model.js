@@ -7,6 +7,16 @@ const {
     NOTIFICATIONS,
 } = require('../constants/index');
 
+const queryHelper = query => {
+    return query
+        .select('-userID -createdAt')
+        .populate('bonusRequest', 'count type')
+        .populate('coffeeHouseID', 'name avatarUrl')
+        .populate('sender', 'name avatarUrl')
+        //.populate('adminRequest', '_id')
+        .lean()
+};
+
 const NoteSchema = new mongoose.Schema({
     key: {
         type: String,
@@ -21,7 +31,11 @@ const NoteSchema = new mongoose.Schema({
         type: String,
         ref: MODELS.USER,
     },
-    text: {
+    title: {
+        type: String,
+        default: NOTIFICATIONS.TITLE,
+    },
+    body: {
         type: String,
         //required: true,
     },
@@ -48,19 +62,23 @@ const NoteSchema = new mongoose.Schema({
 }, Object.assign({}, modelOptions, {timestamps: false}));
 
 NoteSchema.statics.getNote = function (id) {
-    return this.findById(id)
-        .select('-userID -createdAt -_id -text')
-        .populate('bonusRequest', 'count type')
-        .populate('coffeeHouseID', 'name avatarUrl')
-        .populate('sender', 'name avatarUrl')
-        //.populate('adminRequest', '_id')
-        .lean()
+    return queryHelper(this.findById(id))
         .then(note => {
             if (note.key === NOTIFICATIONS.KEYS.bonusRequestFree) {
                 note.bonusRequest.count = undefined;
             }
             return note;
         })
+};
+
+NoteSchema.statics.getNotes = function (userID) {
+    return queryHelper(this.find({ userID }))
+        .then(notes => notes.map(note => {
+            if (note.key === NOTIFICATIONS.KEYS.bonusRequestFree) {
+                note.bonusRequest.count = undefined;
+            }
+            return note;
+        }));
 };
 
 const Note = mongoose.model(MODELS.NOTIFICATION, NoteSchema);

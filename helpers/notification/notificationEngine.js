@@ -1,13 +1,11 @@
 'use strict';
 
 const sendPush = require('./sendPush');
-// const { Messaging } = require('../../libs/firebase');
 const logger = require('../../libs/logger');
 const Note = require('../../models/notification.model.js');
 const DeviceToken = require('../../models/deviceToken.model.js');
 const Promise = require('bluebird');
 const { NOTIFICATIONS: {
-    TITLE,
     KEYS,
     LANGUAGES,
     MESSAGES,
@@ -34,20 +32,6 @@ const privateMethods = {
         }
     },
 
-    stringifyNote(note) {
-        if (note._id) note._id = note._id.toString();
-        if (note.bonusRequest) note.bonusRequest._id = note.bonusRequest._id.toString();
-        if (note.coffeeHouseID) note.coffeeHouseID._id = note.coffeeHouseID._id.toString();
-        if (note.sender) note.sender._id = note.sender._id.toString();
-        if (note.adminRequest) note.adminRequest._id = note.adminRequest._id.toString();
-
-        if (note.bonusRequest) note.bonusRequest = JSON.stringify(note.bonusRequest);
-        if (note.coffeeHouseID) note.coffeeHouseID = JSON.stringify(note.coffeeHouseID);
-        if (note.sender) note.sender = JSON.stringify(note.sender);
-        if (note.adminRequest) note.adminRequest = JSON.stringify(note.adminRequest);
-        return note;
-    },
-
     pushNotification(userID, note) {
         return DeviceToken.find({ userID })
             .then(tokens => {
@@ -57,13 +41,10 @@ const privateMethods = {
                     privateMethods.getMessage(note, lang)
                 );
             })
-            .then(([tokens, message]) => {
-                logger.log(message);
-                Note.findByIdAndUpdate(note._id, {body: message}).then(() => {});
-                const data = Object.assign({
-                    title: TITLE,
-                    body,
-                }, note);
+            .then(([tokens, body]) => {
+                logger.log(body);
+                Note.findByIdAndUpdate(note._id, { body }).then(() => {});
+                const data = Object.assign({}, note, { body });
                 return Promise.map(tokens, token => sendPush(token, data));
             })
             .then(response => {

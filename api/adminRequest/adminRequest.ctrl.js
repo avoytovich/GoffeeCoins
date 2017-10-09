@@ -23,18 +23,7 @@ module.exports = {
     },
 
     adminPanel({ user }) {
-        const query = {
-            userID: user._id,
-            status: {
-                $in: [
-                    REQUEST_STATUSES.CREATED,
-                    REQUEST_STATUSES.ACCEPTED
-                ]
-            }
-        };
-        return AdminRequest.find(query)
-            .populate('coffeeHouseID', 'name avatarUrl address status')
-            .select('-adminID -userID');
+        return AdminRequest.adminRequests(user._id);
     },
 
 };

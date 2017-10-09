@@ -7,6 +7,20 @@ const {
     REQUEST_STATUSES
 } = require('../constants/index');
 
+
+const queryHelper = userID => {
+    return {
+        userID,
+        status: {
+            $in: [
+                REQUEST_STATUSES.CREATED,
+                REQUEST_STATUSES.ACCEPTED
+            ]
+        }
+    }
+};
+
+
 const adminRequestSchema = new mongoose.Schema({
     adminID: {
         type: String,
@@ -37,6 +51,21 @@ const adminRequestSchema = new mongoose.Schema({
         default: Date.now,
     },
 }, Object.assign({}, modelOptions, {timestamps: false}));
+
+
+adminRequestSchema.statics.adminRequestsCount = function (userID) {
+    return this.count(queryHelper(userID))
+        .populate('coffeeHouseID', 'name avatarUrl address status')
+        .select('-adminID -userID');
+};
+
+
+adminRequestSchema.statics.adminRequests = function (userID) {
+    return this.find(queryHelper(userID))
+        .populate('coffeeHouseID', 'name avatarUrl address status')
+        .select('-adminID -userID');
+};
+
 
 const AdminRequest = mongoose.model(MODELS.ADMIN_REQUEST, adminRequestSchema);
 

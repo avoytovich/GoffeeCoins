@@ -3,6 +3,7 @@
 const User = require('../../models/user.model');
 const Coin = require('../../models/coin.model');
 const BonusRequest = require('../../models/bonusRequest.model');
+const AdminRequest = require('../../models/adminRequest.model');
 const ERRORS = require('../../constants/errors');
 const { DEFAULT_COIN_COUNT } = require('../../constants');
 const { COFFEEHOUSE } = require('../../constants/default');
@@ -10,6 +11,7 @@ const { checkUserOnFirebase } = require('../../helpers/auth.helper');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const pick = require('lodash/pick');
 const Promise = require('bluebird');
+
 
 const userApiMethods = {
 
@@ -46,7 +48,8 @@ const userApiMethods = {
     },
 
     me({ user }) {
-        return user;
+        return AdminRequest.adminRequestsCount(user._id)
+            .then(count => Object.assign(user._doc, { adminRequestsCount: count }));
     },
 
     update({ user: { _id }, body: { name, avatarUrl } }) {

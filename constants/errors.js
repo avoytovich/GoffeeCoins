@@ -30,4 +30,5 @@ module.exports = {
         NOT_ADMIN: 'This action is only allowed to administrators!',
         NOT_USER: 'This action is only allowed to users, not administrators!',
     },
+    INVALID_TOKEN: 'Invalid device token!',
 };

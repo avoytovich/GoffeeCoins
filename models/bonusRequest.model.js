@@ -97,7 +97,7 @@ bonusRequestSchema.methods.reject = function () {
         case BONUS_TYPES.FREE:
             const query = {
                 userID,
-                coffeeHouseID,
+                usedCoffeeHouseID: coffeeHouseID,
                 coffeeHouseAdminIDapproved: {
                     $exists: false
                 }
@@ -110,7 +110,6 @@ bonusRequestSchema.methods.reject = function () {
                         return coin.update({$unset: {
                             usedTimestamp: 1,
                             usedCoffeeHouseID: 1,
-                            coffeeHouseAdminIDapproved: 1,
                         }})
                     })
                 })

@@ -95,10 +95,21 @@ bonusRequestSchema.methods.reject = function () {
                 .then(() => noteHelper.createCoinRequestRejectedNote(request));
 
         case BONUS_TYPES.FREE:
-            return Coin.find({ coffeeHouseID, userID })
+            const query = {
+                userID,
+                coffeeHouseID,
+                coffeeHouseAdminIDapproved: {
+                    $exists: false
+                }
+            };
+            return Coin.find(query)
                 .sort({creationTimestamp: -1})
                 .limit(count)
-                .then(coins => Promise.map(coins, coin => coin.remove()))
+                .then(coins => Promise.map(coins, coin => coin.update({$unset: {
+                    usedTimestamp: 1,
+                    usedCoffeeHouseID: 1,
+                    coffeeHouseAdminIDapproved: 1,
+                }})))
                 .then(results => {
                     return request.update({status: REQUEST_STATUSES.DECLINED});
                 })

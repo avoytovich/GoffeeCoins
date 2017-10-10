@@ -107,6 +107,10 @@ module.exports = server => {
             }
         });
 
+        socket.on('disconnecting', () => {
+            logger.log('disconnecting', socket.userId);
+        });
+
     });
 
     return io;

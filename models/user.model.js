@@ -2,7 +2,7 @@
 
 const mongoose = require('../libs/mongoose');
 const Coin = require('./coin.model');
-const AdminRequests = require('./adminRequest.model');
+const AdminRequest = require('./adminRequest.model');
 const Promise = require('bluebird');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');

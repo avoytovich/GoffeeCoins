@@ -12,7 +12,7 @@ mongoose.connect(config.mongoUrl, {
 }, () => logger.info('Connect to db success'));
 
 if (!config.isProduction) {
-    mongoose.set('debug', true);
+    // mongoose.set('debug', true);
 }
 
 module.exports = mongoose;

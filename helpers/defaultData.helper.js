@@ -3,6 +3,7 @@
 const logger = require('../libs/logger');
 const Admin = require('../models/admin.model');
 const CoffeeHouse = require('../models/coffeeHouse.model');
+const Visitor = require('../models/visitor.model');
 const Promise = require('bluebird');
 const {
     GLOBAL_ADMIN,
@@ -35,3 +36,7 @@ Promise.join(
     }
 }).then(house => logger.info('Owner and house created'))
     .catch(err => logger.error(err));
+
+
+Visitor.find({exitTime: {$exists: false}})
+    .then(visits => Promise.map(visits, visit => visit.getOut()));

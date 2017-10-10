@@ -12,8 +12,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
     (function InOut() {
-        var socket = io.connect('http://192.168.88.157:8030', {
-            'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2OTI4NTQ1fQ.SdMD1zo91-SalbYH4VsluBAUjBQlPh3J2GVQuNrBo2Y'
+        var socket = io.connect('http://54.72.192.165:8030', {
+            'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJFZ2p3NjQ2MlFlYWI1eWIydUZIbDN0WFdqeDAyIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MDc2MzQzMDB9.wTmPMFI3GLElgbNqsHHBEvk-paq6yHAo2YoqNUDMeCo'
         });
 
         socket.on('connect', function() {
@@ -22,12 +22,12 @@
 
             setTimeout(function () {
                 socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
-            }, 800000);
+            }, 8000);
 
             setTimeout(function () {
                 socket.destroy();
                 InOut();
-            }, 200000);
+            }, 20000);
         });
 
         socket.on('world', function (mes) {

@@ -5,11 +5,11 @@ const config = require('./env');
 const logger = require('./libs/logger');
 const app = require('./app');
 const httpServer = http.createServer(app);
-const io = require('./socket/io')(httpServer);
 require('./libs/mongoose');
 require('./libs/firebase');
 require('./helpers/cronjob.helper');
 require('./helpers/defaultData.helper');
+require('./socket/io')(httpServer);
 
 
 if (!config.isProduction) {

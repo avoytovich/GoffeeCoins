@@ -55,11 +55,13 @@ const UserSchema = new mongoose.Schema({
 UserSchema.statics.getUser = function (id, selection) {
     return Promise.join(
         this.findById(id).select(selection),
-        Coin.getUnusedCoinCount(id)
-    ).then(([user, coins]) => {
+        Coin.getUnusedCoinCount(id),
+        AdminRequest.adminRequestsCount(id)
+    ).then(([user, coins, adminRequestsCount]) => {
         if (user) {
             const additionalData = {
                 coins,
+                adminRequestsCount,
                 coffeeHouseCoins: DEFAULT_COIN_COUNT
             };
             Object.assign(user._doc, additionalData);

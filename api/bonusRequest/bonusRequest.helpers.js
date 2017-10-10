@@ -4,13 +4,15 @@ const Visitor = require('../../models/visitor.model');
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const BonusRequest = require('../../models/bonusRequest.model');
 const Coin = require('../../models/coin.model');
-const { createNote, createCoinRequestNote, createFreeRequestNote } = require('../../helpers/notification/index.js');
+const {
+    createCoinRequestNote,
+    createFreeRequestNote
+} = require('../../helpers/notification');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const Promise = require('bluebird');
 const {
     BONUS_TYPES,
     REQUEST_STATUSES,
-    NOTIFICATIONS
 }  = require('../../constants');
 const {
     BONUS_REQUESTS,

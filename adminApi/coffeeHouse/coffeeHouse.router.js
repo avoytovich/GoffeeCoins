@@ -9,8 +9,14 @@ const HTTP_STATUSES = require('http-statuses');
 const _ = require('lodash');
 
 
-housesRouter.post('/default', responseHandler(housesCtrl.createDefault));
-housesRouter.post('/visit', responseHandler(housesCtrl.createDefault));
+housesRouter.route('/')
+    .get(responseHandler(housesCtrl.getHouses))
+    .post((req, res, next) => {
+        req.checkBody({
+        });
+    }, responseHandler(housesCtrl.create));
 
+
+housesRouter.post('/visit', responseHandler(housesCtrl.createDefault));
 
 module.exports = housesRouter;

@@ -2,12 +2,10 @@
 
 const adminRouter = require('express').Router();
 const adminCtrl = require('./admin.ctrl');
-
+const pick = require('lodash/pick');
 const VALIDATIONS = require('../../constants/validations');
 const passport = require('../../middleware/passport-jwt');
 const responseHandler = require('../../middleware/responseHandler');
-
-
 
 
 adminRouter.post('/login', (req, res, next) => {

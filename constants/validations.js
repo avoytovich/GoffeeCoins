@@ -33,6 +33,24 @@ const GENERAL = {
         notEmpty: true,
         isMongoId: true,
     },
+    arrayOfUrls: {
+        optional: true,
+        isArrayOfUrls: true,
+    },
+    coins: {
+        optional: true,
+        isNumber: true,
+    },
+    location: {
+        isLocation: true,
+    },
+    optionalLink: {
+        optional: true,
+        isURL: true,
+    },
+    NotEmpty: {
+        notEmpty: true,
+    },
 };
 
 module.exports = {
@@ -46,4 +64,21 @@ module.exports = {
     MONGOID: GENERAL.mongoId,
     COORD: GENERAL.coord,
     USERID: Object.assign({ errorMessage: ERRORS.VALIDATION.ID }, GENERAL.firebaseId),
+    COFFEEHOUSE: {
+        name: GENERAL.name,
+        avatarUrl: GENERAL.url,
+        bannerUrls: GENERAL.arrayOfUrls,
+        coins: GENERAL.coins,
+        location: GENERAL.location,
+        address: GENERAL.NotEmpty,
+        'socials.facebook': GENERAL.optionalLink,
+        'socials.instagram': GENERAL.optionalLink,
+        'socials.twitter': GENERAL.optionalLink,
+        'socials.google': GENERAL.optionalLink,
+        'socials.pinterest': GENERAL.optionalLink,
+        'wifi.bssid': GENERAL.NotEmpty,
+        'wifi.ssid': GENERAL.NotEmpty,
+        'wifi.wifiPassword': GENERAL.NotEmpty,
+        'wifi.welcomeMessage': GENERAL.NotEmpty,
+    }
 };

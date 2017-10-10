@@ -48,8 +48,7 @@ const userApiMethods = {
     },
 
     me({ user }) {
-        return AdminRequest.adminRequestsCount(user._id)
-            .then(count => Object.assign(user._doc, { adminRequestsCount: count }));
+        return user;
     },
 
     update({ user: { _id }, body: { name, avatarUrl } }) {

@@ -36,7 +36,7 @@ module.exports = server => {
         });
 
         if (socketsWithThisId.length > 1) {
-            socket.disconnect(true);
+            // socket.disconnect(true);
         }
 
         if (!socket.user) {

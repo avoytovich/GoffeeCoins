@@ -80,6 +80,23 @@ bonusRequestSchema.methods.confirm = function (coffeeHouseAdminID) {
         case BONUS_TYPES.FREE:
             return request.update({status: REQUEST_STATUSES.ACCEPTED})
                 .then(() => {
+                    const query = {
+                        userID,
+                        usedCoffeeHouseID: coffeeHouseID,
+                        coffeeHouseAdminIDapproved: {
+                            $exists: false
+                        }
+                    };
+                    return Coin.find(query)
+                        .sort({creationTimestamp: -1})
+                        .limit(count)
+                        .then(coins => Promise.map(coins, coin => {
+                            return coin.update({$set: {
+                                coffeeHouseAdminIDapproved: coffeeHouseAdminID,
+                            }})
+                        }))
+                })
+                .then(() => {
                     return noteHelper.createFreeRequestConfirmedNote(request);
                 });
     }
@@ -105,14 +122,12 @@ bonusRequestSchema.methods.reject = function () {
             return Coin.find(query)
                 .sort({creationTimestamp: -1})
                 .limit(count)
-                .then(coins => {
-                    return Promise.map(coins, coin => {
-                        return coin.update({$unset: {
-                            usedTimestamp: 1,
-                            usedCoffeeHouseID: 1,
-                        }})
-                    })
-                })
+                .then(coins => Promise.map(coins, coin => {
+                    return coin.update({$unset: {
+                        usedTimestamp: 1,
+                        usedCoffeeHouseID: 1,
+                    }})
+                }))
                 .then(results => {
                     return request.update({status: REQUEST_STATUSES.DECLINED});
                 })

@@ -11,8 +11,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js.map"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
-    var socket = io.connect('http://192.168.88.157:8030', {
-        'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJHV0dFcDBUd0l6WW9NUERWbmRmOUtVYUpJaHYyIiwiaWF0IjoxNTA2Njc0NzE4fQ.lYEgtvw5AD3OdUqDODJlFJ6zejSoQOsO7iHIo2Hqef0'
+    var socket = io.connect('http://54.72.192.165:8030', {
+        'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJITlRaVENiY08yY0pNZmNrYUptTGpuZzFtYzEzIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MDc2NDYwNDd9.FRmF33iWrdMLIiGJoB-ivWoKXR3CySZn0q2_7mgdX6U'
     });
 
     socket.on('connect', function() {
@@ -20,7 +20,7 @@
         socket.emit('hello', 'Opana');
 
         setTimeout(function () {
-            socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
+            socket.emit('inCoffeeHouse', '59c9d506ce0e011b6d53d0c9');
         }, 3000);
     });
 

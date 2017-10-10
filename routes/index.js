@@ -5,7 +5,7 @@ const validatorMiddleware = require('../libs/express-validator');
 
 const generalRouter = require('express').Router();
 
-// generalRouter.use(morgan('dev'));
+generalRouter.use(morgan('dev'));
 generalRouter.use(validatorMiddleware);
 
 generalRouter.use('/api/v1', require('./mobileRouter'));

@@ -2,9 +2,8 @@
 
 const mongoose = require('../libs/mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
-const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-const config = require('../env/index');
+const config = require('../env');
 const { getOrCreateAuthUser } = require('../helpers/auth.helper');
 const {
     modelOptions,
@@ -18,17 +17,16 @@ const AdminSchema = new mongoose.Schema({
     email: {
         type: String,
         lowercase: true,
-        unique: true,
-        required: true,
+        select: false,
     },
     name: {
         type: String,
         required: true,
     },
-    coffeeHouseID: {
+    coffeeHouseID: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: MODELS.COFFEEHOUSE,
-    },
+    }],
     avatarUrl: {
         type: String,
         // required: true,
@@ -36,7 +34,7 @@ const AdminSchema = new mongoose.Schema({
     type: {
         type: String,
         default: ADMIN_TYPES.OWNER,
-    }
+    },
 }, modelOptions);
 
 
@@ -65,6 +63,13 @@ AdminSchema.methods.generateJWT = function() {
         _id: this._id,
         type: MODELS.ADMIN,
     }, config.secret);
+};
+
+AdminSchema.methods.isOwnerInCoffeeHouse = function (houseId) {
+    return this.type === ADMIN_TYPES.OWNER &&
+        this.coffeeHouseID.some(item => {
+            return String(item) === String(houseId);
+        });
 };
 
 AdminSchema.plugin(uniqueValidator, UNIQUE_VL_OPTIONS);

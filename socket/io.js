@@ -27,7 +27,17 @@ module.exports = server => {
 
         logger.log(socket.decoded_token);
 
+        const sockets = Object.values(io.sockets.clients().sockets);
+
         socket.userId = socket.decoded_token._id;
+
+        const socketsWithThisId = sockets.filter(sock => {
+            return sock.decoded_token._id === socket.userId
+        });
+
+        if (socketsWithThisId.length > 1) {
+            socket.disconnect(true);
+        }
 
         if (!socket.user) {
             getUser(socket.decoded_token._id, socket);
@@ -50,7 +60,6 @@ module.exports = server => {
             if (isAdmin) {
                 socket.join(houseId);
                 socket.adminFor = houseId;
-                const sockets = Object.values(io.sockets.clients().sockets);
                 const visitorsSockets = sockets.filter(sock => {
                     return (sock.adminFor === undefined) &&
                         (String(sock.houseId) === String(houseId));

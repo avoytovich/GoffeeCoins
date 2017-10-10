@@ -16,10 +16,7 @@ adminRouter.post('/login', (req, res, next) => {
 
 adminRouter.use(passport.authenticate('jwt', { session: false }));
 
-
 adminRouter.get('/', responseHandler(adminCtrl.me));
 
-
-adminRouter.use(passport.authenticate('jwt', { session: false }));
 
 module.exports = adminRouter;

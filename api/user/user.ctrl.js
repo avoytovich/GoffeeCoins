@@ -3,10 +3,9 @@
 const User = require('../../models/user.model');
 const Coin = require('../../models/coin.model');
 const BonusRequest = require('../../models/bonusRequest.model');
-const AdminRequest = require('../../models/adminRequest.model');
 const ERRORS = require('../../constants/errors');
 const { DEFAULT_COIN_COUNT } = require('../../constants');
-const { COFFEEHOUSE } = require('../../constants/default');
+const { COFFEEHOUSE, OWNER_ADMIN } = require('../../constants/default');
 const { checkUserOnFirebase } = require('../../helpers/auth.helper');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const pick = require('lodash/pick');
@@ -93,12 +92,13 @@ const userApiMethods = {
                     })
                 );
             })
-            .then(requests => ctx.friend.update({ $unset: { referalId: 1 } }))
+            .then(requests => Promise.map(requests, request => {
+                return request.confirm(OWNER_ADMIN.id)
+            }))
+            .then(() => ctx.friend.update({ $unset: { referalId: 1 } }))
             .then(() => Coin.getUnusedCoinCount(user._id))
             .then(coins => ({ coins }));
     },
 };
 
 module.exports = userApiMethods;
-
-

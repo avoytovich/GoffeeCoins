@@ -7,6 +7,7 @@ const ERRORS = require('../../constants/errors');
 const { DEFAULT_COIN_COUNT } = require('../../constants');
 const { COFFEEHOUSE, OWNER_ADMIN } = require('../../constants/default');
 const { checkUserOnFirebase } = require('../../helpers/auth.helper');
+const { createFriendRegisteredNote } = require('../../helpers/notification');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const pick = require('lodash/pick');
 const Promise = require('bluebird');
@@ -25,6 +26,12 @@ const userApiMethods = {
                 if (user) return user;
                 user = await User.create(data);
                 return User.getUser(user._id);
+            })
+            .then(user => {
+                if (user.referalId) {
+                    createFriendRegisteredNote(user.referalId, user._id)
+                }
+                return user;
             })
             .then(user => ({
                 user,

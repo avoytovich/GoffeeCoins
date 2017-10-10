@@ -66,6 +66,7 @@ module.exports = {
                 bonusRequestCoinConfirmed: (c) => `CoffeeCoin request accepted, ${c} CoffeeCoin(s) added.`,
                 bonusRequestCoinRejected: 'CoffeeCoin request declined...',
                 adminRequest: (n) => `Administrator request received from ${n}`,
+                friendRegistered: 'Your referred friend has just registered. Well done :)',
             },
             UA: {
                 bonusRequestFree: (n) => `Запит на безкоштовну каву отримано від ${n}`,
@@ -75,6 +76,7 @@ module.exports = {
                 bonusRequestCoinConfirmed: (c) => `CoffeeCoin запит прийнято, ${c} CoffeeCoin(-ів) додано.`,
                 bonusRequestCoinRejected: 'CoffeeCoin запит відхилено...',
                 adminRequest: (n) => `Заклад ${n} запрошує Вас стати адміністратором!`,
+                friendRegistered: 'Твій запрошений друг щойно зареєструвався. Вітаємо :)',
             },
             RU: {
                 bonusRequestFree: (n) => `Запрос на бесплатное кофе получено от ${n}`,
@@ -84,6 +86,7 @@ module.exports = {
                 bonusRequestCoinConfirmed: (c) => `CoffeeCoin запрос принят, ${c} CoffeeCoin(-ов) добавлено.`,
                 bonusRequestCoinRejected: 'CoffeeCoin запрос отклонен...',
                 adminRequest: (n) => `Заведение ${n} приглашает Вас стать администратором!`,
+                friendRegistered: 'Твой приглашенный друг только что зарегистрировался. Поздравляем :)',
             },
         }
     },

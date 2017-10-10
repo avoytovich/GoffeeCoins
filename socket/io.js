@@ -86,7 +86,7 @@ module.exports = server => {
         });
 
         socket.on('disconnect', () => {
-            logger.log('disconnect');
+            logger.log('disconnect', socket.userId);
             if (socket.currentVisit) {
                 socket.currentVisit.getOut();
                 socket.currentVisit = null;

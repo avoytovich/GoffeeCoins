@@ -28,6 +28,8 @@ if (!config.isProduction) {
      });*/
 }
 
+require('events').EventEmitter.prototype._maxListeners = 100;
+
 // Memory usage
 setInterval(() => {
     const memory = (process.memoryUsage().heapUsed/1024/1024).toFixed(2);

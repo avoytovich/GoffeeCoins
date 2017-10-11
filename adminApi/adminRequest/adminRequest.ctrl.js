@@ -1,16 +1,25 @@
 'use strict';
 
 const AdminRequest = require('../../models/adminRequest.model');
-const { REQUEST_STATUSES } = require('../../constants');
+const { createAdminRequestNote } = require('../../helpers/notification');
+const { FORBIDDEN } = require('http-statuses');
+const { COFFEEHOUSE } = require('../../constants/errors');
+
 
 module.exports = {
 
-    create({ body: { coffeeHouseID, userID } }, user) {
-        return AdminRequest.create({
+    create({ body: { coffeeHouseID, userID }, user }) {
+        if (!user.isOwnerInCoffeeHouse(coffeeHouseID)) {
+            throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+        }
+        const data = {
             userID,
             coffeeHouseID,
             adminID: user._id,
-        }).then(() => {});
+        };
+        return AdminRequest.create(data)
+            .then(request => createAdminRequestNote(request))
+            .then(() => {});
     },
 
 };

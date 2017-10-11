@@ -7,7 +7,6 @@ const userCtrl = require('./user.ctrl');
 const VALIDATIONS = require('../../constants/validations');
 const passport = require('../../middleware/passport-jwt');
 const responseHandler = require('../../middleware/responseHandler');
-const onlyAdminMiddleware = require('../../middleware/onlyAdmin');
 
 
 userRouter.post('/', (req, res, next) => {
@@ -28,7 +27,6 @@ userRouter.post('/login', (req, res, next) => {
 
 
 userRouter.use(passport.authenticate('jwt', { session: false }));
-// userRouter.use(onlyAdminMiddleware(false));
 
 
 userRouter.route('/')

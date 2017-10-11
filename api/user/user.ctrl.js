@@ -25,13 +25,10 @@ const userApiMethods = {
             .then(async user => {
                 if (user) return user;
                 user = await User.create(data);
-                return User.getUser(user._id);
-            })
-            .then(user => {
                 if (user.referalId) {
                     createFriendRegisteredNote(user.referalId, user._id)
                 }
-                return user;
+                return User.getUser(user._id);
             })
             .then(user => ({
                 user,

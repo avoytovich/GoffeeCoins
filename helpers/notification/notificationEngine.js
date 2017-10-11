@@ -29,6 +29,7 @@ const privateMethods = {
             case KEYS.bonusRequestCoinConfirmed: return MESSAGES[lang].bonusRequestCoinConfirmed(data.bonusRequest.count);
             case KEYS.bonusRequestCoinRejected:  return MESSAGES[lang].bonusRequestCoinRejected;
             case KEYS.adminRequest:              return MESSAGES[lang].adminRequest(data.coffeeHouseID.name);
+            case KEYS.friendRegistered:          return MESSAGES[lang].friendRegistered;
         }
     },
 

@@ -8,8 +8,7 @@ const logger = require('../libs/logger');
 module.exports = {
 
     checkUserOnFirebase(uid) {
-        return FirebaseAuth
-            .getUser(uid)
+        return FirebaseAuth.getUser(uid)
             .catch(error => {
                 throw UNAUTHORIZED.createError(error.message);
             })
@@ -36,6 +35,23 @@ module.exports = {
                     return FirebaseAuth.createUser(data);
                 }
                 return userRecord;
+            });
+    },
+
+    blockUser(uid) {
+        return FirebaseAuth
+            .updateUser(uid, {
+                disabled: true
+            })
+            .catch(error => {
+                throw error;
+            });
+    },
+
+    removeUser(uid) {
+        return FirebaseAuth.deleteUser(uid)
+            .catch(error => {
+                throw error;
             });
     },
 

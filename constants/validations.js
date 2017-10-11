@@ -39,7 +39,7 @@ const GENERAL = {
     },
     coins: {
         optional: true,
-        isNumber: true,
+        isInt: true,
     },
     location: {
         isLocation: true,
@@ -66,6 +66,7 @@ module.exports = {
     USERID: Object.assign({ errorMessage: ERRORS.VALIDATION.ID }, GENERAL.firebaseId),
     COFFEEHOUSE: {
         name: GENERAL.name,
+        description: GENERAL.NotEmpty,
         avatarUrl: GENERAL.url,
         bannerUrls: GENERAL.arrayOfUrls,
         coins: GENERAL.coins,

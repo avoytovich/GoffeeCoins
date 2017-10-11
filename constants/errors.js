@@ -28,6 +28,7 @@ module.exports = {
     COFFEEHOUSE: {
         NOT_FOUND: 'Coffee house not found!',
         NOT_ADMIN: 'This action is only allowed to administrators!',
+        NOT_OWNER: 'This action is only allowed to owner!',
         NOT_USER: 'This action is only allowed to users, not administrators!',
     },
     INVALID_TOKEN: 'Invalid device token!',

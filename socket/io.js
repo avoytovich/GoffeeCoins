@@ -53,9 +53,14 @@ module.exports = server => {
         });
 
         socket.on('inCoffeeHouse', houseId => {
-            logger.log(houseId);
+            // logger.log(houseId);
             socket.houseId = houseId;
+            const userId = socket.userId || socket.decoded_token._id;
             const isAdmin = socket.user && socket.user.isAdminInCoffeeHouse(houseId);
+
+            if (!socket.currentVisit) {
+                createVisit(userId, houseId, socket);
+            }
 
             if (isAdmin) {
                 socket.join(houseId);
@@ -71,13 +76,7 @@ module.exports = server => {
                         socket.emit('listOfCurrentVisitors', currentVisitors);
                     });
             } else {
-
-                const userId = socket.userId || socket.decoded_token._id;
                 const userToSend = pick(socket.user, defaultFields);
-
-                if (!socket.currentVisit) {
-                    createVisit(userId, houseId, socket);
-                }
                 io.to(houseId).emit('newUserInCoffeeHouse', userToSend);
             }
         });

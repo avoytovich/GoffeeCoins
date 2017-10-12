@@ -25,7 +25,7 @@ const adminRequestSchema = new mongoose.Schema({
     adminID: {
         type: String,
         ref: MODELS.ADMIN,
-        required: true,
+        // required: true,
     },
     userID: {
         type: String,

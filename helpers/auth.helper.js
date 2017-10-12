@@ -5,6 +5,7 @@ const { UNAUTHORIZED } = require('http-statuses');
 const ERRORS = require('../constants/errors');
 const logger = require('../libs/logger');
 
+
 module.exports = {
 
     checkUserOnFirebase(uid) {
@@ -27,14 +28,14 @@ module.exports = {
 
     getOrCreateAuthUser(data) {
         return FirebaseAuth.getUserByEmail(data.email)
-            .catch(error => {
-                logger.log(error);
-            })
             .then(userRecord =>  {
                 if (!userRecord) {
                     return FirebaseAuth.createUser(data);
                 }
                 return userRecord;
+            })
+            .catch(error => {
+                logger.log(error);
             });
     },
 

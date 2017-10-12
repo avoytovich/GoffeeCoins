@@ -42,7 +42,7 @@ const adminRequestHelpers = {
                     $addToSet: {
                         admins: user._id
                     }
-                })
+                }, {new: true})
             ));
     },
 

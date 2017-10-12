@@ -6,7 +6,7 @@ module.exports = {
     },
     modelOptions: {
         timestamps: true,
-        versionKey: false
+        versionKey: false,
     },
     UNIQUE_VL_OPTIONS: { message: 'User with {PATH} `{VALUE}` already registered.' },
     MODELS: {
@@ -88,6 +88,6 @@ module.exports = {
                 adminRequest: (n) => `Заведение ${n} приглашает Вас стать администратором!`,
                 friendRegistered: 'Твой приглашенный друг только что зарегистрировался. Поздравляем :)',
             },
-        }
+        },
     },
 };

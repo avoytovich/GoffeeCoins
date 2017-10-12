@@ -12,7 +12,7 @@ module.exports = ({ headers: { language }, user }, res, next) => {
             $set: { language }
         }, {
             multi: true
-        })
+        }).then(() => {})
     }
     next();
 };

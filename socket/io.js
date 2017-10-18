@@ -36,7 +36,9 @@ module.exports = server => {
         });
 
         if (socketsWithThisId.length > 1) {
-            // socket.disconnect(true);
+            socketsWithThisId.forEach(sock => {
+                if (sock !== socket) sock.disconnect(true);
+            });
         }
 
         if (!socket.user) {
@@ -104,10 +106,6 @@ module.exports = server => {
             } else {
                 socket.leave(socket.houseId);
             }
-        });
-
-        socket.on('disconnecting', () => {
-            logger.log('disconnecting', socket.userId);
         });
 
     });

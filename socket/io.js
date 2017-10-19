@@ -29,7 +29,7 @@ module.exports = server => {
 
         const sockets = Object.values(io.sockets.clients().sockets);
 
-        socket.userId = socket.decoded_token._id;
+        Object.assign(socket, { userId: socket.decoded_token._id });
 
         const socketsWithThisId = sockets.filter(sock => {
             return sock.decoded_token._id === socket.userId
@@ -56,7 +56,7 @@ module.exports = server => {
 
         socket.on('inCoffeeHouse', houseId => {
             // logger.log(houseId);
-            socket.houseId = houseId;
+            Object.assign(socket, { houseId });
             const userId = socket.userId || socket.decoded_token._id;
             const isAdmin = socket.user && socket.user.isAdminInCoffeeHouse(houseId);
 
@@ -66,7 +66,7 @@ module.exports = server => {
 
             if (isAdmin) {
                 socket.join(houseId);
-                socket.adminFor = houseId;
+                Object.assign(socket, { adminFor: houseId });
                 const visitorsSockets = sockets.filter(sock => {
                     return (sock.adminFor === undefined) &&
                         (String(sock.houseId) === String(houseId));
@@ -99,7 +99,7 @@ module.exports = server => {
             logger.log('disconnect', socket.userId);
             if (socket.currentVisit) {
                 socket.currentVisit.getOut();
-                socket.currentVisit = null;
+                Object.assign(socket, { currentVisit: null });
             }
             if (!socket.adminFor) {
                 io.to(socket.houseId).emit('userLeaveCoffeeHouse', socket.userId);

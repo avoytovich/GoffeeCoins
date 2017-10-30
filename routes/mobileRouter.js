@@ -1,7 +1,7 @@
 'use strict';
 
 const mobileRouter = require('express').Router();
-const passport = require('../middleware/passport-jwt');
+const passport = require('../libs/passport');
 const languageMiddleware = require('../middleware/language');
 const validatorMiddleware = require('../libs/express-validator');
 const morgan = require('../libs/morgan');

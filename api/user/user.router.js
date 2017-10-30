@@ -5,7 +5,7 @@ const pick = require('lodash/pick');
 const userRouter = require('express').Router();
 const userCtrl = require('./user.ctrl');
 const VALIDATIONS = require('../../constants/validations');
-const passport = require('../../middleware/passport-jwt');
+const passport = require('../../libs/passport');
 const responseHandler = require('../../middleware/responseHandler');
 
 

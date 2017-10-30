@@ -12,22 +12,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
     (function InOut() {
-        var socket = io.connect('http://localhost:8030', {
-            query: 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA3MTIwMjU4fQ.qGs0u-SNFRRBg_vrQoZZFq_UVyuE7T3IyttV5_7MxEU'
+        var socket = io.connect('http://54.72.192.165:8030', {
+            query: 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJZeWNJTllUTjd4ZzFJYnhXN3BOV0RON3hKbnAxIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MDg0MDAwMjZ9.-5gR7XiFwtmO8lkopZbRerXz1qCfamKm3OWWWKCT3kk'
         });
 
         socket.on('connect', function() {
 
             socket.emit('hello', 'Hubal');
+            socket.emit('inCoffeeHouse', '59c9d506ce0e011b6d53d0c9');
 
             setTimeout(function () {
-                socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
-            }, 60000);
 
-            setTimeout(function () {
+            }, 6000);
+
+            /*setTimeout(function () {
                 socket.destroy();
                 InOut();
-            }, 150000);
+            }, 15000);*/
         });
 
         socket.on('world', function (mes) {

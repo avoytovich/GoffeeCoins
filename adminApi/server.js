@@ -3,7 +3,7 @@
 const config = require('../env');
 const logger = require('../libs/logger');
 const createServer = require('../helpers/createServer.helper');
-const router = require('../routes/adminRouter');
+const router = require('../routes/webRouter');
 
 const server = createServer(config.adminPort, router);
 // const io = require('./socket/io')(server);

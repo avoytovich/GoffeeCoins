@@ -3,6 +3,8 @@
 const mobileRouter = require('express').Router();
 const passport = require('../middleware/passport-jwt');
 const languageMiddleware = require('../middleware/language');
+const validatorMiddleware = require('../libs/express-validator');
+const morgan = require('../libs/morgan');
 
 const userRouter = require('../api/user/user.router');
 const housesRouter = require('../api/coffeeHouse/coffeeHouse.router');
@@ -12,6 +14,8 @@ const tokenRouter = require('../api/deviceToken/deviceToken.router');
 const noteRouter = require('../api/notification/notification.router');
 
 
+mobileRouter.use(morgan('mobile'));
+mobileRouter.use(validatorMiddleware);
 mobileRouter.use('/user', userRouter);
 mobileRouter.use(passport.authenticate('jwt', { session: false }));
 mobileRouter.use(languageMiddleware);

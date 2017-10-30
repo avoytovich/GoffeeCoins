@@ -4,6 +4,7 @@ const env = process.env;
 
 module.exports = {
     port: env.PORT || 8030,
+    adminPort: env.ADMIN_PORT || 6031,
     secret: '9datuWxCQFWcqStAOuZC',
     mongoUrl: env.MONGO_URL || 'mongodb://localhost:27017/coffeeCoinsDev',
     firebaseURL: 'https://dev-remotediscount.firebaseio.com',

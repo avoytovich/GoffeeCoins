@@ -2,8 +2,8 @@
 
 const socketIO = require('socket.io');
 const socketioJwt = require('socketio-jwt');
-const { secret } = require('./../env/index');
-const logger = require('./../libs/logger');
+const { secret } = require('../../env');
+const logger = require('../../libs/logger');
 const pick = require('lodash/pick');
 
 const {
@@ -12,7 +12,7 @@ const {
     defaultFields,
     getVisitors,
     getRequests,
-} = require('./io.helpers');
+} = require('./io.helpers.js');
 
 module.exports = server => {
 

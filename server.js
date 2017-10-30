@@ -1,15 +1,19 @@
 'use strict';
 
-const http = require('http');
-const config = require('./env');
 const logger = require('./libs/logger');
-const app = require('./app');
-const httpServer = http.createServer(app);
+const config = require('./env');
+
 require('./libs/mongoose');
 require('./libs/firebase');
 require('./helpers/cronjob.helper');
 require('./helpers/defaultData.helper');
-require('./socket/io')(httpServer);
+
+require('./api/server');
+require('./adminApi/server');
+/*const http = require('http');
+const app = require('./app');
+const httpServer = http.createServer(app);
+require('./api/socket/io')(httpServer);*/
 
 
 if (!config.isProduction) {
@@ -18,14 +22,6 @@ if (!config.isProduction) {
         src: 'api',
         dest: 'apidoc/api'
     });
-    apiDoc.createDoc({
-        src: 'socket',
-        dest: 'apidoc/socket'
-    });
-    /*apiDoc.createDoc({
-     src: 'adminApi',
-     dest: 'apidoc/adminApi'
-     });*/
 }
 
 require('events').EventEmitter.prototype._maxListeners = 100;
@@ -39,8 +35,10 @@ setInterval(() => {
 // =================================================================
 // start the server ================================================
 // =================================================================
+/*
 httpServer.listen(config.port)
     .on('error', (err) => logger.error(err))
     .on('listening', () => {
       logger.info('Listening on port ' + config.port);
     });
+*/

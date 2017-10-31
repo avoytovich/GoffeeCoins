@@ -10,10 +10,6 @@ require('./helpers/defaultData.helper');
 
 require('./api/server');
 require('./adminApi/server');
-/*const http = require('http');
-const app = require('./app');
-const httpServer = http.createServer(app);
-require('./api/socket/io')(httpServer);*/
 
 
 if (!config.isProduction) {
@@ -31,14 +27,3 @@ setInterval(() => {
     const memory = (process.memoryUsage().heapUsed/1024/1024).toFixed(2);
     logger.info(`Memory usage: ${memory} mb`);
 }, 2000000);
-
-// =================================================================
-// start the server ================================================
-// =================================================================
-/*
-httpServer.listen(config.port)
-    .on('error', (err) => logger.error(err))
-    .on('listening', () => {
-      logger.info('Listening on port ' + config.port);
-    });
-*/

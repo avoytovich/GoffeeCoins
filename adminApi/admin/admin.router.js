@@ -14,10 +14,14 @@ adminRouter.post('/login',
     responseHandler(adminCtrl.me)
 );
 
-
 adminRouter.use(isAuthenticated);
 
 adminRouter.get('/', responseHandler(adminCtrl.me));
+
+adminRouter.post('/logout', (req, res, next) => {
+    req.logout();
+    next();
+}, responseHandler(() => {}));
 
 
 module.exports = adminRouter;

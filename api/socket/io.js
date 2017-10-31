@@ -5,6 +5,7 @@ const socketioJwt = require('socketio-jwt');
 const { secret } = require('../../env');
 const logger = require('../../libs/logger');
 const pick = require('lodash/pick');
+// const { io: adminIo } = require('../../adminApi/server');
 
 const {
     getUser,

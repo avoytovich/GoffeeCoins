@@ -10,7 +10,7 @@ const io = require('./socket/io')(server);
 
 server.on('error', (err) => logger.error(err))
     .on('listening', () => {
-        logger.info('Mobile server listening on port ' + config.port);
+        logger.info(`Mobile server listening on port ${config.port}`);
     });
 
-module.exports = server;
+module.exports = { server, io };

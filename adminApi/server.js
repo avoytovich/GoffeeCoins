@@ -10,7 +10,7 @@ const server = createServer(config.adminPort, router);
 
 server.on('error', (err) => logger.error(err))
     .on('listening', () => {
-        logger.info('Admin server listening on port ' + config.adminPort);
+        logger.info(`Admin server listening on port ${config.adminPort}`);
     });
 
-module.exports = server;
+module.exports = { server, };

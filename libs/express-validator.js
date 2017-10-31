@@ -22,7 +22,7 @@ const options = {
             return Array.isArray(val) &&
                 val.length === 2 &&
                 val.every(item => typeof item === 'number');
-        }
+        },
     },
 };
 

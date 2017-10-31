@@ -52,10 +52,10 @@ const housesCtrl = {
             }));
     },
 
-    getHousesByOwner({ params: { ownerId } }) {
+    getHousesByOwner({ params: { _id } }) {
         return housesCtrl.getHouses({
             user: {
-                _id: ownerId,
+                _id,
                 type: ADMIN_TYPES.OWNER
             }
         });
@@ -95,7 +95,7 @@ const housesCtrl = {
                 user,
                 params: { coffeeHouseID },
             }));
-    }
+    },
 
 };
 

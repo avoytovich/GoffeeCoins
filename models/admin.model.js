@@ -29,7 +29,6 @@ const AdminSchema = new mongoose.Schema({
     }],
     avatarUrl: {
         type: String,
-        // required: true,
     },
     type: {
         type: String,

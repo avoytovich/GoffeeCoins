@@ -46,7 +46,7 @@ module.exports = {
             email: 'coffeeowner@boost.solutions',
             emailVerified: true,
             password: 'coffee.solutions',
-            displayName: 'Global Admin',
+            displayName: 'Owner Admin',
             disabled: false,
         },
         mongo: {

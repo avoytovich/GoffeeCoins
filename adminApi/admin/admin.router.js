@@ -6,15 +6,14 @@ const pick = require('lodash/pick');
 const VALIDATIONS = require('../../constants/validations');
 const passport = require('../../libs/passport');
 const responseHandler = require('../../middleware/responseHandler');
-const isAuthenticated = require('../../middleware/isAuthenticated');
 
 
-adminRouter.post('/login',
-    passport.authenticate('local'),
-    responseHandler(adminCtrl.me)
-);
+adminRouter.post('/login', (req, res, next) => {
+    req.checkBody(pick(VALIDATIONS.USER, ['_id']));
+    next();
+}, responseHandler(adminCtrl.login));
 
-adminRouter.use(isAuthenticated);
+adminRouter.use(passport.authenticate('jwt', { session: false }));
 
 adminRouter.get('/', responseHandler(adminCtrl.me));
 

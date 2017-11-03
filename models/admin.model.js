@@ -61,6 +61,7 @@ AdminSchema.methods.generateJWT = function() {
     return jwt.sign({
         _id: this._id,
         type: MODELS.ADMIN,
+        role: this.type,
     }, config.secret);
 };
 

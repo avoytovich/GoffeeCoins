@@ -8,7 +8,9 @@ module.exports = {
         timestamps: true,
         versionKey: false,
     },
-    UNIQUE_VL_OPTIONS: { message: 'User with {PATH} `{VALUE}` already registered.' },
+    UNIQUE_VL_OPTIONS: {
+        message: 'User with {PATH} `{VALUE}` already registered.',
+    },
     MODELS: {
         USER: 'User',
         COIN: 'Coin',

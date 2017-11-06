@@ -6,7 +6,7 @@ const sendPushAndroid = require('../../libs/node-gcm');
 const Note = require('../../models/notification.model.js');
 const DeviceToken = require('../../models/deviceToken.model.js');
 const Promise = require('bluebird');
-const { INVALID_TOKEN, NOTIFICATIONS: {
+const { NOTIFICATIONS: {
     KEYS,
     LANGUAGES,
     MESSAGES,
@@ -17,7 +17,6 @@ function sendPush(token, data) {
     switch (token.length) {
         case 64: return sendPushiOS(token, data);
         case 152: return sendPushAndroid(token, data);
-        // default: throw new Error(INVALID_TOKEN);
     }
 }
 

@@ -81,5 +81,6 @@ module.exports = {
         'wifi.ssid': GENERAL.NotEmpty,
         'wifi.wifiPassword': GENERAL.NotEmpty,
         'wifi.welcomeMessage': GENERAL.NotEmpty,
+        owner: Object.assign({ optional: true }, GENERAL.firebaseId),
     }
 };

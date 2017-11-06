@@ -34,6 +34,16 @@ const AdminSchema = new mongoose.Schema({
         type: String,
         default: ADMIN_TYPES.OWNER,
     },
+    disabled: {
+        blocked: {
+            type: Boolean,
+            default: false,
+        },
+        removed: {
+            type: Boolean,
+            default: false,
+        },
+    },
 }, modelOptions);
 
 

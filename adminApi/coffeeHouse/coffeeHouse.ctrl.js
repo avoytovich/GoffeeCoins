@@ -23,15 +23,15 @@ const housesCtrl = {
         'location',
         'address',
         'socials',
-        'wifi'
+        'wifi',
+        'owner'
     ],
 
     createHouse({ body, user }) {
-        if (user.type !== ADMIN_TYPES.OWNER) {
-            throw FORBIDDEN.createError();
+        if (user.type === ADMIN_TYPES.OWNER) {
+            body.owner = user._id;
         }
         const data = pick(body, housesCtrl.fields);
-        data.owner = user._id;
         return CoffeeHouse.create(data);
     },
 

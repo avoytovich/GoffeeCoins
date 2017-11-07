@@ -1,7 +1,7 @@
 'use strict';
 
 const { FirebaseAuth } = require('../libs/firebase');
-const { UNAUTHORIZED } = require('http-statuses');
+const { UNAUTHORIZED, NOT_FOUND } = require('http-statuses');
 const ERRORS = require('../constants/errors');
 const logger = require('../libs/logger');
 
@@ -45,14 +45,14 @@ module.exports = {
                 disabled: true
             })
             .catch(error => {
-                throw error;
+                throw NOT_FOUND.createError(error.message);
             });
     },
 
     removeUser(uid) {
         return FirebaseAuth.deleteUser(uid)
             .catch(error => {
-                throw error;
+                throw NOT_FOUND.createError(error.message);
             });
     },
 

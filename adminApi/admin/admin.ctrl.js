@@ -36,7 +36,7 @@ const adminCtrl = {
         return Admin.create({ _id, email, name, avatarUrl });
     },
 
-    block({ params: { _id } }, user) {
+    block({ params: { _id }, user }) {
         console.log(GLOBAL_ADMIN.id);
         if (_id === String(user._id) || _id === GLOBAL_ADMIN.id) {
             throw FORBIDDEN.createError();
@@ -49,7 +49,7 @@ const adminCtrl = {
             }));
     },
 
-    remove({ params: { _id } }, user) {
+    remove({ params: { _id }, user }) {
         if (_id === String(user._id) || _id === GLOBAL_ADMIN.id) {
             throw FORBIDDEN.createError();
         }

@@ -35,12 +35,13 @@ const housesCtrl = {
         return CoffeeHouse.create(data);
     },
 
-    getHouses({ user }) {
-        const query = {};
-        if (user.type === ADMIN_TYPES.OWNER){
-            query.owner = user._id;
-        }
-        return CoffeeHouse.find(query)
+    getHouses({ user, query }) {
+        const queryData = {
+            internal: false
+        };
+        Object.assign(queryData, query);
+        // if (user.type === ADMIN_TYPES.OWNER) queryData.owner = user._id;
+        return CoffeeHouse.find(queryData)
             .select('name avatarUrl status')
             .lean()
             .then(houses => Promise.map(houses, async house => {
@@ -50,15 +51,6 @@ const housesCtrl = {
                 });
                 return house;
             }));
-    },
-
-    getHousesByOwner({ params: { _id } }) {
-        return housesCtrl.getHouses({
-            user: {
-                _id,
-                type: ADMIN_TYPES.OWNER
-            }
-        });
     },
 
     getHouse({ params: { _id } }) {

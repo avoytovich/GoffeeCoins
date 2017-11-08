@@ -77,6 +77,11 @@ const coffeeHouseSchema = new mongoose.Schema({
         type: String,
         ref: MODELS.ADMIN,
     },
+    internal: {
+        type: Boolean,
+        default: false,
+        select: false,
+    },
 }, modelOptions);
 
 

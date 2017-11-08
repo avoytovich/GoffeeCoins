@@ -19,12 +19,6 @@ housesRouter.route('/')
     }));
 
 
-housesRouter.get('/owner/:_id', (req, res, next) => {
-    req.checkParams(pick(VALIDATIONS.USER, '_id'));
-    next();
-}, responseHandler(housesCtrl.getHousesByOwner));
-
-
 housesRouter.post('/discharge', (req, res, next) => {
     req.checkBody({
         coffeeHouseID: VALIDATIONS.MONGOID,

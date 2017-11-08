@@ -23,25 +23,28 @@ adminRouter.use(passport.authenticate('jwt', { session: false }));
 adminRouter.get('/', responseHandler(adminCtrl.me));
 
 
-adminRouter.post('/owner', accessLevel(ADMIN_TYPES.GLOBAL), (req, res, next) => {
-    req.sanitizeBody('name').trim();
-    req.sanitizeBody('email').normalizeEmail();
-    req.checkBody(
-        pick(VALIDATIONS.USER, ['_id', 'email', 'name', 'avatarUrl'])
-    );
-    next();
-}, responseHandler(adminCtrl.createOwner, {
-    status: CREATED.code
-}));
+adminRouter.route('/owner')
+    .all(accessLevel(ADMIN_TYPES.GLOBAL))
+    .get(responseHandler(adminCtrl.owners))
+    .post((req, res, next) => {
+        req.sanitizeBody('name').trim();
+        req.sanitizeBody('email').normalizeEmail();
+        req.checkBody(
+            pick(VALIDATIONS.USER, ['_id', 'email', 'name', 'avatarUrl'])
+        );
+        next();
+    }, responseHandler(adminCtrl.createOwner, {
+        status: CREATED.code
+    }));
 
 
-adminRouter.post('/block/:_id', (req, res, next) => {
+adminRouter.put('/block/:_id', (req, res, next) => {
     req.checkParams({ _id: VALIDATIONS.USER._id });
     next();
 }, responseHandler(adminCtrl.block));
 
 
-adminRouter.post('/remove/:_id', (req, res, next) => {
+adminRouter.delete('/:_id', (req, res, next) => {
     req.checkParams({ _id: VALIDATIONS.USER._id });
     next();
 }, responseHandler(adminCtrl.remove));

@@ -7,8 +7,9 @@ const {
     removeUser
 } = require('../../helpers/auth.helper');
 const ERRORS = require('../../constants/errors');
-const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const { GLOBAL_ADMIN } = require('../../constants/default');
+const { ADMIN_TYPES } = require('../../constants');
+const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const Promise = require('bluebird');
 
 
@@ -34,6 +35,13 @@ const adminCtrl = {
 
     createOwner({ body: { _id, email, name, avatarUrl } }) {
         return Admin.create({ _id, email, name, avatarUrl });
+    },
+
+    owners() {
+        return Admin.find({
+            internal: false,
+            type: ADMIN_TYPES.OWNER
+        })
     },
 
     block({ params: { _id }, user }) {

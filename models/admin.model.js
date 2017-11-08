@@ -44,6 +44,11 @@ const AdminSchema = new mongoose.Schema({
             default: false,
         },
     },
+    internal: {
+        type: Boolean,
+        default: false,
+        select: false,
+    }
 }, modelOptions);
 
 

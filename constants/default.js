@@ -53,6 +53,7 @@ module.exports = {
             email: 'coffeeowner@boost.solutions',
             name: 'Global Admin',
             coffeeHouseID: '585e5f70ec82991168ae7a03',
+            internal: true,
         },
     },
 };

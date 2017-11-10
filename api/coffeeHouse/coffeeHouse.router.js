@@ -4,7 +4,7 @@ const housesRouter = require('express').Router();
 const housesCtrl = require('./coffeeHouse.ctrl');
 const { param } = require('express-validator/check');
 const responseHandler = require('../../middleware/responseHandler');
-const notRequiredAuthorization = require('../../middleware/notRequiredAuthorization');
+const notRequiredAuth = require('../../middleware/notRequiredAuth');
 const passport = require('../../libs/passport');
 
 const checkCoords = (req, res, next) => {
@@ -17,7 +17,7 @@ const checkCoords = (req, res, next) => {
 
 
 housesRouter.get('/coords',
-    notRequiredAuthorization,
+    notRequiredAuth,
     checkCoords,
     responseHandler(housesCtrl.getHousesList)
 );
@@ -30,7 +30,7 @@ housesRouter.get('/wifi',
 
 
 housesRouter.get('/:coffeeHouseID',
-    notRequiredAuthorization,
+    notRequiredAuth,
     param('coffeeHouseID').isMongoId(),
     responseHandler(housesCtrl.getHouse)
 );

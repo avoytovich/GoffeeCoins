@@ -10,6 +10,7 @@ const housesRouter = require('../adminApi/coffeeHouse/coffeeHouse.router');
 const adminRequestRouter = require('../adminApi/adminRequest/adminRequest.router');
 const bonusRequestRouter = require('../adminApi/bonusRequest/bonusRequest.router');
 const adminUserRouter = require('../adminApi/admin/admin.router');
+const userRouter = require('../adminApi/user/user.router');
 
 
 webRouter.use(morgan('web'));
@@ -23,5 +24,6 @@ webRouter.use(passport.authenticate('jwt', { session: false }));
 webRouter.use('/coffeeHouse', housesRouter);
 webRouter.use('/adminRequest', adminRequestRouter);
 webRouter.use('/bonusRequest', bonusRequestRouter);
+webRouter.use('/user', userRouter);
 
 module.exports = webRouter;

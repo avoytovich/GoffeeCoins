@@ -49,6 +49,18 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: MODELS.COFFEEHOUSE
     }],
+    disabled: {
+        blocked: {
+            type: Boolean,
+            default: false,
+            select: false,
+        },
+        removed: {
+            type: Boolean,
+            default: false,
+            select: false,
+        },
+    },
 }, modelOptions);
 
 

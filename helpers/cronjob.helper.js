@@ -6,7 +6,8 @@ const { REQUEST_STATUSES } = require('../constants/index');
 const Promise = require('bluebird');
 
 const bonusCron = new CronJob({
-    cronTime: '0 0 * * * *',
+    //cronTime: '0 0 * * * *',
+    cronTime: '0 * * * * *',
     start: true,
     onTick() {
         BonusRequest.find({

@@ -13,7 +13,7 @@ const bonusCron = new CronJob({
         BonusRequest.find({
             status: REQUEST_STATUSES.CREATED,
             createdAt: {
-                $lt: Date.now() - (60*60*1000)
+                $lt: Date.now() - (/*60**/60*1000)
             }
         }).then(requests => {
             return Promise.map(requests, request => {

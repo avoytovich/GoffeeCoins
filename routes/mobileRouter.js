@@ -15,9 +15,9 @@ const noteRouter = require('../api/notification/notification.router');
 
 mobileRouter.use(morgan('mobile'));
 mobileRouter.use('/user', userRouter);
+mobileRouter.use('/coffeeHouse', housesRouter);
 mobileRouter.use(passport.authenticate('jwt', { session: false }));
 mobileRouter.use(languageMiddleware);
-mobileRouter.use('/coffeeHouse', housesRouter);
 mobileRouter.use('/adminRequest', adminRequestRouter);
 mobileRouter.use('/bonusRequest', bonusesRouter);
 mobileRouter.use('/deviceToken', tokenRouter);

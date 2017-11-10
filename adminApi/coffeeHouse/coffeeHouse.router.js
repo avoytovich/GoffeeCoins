@@ -32,7 +32,11 @@ housesRouter.route('/:_id')
     .all(param('_id').isMongoId())
     .get(responseHandler(housesCtrl.getHouse))
     .put((req, res, next) => {
-        req.checkBody(VALIDATIONS.COFFEEHOUSE);
+        const validations = Object.assign({}, VALIDATIONS.COFFEEHOUSE);
+        for (let i in validations) {
+            validations[i].optional = true;
+        }
+        req.checkBody(validations);
         next();
     }, responseHandler(housesCtrl.updateHouse));
 

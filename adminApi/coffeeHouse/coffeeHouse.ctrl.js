@@ -6,6 +6,7 @@ const User = require('../../models/user.model');
 const logger = require('../../libs/logger');
 const { ADMIN_TYPES } = require('../../constants');
 const { COFFEEHOUSE } = require('../../constants/errors');
+const { GLOBAL_ADMIN } = require('../../constants/default');
 const Promise = require('bluebird');
 const pick = require('lodash/pick');
 const { FORBIDDEN, NOT_FOUND } = require('http-statuses');
@@ -65,7 +66,8 @@ const housesCtrl = {
     updateHouse({ params: { _id }, body, user }) {
         return checkHouse(_id)
             .then(house => {
-                if (house.owner !== user._id) {
+                if (String(house.owner) !== String(user._id) &&
+                    String(user._id) !== String(GLOBAL_ADMIN.id)) {
                     throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 

@@ -7,8 +7,8 @@ module.exports = {
         id: null,
         fb: {           //firebase, not facebook :)
             email: 'coffeecoin@boost.solutions',
-            emailVerified: true,
             password: 'coffee.solutions',
+            emailVerified: true,
             displayName: 'Global Admin',
             disabled: false,
         },
@@ -44,8 +44,8 @@ module.exports = {
         id: null,
         fb: {           //firebase, not facebook :)
             email: 'coffeeowner@boost.solutions',
-            emailVerified: true,
             password: 'coffee.solutions',
+            emailVerified: true,
             displayName: 'Owner Admin',
             disabled: false,
         },

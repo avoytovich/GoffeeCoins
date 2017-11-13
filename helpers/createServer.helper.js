@@ -16,7 +16,10 @@ function createServer(port, router) {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json({limit: '10mb'}));
     app.use(require('../middleware/cors'));
-    app.use(express.static(join(process.cwd(), 'public', 'dist')));
+    app.use( express.static(join(process.cwd(), 'public', 'dist')));
+    app.use('/', function(req, res) {
+        res.sendfile('public/dist/index.html');
+    });
     app.use('/apidoc', express.static('apidoc'));
     app.use(validatorMiddleware);
     app.use('/api/v1', router);

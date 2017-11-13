@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>
+    (function InOut() {
+        var socket = io.connect('http://54.72.192.165:8030', {
+            'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJFZ2p3NjQ2MlFlYWI1eWIydUZIbDN0WFdqeDAyIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MDc2MzQzMDB9.wTmPMFI3GLElgbNqsHHBEvk-paq6yHAo2YoqNUDMeCo'
+        });
+
+        socket.on('connect', function() {
+
+            socket.emit('hello', 'Tanchi');
+
+            setTimeout(function () {
+                socket.emit('inCoffeeHouse', '59c925d3f278d958557746c0');
+            }, 8000);
+
+            setTimeout(function () {
+                socket.destroy();
+                InOut();
+            }, 20000);
+        });
+
+        socket.on('world', function (mes) {
+            console.log('world', mes);
+        });
+
+        socket.on('listOfCurrentVisitors', function (mes) {
+            console.log('listOfCurrentVisitors', mes);
+        });
+
+        socket.on('newUserInCoffeeHouse', function (mes) {
+            console.log('newUserInCoffeeHouse', mes);
+        });
+
+        socket.on('error', function (err) {
+            console.log('error', err.message);
+        });
+    })();
+</script>
+</body>
+</html>

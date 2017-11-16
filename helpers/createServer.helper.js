@@ -1,11 +1,11 @@
 'use strict';
 
 const http = require('http');
+const { join } = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const helmet = require('helmet');
-const { join } = require('path');
 const validatorMiddleware = require('../libs/express-validator');
 
 function createServer(port, router) {

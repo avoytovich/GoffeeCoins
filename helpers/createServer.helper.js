@@ -1,6 +1,7 @@
 'use strict';
 
 const http = require('http');
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -9,6 +10,10 @@ const validatorMiddleware = require('../libs/express-validator');
 
 function createServer(port, router) {
     const app = express();
+
+    app.set('views', path.join(process.cwd(), 'views'));
+// view engine setup
+    app.set('view engine', 'pug');
 
     app.use(helmet());
     app.use(compression());

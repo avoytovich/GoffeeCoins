@@ -27,15 +27,13 @@ userRouter.post('/login', (req, res, next) => {
 
 
 //Temp routes for log iOS activity in production
-userRouter.post('/logger', (req, res, next) => {
-    next();
-}, responseHandler(userCtrl.logger));
+userRouter.post('/logger', responseHandler(userCtrl.logger));
 
 userRouter.get('/logger', (req, res, next) => {
     const defaultData = [{createdAt: new Date(), type: 'N/A', description: 'N/A'}];
     userCtrl.getlogs(req.query).then(result=>{
         let renderData = result.length!==0?result:defaultData;
-        res.render('index.pug', {
+        res.render('index', {
             appLogs: renderData
         });
     });

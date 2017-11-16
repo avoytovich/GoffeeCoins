@@ -27,18 +27,15 @@ userRouter.post('/login', (req, res, next) => {
 
 
 //Temp routes for log iOS activity in production
-userRouter.post('/logger', responseHandler(userCtrl.logger));
-
-userRouter.get('/logger', (req, res, next) => {
-    const defaultData = [{createdAt: new Date(), type: 'N/A', description: 'N/A'}];
-    userCtrl.getlogs(req.query).then(result=>{
-        let renderData = result.length!==0?result:defaultData;
-        res.render('index', {
-            appLogs: renderData
+userRouter.route('/logger')
+    .post(responseHandler(userCtrl.logger))
+    .get((req, res, next) => {
+        const defaultData = [{createdAt: new Date(), type: 'N/A', description: 'N/A'}];
+        userCtrl.getlogs(req.query).then(result => {
+            let appLogs = result.length !== 0 ? result : defaultData;
+            res.render('index', { appLogs });
         });
     });
-
-});
 
 userRouter.use(passport.authenticate('jwt', { session: false }));
 

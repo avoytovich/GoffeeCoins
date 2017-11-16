@@ -16,14 +16,11 @@ const Promise = require('bluebird');
 
 const userApiMethods = {
 
-
     logger({ body }) {
         const data = pick(body, ['type', 'description']);
         let logData = new Log(data);
         return logData.save()
-            .then(result => {
-               return result
-            });
+            .then(result => result);
     },
 
     getlogs(query) {

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= 'Loger Data'
+  div
+    table(border='1')
+      thead
+        tr: th #
+            th Time
+            th Type
+            th Description
+      tbody
+        each log, i in appLogs
+          tr
+            td
+              p #{i+1}
+            td
+              p #{new Date(log.createdAt)}
+            td
+              p #{log.type}
+            td
+              p #{log.description}

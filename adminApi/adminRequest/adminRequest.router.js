@@ -14,5 +14,13 @@ adminRequestRouter.post('/', (req, res, next) => {
     next();
 },responseHandler(Ctrl.create));
 
+adminRequestRouter.get('/getSomething', (req, res, next) => {
+    req.checkBody({
+        userID: Validations.USER._id,
+        coffeeHouseID: Validations.MONGOID,
+    });
+    next();
+},responseHandler(Ctrl.getSomething));
+
 
 module.exports = adminRequestRouter;

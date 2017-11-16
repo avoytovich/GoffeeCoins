@@ -1,6 +1,7 @@
 'use strict';
 
 const User = require('../../models/user.model');
+const Log = require('../../models/log.model');
 const Coin = require('../../models/coin.model');
 const BonusRequest = require('../../models/bonusRequest.model');
 const ERRORS = require('../../constants/errors');
@@ -14,6 +15,24 @@ const Promise = require('bluebird');
 
 
 const userApiMethods = {
+
+
+    logger({ body }) {
+        const data = pick(body, ['type', 'description']);
+        let logData = new Log(data);
+        return logData.save()
+            .then(result => {
+               return result
+            });
+    },
+
+    getlogs(query) {
+        const data = pick(query, ['skip', 'limit']);
+        return Log.find({})
+            .limit(+data.limit || 100)
+            .skip(+data.skip || 0)
+
+    },
 
     signup({ body }) {
         const data = pick(body, ['_id', 'name', 'avatarUrl', 'referalId']);

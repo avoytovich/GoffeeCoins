@@ -22,4 +22,11 @@ module.exports = {
             .then(() => {});
     },
 
+    getSomething({ body: dataId  }) {
+
+        return AdminRequest.find(dataId)
+            .then(request => (request))
+            .then(() => {});
+    },
+
 };

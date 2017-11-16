@@ -12,6 +12,7 @@ module.exports = {
             upsert: true,
             new: true
         }).then(token => {});
-    }
+    },
+
 
 };

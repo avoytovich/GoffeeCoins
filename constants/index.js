@@ -19,6 +19,7 @@ module.exports = {
         ADMIN_REQUEST: 'AdminRequest',
         DEVICE_TOKEN: 'DeviceToken',
         NOTIFICATION: 'Notification',
+
     },
     ADMIN_TYPES: {
         GLOBAL: 'GLOBAL',

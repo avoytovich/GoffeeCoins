@@ -5,9 +5,8 @@ const { param } = require('express-validator/check');
 const housesCtrl = require('./coffeeHouse.ctrl');
 const VALIDATIONS = require('../../constants/validations');
 const responseHandler = require('../../middleware/responseHandler');
-
-const HTTP_STATUSES = require('http-statuses');
-const _ = require('lodash');
+const { CREATED } = require('http-statuses');
+const pick = require('lodash/pick');
 
 
 housesRouter.route('/')
@@ -15,15 +14,31 @@ housesRouter.route('/')
     .post((req, res, next) => {
         req.checkBody(VALIDATIONS.COFFEEHOUSE);
         next();
-    }, responseHandler(housesCtrl.createHouse));
+    }, responseHandler(housesCtrl.createHouse, {
+        status: CREATED.code
+    }));
+
+
+housesRouter.post('/discharge', (req, res, next) => {
+    req.checkBody({
+        coffeeHouseID: VALIDATIONS.MONGOID,
+        userID: VALIDATIONS.USER._id,
+    });
+    next();
+}, responseHandler(housesCtrl.discharge));
 
 
 housesRouter.route('/:_id')
     .all(param('_id').isMongoId())
     .get(responseHandler(housesCtrl.getHouse))
     .put((req, res, next) => {
-        req.checkBody(VALIDATIONS.COFFEEHOUSE);
+        const validations = Object.assign({}, VALIDATIONS.COFFEEHOUSE);
+        for (let i in validations) {
+            validations[i].optional = true;
+        }
+        req.checkBody(validations);
         next();
     }, responseHandler(housesCtrl.updateHouse));
+
 
 module.exports = housesRouter;

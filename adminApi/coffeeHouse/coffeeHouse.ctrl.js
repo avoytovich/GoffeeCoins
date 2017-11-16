@@ -6,6 +6,7 @@ const User = require('../../models/user.model');
 const logger = require('../../libs/logger');
 const { ADMIN_TYPES } = require('../../constants');
 const { COFFEEHOUSE } = require('../../constants/errors');
+const { GLOBAL_ADMIN } = require('../../constants/default');
 const Promise = require('bluebird');
 const pick = require('lodash/pick');
 const { FORBIDDEN, NOT_FOUND } = require('http-statuses');
@@ -23,24 +24,25 @@ const housesCtrl = {
         'location',
         'address',
         'socials',
-        'wifi'
+        'wifi',
+        'owner'
     ],
 
     createHouse({ body, user }) {
-        if (user.type !== ADMIN_TYPES.OWNER) {
-            throw FORBIDDEN.createError();
+        if (user.type === ADMIN_TYPES.OWNER) {
+            body.owner = user._id;
         }
         const data = pick(body, housesCtrl.fields);
-        data.owner = user._id;
         return CoffeeHouse.create(data);
     },
 
-    getHouses({ user }) {
-        const query = {};
-        if (user.type === ADMIN_TYPES.OWNER){
-            query.owner = user._id;
-        }
-        return CoffeeHouse.find(query)
+    getHouses({ user, query }) {
+        const queryData = {
+            internal: false
+        };
+        Object.assign(queryData, query);
+        // if (user.type === ADMIN_TYPES.OWNER) queryData.owner = user._id;
+        return CoffeeHouse.find(queryData)
             .select('name avatarUrl status')
             .lean()
             .then(houses => Promise.map(houses, async house => {
@@ -50,15 +52,6 @@ const housesCtrl = {
                 });
                 return house;
             }));
-    },
-
-    getHousesByOwner({ params: { ownerId } }) {
-        return housesCtrl.getHouses({
-            user: {
-                _id: ownerId,
-                type: ADMIN_TYPES.OWNER
-            }
-        });
     },
 
     getHouse({ params: { _id } }) {
@@ -73,7 +66,8 @@ const housesCtrl = {
     updateHouse({ params: { _id }, body, user }) {
         return checkHouse(_id)
             .then(house => {
-                if (house.owner !== user._id) {
+                if (String(house.owner) !== String(user._id) &&
+                    String(user._id) !== String(GLOBAL_ADMIN.id)) {
                     throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 
@@ -95,7 +89,7 @@ const housesCtrl = {
                 user,
                 params: { coffeeHouseID },
             }));
-    }
+    },
 
 };
 

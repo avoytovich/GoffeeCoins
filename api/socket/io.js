@@ -2,9 +2,10 @@
 
 const socketIO = require('socket.io');
 const socketioJwt = require('socketio-jwt');
-const { secret } = require('./../env/index');
-const logger = require('./../libs/logger');
+const { secret } = require('../../env');
+const logger = require('../../libs/logger');
 const pick = require('lodash/pick');
+// const { io: adminIo } = require('../../adminApi/server');
 
 const {
     getUser,
@@ -12,7 +13,7 @@ const {
     defaultFields,
     getVisitors,
     getRequests,
-} = require('./io.helpers');
+} = require('./io.helpers.js');
 
 module.exports = server => {
 
@@ -29,14 +30,16 @@ module.exports = server => {
 
         const sockets = Object.values(io.sockets.clients().sockets);
 
-        socket.userId = socket.decoded_token._id;
+        Object.assign(socket, { userId: socket.decoded_token._id });
 
         const socketsWithThisId = sockets.filter(sock => {
             return sock.decoded_token._id === socket.userId
         });
 
         if (socketsWithThisId.length > 1) {
-            // socket.disconnect(true);
+            socketsWithThisId.forEach(sock => {
+                if (sock !== socket) sock.disconnect(true);
+            });
         }
 
         if (!socket.user) {
@@ -54,7 +57,7 @@ module.exports = server => {
 
         socket.on('inCoffeeHouse', houseId => {
             // logger.log(houseId);
-            socket.houseId = houseId;
+            Object.assign(socket, { houseId });
             const userId = socket.userId || socket.decoded_token._id;
             const isAdmin = socket.user && socket.user.isAdminInCoffeeHouse(houseId);
 
@@ -64,7 +67,7 @@ module.exports = server => {
 
             if (isAdmin) {
                 socket.join(houseId);
-                socket.adminFor = houseId;
+                Object.assign(socket, { adminFor: houseId });
                 const visitorsSockets = sockets.filter(sock => {
                     return (sock.adminFor === undefined) &&
                         (String(sock.houseId) === String(houseId));
@@ -97,17 +100,13 @@ module.exports = server => {
             logger.log('disconnect', socket.userId);
             if (socket.currentVisit) {
                 socket.currentVisit.getOut();
-                socket.currentVisit = null;
+                Object.assign(socket, { currentVisit: null });
             }
             if (!socket.adminFor) {
                 io.to(socket.houseId).emit('userLeaveCoffeeHouse', socket.userId);
             } else {
                 socket.leave(socket.houseId);
             }
-        });
-
-        socket.on('disconnecting', () => {
-            logger.log('disconnecting', socket.userId);
         });
 
     });

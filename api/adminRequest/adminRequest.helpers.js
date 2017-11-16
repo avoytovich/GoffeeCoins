@@ -47,7 +47,8 @@ const adminRequestHelpers = {
     },
 
     declineRequest(request) {
-        return request.update({ status: REQUEST_STATUSES.DECLINED })
+        return request.update({ status: REQUEST_STATUSES.DECLINED });
+        // return request.remove();
     },
 
 };

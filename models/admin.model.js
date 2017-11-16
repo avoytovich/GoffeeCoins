@@ -29,11 +29,25 @@ const AdminSchema = new mongoose.Schema({
     }],
     avatarUrl: {
         type: String,
-        // required: true,
     },
     type: {
         type: String,
         default: ADMIN_TYPES.OWNER,
+    },
+    disabled: {
+        blocked: {
+            type: Boolean,
+            default: false,
+        },
+        removed: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    internal: {
+        type: Boolean,
+        default: false,
+        select: false,
     },
 }, modelOptions);
 
@@ -62,6 +76,7 @@ AdminSchema.methods.generateJWT = function() {
     return jwt.sign({
         _id: this._id,
         type: MODELS.ADMIN,
+        role: this.type,
     }, config.secret);
 };
 

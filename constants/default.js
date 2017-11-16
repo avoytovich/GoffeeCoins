@@ -46,13 +46,14 @@ module.exports = {
             email: 'coffeeowner@boost.solutions',
             emailVerified: true,
             password: 'coffee.solutions',
-            displayName: 'Global Admin',
+            displayName: 'Owner Admin',
             disabled: false,
         },
         mongo: {
             email: 'coffeeowner@boost.solutions',
             name: 'Global Admin',
             coffeeHouseID: '585e5f70ec82991168ae7a03',
+            internal: true,
         },
     },
 };

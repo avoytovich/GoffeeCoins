@@ -61,3 +61,43 @@ const defaultData = [ {
         welcomeMessage: "Welcome from \"Totem\""
     }
 } ];
+
+
+//Varosh
+{
+    "_id" : ObjectId("59df7ec6c0f9fd0acb03d7ec"),
+    "name" : "Ресторан \"Varosh\"",
+    "avatarUrl" : "https://firebasestorage.googleapis.com/v0/b/remotediscount-4e237.appspot.com/o/coffeeShops%2FVarosh%2F1.jpg?alt=media&token=98b6d6b1-f4f6-4ffa-a3fe-58301630a044",
+    "description" : "\"Varosh\" - це затишний ресторан у центрі міста, заклад, який об’єднує і дарує незабутні відчуття! Плануєш сімейний відпочинок, ділову вечерю, весілля чи просто зустрітись із друзями? В першій половині дня радимо завітати на запашну каву та особливі десерти. Ввечері на тебе чекає вишукане європейське меню, страви з хоспер-печі та нотки закарпатської кухні. А після смачної вечері ти можеш насолодитись живим виступом наших музикантів!",
+    "location" : [
+        22.296259,
+        48.619151
+    ],
+    "address" : "пл. Шандора Петефі, 26, Ужгород",
+    "admins" : [
+        "MVJkceWPxoRpj0ZIgJBmiia405U2",
+        "xS7a2sK3n2Vi6KnSn2ZBDhUIevP2",
+        "XIaPDjlHSLQgeFy2PJUbK6OGlCu1"
+    ],
+    "createdAt" : ISODate("2017-10-12T16:40:06.512+02:00"),
+    "updatedAt" : ISODate("2017-10-12T16:40:06.746+02:00"),
+    "wifi" : {
+        "bssid" : "c6:9f:db:f1:51:53",
+        "ssid" : "Varosh",
+        "wifiPassword" : "varosh33",
+        "welcomeMessage" : "Вітаємо в Ресторані \"Varosh\""
+    },
+    "status" : "ONLINE",
+    "socials" : {
+        "facebook" : "https://www.facebook.com/VaroshRestaurant/?fref=ts",
+        "instagram" : "https://www.instagram.com/varosh_restaurant/"
+    },
+    "coins" : 10,
+    "bannerUrls" : [
+        "https://firebasestorage.googleapis.com/v0/b/remotediscount-4e237.appspot.com/o/coffeeShops%2FVarosh%2F1.jpg?alt=media&token=98b6d6b1-f4f6-4ffa-a3fe-58301630a044",
+        "https://firebasestorage.googleapis.com/v0/b/remotediscount-4e237.appspot.com/o/coffeeShops%2FVarosh%2F2.jpg?alt=media&token=91715896-c40f-44f0-9bf3-9056a6613d81",
+        "https://firebasestorage.googleapis.com/v0/b/remotediscount-4e237.appspot.com/o/coffeeShops%2FVarosh%2F3.jpg?alt=media&token=c9c114af-b98e-47a9-bc56-14817aafaadc",
+        "https://firebasestorage.googleapis.com/v0/b/remotediscount-4e237.appspot.com/o/coffeeShops%2FVarosh%2F4.jpg?alt=media&token=e8903934-706d-43be-abe1-48558b6df1cb",
+        "https://firebasestorage.googleapis.com/v0/b/remotediscount-4e237.appspot.com/o/coffeeShops%2FVarosh%2F5.jpg?alt=media&token=15b54c44-ca19-4d0d-8bb6-8207f1ec5c14"
+    ]
+}

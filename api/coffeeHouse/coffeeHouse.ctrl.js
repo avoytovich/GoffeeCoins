@@ -12,30 +12,31 @@ const logger = require('../../libs/logger');
 
 const housesApiMethods = {
 
-    getHousesList({ query: { lng, lat }, user: { _id } }) {
+    getHousesList({ query: { lng, lat }, user }) {
         return CoffeeHouse.getHousesByLocation({ lng, lat })
             .then(houses => {
-                return Promise.map(houses, house => {
-                    return getHouseWithLastVisit(_id, house);
-                });
+                if (user) {
+                    return Promise.map(houses, house => {
+                        return getHouseWithLastVisit(user._id, house);
+                    });
+                }
+                return houses;
             });
     },
 
-    getHouse({ params: { coffeeHouseID }, user: { _id: userID } }) {
+    getHouse({ params: { coffeeHouseID }, user }) {
         return CoffeeHouse.findById(coffeeHouseID)
             .select('-wifi -admins -owner')
             .lean()
-            .then(house => {
-                if (!house) {
-                    throw NOT_FOUND.createError();
+            .then(async house => {
+                if (!house) throw NOT_FOUND.createError();
+                if (user) {
+                    house = await getHouseWithLastVisit(user._id, house);
+                    house.allCoinsCount = await Coin.count({
+                        coffeeHouseID,
+                        userID: user._id
+                    });
                 }
-                return Promise.join(
-                    getHouseWithLastVisit(userID, house),
-                    Coin.count({ coffeeHouseID, userID })
-                );
-            })
-            .then(([house, allCoinsCount]) => {
-                house.allCoinsCount = allCoinsCount;
                 return house;
             });
     },

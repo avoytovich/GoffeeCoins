@@ -3,7 +3,7 @@
 const AdminRequest = require('../../models/adminRequest.model');
 const { createAdminRequestNote } = require('../../helpers/notification');
 const { FORBIDDEN } = require('http-statuses');
-const { COFFEEHOUSE } = require('../../constants/errors');
+const { COFFEEHOUSE, REQUESTS } = require('../../constants/errors');
 
 
 module.exports = {
@@ -15,9 +15,18 @@ module.exports = {
         const data = {
             userID,
             coffeeHouseID,
-            adminID: user._id,
         };
-        return AdminRequest.create(data)
+        return AdminRequest.findOne(data)
+            .then(request => {
+                if (request) {
+                    throw FORBIDDEN.createError(
+                        REQUESTS.HAS_BEEN_PROCESSED(request.status)
+                    );
+                }
+                return AdminRequest.create(
+                    Object.assign({ adminID: user._id }, data)
+                );
+            })
             .then(request => createAdminRequestNote(request))
             .then(() => {});
     },

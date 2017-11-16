@@ -5,7 +5,7 @@ const pick = require('lodash/pick');
 const userRouter = require('express').Router();
 const userCtrl = require('./user.ctrl');
 const VALIDATIONS = require('../../constants/validations');
-const passport = require('../../middleware/passport-jwt');
+const passport = require('../../libs/passport');
 const responseHandler = require('../../middleware/responseHandler');
 
 
@@ -61,7 +61,7 @@ userRouter.get('/invited', responseHandler(userCtrl.invited));
 
 
 userRouter.post('/invited/:_id', (req, res, next) => {
-    req.checkParams(pick(VALIDATIONS.USER, ['_id']));
+    req.checkParams({ _id: VALIDATIONS.USER._id });
     next();
 }, responseHandler(userCtrl.getBonusForInvited));
 

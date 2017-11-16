@@ -4,8 +4,11 @@ const adminRouter = require('express').Router();
 const adminCtrl = require('./admin.ctrl');
 const pick = require('lodash/pick');
 const VALIDATIONS = require('../../constants/validations');
-const passport = require('../../middleware/passport-jwt');
+const passport = require('../../libs/passport');
 const responseHandler = require('../../middleware/responseHandler');
+const accessLevel = require('../../middleware/accessLevel');
+const { CREATED } = require('http-statuses');
+const { ADMIN_TYPES } = require('../../constants');
 
 
 adminRouter.post('/login', (req, res, next) => {
@@ -16,7 +19,41 @@ adminRouter.post('/login', (req, res, next) => {
 
 adminRouter.use(passport.authenticate('jwt', { session: false }));
 
+
 adminRouter.get('/', responseHandler(adminCtrl.me));
+
+
+adminRouter.route('/owner')
+    .all(accessLevel(ADMIN_TYPES.GLOBAL))
+    .get(responseHandler(adminCtrl.owners))
+    .post((req, res, next) => {
+        req.sanitizeBody('name').trim();
+        req.sanitizeBody('email').normalizeEmail();
+        req.checkBody(
+            pick(VALIDATIONS.USER, ['_id', 'email', 'name', 'avatarUrl'])
+        );
+        next();
+    }, responseHandler(adminCtrl.createOwner, {
+        status: CREATED.code
+    }));
+
+
+adminRouter.put('/block/:_id', (req, res, next) => {
+    req.checkParams({ _id: VALIDATIONS.USER._id });
+    next();
+}, responseHandler(adminCtrl.block));
+
+
+adminRouter.delete('/:_id', (req, res, next) => {
+    req.checkParams({ _id: VALIDATIONS.USER._id });
+    next();
+}, responseHandler(adminCtrl.remove));
+
+
+/*adminRouter.post('/logout', (req, res, next) => {
+    req.logout();
+    next();
+}, responseHandler(() => {}));*/
 
 
 module.exports = adminRouter;

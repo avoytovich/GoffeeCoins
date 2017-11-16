@@ -1,8 +1,8 @@
 'use strict';
 
-const User = require('./../models/user.model');
-const Visitor = require('./../models/visitor.model');
-const BonusRequest = require('./../models/bonusRequest.model');
+const User = require('../../models/user.model');
+const Visitor = require('../../models/visitor.model');
+const BonusRequest = require('../../models/bonusRequest.model');
 const Promise = require('bluebird');
 
 const socketHelpers = {

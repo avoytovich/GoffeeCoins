@@ -11,9 +11,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js.map"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
-    var socket = io.connect('http://54.72.192.165:8030', {
-        'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJITlRaVENiY08yY0pNZmNrYUptTGpuZzFtYzEzIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MDc2NDYwNDd9.FRmF33iWrdMLIiGJoB-ivWoKXR3CySZn0q2_7mgdX6U'
+    /*var socket = io.connect('http://54.72.192.165:8030', {
+        'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJuVDFsZXVocWFqWks0d0ZKQVlKUk5TVHFwZWoyIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MDg0MDA2OTN9.fBiwHJcByplHU5KlfQRxU-0As37KoKv5xMRCcG7uqcM'
     });
+
+    var visitors;
 
     socket.on('connect', function() {
 
@@ -30,19 +32,44 @@
 
     socket.on('listOfCurrentVisitors', function (mes) {
         console.log('listOfCurrentVisitors', mes);
+        visitors = mes;
+        console.log(visitors);
     });
 
     socket.on('newUserInCoffeeHouse', function (mes) {
         console.log('newUserInCoffeeHouse', mes);
+        visitors.push(mes);
+        console.log(visitors);
     });
 
     socket.on('userLeaveCoffeeHouse', function (mes) {
         console.log('userLeaveCoffeeHouse', mes);
+        visitors = visitors.filter(function (item) {
+            return String(item._id) !== String(mes);
+        });
+        console.log(visitors);
     });
 
     socket.on('error', function (err) {
         console.log('error', err.message);
-    });
+    });*/
+
+    $.ajax({
+        method: 'POST',
+        url: 'http://localhost:8031/api/v1/admin/login',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify({
+            _id: '81Q5qFP73cNET3C6tfP9T4qLyQx1'
+        }),
+        success: function (res) {
+            console.log(res);
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    })
 </script>
 </body>
 </html>

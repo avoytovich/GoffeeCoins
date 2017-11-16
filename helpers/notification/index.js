@@ -1,6 +1,6 @@
 'use strict';
 
-const { NOTIFICATIONS: { KEYS } } = require('../../constants/index');
+const { NOTIFICATIONS: { KEYS } } = require('../../constants');
 const { createNote } = require('./notificationEngine');
 
 const publicMethods = {

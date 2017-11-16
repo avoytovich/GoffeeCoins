@@ -18,11 +18,10 @@ const options = {
             return Array.isArray(val) && val.every(item => isURL(item));
         },
         isLocation: val => {
-            console.log('tut');
             return Array.isArray(val) &&
                 val.length === 2 &&
                 val.every(item => typeof item === 'number');
-        }
+        },
     },
 };
 

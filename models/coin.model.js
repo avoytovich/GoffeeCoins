@@ -32,14 +32,8 @@ const CoinSchema = new mongoose.Schema({
         type: String,
         ref: MODELS.USER
     }
-}, Object.assign({}, modelOptions, {timestamps: false} ));
+}, Object.assign({}, modelOptions, {timestamps: false}));
 
-CoinSchema.statics.getCountForUserInHouse = function (userID, coffeeHouseID) {
-    return this.count({
-        userID,
-        coffeeHouseID
-    });
-};
 
 CoinSchema.statics.getUnusedCoinCount = function (userID) {
     return this.count({

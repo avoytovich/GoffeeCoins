@@ -34,8 +34,8 @@ userRouter.post('/logger', (req, res, next) => {
 userRouter.get('/logger', (req, res, next) => {
     const defaultData = [{createdAt: new Date(), type: 'N/A', description: 'N/A'}];
     userCtrl.getlogs(req.query).then(result=>{
-        let renderData = result.length!=0?result:defaultData;
-        res.render('index', {
+        let renderData = result.length!==0?result:defaultData;
+        res.render('index.pug', {
             appLogs: renderData
         });
     });

@@ -2,7 +2,7 @@
   "apps" : [{
 
     "name"        : "CoffeeCoin",
-    "script"      : "bin/www",
+    "script"      : "server.js",
 
     "env": {
       "NODE_ENV": "development"

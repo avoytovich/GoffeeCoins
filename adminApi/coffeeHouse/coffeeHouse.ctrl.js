@@ -41,7 +41,7 @@ const housesCtrl = {
             internal: false
         };
         Object.assign(queryData, query);
-        // if (user.type === ADMIN_TYPES.OWNER) queryData.owner = user._id;
+        if (user.type === ADMIN_TYPES.OWNER) queryData.owner = user._id;
         return CoffeeHouse.find(queryData)
             .select('name avatarUrl status')
             .lean()

@@ -88,7 +88,14 @@ const AnalyticsApi = {
                 $lte: end,
             },
         };
-        if (_id) {}
+        if (String(user._id) !== String(GLOBAL_ADMIN.id)) {
+            query.coffeeHouseID = {
+                $in: user.coffeeHouseID
+            };
+        }
+        if (_id) {
+            query.coffeeHouseID = _id;
+        }
 
         return Promise.join(
             BonusRequest.count(Object.assign({ type: BONUS_TYPES.COIN }, query)),

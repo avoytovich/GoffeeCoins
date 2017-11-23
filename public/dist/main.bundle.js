@@ -263,49 +263,50 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng2_img_cropper__ = __webpack_require__("../../../../ng2-img-cropper/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_material_progress_spinner__ = __webpack_require__("../../../material/esm5/progress-spinner.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ng_bootstrap_ng_bootstrap_modal_modal_stack__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/modal/modal-stack.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ngx_order_pipe__ = __webpack_require__("../../../../ngx-order-pipe/dist/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ngx_order_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_ngx_order_pipe__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ng2_filter_pipe__ = __webpack_require__("../../../../ng2-filter-pipe/dist/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ng2_filter_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_ng2_filter_pipe__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__core_services_global_data_service__ = __webpack_require__("../../../../../src/app/core/services/global-data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__core_services_logout_service__ = __webpack_require__("../../../../../src/app/core/services/logout.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_app_core_guards_guard_routing_guard__ = __webpack_require__("../../../../../src/app/core/guards/guard-routing.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_app_core_services_get_user_firebase_service__ = __webpack_require__("../../../../../src/app/core/services/get-user-firebase.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_app_core_services_trigger_dashboard_service__ = __webpack_require__("../../../../../src/app/core/services/trigger-dashboard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_pages_component__ = __webpack_require__("../../../../../src/app/pages/pages.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__core_components_house_item_house_item_component__ = __webpack_require__("../../../../../src/app/core/components/house-item/house-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_houses_houses_component__ = __webpack_require__("../../../../../src/app/pages/houses/houses.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__core_components_item_edit_btns_item_edit_btns_component__ = __webpack_require__("../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__core_components_item_checkbox_item_checkbox_component__ = __webpack_require__("../../../../../src/app/core/components/item-checkbox/item-checkbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__core_modals_edit_popup_edit_popup_component__ = __webpack_require__("../../../../../src/app/core/modals/edit-popup/edit-popup.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__core_modals_eddit_photo_eddit_photo_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-secondary-photos/eddit-secondary-photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__core_components_left_bar_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/left-bar/left-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__core_components_user_left_bar_user_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/user-left-bar/user-left-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__core_components_header_header_component__ = __webpack_require__("../../../../../src/app/core/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_house_edit_house_edit_component__ = __webpack_require__("../../../../../src/app/pages/house-edit/house-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__core_components_google_chart_google_chart_component__ = __webpack_require__("../../../../../src/app/core/components/google-chart/google-chart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__core_dialogs_added_coffee_house_added_coffee_house_component__ = __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42_app_pages_analytics_analytics_component__ = __webpack_require__("../../../../../src/app/pages/analytics/analytics.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43_app_pages_analytics_detail_analytics_detail_component__ = __webpack_require__("../../../../../src/app/pages/analytics-detail/analytics-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44_app_pages_payment_payment_component__ = __webpack_require__("../../../../../src/app/pages/payment/payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_app_pages_contact_contact_component__ = __webpack_require__("../../../../../src/app/pages/contact/contact.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_app_pages_login_login_component__ = __webpack_require__("../../../../../src/app/pages/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47_app_pages_super_admin_owners_super_admin_owners_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-owners/super-admin-owners.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48_app_pages_super_admin_houses_super_admin_houses_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49_app_pages_super_admin_users_super_admin_users_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_payplan_super_admin_payplan_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-payplan/super-admin-payplan.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_app_pages_super_house_super_house_component__ = __webpack_require__("../../../../../src/app/pages/super-house/super-house.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pages_all_owners_all_owners_component__ = __webpack_require__("../../../../../src/app/pages/all-owners/all-owners.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pages_owner_owner_component__ = __webpack_require__("../../../../../src/app/pages/owner/owner.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__core_pipes_status_caffee_pipe__ = __webpack_require__("../../../../../src/app/core/pipes/status-caffee.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_material_button_toggle__ = __webpack_require__("../../../material/esm5/button-toggle.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_material_progress_spinner__ = __webpack_require__("../../../material/esm5/progress-spinner.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ng_bootstrap_ng_bootstrap_modal_modal_stack__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/modal/modal-stack.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ngx_order_pipe__ = __webpack_require__("../../../../ngx-order-pipe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ngx_order_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_ngx_order_pipe__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ng2_filter_pipe__ = __webpack_require__("../../../../ng2-filter-pipe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ng2_filter_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_ng2_filter_pipe__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__core_services_global_data_service__ = __webpack_require__("../../../../../src/app/core/services/global-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__core_services_logout_service__ = __webpack_require__("../../../../../src/app/core/services/logout.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_app_core_guards_guard_routing_guard__ = __webpack_require__("../../../../../src/app/core/guards/guard-routing.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_app_core_services_get_user_firebase_service__ = __webpack_require__("../../../../../src/app/core/services/get-user-firebase.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_app_core_services_trigger_dashboard_service__ = __webpack_require__("../../../../../src/app/core/services/trigger-dashboard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_pages_component__ = __webpack_require__("../../../../../src/app/pages/pages.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__core_components_house_item_house_item_component__ = __webpack_require__("../../../../../src/app/core/components/house-item/house-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_houses_houses_component__ = __webpack_require__("../../../../../src/app/pages/houses/houses.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__core_components_item_edit_btns_item_edit_btns_component__ = __webpack_require__("../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__core_components_item_checkbox_item_checkbox_component__ = __webpack_require__("../../../../../src/app/core/components/item-checkbox/item-checkbox.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__core_modals_edit_popup_edit_popup_component__ = __webpack_require__("../../../../../src/app/core/modals/edit-popup/edit-popup.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__core_modals_eddit_photo_eddit_photo_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-secondary-photos/eddit-secondary-photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__core_components_left_bar_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/left-bar/left-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__core_components_user_left_bar_user_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/user-left-bar/user-left-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__core_components_header_header_component__ = __webpack_require__("../../../../../src/app/core/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_house_edit_house_edit_component__ = __webpack_require__("../../../../../src/app/pages/house-edit/house-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__core_components_google_chart_google_chart_component__ = __webpack_require__("../../../../../src/app/core/components/google-chart/google-chart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__core_dialogs_added_coffee_house_added_coffee_house_component__ = __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43_app_pages_analytics_analytics_component__ = __webpack_require__("../../../../../src/app/pages/analytics/analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44_app_pages_analytics_detail_analytics_detail_component__ = __webpack_require__("../../../../../src/app/pages/analytics-detail/analytics-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_app_pages_payment_payment_component__ = __webpack_require__("../../../../../src/app/pages/payment/payment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_app_pages_contact_contact_component__ = __webpack_require__("../../../../../src/app/pages/contact/contact.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47_app_pages_login_login_component__ = __webpack_require__("../../../../../src/app/pages/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48_app_pages_super_admin_owners_super_admin_owners_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-owners/super-admin-owners.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49_app_pages_super_admin_houses_super_admin_houses_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_users_super_admin_users_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_payplan_super_admin_payplan_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-payplan/super-admin-payplan.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_app_pages_super_house_super_house_component__ = __webpack_require__("../../../../../src/app/pages/super-house/super-house.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pages_all_owners_all_owners_component__ = __webpack_require__("../../../../../src/app/pages/all-owners/all-owners.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pages_owner_owner_component__ = __webpack_require__("../../../../../src/app/pages/owner/owner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__core_pipes_status_caffee_pipe__ = __webpack_require__("../../../../../src/app/core/pipes/status-caffee.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -324,6 +325,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // Module imports
+
 
 
 
@@ -380,34 +382,34 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_26__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__pages_pages_component__["a" /* PagesComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__core_components_house_item_house_item_component__["a" /* HouseItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__pages_houses_houses_component__["a" /* HouseListComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__core_components_item_edit_btns_item_edit_btns_component__["a" /* ItemEditBtnsComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__core_components_item_checkbox_item_checkbox_component__["a" /* ItemCheckboxComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__core_modals_edit_popup_edit_popup_component__["a" /* EditPopupComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__core_modals_eddit_photo_eddit_photo_component__["a" /* EdditPhotoComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__["a" /* EdditSecondaryPhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__core_components_left_bar_left_bar_component__["a" /* LeftBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__core_components_user_left_bar_user_left_bar_component__["a" /* UserLeftBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__core_components_header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__pages_house_edit_house_edit_component__["a" /* HouseEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__core_components_google_chart_google_chart_component__["a" /* GoogleChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_42_app_pages_analytics_analytics_component__["a" /* AnalyticsComponent */],
-            __WEBPACK_IMPORTED_MODULE_43_app_pages_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_44_app_pages_payment_payment_component__["a" /* PaymentComponent */],
-            __WEBPACK_IMPORTED_MODULE_45_app_pages_contact_contact_component__["a" /* ContactComponent */],
-            __WEBPACK_IMPORTED_MODULE_46_app_pages_login_login_component__["a" /* LoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_47_app_pages_super_admin_owners_super_admin_owners_component__["a" /* SuperAdminOwnersComponent */],
-            __WEBPACK_IMPORTED_MODULE_48_app_pages_super_admin_houses_super_admin_houses_component__["a" /* SuperAdminHousesComponent */],
-            __WEBPACK_IMPORTED_MODULE_49_app_pages_super_admin_users_super_admin_users_component__["a" /* SuperAdminUsersComponent */],
-            __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_payplan_super_admin_payplan_component__["a" /* SuperAdminPayplanComponent */],
-            __WEBPACK_IMPORTED_MODULE_51_app_pages_super_house_super_house_component__["a" /* SuperHouseComponent */],
-            __WEBPACK_IMPORTED_MODULE_41__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */],
-            __WEBPACK_IMPORTED_MODULE_52__pages_all_owners_all_owners_component__["a" /* AllOwnersComponent */],
-            __WEBPACK_IMPORTED_MODULE_53__pages_owner_owner_component__["a" /* OwnerComponent */],
-            __WEBPACK_IMPORTED_MODULE_54__core_pipes_status_caffee_pipe__["a" /* StatusCaffeePipe */],
+            __WEBPACK_IMPORTED_MODULE_27__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__pages_pages_component__["a" /* PagesComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__core_components_house_item_house_item_component__["a" /* HouseItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__pages_houses_houses_component__["a" /* HouseListComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__core_components_item_edit_btns_item_edit_btns_component__["a" /* ItemEditBtnsComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__core_components_item_checkbox_item_checkbox_component__["a" /* ItemCheckboxComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__core_modals_edit_popup_edit_popup_component__["a" /* EditPopupComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__core_modals_eddit_photo_eddit_photo_component__["a" /* EdditPhotoComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__["a" /* EdditSecondaryPhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_37__core_components_left_bar_left_bar_component__["a" /* LeftBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__core_components_user_left_bar_user_left_bar_component__["a" /* UserLeftBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__core_components_header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__pages_house_edit_house_edit_component__["a" /* HouseEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__core_components_google_chart_google_chart_component__["a" /* GoogleChartComponent */],
+            __WEBPACK_IMPORTED_MODULE_43_app_pages_analytics_analytics_component__["a" /* AnalyticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_44_app_pages_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_45_app_pages_payment_payment_component__["a" /* PaymentComponent */],
+            __WEBPACK_IMPORTED_MODULE_46_app_pages_contact_contact_component__["a" /* ContactComponent */],
+            __WEBPACK_IMPORTED_MODULE_47_app_pages_login_login_component__["a" /* LoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_48_app_pages_super_admin_owners_super_admin_owners_component__["a" /* SuperAdminOwnersComponent */],
+            __WEBPACK_IMPORTED_MODULE_49_app_pages_super_admin_houses_super_admin_houses_component__["a" /* SuperAdminHousesComponent */],
+            __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_users_super_admin_users_component__["a" /* SuperAdminUsersComponent */],
+            __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_payplan_super_admin_payplan_component__["a" /* SuperAdminPayplanComponent */],
+            __WEBPACK_IMPORTED_MODULE_52_app_pages_super_house_super_house_component__["a" /* SuperHouseComponent */],
+            __WEBPACK_IMPORTED_MODULE_42__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */],
+            __WEBPACK_IMPORTED_MODULE_53__pages_all_owners_all_owners_component__["a" /* AllOwnersComponent */],
+            __WEBPACK_IMPORTED_MODULE_54__pages_owner_owner_component__["a" /* OwnerComponent */],
+            __WEBPACK_IMPORTED_MODULE_55__core_pipes_status_caffee_pipe__["a" /* StatusCaffeePipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -415,7 +417,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["c" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClientModule */],
-            __WEBPACK_IMPORTED_MODULE_6_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_27__environments_environment__["a" /* environment */].firebase),
+            __WEBPACK_IMPORTED_MODULE_6_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_28__environments_environment__["a" /* environment */].firebase),
             __WEBPACK_IMPORTED_MODULE_7_angularfire2_firestore__["a" /* AngularFirestoreModule */],
             __WEBPACK_IMPORTED_MODULE_8_angularfire2_auth__["b" /* AngularFireAuthModule */],
             __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__["a" /* AngularFireDatabaseModule */],
@@ -426,29 +428,30 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_13__angular_material__["b" /* MatDialogModule */],
             __WEBPACK_IMPORTED_MODULE_13__angular_material__["c" /* MatInputModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["h" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_16_ngx_toastr__["a" /* ToastrModule */].forRoot(__WEBPACK_IMPORTED_MODULE_27__environments_environment__["a" /* environment */].toastr),
-            __WEBPACK_IMPORTED_MODULE_17_ngx_order_pipe__["OrderModule"],
-            __WEBPACK_IMPORTED_MODULE_18_ng2_filter_pipe__["Ng2FilterPipeModule"],
-            __WEBPACK_IMPORTED_MODULE_14__angular_material_progress_spinner__["a" /* MatProgressSpinnerModule */]
+            __WEBPACK_IMPORTED_MODULE_17_ngx_toastr__["a" /* ToastrModule */].forRoot(__WEBPACK_IMPORTED_MODULE_28__environments_environment__["a" /* environment */].toastr),
+            __WEBPACK_IMPORTED_MODULE_18_ngx_order_pipe__["OrderModule"],
+            __WEBPACK_IMPORTED_MODULE_19_ng2_filter_pipe__["Ng2FilterPipeModule"],
+            __WEBPACK_IMPORTED_MODULE_15__angular_material_progress_spinner__["a" /* MatProgressSpinnerModule */],
+            __WEBPACK_IMPORTED_MODULE_14__angular_material_button_toggle__["a" /* MatButtonToggleModule */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_19__core_configs_service__["a" /* ConfigsService */],
-            __WEBPACK_IMPORTED_MODULE_20__core_services_global_data_service__["a" /* GlobalDataService */],
-            __WEBPACK_IMPORTED_MODULE_21__core_services_logout_service__["a" /* LogoutService */],
-            __WEBPACK_IMPORTED_MODULE_22_app_core_guards_guard_routing_guard__["a" /* GuardRoutingGuard */],
+            __WEBPACK_IMPORTED_MODULE_20__core_configs_service__["a" /* ConfigsService */],
+            __WEBPACK_IMPORTED_MODULE_21__core_services_global_data_service__["a" /* GlobalDataService */],
+            __WEBPACK_IMPORTED_MODULE_22__core_services_logout_service__["a" /* LogoutService */],
+            __WEBPACK_IMPORTED_MODULE_23_app_core_guards_guard_routing_guard__["a" /* GuardRoutingGuard */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["h" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_23_app_core_services_http_service__["a" /* HttpService */],
-            __WEBPACK_IMPORTED_MODULE_24_app_core_services_get_user_firebase_service__["a" /* GetUserFirebaseService */],
+            __WEBPACK_IMPORTED_MODULE_24_app_core_services_http_service__["a" /* HttpService */],
+            __WEBPACK_IMPORTED_MODULE_25_app_core_services_get_user_firebase_service__["a" /* GetUserFirebaseService */],
             __WEBPACK_IMPORTED_MODULE_12__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
             __WEBPACK_IMPORTED_MODULE_12__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
-            __WEBPACK_IMPORTED_MODULE_25_app_core_services_trigger_dashboard_service__["a" /* TriggerDashboardService */],
-            __WEBPACK_IMPORTED_MODULE_15__ng_bootstrap_ng_bootstrap_modal_modal_stack__["a" /* NgbModalStack */]
+            __WEBPACK_IMPORTED_MODULE_26_app_core_services_trigger_dashboard_service__["a" /* TriggerDashboardService */],
+            __WEBPACK_IMPORTED_MODULE_16__ng_bootstrap_ng_bootstrap_modal_modal_stack__["a" /* NgbModalStack */]
         ],
         bootstrap: [
-            __WEBPACK_IMPORTED_MODULE_26__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__app_component__["a" /* AppComponent */],
         ],
         entryComponents: [
-            __WEBPACK_IMPORTED_MODULE_41__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */]
+            __WEBPACK_IMPORTED_MODULE_42__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */]
         ]
     })
 ], AppModule);
@@ -460,7 +463,7 @@ AppModule = __decorate([
 /***/ "../../../../../src/app/core/components/google-chart/google-chart.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"preloader media justify-content-center align-items-center\">\n\t<mat-progress-spinner\n\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t[color]=\"'primary'\"\n\t\t[mode]=\"'indeterminate'\"\n\t\t[value]=\"'30'\">\n\t</mat-progress-spinner>\n</div>\n"
+module.exports = "<div class=\"preloader media justify-content-center align-items-center\">\n\t\t<mat-progress-spinner\n\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t[value]=\"'30'\">\n\t\t</mat-progress-spinner>\n</div>"
 
 /***/ }),
 
@@ -505,6 +508,24 @@ var GoogleChartComponent = (function () {
     }
     GoogleChartComponent.prototype.ngOnInit = function () {
         var _this = this;
+        setTimeout(function () {
+            google.charts.load('current', { 'packages': ['corechart'] });
+            setTimeout(function () {
+                console.log(_this.chartOptions, _this.chartType, _this.chartData, _this._element);
+                _this.drawGraph(_this.chartOptions, _this.chartType, _this.chartData, _this._element);
+            }, 1000);
+        }, 1000);
+    };
+    GoogleChartComponent.prototype.ngOnChanges = function () {
+        var _this = this;
+        if (this.chartData.length < 2) {
+            this.chartData = this.chartData.concat([['', 0, 0, 0],
+                ['', 0, 0, 0],
+                ['', 0, 0, 0],
+                ['', 0, 0, 0],
+                ['', 0, 0, 0]]);
+        }
+        console.log('change data chart', this.chartData);
         setTimeout(function () {
             google.charts.load('current', { 'packages': ['corechart'] });
             setTimeout(function () {
@@ -626,7 +647,7 @@ var _a;
 /***/ "../../../../../src/app/core/components/house-item/house-item.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"house-wrap\">\n\t<div class=\"house-container\" *ngFor=\"let item of inputData; let i = index\">\n\t\t<div class=\"house-header clear-fix\">\n\t\t\t<div class=\"house-header__label\">\n\t\t\t\t{{item.name || ''}}\n\t\t\t</div>\n\t\t\t<app-item-edit-btns *ngIf=\"!analytics\" [item]=\"item\"></app-item-edit-btns>\n\t\t\t<app-item-checkbox [index]=\"i\" [element]=\"item\" [idCards]=\"idCards\" *ngIf=\"analytics\"></app-item-checkbox>\n\t\t</div>\n\n\t\t<div class=\"house-item__content\" [id]=\"'check-' + i\">\n\t\t\t<img src=\"./assets/img/coffee-house.jpg\" alt=\"\">\n\t\t</div>\n\n\t\t<div class=\"house-item__footer media justify-content-between align-items-center\">\n\t\t\t<div class=\"house-item__footer-marker\"\n\t\t\t\t [ngClass]=\"{'online': item.status === 'ONLINE', 'offline': item.status === 'OFFLINE', 'debtor': item.status === 'DEBTOR'}\">\n\t\t\t\t{{item.status | statusCaffee}}\n\t\t\t</div>\n\t\t\t<button class=\"house-item__footer-info bg-transparent border-0 media justify-content-between\"\n\t\t\t\t\tmat-raised-button>\n\t\t\t\t{{item.number || 0}}\n\t\t\t\t<img src=\"./assets/img/icon/person.svg\">\n\t\t\t</button>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"house-wrap\">\n\t<div class=\"house-container\" *ngFor=\"let item of inputData; let i = index\">\n\t\t<div class=\"house-header clear-fix\">\n\t\t\t<div class=\"house-header__label\">\n\t\t\t\t{{item.name || ''}}\n\t\t\t</div>\n\t\t\t<app-item-edit-btns *ngIf=\"!analytics\" [item]=\"item\"></app-item-edit-btns>\n\t\t\t<!--<app-item-checkbox [index]=\"i\" [element]=\"item\" [idCards]=\"idCards\" *ngIf=\"analytics\"></app-item-checkbox>-->\n\t\t\t<div class=\"checkbox-container\">\n\t\t\t\t<input id={{i}} (change)=\"onCheck($event, item)\" type=\"checkbox\" name=\"check\" [value]=\"isChecked[item._id]\" [ngClass]=\"{'checked': !!isChecked[item._id]}\">\n\t\t\t\t<label for={{i}}></label>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"house-item__content\" [id]=\"'check-' + i\" [ngClass]=\"{'colorable-img': !!isChecked[item._id]}\">\n\t\t\t<img src=\"./assets/img/coffee-house.jpg\" alt=\"\">\n\t\t</div>\n\n\t\t<div class=\"house-item__footer media justify-content-between align-items-center\">\n\t\t\t<div class=\"house-item__footer-marker\"\n\t\t\t\t [ngClass]=\"{'online': item.status === 'ONLINE', 'offline': item.status === 'OFFLINE', 'debtor': item.status === 'DEBTOR'}\">\n\t\t\t\t{{item.status | statusCaffee}}\n\t\t\t</div>\n\t\t\t<button class=\"house-item__footer-info bg-transparent border-0 media justify-content-between\"\n\t\t\t\t\tmat-raised-button>\n\t\t\t\t{{item.visitorsCount}}\n\t\t\t\t<img src=\"./assets/img/icon/person.svg\">\n\t\t\t</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -638,7 +659,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".house-wrap {\n  text-align: center; }\n\n.house-container {\n  margin: 30px 20px 10px;\n  width: 280px;\n  position: relative;\n  display: inline-block;\n  box-shadow: 0 4px 14px -1px rgba(0, 0, 0, 0.5);\n  transition: .4s;\n  text-align: left; }\n\n.house-item__content img {\n  width: 100%;\n  height: 100%; }\n\n.house-header {\n  width: 100%;\n  height: 40px;\n  position: absolute;\n  z-index: 5;\n  top: 0;\n  left: 0;\n  padding: 0 0 0 18px;\n  line-height: 40px;\n  font-size: 14px;\n  font-family: 'RobotoM', sans-serif;\n  color: #fff;\n  background-color: rgba(100, 100, 100, 0.7); }\n\n.house-header__label {\n  display: inline-block; }\n\n.house-item__footer-marker {\n  display: inline-block;\n  position: relative;\n  font-size: 14px;\n  font-family: 'RobotoM', sans-serif; }\n\n.house-item__footer-marker:before {\n  content: '';\n  display: block;\n  width: 5px;\n  height: 5px;\n  top: calc(50% - 2.5px);\n  left: -15px;\n  position: absolute;\n  border-radius: 50%; }\n\n.online {\n  color: #22b573; }\n  .online:before {\n    background-color: #22b573; }\n\n.offline {\n  color: #999; }\n  .offline:before {\n    background-color: #999; }\n\n.debtor {\n  color: #c1272d; }\n  .debtor:before {\n    background-color: #c1272d; }\n\n.house-item__footer-info {\n  display: inline-block;\n  position: relative;\n  font-size: 14px;\n  color: #666666;\n  font-family: 'RobotoB', sans-serif; }\n\n.house-item__footer-info img {\n  display: inline-block;\n  width: 15px; }\n\n@media (max-width: 1400px) {\n  .house-container {\n    margin: 30px 15px 10px;\n    width: 275px; } }\n\n.house-item__footer {\n  height: 60px;\n  padding: 0 18px 0 40px;\n  background-color: #f2f2f2;\n  line-height: 60px; }\n", ""]);
+exports.push([module.i, ".house-wrap {\n  text-align: center; }\n\n.house-container {\n  margin: 30px 20px 10px;\n  width: 280px;\n  position: relative;\n  display: inline-block;\n  box-shadow: 0 4px 14px -1px rgba(0, 0, 0, 0.5);\n  transition: .4s;\n  text-align: left; }\n\n.house-item__content img {\n  width: 100%;\n  height: 100%; }\n\n.house-header {\n  width: 100%;\n  height: 40px;\n  position: absolute;\n  z-index: 5;\n  top: 0;\n  left: 0;\n  padding: 0 0 0 18px;\n  line-height: 40px;\n  font-size: 14px;\n  font-family: 'RobotoM', sans-serif;\n  color: #fff;\n  background-color: rgba(100, 100, 100, 0.7); }\n  .house-header .checkbox-container {\n    float: right;\n    width: 20px;\n    height: 20px;\n    display: inline-block;\n    margin-top: 3px; }\n  .house-header label {\n    display: inline-block;\n    cursor: pointer;\n    position: relative;\n    padding-left: 25px;\n    margin-right: 15px;\n    font-size: 13px; }\n  .house-header label:before {\n    content: \"\";\n    display: inline-block;\n    width: 16px;\n    height: 16px;\n    margin-right: 10px;\n    position: absolute;\n    left: 0;\n    bottom: 1px;\n    border: 1px solid #fff; }\n  .house-header input[type=checkbox] {\n    display: none; }\n  .house-header .checked + label:before {\n    content: \"\\2713\";\n    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);\n    font-size: 15px;\n    color: #f3f3f3;\n    text-align: center;\n    line-height: 15px; }\n\n.house-header__label {\n  display: inline-block; }\n\n.house-item__footer-marker {\n  display: inline-block;\n  position: relative;\n  font-size: 14px;\n  font-family: 'RobotoM', sans-serif; }\n\n.house-item__footer-marker:before {\n  content: '';\n  display: block;\n  width: 5px;\n  height: 5px;\n  top: calc(50% - 2.5px);\n  left: -15px;\n  position: absolute;\n  border-radius: 50%; }\n\n.online {\n  color: #22b573; }\n  .online:before {\n    background-color: #22b573; }\n\n.offline {\n  color: #999; }\n  .offline:before {\n    background-color: #999; }\n\n.debtor {\n  color: #c1272d; }\n  .debtor:before {\n    background-color: #c1272d; }\n\n.house-item__footer-info {\n  display: inline-block;\n  position: relative;\n  font-size: 14px;\n  color: #666666;\n  font-family: 'RobotoB', sans-serif; }\n\n.house-item__footer-info img {\n  display: inline-block;\n  width: 15px; }\n\n@media (max-width: 1400px) {\n  .house-container {\n    margin: 30px 15px 10px;\n    width: 275px; } }\n\n.house-item__footer {\n  height: 60px;\n  padding: 0 18px 0 40px;\n  background-color: #f2f2f2;\n  line-height: 60px; }\n", ""]);
 
 // exports
 
@@ -670,8 +691,25 @@ var HouseItemComponent = (function () {
     function HouseItemComponent(router) {
         this.router = router;
         this.idCards = [];
+        this.isChecked = {};
+        this.checkedHouses = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     HouseItemComponent.prototype.ngOnInit = function () {
+    };
+    HouseItemComponent.prototype.onCheck = function (e, el) {
+        console.log(e);
+        // if (this.checked && (this.checked['_id'] === el._id)) {
+        console.log(Object.keys(this.isChecked).length, this.isChecked[el._id]);
+        if (this.isChecked[el._id]) {
+            this.isChecked = {};
+        }
+        else {
+            this.isChecked = {};
+            this.isChecked[el['_id']] = el;
+        }
+        console.log(Object.values(this.isChecked)[0]);
+        this.checkedHouses.emit(Object.values(this.isChecked)[0]);
+        console.log('Checked', this.isChecked);
     };
     return HouseItemComponent;
 }());
@@ -687,6 +725,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('idCards'),
     __metadata("design:type", Object)
 ], HouseItemComponent.prototype, "idCards", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], HouseItemComponent.prototype, "checkedHouses", void 0);
 HouseItemComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-house-item',
@@ -704,7 +746,7 @@ var _a;
 /***/ "../../../../../src/app/core/components/item-checkbox/item-checkbox.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"checkbox-container\">\n\t<input id={{index}} (change)=\"onCheck($event, element)\" type=\"checkbox\" name=\"check\" value=\"check2\">\n\t<label for={{index}}></label>\n</div>\n\n"
+module.exports = "<div class=\"checkbox-container\">\n\t<input id={{index}} (change)=\"onCheck($event, element)\" type=\"checkbox\" name=\"check\" value=\"check2\" [ngClass]=\"{'colorable-img': idCards._id === checked[idCards._id]}\">\n\t<label for={{index}}></label>\n</div>\n\n"
 
 /***/ }),
 
@@ -744,24 +786,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ItemCheckboxComponent = (function () {
     function ItemCheckboxComponent() {
+        this.checked = {};
+        console.log('checked idCards', this.idCards);
     }
     ItemCheckboxComponent.prototype.onCheck = function (e, el) {
         // ToDo replace NAME to ID
-        var indexElement = this.idCards.indexOf(el.name);
-        if (indexElement === -1) {
-            this.idCards.push(el.name);
+        // const indexElement = this.idCards.indexOf(el.name);
+        // if (indexElement === -1) {
+        // 	this.idCards.push(el);
+        // } else {
+        // 	this.idCards.splice(indexElement, 1);
+        // }
+        // console.log(this.idCards);
+        //
+        // const checkId = 'check-' + e.target.id;
+        // const targetElement = document.getElementById(checkId);
+        //
+        // if (e.target.checked) {
+        // 	targetElement.classList.add('colorable-img');
+        //
+        // } else {
+        // 	targetElement.classList.remove('colorable-img');
+        // }
+        if (this.idCards && (this.idCards._id === el._id)) {
+            this.idCards = null;
+            this.checked[el._id] = false;
         }
         else {
-            this.idCards.splice(indexElement, 1);
-        }
-        console.log(this.idCards);
-        var checkId = 'check-' + e.target.id;
-        var targetElement = document.getElementById(checkId);
-        if (e.target.checked) {
-            targetElement.classList.add('colorable-img');
-        }
-        else {
-            targetElement.classList.remove('colorable-img');
+            this.idCards = el;
+            this.checked[el['_id']] = true;
         }
     };
     return ItemCheckboxComponent;
@@ -1357,11 +1410,10 @@ var GuardRoutingGuard = (function () {
         this.router = router;
     }
     GuardRoutingGuard.prototype.canActivate = function (next, state) {
-        this.authCheck();
-        return true;
+        return this.authCheck();
     };
     GuardRoutingGuard.prototype.authCheck = function () {
-        if (localStorage.token) {
+        if (localStorage.getItem('token')) {
             return true;
         }
         else {
@@ -2332,10 +2384,31 @@ var HttpService = (function () {
         this.config = config;
         this.logout = logout;
         this.toastrService = toastrService;
+        this.credential = localStorage.getItem('Authorization');
     }
+    // http://54.72.192.165:8031/api/v1/ Base Url
+    HttpService.prototype.login = function (url, data) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+        });
+        var self = this;
+        console.log('Credential', this.credential);
+        return this.http.post(this.config.baseUrl + url, data || {}, { headers: headers })
+            .map(function (response) {
+            return response.json();
+        })
+            .catch(function (error) {
+            self.errorHandler(error);
+            return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
     HttpService.prototype.get = function (url, data) {
         var self = this;
-        return this.http.get(this.config.baseUrl + url, data || {})
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('Authorization')
+        });
+        return this.http.get(this.config.baseUrl + url, { headers: headers })
             .map(function (response) {
             return response.json();
         })
@@ -2345,8 +2418,13 @@ var HttpService = (function () {
         });
     };
     HttpService.prototype.post = function (url, data, header) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */](header ? header : this.config.headersDefault);
+        // const headers = new Headers(header ? header : this.config.headersDefault);
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('Authorization')
+        });
         var self = this;
+        console.log('Credential', this.credential);
         return this.http.post(this.config.baseUrl + url, data || {}, { headers: headers })
             .map(function (response) {
             return response.json();
@@ -2357,7 +2435,11 @@ var HttpService = (function () {
         });
     };
     HttpService.prototype.put = function (url, data, header) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */](header ? header : this.config.headersDefault);
+        // const headers = new Headers(header ? header : this.config.headersDefault);
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('Authorization')
+        });
         var self = this;
         return this.http.put(this.config.baseUrl + url, data || {}, { headers: headers })
             .map(function (response) {
@@ -2372,7 +2454,7 @@ var HttpService = (function () {
         console.error(error);
         if (error.status === 401) {
             this.toastrService.error(error.message || error);
-            this.logout.logout();
+            // this.logout.logout();
         }
         else {
             this.toastrService.error(error.message || error);
@@ -2530,9 +2612,11 @@ var AllOwnersComponent = (function () {
     }
     AllOwnersComponent.prototype.ngOnInit = function () {
         var self = this;
+        this.authHeader = localStorage.getItem('Authorization');
+        console.log('Init all-owners');
         this.httpService.get(this.configs.urlRequest.getOwners, {
             headers: {
-                'Authorization': localStorage.getItem('Authorization')
+                'Authorization': this.authHeader
             }
         })
             .subscribe(function (data) {
@@ -2568,7 +2652,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/pages/analytics-detail/analytics-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t{{idCards}}\n\t</p>\n\n\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions] = \"pie_ChartOptions\" chartType=\"LineChart\"></app-google-chart>\n</div>"
+module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"media justify-content-center align-content-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<!--<div class=\"preloader media justify-content-center align-items-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<div class=\"media justify-content-center\">\n\t\t<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">\n\t\t\t<mat-progress-spinner\n\t\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t\t[value]=\"'30'\">\n\t\t\t</mat-progress-spinner>\n\t\t</div>\n\t\t<app-google-chart id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]=\"line_ChartOptions\"\n\t\t\t\t\t\t  chartType=\"LineChart\">\n\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t</app-google-chart>\n\t</div>\n\t<div class=\"media justify-content-center\">\n\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t</app-google-chart>\n\t</div>\n\n</div>"
 
 /***/ }),
 
@@ -2580,7 +2664,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".analytic-diagram__container {\n  padding-top: 30px;\n  text-align: center;\n  font-size: 1rem; }\n", ""]);
+exports.push([module.i, ".analytic-diagram__container {\n  padding-top: 30px;\n  text-align: center;\n  font-size: 1rem; }\n  .analytic-diagram__container .date-tooggle-btn-group {\n    position: relative;\n    z-index: 1;\n    margin-top: 25px; }\n  .analytic-diagram__container .charts {\n    margin-top: 50px; }\n", ""]);
 
 // exports
 
@@ -2597,6 +2681,7 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnalyticsDetailComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2608,29 +2693,113 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+// import {start} from "repl";
 var AnalyticsDetailComponent = (function () {
-    function AnalyticsDetailComponent(router, activatedRoute) {
+    function AnalyticsDetailComponent(router, activatedRoute, httpService) {
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.httpService = httpService;
         this.idCards = [];
+        this.housesStatistic = [];
+        this.showSpinner = false;
+        this.line_ChartData = [];
         this.pie_ChartData = [
             ['Task', 'Hours per Day', 'Hours per Days'],
-            ['', 10, 12],
-            ['', 2, 7],
-            ['', 2, 12],
-            ['', 3, 18],
-            ['', 7, 27],
+            ['', 0, 0],
+            ['', 0, 0],
+            ['', 0, 0],
+            ['', 0, 0],
+            ['', 0, 0],
         ];
         this.pie_ChartOptions = {
+            width: 900,
+            height: 500
+        };
+        this.line_ChartOptions = {
             // title: 'My Daily Activities',
             width: 900,
             height: 500
         };
     }
+    AnalyticsDetailComponent.prototype.getDateByDate = function (param) {
+        if (param === 'month') {
+            var date = new Date();
+            console.log(date);
+        }
+    };
+    AnalyticsDetailComponent.prototype.getCofeeChartData = function (prop) {
+        var _this = this;
+        // this.idCards.forEach((card) => {
+        // this.showSpinner = true;
+        var url = "bonusRequest/coffee/?start=" + prop.date.start + "&end=" + prop.date.end;
+        if (prop.cofeeHouse && prop.cofeeHouse._id) {
+            url = "bonusRequest/coffee/" + prop.cofeeHouse['_id'] + "?start=" + prop.date.start + "&end=" + prop.date.end;
+        }
+        console.log('url', url, prop.cofeeHouse);
+        this.httpService.get(url)
+            .subscribe(function (res) {
+            console.log('Res', res);
+            // this.housesStatistic.push(res);
+            if (_this.line_ChartData[0]) {
+                // res.splice(0, 1);
+            }
+            _this.line_ChartData = res;
+            // this.line_ChartData = this.line_ChartData.concat(res);
+            console.log(_this.line_ChartData);
+        });
+        var urlPaychart = "bonusRequest/paychart/?start=" + prop.date.start + "&end=" + prop.date.end;
+        if (prop.cofeeHouse && prop.cofeeHouse._id) {
+            urlPaychart = "bonusRequest/paychart/" + prop.cofeeHouse['_id'] + "?start=" + prop.date.start + "&end=" + prop.date.end;
+        }
+        this.httpService.get(urlPaychart)
+            .subscribe(function (res) {
+            console.log('pie_ChartData Res', res);
+            _this.pie_ChartData = res;
+        });
+        // });
+    };
+    AnalyticsDetailComponent.prototype.getDateForDate = function (period) {
+        var startDate = new Date();
+        var endDate = new Date();
+        var count = 0;
+        var today = new Date();
+        if (period === 'day') {
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setHours(23, 59, 59, 59);
+        }
+        else if (period === 'week') {
+            startDate.setDate(startDate.getDate() - startDate.getDay());
+            endDate.setDate(endDate.getDate() - endDate.getDay() + 6);
+            console.log(startDate, endDate);
+        }
+        else if (period === 'month') {
+            startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+            endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            console.log(startDate, endDate);
+        }
+        console.log(startDate, endDate);
+        var prop = {
+            // cofeeHouse: this.idCards,
+            date: {
+                start: +startDate,
+                end: +endDate
+            }
+        };
+        if (this.idCards) {
+            prop['cofeeHouse'] = this.idCards;
+        }
+        console.log('prop', prop);
+        this.getCofeeChartData(prop);
+    };
     AnalyticsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
-            _this.idCards = params.idCards;
+            console.log('params', params);
+            if (params.idCards) {
+                _this.idCards = JSON.parse(params.idCards);
+            }
+            _this.getDateForDate('day');
         });
         // toDo analytics details -> idCards NAME to ID
         console.log(this.idCards);
@@ -2643,10 +2812,10 @@ AnalyticsDetailComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/analytics-detail/analytics-detail.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/analytics-detail/analytics-detail.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object])
 ], AnalyticsDetailComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=analytics-detail.component.js.map
 
 /***/ }),
@@ -2654,7 +2823,7 @@ var _a, _b;
 /***/ "../../../../../src/app/pages/analytics/analytics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"analytic-wrap\">\n\t<div class=\"main-wrap\">\n\t\t<app-house-item [inputData]=\"data\" [analytics]=\"analytics\" [idCards]=\"idCards\"></app-house-item>\n\t\t<div class=\"analytics-btn__container\">\n\t\t\t<button class=\"analytics-btn\" (click)=\"gooAnalyticsDetail()\" mat-raised-button>\n\t\t\t\tGet analytics\n\t\t\t</button>\n\t\t</div>\n\t</div>\n</div>\n"
+module.exports = "\n<div class=\"analytic-wrap\">\n\t<div class=\"main-wrap\">\n\t\t<app-house-item [inputData]=\"data\" [analytics]=\"analytics\" (checkedHouses)=\"checkedHouses($event)\"></app-house-item>\n\n\t\t<div class=\"analytics-btn__container\">\n\t\t\t<button class=\"analytics-btn\" (click)=\"gooAnalyticsDetail(isChecked)\" mat-raised-button>\n\t\t\t\tGet analytics\n\t\t\t</button>\n\t\t</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -2684,6 +2853,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__ = __webpack_require__("../../../../../src/app/core/services/global-data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2696,19 +2866,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AnalyticsComponent = (function () {
-    function AnalyticsComponent(globalData, router) {
+    function AnalyticsComponent(globalData, router, httpService) {
         this.globalData = globalData;
         this.router = router;
-        this.idCards = [];
+        this.httpService = httpService;
+        this.isChecked = {};
         this.analytics = true;
     }
     AnalyticsComponent.prototype.ngOnInit = function () {
-        this.data = this.globalData.getGlobalData();
+        var _this = this;
+        this.httpService.get('coffeeHouse/')
+            .subscribe(function (res) {
+            console.log('Res', res);
+            _this.data = res;
+        });
+        // this.data = this.globalData.getGlobalData();
+        // console.log('Houses', this.data);
     };
-    AnalyticsComponent.prototype.gooAnalyticsDetail = function () {
-        if (this.idCards.length) {
-            this.router.navigate(['pages/analytics/detail', { idCards: this.idCards }]);
+    AnalyticsComponent.prototype.checkedHouses = function (ev) {
+        console.log('Houses', ev);
+        this.idCard = ev;
+    };
+    AnalyticsComponent.prototype.gooAnalyticsDetail = function (house) {
+        console.log(house);
+        if (this.idCard) {
+            console.log('IdCardds', this.idCard);
+            this.router.navigate(['pages/analytics/detail', { idCards: JSON.stringify(this.idCard) }]);
+        }
+        else {
+            this.router.navigate(['pages/analytics/detail']);
         }
     };
     return AnalyticsComponent;
@@ -2719,10 +2907,10 @@ AnalyticsComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/analytics/analytics.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/analytics/analytics.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__["a" /* GlobalDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__["a" /* GlobalDataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__["a" /* GlobalDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__["a" /* GlobalDataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object])
 ], AnalyticsComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=analytics.component.js.map
 
 /***/ }),
@@ -2946,7 +3134,7 @@ var HouseListComponent = (function () {
         });
         this.httpService.get(this.configs.urlRequest.getCoffeeHouse, options)
             .subscribe(function (response) {
-            console.log(response);
+            console.log('Response', response);
             self.data = response;
         });
     };
@@ -3040,18 +3228,21 @@ var LoginComponent = (function () {
     LoginComponent.prototype.login = function (login) {
         var router = this.router;
         this.afAuth.auth.signInWithEmailAndPassword(login.login.value, login.pass.value).then(function (user) {
+            console.log('Login with email pass');
             var userId = user.uid;
             var db = __WEBPACK_IMPORTED_MODULE_3_firebase_app__["database"]().ref('/users/' + userId + '/role');
             var storage = window.localStorage;
             var role;
             storage.setItem('token', userId);
             console.log(userId, db);
-            this.httpService.post(this.configs.urlRequest.adminLogin, JSON.stringify({ _id: userId }))
+            this.httpService.login(this.configs.urlRequest.adminLogin, JSON.stringify({ _id: userId }))
                 .subscribe(function (data) {
+                console.log('Auth data', data);
                 role = data.admin.type;
-                storage.setItem('role', role);
-                storage.setItem('Authorization', 'JWT ' + data.token);
-                storage.setItem('user', JSON.stringify(data));
+                localStorage.setItem('role', role);
+                localStorage.setItem('Authorization', 'JWT ' + data.token);
+                localStorage.setItem('user', JSON.stringify(data));
+                console.log('Token', storage.getItem('Authorization'));
                 if (role) {
                     router.navigate(['pages/' + redirectToRole()]);
                 }

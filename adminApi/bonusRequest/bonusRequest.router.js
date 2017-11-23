@@ -7,6 +7,7 @@ const responseHandler = require('../../middleware/responseHandler');
 
 
 bonusRequestRouter.get('/coffee/:_id?', (req, res, next) => {
+    req.checkParams('_id').optional().isMongoId();
     req.checkQuery('start').isNumeric();
     req.checkQuery('end').isNumeric();
     req.sanitizeQuery('start').toInt();
@@ -16,6 +17,7 @@ bonusRequestRouter.get('/coffee/:_id?', (req, res, next) => {
 
 
 bonusRequestRouter.get('/paychart/:_id?', (req, res, next) => {
+    req.checkParams('_id').optional().isMongoId();
     req.checkQuery('start').isNumeric();
     req.checkQuery('end').isNumeric();
     req.sanitizeQuery('start').toInt();

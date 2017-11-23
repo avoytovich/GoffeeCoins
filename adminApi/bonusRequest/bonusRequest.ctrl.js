@@ -1,12 +1,11 @@
 'use strict';
 
 const BonusRequest = require('../../models/bonusRequest.model');
-const {
-    REQUEST_STATUSES,
-    BONUS_TYPES
-} = require('../../constants/index');
+const { REQUEST_STATUSES, BONUS_TYPES } = require('../../constants');
+const { GLOBAL_ADMIN } = require('../../constants/default');
 const _ = require('lodash');
 const Promise = require('bluebird');
+const moment = require('moment');
 
 
 const AnalyticsApi = {
@@ -19,8 +18,14 @@ const AnalyticsApi = {
                 $lte: end,
             },
         };
-        if (_id) {}
-
+        if (String(user._id) !== String(GLOBAL_ADMIN.id)) {
+            query.coffeeHouseID = {
+                $in: user.coffeeHouseID
+            };
+        }
+        if (_id) {
+            query.coffeeHouseID = _id;
+        }
         return Promise.join(
             BonusRequest.find(Object.assign({ type: BONUS_TYPES.COIN }, query)),
             BonusRequest.find(Object.assign({ type: BONUS_TYPES.FREE }, query))
@@ -30,7 +35,7 @@ const AnalyticsApi = {
                     return _.groupBy(arr, item => {
                         const date = new Date(item.createdAt);
                         date.setHours(0, 0, 0, 0);
-                        return date/*.getTime()*/;
+                        return moment(date).format('DD.MM.YYYY');
                     })
                 })
             })

@@ -144,6 +144,59 @@ const AnalyticsApi = {
                     ])
                 });
                 return data;
+            });
+    },
+
+    timeOfStayChart({ query: { start, end }, params: { _id }, user }) {
+        const query = {
+            exitTime: {
+                $exists: true
+            },
+            arrivalTime: {
+                $gte: start,
+                $lte: end,
+            },
+        };
+        if (String(user._id) !== String(GLOBAL_ADMIN.id)) {
+            query.coffeeHouseID = {
+                $in: user.coffeeHouseID
+            };
+        }
+        if (_id) {
+            query.coffeeHouseID = _id;
+        }
+        return Visitor.find(query)
+            .then(visits => {
+                return {
+                    result: _.groupBy(visits, item => {
+                        const diff = item.exitTime - item.arrivalTime;
+                        return Math.floor(diff / (5*60*1000)) * 5 + 'm';
+                    }),
+                    average: visits.reduce((a, b) => {
+                        a.sum += (b.exitTime - b.arrivalTime) / (60*1000);
+                        a.count += 1;
+                        return a;
+                    }, {sum: 0, count: 0})
+                }
+            })
+            .then(({result, average})=> {
+                const data = [];
+                _.forEach(result, (item, period) => {
+                    data.push([
+                        period,
+                        item.length || 0
+                    ])
+                });
+                return {
+                    data: [['Period', 'User count']].concat(data.sort((a, b) => {
+                        const res = a[0].length - b[0].length;
+                        if (res === 0) {
+                            return a[0] > b[0] ? 1 : -1;
+                        }
+                        return res;
+                    })),
+                    average: Math.floor(average.sum / average.count) + 'm'
+                };
             })
     },
 };

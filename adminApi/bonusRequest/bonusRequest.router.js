@@ -32,4 +32,10 @@ bonusRequestRouter.get('/visits/:_id?',
 );
 
 
+bonusRequestRouter.get('/time/:_id?',
+    validationMiddleware,
+    responseHandler(Ctrl.timeOfStayChart)
+);
+
+
 module.exports = bonusRequestRouter;

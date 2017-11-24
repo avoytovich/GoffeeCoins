@@ -509,7 +509,7 @@ var GoogleChartComponent = (function () {
     GoogleChartComponent.prototype.ngOnInit = function () {
         var _this = this;
         setTimeout(function () {
-            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.load('current', { 'packages': ['corechart', 'bar'] });
             setTimeout(function () {
                 console.log(_this.chartOptions, _this.chartType, _this.chartData, _this._element);
                 _this.drawGraph(_this.chartOptions, _this.chartType, _this.chartData, _this._element);
@@ -519,15 +519,24 @@ var GoogleChartComponent = (function () {
     GoogleChartComponent.prototype.ngOnChanges = function () {
         var _this = this;
         if (this.chartData.length < 2) {
-            this.chartData = this.chartData.concat([['', 0, 0, 0],
+            this.chartData = this.chartData.concat(
+            // 	this.chartData = [
+            [
                 ['', 0, 0, 0],
                 ['', 0, 0, 0],
                 ['', 0, 0, 0],
-                ['', 0, 0, 0]]);
+                ['', 0, 0, 0],
+                ['', 0, 0, 0]
+            ]
+            // 	['City', '2010 Population', '2000 Population', '2000 Population'],
+            // 	['New York City, NY', 8175000, 8008000, 0],
+            // 	['Los Angeles, CA', 3792000, 3694000, 0],
+            // 	['Chicago, IL', 2695000, 2896000, 0]
+            );
         }
         console.log('change data chart', this.chartData);
         setTimeout(function () {
-            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.load('current', { 'packages': ['corechart', 'bar'] });
             setTimeout(function () {
                 _this.drawGraph(_this.chartOptions, _this.chartType, _this.chartData, _this._element);
             }, 1000);
@@ -1225,12 +1234,11 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddedCoffeeHouseComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1242,20 +1250,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+// import {NgForm, FormControl, FormGroup} from '@angular/forms';
 
 
 
 
-
+// import {Observable} from 'rxjs/Observable';
 var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
-    function AddedCoffeeHouseComponent(route, activeModal, toastrService, activatedRoute, httpService, configs, modalService) {
-        this.route = route;
+    function AddedCoffeeHouseComponent(activeModal, toastrService, httpService, configs) {
         this.activeModal = activeModal;
         this.toastrService = toastrService;
-        this.activatedRoute = activatedRoute;
         this.httpService = httpService;
         this.configs = configs;
-        this.modalService = modalService;
         this.isCreate = true;
         this.spinner = false;
         this.data = {
@@ -1292,7 +1298,7 @@ var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
         if (this.item) {
             this.isCreate = false;
             this.spinner = true;
-            var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({
+            var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
                 headers: this.configs.headersDefault
             });
             self.httpService.get(self.configs.urlRequest.getCoffeeHouse + '/' + this.item['_id'], options)
@@ -1379,10 +1385,10 @@ AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = __decorate([
         template: __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.html"),
         styles: [__webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_core_services_http_service__["a" /* HttpService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _d || Object])
 ], AddedCoffeeHouseComponent);
 
-var AddedCoffeeHouseComponent_1, _a, _b, _c, _d, _e, _f, _g;
+var AddedCoffeeHouseComponent_1, _a, _b, _c, _d;
 //# sourceMappingURL=added-coffee-house.component.js.map
 
 /***/ }),
@@ -2652,7 +2658,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/pages/analytics-detail/analytics-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"media justify-content-center align-content-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<!--<div class=\"preloader media justify-content-center align-items-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<div class=\"media justify-content-center\">\n\t\t<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">\n\t\t\t<mat-progress-spinner\n\t\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t\t[value]=\"'30'\">\n\t\t\t</mat-progress-spinner>\n\t\t</div>\n\t\t<app-google-chart id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]=\"line_ChartOptions\"\n\t\t\t\t\t\t  chartType=\"LineChart\">\n\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t</app-google-chart>\n\t</div>\n\t<div class=\"media justify-content-center\">\n\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t</app-google-chart>\n\t</div>\n\n</div>"
+module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"media justify-content-center align-content-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<!--<div class=\"preloader media justify-content-center align-items-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<div class=\"media justify-content-center\">\n\t\t<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">\n\t\t\t<mat-progress-spinner\n\t\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t\t[value]=\"'30'\">\n\t\t\t</mat-progress-spinner>\n\t\t</div>\n\t\t<app-google-chart id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]=\"line_ChartOptions\"\n\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t</app-google-chart>\n\t</div>\n\t<div class=\"media justify-content-center\">\n\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t</app-google-chart>\n\t</div>\n\n</div>"
 
 /***/ }),
 
@@ -2719,7 +2725,25 @@ var AnalyticsDetailComponent = (function () {
         this.line_ChartOptions = {
             // title: 'My Daily Activities',
             width: 900,
-            height: 500
+            height: 500,
+            // title: 'Population of Largest U.S. Cities',
+            // chartArea: { width: '70%' },
+            // legend: {position: 'top', maxLines: 3},
+            hAxis: {
+                minValue: 0,
+                textStyle: {
+                    bold: true,
+                    fontSize: 12,
+                    color: '#4d4d4d'
+                },
+                titleTextStyle: {
+                    bold: true,
+                    fontSize: 18,
+                    color: '#4d4d4d'
+                },
+                slantedText: true,
+                slantedTextAngle: 90
+            },
         };
     }
     AnalyticsDetailComponent.prototype.getDateByDate = function (param) {

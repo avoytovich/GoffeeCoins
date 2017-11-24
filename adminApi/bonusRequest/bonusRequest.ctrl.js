@@ -1,6 +1,7 @@
 'use strict';
 
 const BonusRequest = require('../../models/bonusRequest.model');
+const Visitor = require('../../models/visitor.model');
 const { REQUEST_STATUSES, BONUS_TYPES } = require('../../constants');
 const { GLOBAL_ADMIN } = require('../../constants/default');
 const _ = require('lodash');
@@ -108,6 +109,43 @@ const AnalyticsApi = {
             ]);
     },
 
+    visitorChart({ query: { start, end }, params: { _id }, user }) {
+        const query = {
+            arrivalTime: {
+                $gte: start,
+                $lte: end,
+            },
+        };
+        if (String(user._id) !== String(GLOBAL_ADMIN.id)) {
+            query.coffeeHouseID = {
+                $in: user.coffeeHouseID
+            };
+        }
+        if (_id) {
+            query.coffeeHouseID = _id;
+        }
+        return Visitor.find(query)
+            .then(visits => {
+                return _.groupBy(visits, item => {
+                    const date = new Date(item.arrivalTime);
+                    date.setHours(0, 0, 0, 0);
+                    return moment(date).format('DD.MM.YYYY');
+                });
+            })
+            .then(result => {
+                const data = [
+                    ['Date', 'All users', 'Unique users']
+                ];
+                _.forEach(result, (item, date) => {
+                    data.push([
+                        date,
+                        item.length || 0,
+                        _.uniqBy(item, 'userID').length || 0
+                    ])
+                });
+                return data;
+            })
+    },
 };
 
 module.exports = AnalyticsApi;

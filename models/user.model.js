@@ -6,13 +6,13 @@ const AdminRequest = require('./adminRequest.model');
 const Promise = require('bluebird');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
+const config = require('../env');
 const {
     modelOptions,
     MODELS,
     UNIQUE_VL_OPTIONS,
     DEFAULT_COIN_COUNT,
-} = require('../constants/index');
-const config = require('../env/index');
+} = require('../constants');
 
 
 const UserSchema = new mongoose.Schema({

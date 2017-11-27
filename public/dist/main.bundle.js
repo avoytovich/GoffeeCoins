@@ -507,53 +507,43 @@ var GoogleChartComponent = (function () {
         this._element = this.element.nativeElement;
     }
     GoogleChartComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        setTimeout(function () {
-            google.charts.load('current', { 'packages': ['corechart', 'bar'] });
-            setTimeout(function () {
-                console.log(_this.chartOptions, _this.chartType, _this.chartData, _this._element);
-                _this.drawGraph(_this.chartOptions, _this.chartType, _this.chartData, _this._element);
-            }, 1000);
-        }, 1000);
+        // setTimeout(() => {
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(this.drawChart);
+        // setTimeout(() => {
+        // 	console.log(this.chartOptions, this.chartType, this.chartData, this._element);
+        // 	this.drawGraph(this.chartOptions, this.chartType, this.chartData, this._element);
+        // }, 1000);
+        // }, 1000
+        // );
     };
     GoogleChartComponent.prototype.ngOnChanges = function () {
-        var _this = this;
-        if (this.chartData.length < 2) {
-            this.chartData = this.chartData.concat(
-            // 	this.chartData = [
-            [
-                ['', 0, 0, 0],
-                ['', 0, 0, 0],
-                ['', 0, 0, 0],
-                ['', 0, 0, 0],
-                ['', 0, 0, 0]
-            ]
-            // 	['City', '2010 Population', '2000 Population', '2000 Population'],
-            // 	['New York City, NY', 8175000, 8008000, 0],
-            // 	['Los Angeles, CA', 3792000, 3694000, 0],
-            // 	['Chicago, IL', 2695000, 2896000, 0]
-            );
-        }
         console.log('change data chart', this.chartData);
-        setTimeout(function () {
-            google.charts.load('current', { 'packages': ['corechart', 'bar'] });
-            setTimeout(function () {
-                _this.drawGraph(_this.chartOptions, _this.chartType, _this.chartData, _this._element);
-            }, 1000);
-        }, 1000);
+        // setTimeout(() => {
+        // 	google.charts.load('current', {'packages': ['corechart']});
+        // 	google.charts.setOnLoadCallback(this.drawGraph);
+        // setTimeout(() => {
+        // 	this.drawGraph(this.chartOptions, this.chartType, this.chartData, this._element);
+        this.drawChart();
+        // }, 1000);
+        // }, 1000);
     };
-    GoogleChartComponent.prototype.drawGraph = function (chartOptions, chartType, chartData, ele) {
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var wrapper;
+    GoogleChartComponent.prototype.drawChart = function () {
+        // console.log('Load chart!!!!', this.chartOptions, this.chartType, this.chartData, this._element);
+        console.log('Load chart!!!!', this);
+        // google.charts.setOnLoadCallback(drawChart);
+        // function drawChart() {
+        if (this) {
+            var wrapper = void 0;
             wrapper = new google.visualization.ChartWrapper({
-                chartType: chartType,
-                dataTable: chartData,
-                options: chartOptions || {},
-                containerId: ele.id
+                chartType: this.chartType,
+                dataTable: this.chartData,
+                options: this.chartOptions || {},
+                containerId: this._element // ele.id
             });
             wrapper.draw();
         }
+        // }
     };
     return GoogleChartComponent;
 }());
@@ -2658,7 +2648,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/pages/analytics-detail/analytics-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"media justify-content-center align-content-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<!--<div class=\"preloader media justify-content-center align-items-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<div class=\"media justify-content-center\">\n\t\t<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">\n\t\t\t<mat-progress-spinner\n\t\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t\t[value]=\"'30'\">\n\t\t\t</mat-progress-spinner>\n\t\t</div>\n\t\t<app-google-chart id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]=\"line_ChartOptions\"\n\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t</app-google-chart>\n\t</div>\n\t<div class=\"media justify-content-center\">\n\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t</app-google-chart>\n\t</div>\n\n</div>"
+module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"media justify-content-center align-content-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<!--<div class=\"preloader media justify-content-center align-items-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\n\t<div *ngIf=\"showCharts\">\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"visits_chart\" [chartData]=\"visitsChartData\" [chartOptions]=\"visitsChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart [chartData]=\"timeChartData\" [chartOptions]=\"timeChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">\n\t\t\t\t<mat-progress-spinner\n\t\t\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t\t\t[value]=\"'30'\">\n\t\t\t\t</mat-progress-spinner>\n\t\t\t</div>\n\t\t\t<app-google-chart id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]=\"line_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t\t</app-google-chart>\n\t\t</div>\n\t</div>\n\n</div>"
 
 /***/ }),
 
@@ -2709,14 +2699,53 @@ var AnalyticsDetailComponent = (function () {
         this.idCards = [];
         this.housesStatistic = [];
         this.showSpinner = false;
-        this.line_ChartData = [];
+        this.showCharts = false;
+        this.counter = 0;
         this.pie_ChartData = [
+            ['', 0, 0],
+            ['', 0, 0],
+            ['', 0, 0],
+            ['', 0, 0],
+            ['', 0, 0],
+        ];
+        this.line_ChartData = [
             ['Task', 'Hours per Day', 'Hours per Days'],
+            ['', 0, 0, 0],
+            ['', 0, 0, 0],
+            ['', 0, 0, 0],
+            ['', 0, 0, 0],
+            ['', 0, 0, 0]
+            // [{v: [8, 0, 0], f: '8 am'}, 1, .25],
+            // [{v: [9, 0, 0], f: '9 am'}, 2, .5],
+            // [{v: [10, 0, 0], f: '10 am'}, 3, 1],
+            // ['Task', 'Hours per Day', 'Hours per Days'],
+            // ['', 10, 12],
+            // ['', 2, 7],
+            // ['', 2, 12],
+            // ['', 3, 18],
+            // ['', 7, 27],
+            // ['Commute',  2, 14],
+            // ['Watch TV', 2, 12],
+            // ['Eat',       2, 7],
+            // ['Commute',  2, 14],
+            // ['Watch TV', 2, 18],
+            // ['Sleep',    5, 47],
+            // ['Commute',  2, 14],
+            // ['Watch TV', 2, 54],
+            // ['Sleep',    7, 80]
+        ];
+        this.visitsChartData = [
+            ['Date', 'All users', 'Unique users'],
             ['', 0, 0],
             ['', 0, 0],
-            ['', 0, 0],
-            ['', 0, 0],
-            ['', 0, 0],
+            ['', 0, 0]
+        ];
+        this.timeChartData = [
+            // data: [
+            ['Period', 'User count'],
+            ['', 0],
+            ['', 0]
+            // ]
         ];
         this.pie_ChartOptions = {
             width: 900,
@@ -2727,6 +2756,52 @@ var AnalyticsDetailComponent = (function () {
             width: 900,
             height: 500,
             // title: 'Population of Largest U.S. Cities',
+            // chartArea: { width: '70%' },
+            // legend: {position: 'top', maxLines: 3},
+            hAxis: {
+                minValue: 0,
+                textStyle: {
+                    bold: true,
+                    fontSize: 12,
+                    color: '#4d4d4d'
+                },
+                titleTextStyle: {
+                    bold: true,
+                    fontSize: 18,
+                    color: '#4d4d4d'
+                },
+                slantedText: true,
+                slantedTextAngle: 90
+            },
+        };
+        this.visitsChartOptions = {
+            // title: 'My Daily Activities',
+            width: 900,
+            height: 500,
+            // title: 'Population of Largest U.S. Cities',
+            // chartArea: { width: '70%' },
+            // legend: {position: 'top', maxLines: 3},
+            hAxis: {
+                minValue: 0,
+                textStyle: {
+                    bold: true,
+                    fontSize: 12,
+                    color: '#4d4d4d'
+                },
+                titleTextStyle: {
+                    bold: true,
+                    fontSize: 18,
+                    color: '#4d4d4d'
+                },
+                slantedText: true,
+                slantedTextAngle: 90
+            },
+        };
+        this.timeChartOptions = {
+            // title: 'My Daily Activities',
+            width: 900,
+            height: 500,
+            // title: 'Average: ' + this.timeChartData['average'],
             // chartArea: { width: '70%' },
             // legend: {position: 'top', maxLines: 3},
             hAxis: {
@@ -2764,11 +2839,22 @@ var AnalyticsDetailComponent = (function () {
         this.httpService.get(url)
             .subscribe(function (res) {
             console.log('Res', res);
-            // this.housesStatistic.push(res);
-            if (_this.line_ChartData[0]) {
-                // res.splice(0, 1);
+            if (res.length < 2) {
+                _this.line_ChartData = res.concat([
+                    ['', 0, 0, 0],
+                    ['', 0, 0, 0],
+                    ['', 0, 0, 0],
+                    ['', 0, 0, 0],
+                    ['', 0, 0, 0]
+                ]);
             }
-            _this.line_ChartData = res;
+            else {
+                _this.line_ChartData = res;
+            }
+            _this.counter += 1;
+            if (_this.counter > 3) {
+                _this.showCharts = true;
+            }
             // this.line_ChartData = this.line_ChartData.concat(res);
             console.log(_this.line_ChartData);
         });
@@ -2779,7 +2865,64 @@ var AnalyticsDetailComponent = (function () {
         this.httpService.get(urlPaychart)
             .subscribe(function (res) {
             console.log('pie_ChartData Res', res);
-            _this.pie_ChartData = res;
+            if (res.length < 2) {
+                _this.pie_ChartData = res.concat([
+                    ['', 241],
+                    ['', 36],
+                ]);
+            }
+            else {
+                _this.pie_ChartData = res;
+            }
+            _this.counter += 1;
+            if (_this.counter > 3) {
+                _this.showCharts = true;
+            }
+        });
+        var urlVisits = "bonusRequest/visits/?start=" + prop.date.start + "&end=" + prop.date.end;
+        if (prop.cofeeHouse && prop.cofeeHouse._id) {
+            urlVisits = "bonusRequest/visits/" + prop.cofeeHouse['_id'] + "/?start=" + prop.date.start + "&end=" + prop.date.end;
+        }
+        this.httpService.get(urlVisits)
+            .subscribe(function (res) {
+            console.log('Visits chart data', res);
+            if (res.length < 2) {
+                _this.visitsChartData = res.concat([
+                    ['0m', 0, 0],
+                    ['0m', 0, 0]
+                ]);
+            }
+            else {
+                _this.visitsChartData = res;
+            }
+            _this.counter += 1;
+            if (_this.counter > 3) {
+                _this.showCharts = true;
+            }
+        });
+        var urlTime = "bonusRequest/time/?start=" + prop.date.start + "&end=" + prop.date.end;
+        if (prop.cofeeHouse && prop.cofeeHouse._id) {
+            urlTime = "bonusRequest/time/" + prop.cofeeHouse['_id'] + "/?start=" + prop.date.start + "&end=" + prop.date.end;
+        }
+        this.httpService.get(urlTime)
+            .subscribe(function (res) {
+            console.log('Time chart data', res);
+            _this.timeChartOptions['title'] = 'Average: ' + res['average'];
+            if (res['data'].length < 2) {
+                _this.timeChartData = res['data'].concat([
+                    ['0m', 0],
+                    ['0m', 0]
+                ]);
+                console.log('timeChartData', _this.timeChartData);
+            }
+            else {
+                console.log(_this.timeChartOptions);
+                _this.timeChartData = res['data'];
+            }
+            _this.counter += 1;
+            if (_this.counter > 3) {
+                _this.showCharts = true;
+            }
         });
         // });
     };
@@ -2825,6 +2968,7 @@ var AnalyticsDetailComponent = (function () {
             }
             _this.getDateForDate('day');
         });
+        this.counter = 0;
         // toDo analytics details -> idCards NAME to ID
         console.log(this.idCards);
     };

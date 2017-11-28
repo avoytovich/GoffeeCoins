@@ -11,18 +11,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js.map"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>
-    /*var socket = io.connect('http://54.72.192.165:8030', {
-        'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJuVDFsZXVocWFqWks0d0ZKQVlKUk5TVHFwZWoyIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MDg0MDA2OTN9.fBiwHJcByplHU5KlfQRxU-0As37KoKv5xMRCcG7uqcM'
+    var socket = io.connect('http://localhost:8030', {
+        'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI4MVE1cUZQNzNjTkVUM0M2dGZQOVQ0cUx5UXgxIiwidHlwZSI6IkFkbWluIiwicm9sZSI6Ik9XTkVSIiwiaWF0IjoxNTExODc5MjY4fQ.MvWo5MK3IP2L8RFPo5e9OFAvKGMRN-AW4wzFpEhLcII'
     });
 
     var visitors;
 
     socket.on('connect', function() {
 
-        socket.emit('hello', 'Opana');
+        socket.emit('hello', 'Adminskyi');
 
         setTimeout(function () {
-            socket.emit('inCoffeeHouse', '59c9d506ce0e011b6d53d0c9');
+            socket.emit('inCoffeeHouse', '5a0062a4e29b7a3f9abe335e');
         }, 3000);
     });
 
@@ -52,24 +52,7 @@
 
     socket.on('error', function (err) {
         console.log('error', err.message);
-    });*/
-
-    $.ajax({
-        method: 'POST',
-        url: 'http://localhost:8031/api/v1/admin/login',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        data: JSON.stringify({
-            _id: '81Q5qFP73cNET3C6tfP9T4qLyQx1'
-        }),
-        success: function (res) {
-            console.log(res);
-        },
-        error: function(err) {
-            console.log(err);
-        }
-    })
+    });
 </script>
 </body>
 </html>

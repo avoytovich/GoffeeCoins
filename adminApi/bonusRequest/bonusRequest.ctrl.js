@@ -8,7 +8,6 @@ const _ = require('lodash');
 const Promise = require('bluebird');
 const moment = require('moment');
 const XLSX = require('xlsx');
-const fs = require('fs');
 
 
 const AnalyticsApi = {
@@ -197,7 +196,10 @@ const AnalyticsApi = {
 						}
 						return res;
 					})),
-					average: Math.floor(average.sum / average.count) + 'm'
+					average: ((average) => {
+						const result = Math.floor(average.sum / average.count);
+						return ((isNaN(result)) ? 0 : result) + 'm';
+					})(average)
 				};
 			})
 	},
@@ -206,22 +208,20 @@ const AnalyticsApi = {
 
 		const createSpreadSheet = (result) => {
 			if (result.data) {
+				if(result.data[0]) {
+					result.data[0].push('average');
+				}
+				if(result.data[1]) {
+					result.data[1].push(result.average);
+				}
 				result = result.data;
 			}
-			const resolver = Promise.defer();
 			const ws = XLSX.utils.aoa_to_sheet(result);
 			const wb = XLSX.utils.book_new();
-			const filePath = 'tmp/statistic.xlsx';
 			XLSX.utils.book_append_sheet(wb, ws, 'CoffeeCoin');
-
 			const buffer = XLSX.write(wb, {type: 'buffer', bookType: 'xlsx'});
 
-			fs.writeFile(filePath, buffer, (err) => {
-				if (err) resolver.reject(err);
-				resolver.resolve(filePath);
-			});
-
-			return resolver.promise;
+			return buffer;
 		};
 
 		switch (reqData.query.chartType) {
@@ -241,6 +241,8 @@ const AnalyticsApi = {
 				return AnalyticsApi.timeOfStayChart({query: reqData.query, params: reqData.params, user: reqData.user})
 					.then(createSpreadSheet);
 				break;
+			default:
+				return 'Not found';
 		}
 	}
 };

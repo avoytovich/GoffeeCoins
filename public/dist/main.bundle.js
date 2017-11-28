@@ -2398,6 +2398,25 @@ var HttpService = (function () {
             return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
         });
     };
+    HttpService.prototype.getFile = function (url, data) {
+        var self = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('Authorization')
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
+            responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob,
+            headers: headers
+        });
+        return this.http.get(this.config.baseUrl + url, options)
+            .map(function (response) {
+            return response.json();
+        })
+            .catch(function (error) {
+            self.errorHandler(error);
+            return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
     HttpService.prototype.get = function (url, data) {
         var self = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
@@ -2648,7 +2667,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/pages/analytics-detail/analytics-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"media justify-content-center align-content-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<!--<div class=\"preloader media justify-content-center align-items-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\n\t<div *ngIf=\"showCharts\">\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"visits_chart\" [chartData]=\"visitsChartData\" [chartOptions]=\"visitsChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart [chartData]=\"timeChartData\" [chartOptions]=\"timeChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">\n\t\t\t\t<mat-progress-spinner\n\t\t\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t\t\t[value]=\"'30'\">\n\t\t\t\t</mat-progress-spinner>\n\t\t\t</div>\n\t\t\t<app-google-chart id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]=\"line_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t\t</app-google-chart>\n\t\t</div>\n\t</div>\n\n</div>"
+module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"media justify-content-center align-content-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<!--<div class=\"preloader media justify-content-center align-items-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\n\t<div *ngIf=\"showCharts\">\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"visits_chart\" [chartData]=\"visitsChartData\" [chartOptions]=\"visitsChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('visits')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart [chartData]=\"timeChartData\" [chartOptions]=\"timeChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('time')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">\n\t\t\t\t<mat-progress-spinner\n\t\t\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t\t\t[value]=\"'30'\">\n\t\t\t\t</mat-progress-spinner>\n\t\t\t</div>\n\t\t\t<app-google-chart id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]=\"line_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('coffee')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('paychart')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n</div>"
 
 /***/ }),
 
@@ -2660,7 +2679,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".analytic-diagram__container {\n  padding-top: 30px;\n  text-align: center;\n  font-size: 1rem; }\n  .analytic-diagram__container .date-tooggle-btn-group {\n    position: relative;\n    z-index: 1;\n    margin-top: 25px; }\n  .analytic-diagram__container .charts {\n    margin-top: 50px; }\n", ""]);
+exports.push([module.i, ".analytic-diagram__container {\n  padding-top: 30px;\n  text-align: center;\n  font-size: 1rem; }\n  .analytic-diagram__container .date-tooggle-btn-group {\n    position: relative;\n    z-index: 1;\n    margin-top: 25px; }\n  .analytic-diagram__container .charts {\n    margin-top: 50px; }\n  .analytic-diagram__container .chart-width {\n    width: 900px; }\n    .analytic-diagram__container .chart-width .export-btn-container {\n      margin-right: 7rem; }\n", ""]);
 
 // exports
 
@@ -2678,6 +2697,8 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_file_saver_FileSaver__ = __webpack_require__("../../../../file-saver/FileSaver.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_file_saver_FileSaver___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_file_saver_FileSaver__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2690,17 +2711,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import {start} from "repl";
+
 var AnalyticsDetailComponent = (function () {
     function AnalyticsDetailComponent(router, activatedRoute, httpService) {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.httpService = httpService;
         this.idCards = [];
-        this.housesStatistic = [];
         this.showSpinner = false;
         this.showCharts = false;
         this.counter = 0;
+        this.date = {};
         this.pie_ChartData = [
             ['', 0, 0],
             ['', 0, 0],
@@ -2749,7 +2770,11 @@ var AnalyticsDetailComponent = (function () {
         ];
         this.pie_ChartOptions = {
             width: 900,
-            height: 500
+            height: 500,
+            chartArea: {
+                backgroundColor: '#e2e1e0'
+            },
+            sliceVisibilityThreshold: 0
         };
         this.line_ChartOptions = {
             // title: 'My Daily Activities',
@@ -2824,13 +2849,10 @@ var AnalyticsDetailComponent = (function () {
     AnalyticsDetailComponent.prototype.getDateByDate = function (param) {
         if (param === 'month') {
             var date = new Date();
-            console.log(date);
         }
     };
     AnalyticsDetailComponent.prototype.getCofeeChartData = function (prop) {
         var _this = this;
-        // this.idCards.forEach((card) => {
-        // this.showSpinner = true;
         var url = "bonusRequest/coffee/?start=" + prop.date.start + "&end=" + prop.date.end;
         if (prop.cofeeHouse && prop.cofeeHouse._id) {
             url = "bonusRequest/coffee/" + prop.cofeeHouse['_id'] + "?start=" + prop.date.start + "&end=" + prop.date.end;
@@ -2855,8 +2877,6 @@ var AnalyticsDetailComponent = (function () {
             if (_this.counter > 3) {
                 _this.showCharts = true;
             }
-            // this.line_ChartData = this.line_ChartData.concat(res);
-            console.log(_this.line_ChartData);
         });
         var urlPaychart = "bonusRequest/paychart/?start=" + prop.date.start + "&end=" + prop.date.end;
         if (prop.cofeeHouse && prop.cofeeHouse._id) {
@@ -2913,10 +2933,8 @@ var AnalyticsDetailComponent = (function () {
                     ['0m', 0],
                     ['0m', 0]
                 ]);
-                console.log('timeChartData', _this.timeChartData);
             }
             else {
-                console.log(_this.timeChartOptions);
                 _this.timeChartData = res['data'];
             }
             _this.counter += 1;
@@ -2924,7 +2942,6 @@ var AnalyticsDetailComponent = (function () {
                 _this.showCharts = true;
             }
         });
-        // });
     };
     AnalyticsDetailComponent.prototype.getDateForDate = function (period) {
         var startDate = new Date();
@@ -2938,39 +2955,51 @@ var AnalyticsDetailComponent = (function () {
         else if (period === 'week') {
             startDate.setDate(startDate.getDate() - startDate.getDay());
             endDate.setDate(endDate.getDate() - endDate.getDay() + 6);
-            console.log(startDate, endDate);
         }
         else if (period === 'month') {
             startDate = new Date(today.getFullYear(), today.getMonth(), 1);
             endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-            console.log(startDate, endDate);
         }
-        console.log(startDate, endDate);
+        console.log('Dates', startDate, endDate);
         var prop = {
-            // cofeeHouse: this.idCards,
             date: {
                 start: +startDate,
                 end: +endDate
             }
         };
+        this.date = prop.date;
         if (this.idCards) {
             prop['cofeeHouse'] = this.idCards;
         }
-        console.log('prop', prop);
         this.getCofeeChartData(prop);
+    };
+    AnalyticsDetailComponent.prototype.exportExcel = function (chartType) {
+        var _this = this;
+        var url = "bonusRequest/export/?chartType=" + chartType + "&start=" + this.date['start'] + "&end=" + this.date['end'];
+        if (this.idCards && this.idCards['_id']) {
+            url = "bonusRequest/export/" + this.idCards['_id'] + "?chartType=" + chartType + "&start=" + this.date['start'] + "&end=" + this.date['end'];
+        }
+        // 'bonusRequest/export/?chartType=paychart&start=1506676216274.0&end=1508318398731.0'
+        this.httpService.getFile(url)
+            .subscribe(function (res) {
+            var blob = new Blob([res], { type: 'application/vnd.ms-excel' });
+            var startDate = new Date(_this.date['start']);
+            var endDate = new Date(_this.date['end']);
+            var startDateFormat = startDate.getDate() + "/" + (startDate.getMonth() + 1) + "/" + startDate.getFullYear();
+            var endDateFormat = endDate.getDate() + "/" + (endDate.getMonth() + 1) + "/" + endDate.getFullYear();
+            var fileName = "type_" + chartType + "_" + startDateFormat + "_" + endDateFormat + ".xlsx";
+            Object(__WEBPACK_IMPORTED_MODULE_3_file_saver_FileSaver__["saveAs"])(blob, fileName);
+        });
     };
     AnalyticsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
-            console.log('params', params);
             if (params.idCards) {
                 _this.idCards = JSON.parse(params.idCards);
             }
             _this.getDateForDate('day');
         });
         this.counter = 0;
-        // toDo analytics details -> idCards NAME to ID
-        console.log(this.idCards);
     };
     return AnalyticsDetailComponent;
 }());
@@ -3294,7 +3323,7 @@ var HouseListComponent = (function () {
     }
     HouseListComponent.prototype.ngOnInit = function () {
         var self = this;
-        var searchParams = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* URLSearchParams */]();
+        var searchParams = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["f" /* URLSearchParams */]();
         searchParams.set('owner', localStorage.token);
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
             headers: this.configs.headersDefault,
@@ -3499,7 +3528,7 @@ var OwnerComponent = (function () {
     OwnerComponent.prototype.ngOnInit = function () {
         var _this = this;
         var self = this;
-        var searchParams = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* URLSearchParams */]();
+        var searchParams = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["f" /* URLSearchParams */]();
         this.activatedRoute.params.subscribe(function (params) {
             for (var item in params) {
                 searchParams.set(item, params[item]);

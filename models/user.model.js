@@ -74,7 +74,8 @@ UserSchema.statics.getUser = function (id, selection) {
             const additionalData = {
                 coins,
                 adminRequestsCount,
-                coffeeHouseCoins: DEFAULT_COIN_COUNT
+                coffeeHouseCoins: DEFAULT_COIN_COUNT,
+                referalID: String(user._id).slice(0, 6),
             };
             Object.assign(user._doc, additionalData);
             Object.assign(user, additionalData);

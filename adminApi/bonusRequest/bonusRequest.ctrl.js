@@ -3,7 +3,6 @@
 const BonusRequest = require('../../models/bonusRequest.model');
 const Visitor = require('../../models/visitor.model');
 const {REQUEST_STATUSES, BONUS_TYPES} = require('../../constants');
-const {GLOBAL_ADMIN} = require('../../constants/default');
 const _ = require('lodash');
 const Promise = require('bluebird');
 const moment = require('moment');
@@ -20,7 +19,7 @@ const AnalyticsApi = {
 				$lte: end,
 			},
 		};
-		if (String(user._id) !== String(GLOBAL_ADMIN.id)) {
+		if (!user.isGlobalAdmin()) {
 			query.coffeeHouseID = {
 				$in: user.coffeeHouseID
 			};
@@ -90,7 +89,7 @@ const AnalyticsApi = {
 				$lte: end,
 			},
 		};
-		if (String(user._id) !== String(GLOBAL_ADMIN.id)) {
+		if (!user.isGlobalAdmin()) {
 			query.coffeeHouseID = {
 				$in: user.coffeeHouseID
 			};
@@ -117,7 +116,7 @@ const AnalyticsApi = {
 				$lte: end,
 			},
 		};
-		if (String(user._id) !== String(GLOBAL_ADMIN.id)) {
+		if (!user.isGlobalAdmin()) {
 			query.coffeeHouseID = {
 				$in: user.coffeeHouseID
 			};
@@ -158,7 +157,7 @@ const AnalyticsApi = {
 				$lte: end,
 			},
 		};
-		if (String(user._id) !== String(GLOBAL_ADMIN.id)) {
+		if (!user.isGlobalAdmin()) {
 			query.coffeeHouseID = {
 				$in: user.coffeeHouseID
 			};

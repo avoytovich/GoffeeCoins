@@ -5,6 +5,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
 const config = require('../env');
 const { getOrCreateAuthUser } = require('../helpers/auth.helper');
+const { GLOBAL_ADMIN } = require('../constants/default');
 const {
     modelOptions,
     MODELS,
@@ -85,6 +86,10 @@ AdminSchema.methods.isOwnerInCoffeeHouse = function (houseId) {
         this.coffeeHouseID.some(item => {
             return String(item) === String(houseId);
         });
+};
+
+AdminSchema.methods.isGlobalAdmin = function () {
+    return String(this._id) === String(GLOBAL_ADMIN.id);
 };
 
 AdminSchema.plugin(uniqueValidator, UNIQUE_VL_OPTIONS);

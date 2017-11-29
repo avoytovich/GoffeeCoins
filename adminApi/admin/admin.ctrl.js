@@ -45,7 +45,6 @@ const adminCtrl = {
     },
 
     block({ params: { _id }, user }) {
-        console.log(GLOBAL_ADMIN.id);
         if (_id === String(user._id) || _id === GLOBAL_ADMIN.id) {
             throw FORBIDDEN.createError();
         }

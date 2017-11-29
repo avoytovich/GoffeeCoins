@@ -4,7 +4,6 @@ const User = require('../../models/user.model');
 const Admin = require('../../models/admin.model');
 const Visitor = require('../../models/visitor.model');
 const BonusRequest = require('../../models/bonusRequest.model');
-const { GLOBAL_ADMIN } = require('../../constants/default');
 const Promise = require('bluebird');
 
 const socketHelpers = {
@@ -38,8 +37,8 @@ const socketHelpers = {
                 return user.isAdminInCoffeeHouse(houseId);
             }
             if (user.isOwnerInCoffeeHouse) {
-                return String(user._id) === String(GLOBAL_ADMIN.id)
-                    || user.isOwnerInCoffeeHouse(houseId);
+                return user.isGlobalAdmin() ||
+                    user.isOwnerInCoffeeHouse(houseId);
             }
         }
         return false;

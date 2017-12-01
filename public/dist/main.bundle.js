@@ -227,6 +227,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+// import {MAT_AUTOCOMPLETE_SCROLL_STRATEGY} from '@angular/material';
+// import {Overlay, BlockScrollStrategy} from '@angular/cdk/overlay';
+// import { MAT_SELECT_SCROLL_STRATEGY } from '@angular/material';
+// export function MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY(overlay: Overlay) {
+// 	return () => {
+// 		console.log('Overlay', overlay);
+// 		return overlay.scrollStrategies.block();
+// 	};
+// }
+//
+// export function scrollFactory(overlay: Overlay): () => BlockScrollStrategy {
+// 	return () => overlay.scrollStrategies.block();
+// }
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -236,7 +249,7 @@ AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
+        styles: [__webpack_require__("../../../../../src/app/app.component.scss")],
     })
 ], AppComponent);
 
@@ -265,48 +278,50 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_material_button_toggle__ = __webpack_require__("../../../material/esm5/button-toggle.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_material_progress_spinner__ = __webpack_require__("../../../material/esm5/progress-spinner.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ng_bootstrap_ng_bootstrap_modal_modal_stack__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/modal/modal-stack.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ngx_order_pipe__ = __webpack_require__("../../../../ngx-order-pipe/dist/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ngx_order_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_ngx_order_pipe__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ng2_filter_pipe__ = __webpack_require__("../../../../ng2-filter-pipe/dist/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ng2_filter_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_ng2_filter_pipe__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__core_services_global_data_service__ = __webpack_require__("../../../../../src/app/core/services/global-data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__core_services_logout_service__ = __webpack_require__("../../../../../src/app/core/services/logout.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23_app_core_guards_guard_routing_guard__ = __webpack_require__("../../../../../src/app/core/guards/guard-routing.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_app_core_services_get_user_firebase_service__ = __webpack_require__("../../../../../src/app/core/services/get-user-firebase.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_app_core_services_trigger_dashboard_service__ = __webpack_require__("../../../../../src/app/core/services/trigger-dashboard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_pages_component__ = __webpack_require__("../../../../../src/app/pages/pages.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__core_components_house_item_house_item_component__ = __webpack_require__("../../../../../src/app/core/components/house-item/house-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_houses_houses_component__ = __webpack_require__("../../../../../src/app/pages/houses/houses.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__core_components_item_edit_btns_item_edit_btns_component__ = __webpack_require__("../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__core_components_item_checkbox_item_checkbox_component__ = __webpack_require__("../../../../../src/app/core/components/item-checkbox/item-checkbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__core_modals_edit_popup_edit_popup_component__ = __webpack_require__("../../../../../src/app/core/modals/edit-popup/edit-popup.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__core_modals_eddit_photo_eddit_photo_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-secondary-photos/eddit-secondary-photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__core_components_left_bar_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/left-bar/left-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__core_components_user_left_bar_user_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/user-left-bar/user-left-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__core_components_header_header_component__ = __webpack_require__("../../../../../src/app/core/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_house_edit_house_edit_component__ = __webpack_require__("../../../../../src/app/pages/house-edit/house-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__core_components_google_chart_google_chart_component__ = __webpack_require__("../../../../../src/app/core/components/google-chart/google-chart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__core_dialogs_added_coffee_house_added_coffee_house_component__ = __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43_app_pages_analytics_analytics_component__ = __webpack_require__("../../../../../src/app/pages/analytics/analytics.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44_app_pages_analytics_detail_analytics_detail_component__ = __webpack_require__("../../../../../src/app/pages/analytics-detail/analytics-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_app_pages_payment_payment_component__ = __webpack_require__("../../../../../src/app/pages/payment/payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_app_pages_contact_contact_component__ = __webpack_require__("../../../../../src/app/pages/contact/contact.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47_app_pages_login_login_component__ = __webpack_require__("../../../../../src/app/pages/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48_app_pages_super_admin_owners_super_admin_owners_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-owners/super-admin-owners.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49_app_pages_super_admin_houses_super_admin_houses_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_users_super_admin_users_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_payplan_super_admin_payplan_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-payplan/super-admin-payplan.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_app_pages_super_house_super_house_component__ = __webpack_require__("../../../../../src/app/pages/super-house/super-house.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pages_all_owners_all_owners_component__ = __webpack_require__("../../../../../src/app/pages/all-owners/all-owners.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pages_owner_owner_component__ = __webpack_require__("../../../../../src/app/pages/owner/owner.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__core_pipes_status_caffee_pipe__ = __webpack_require__("../../../../../src/app/core/pipes/status-caffee.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_material_form_field__ = __webpack_require__("../../../material/esm5/form-field.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material_autocomplete__ = __webpack_require__("../../../material/esm5/autocomplete.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ng_bootstrap_ng_bootstrap_modal_modal_stack__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/modal/modal-stack.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_ngx_order_pipe__ = __webpack_require__("../../../../ngx-order-pipe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_ngx_order_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_ngx_order_pipe__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_ng2_filter_pipe__ = __webpack_require__("../../../../ng2-filter-pipe/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_ng2_filter_pipe___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21_ng2_filter_pipe__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__core_services_global_data_service__ = __webpack_require__("../../../../../src/app/core/services/global-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__core_services_logout_service__ = __webpack_require__("../../../../../src/app/core/services/logout.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_app_core_guards_guard_routing_guard__ = __webpack_require__("../../../../../src/app/core/guards/guard-routing.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_app_core_services_get_user_firebase_service__ = __webpack_require__("../../../../../src/app/core/services/get-user-firebase.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_app_core_services_trigger_dashboard_service__ = __webpack_require__("../../../../../src/app/core/services/trigger-dashboard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_pages_component__ = __webpack_require__("../../../../../src/app/pages/pages.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__core_components_house_item_house_item_component__ = __webpack_require__("../../../../../src/app/core/components/house-item/house-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_houses_houses_component__ = __webpack_require__("../../../../../src/app/pages/houses/houses.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__core_components_item_edit_btns_item_edit_btns_component__ = __webpack_require__("../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__core_components_item_checkbox_item_checkbox_component__ = __webpack_require__("../../../../../src/app/core/components/item-checkbox/item-checkbox.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__core_modals_edit_popup_edit_popup_component__ = __webpack_require__("../../../../../src/app/core/modals/edit-popup/edit-popup.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__core_modals_eddit_photo_eddit_photo_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-secondary-photos/eddit-secondary-photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__core_components_left_bar_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/left-bar/left-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__core_components_user_left_bar_user_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/user-left-bar/user-left-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__core_components_header_header_component__ = __webpack_require__("../../../../../src/app/core/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_house_edit_house_edit_component__ = __webpack_require__("../../../../../src/app/pages/house-edit/house-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__core_components_google_chart_google_chart_component__ = __webpack_require__("../../../../../src/app/core/components/google-chart/google-chart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__core_dialogs_added_coffee_house_added_coffee_house_component__ = __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_app_pages_analytics_analytics_component__ = __webpack_require__("../../../../../src/app/pages/analytics/analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_app_pages_analytics_detail_analytics_detail_component__ = __webpack_require__("../../../../../src/app/pages/analytics-detail/analytics-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47_app_pages_payment_payment_component__ = __webpack_require__("../../../../../src/app/pages/payment/payment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48_app_pages_contact_contact_component__ = __webpack_require__("../../../../../src/app/pages/contact/contact.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49_app_pages_login_login_component__ = __webpack_require__("../../../../../src/app/pages/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_owners_super_admin_owners_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-owners/super-admin-owners.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_houses_super_admin_houses_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_app_pages_super_admin_users_super_admin_users_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53_app_pages_super_admin_payplan_super_admin_payplan_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-payplan/super-admin-payplan.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54_app_pages_super_house_super_house_component__ = __webpack_require__("../../../../../src/app/pages/super-house/super-house.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__pages_all_owners_all_owners_component__ = __webpack_require__("../../../../../src/app/pages/all-owners/all-owners.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__pages_owner_owner_component__ = __webpack_require__("../../../../../src/app/pages/owner/owner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__core_pipes_status_caffee_pipe__ = __webpack_require__("../../../../../src/app/core/pipes/status-caffee.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -325,6 +340,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // Module imports
+
+
 
 
 
@@ -382,42 +399,42 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_27__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__pages_pages_component__["a" /* PagesComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__core_components_house_item_house_item_component__["a" /* HouseItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__pages_houses_houses_component__["a" /* HouseListComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__core_components_item_edit_btns_item_edit_btns_component__["a" /* ItemEditBtnsComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__core_components_item_checkbox_item_checkbox_component__["a" /* ItemCheckboxComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__core_modals_edit_popup_edit_popup_component__["a" /* EditPopupComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__core_modals_eddit_photo_eddit_photo_component__["a" /* EdditPhotoComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__["a" /* EdditSecondaryPhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__core_components_left_bar_left_bar_component__["a" /* LeftBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__core_components_user_left_bar_user_left_bar_component__["a" /* UserLeftBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__core_components_header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__pages_house_edit_house_edit_component__["a" /* HouseEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_41__core_components_google_chart_google_chart_component__["a" /* GoogleChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_43_app_pages_analytics_analytics_component__["a" /* AnalyticsComponent */],
-            __WEBPACK_IMPORTED_MODULE_44_app_pages_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_45_app_pages_payment_payment_component__["a" /* PaymentComponent */],
-            __WEBPACK_IMPORTED_MODULE_46_app_pages_contact_contact_component__["a" /* ContactComponent */],
-            __WEBPACK_IMPORTED_MODULE_47_app_pages_login_login_component__["a" /* LoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_48_app_pages_super_admin_owners_super_admin_owners_component__["a" /* SuperAdminOwnersComponent */],
-            __WEBPACK_IMPORTED_MODULE_49_app_pages_super_admin_houses_super_admin_houses_component__["a" /* SuperAdminHousesComponent */],
-            __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_users_super_admin_users_component__["a" /* SuperAdminUsersComponent */],
-            __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_payplan_super_admin_payplan_component__["a" /* SuperAdminPayplanComponent */],
-            __WEBPACK_IMPORTED_MODULE_52_app_pages_super_house_super_house_component__["a" /* SuperHouseComponent */],
-            __WEBPACK_IMPORTED_MODULE_42__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */],
-            __WEBPACK_IMPORTED_MODULE_53__pages_all_owners_all_owners_component__["a" /* AllOwnersComponent */],
-            __WEBPACK_IMPORTED_MODULE_54__pages_owner_owner_component__["a" /* OwnerComponent */],
-            __WEBPACK_IMPORTED_MODULE_55__core_pipes_status_caffee_pipe__["a" /* StatusCaffeePipe */]
+            __WEBPACK_IMPORTED_MODULE_29__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__pages_pages_component__["a" /* PagesComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__core_components_house_item_house_item_component__["a" /* HouseItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__pages_houses_houses_component__["a" /* HouseListComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__core_components_item_edit_btns_item_edit_btns_component__["a" /* ItemEditBtnsComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__core_components_item_checkbox_item_checkbox_component__["a" /* ItemCheckboxComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__core_modals_edit_popup_edit_popup_component__["a" /* EditPopupComponent */],
+            __WEBPACK_IMPORTED_MODULE_37__core_modals_eddit_photo_eddit_photo_component__["a" /* EdditPhotoComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__["a" /* EdditSecondaryPhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__core_components_left_bar_left_bar_component__["a" /* LeftBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__core_components_user_left_bar_user_left_bar_component__["a" /* UserLeftBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__core_components_header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_42__pages_house_edit_house_edit_component__["a" /* HouseEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_43__core_components_google_chart_google_chart_component__["a" /* GoogleChartComponent */],
+            __WEBPACK_IMPORTED_MODULE_45_app_pages_analytics_analytics_component__["a" /* AnalyticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_46_app_pages_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_47_app_pages_payment_payment_component__["a" /* PaymentComponent */],
+            __WEBPACK_IMPORTED_MODULE_48_app_pages_contact_contact_component__["a" /* ContactComponent */],
+            __WEBPACK_IMPORTED_MODULE_49_app_pages_login_login_component__["a" /* LoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_owners_super_admin_owners_component__["a" /* SuperAdminOwnersComponent */],
+            __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_houses_super_admin_houses_component__["a" /* SuperAdminHousesComponent */],
+            __WEBPACK_IMPORTED_MODULE_52_app_pages_super_admin_users_super_admin_users_component__["a" /* SuperAdminUsersComponent */],
+            __WEBPACK_IMPORTED_MODULE_53_app_pages_super_admin_payplan_super_admin_payplan_component__["a" /* SuperAdminPayplanComponent */],
+            __WEBPACK_IMPORTED_MODULE_54_app_pages_super_house_super_house_component__["a" /* SuperHouseComponent */],
+            __WEBPACK_IMPORTED_MODULE_44__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */],
+            __WEBPACK_IMPORTED_MODULE_55__pages_all_owners_all_owners_component__["a" /* AllOwnersComponent */],
+            __WEBPACK_IMPORTED_MODULE_56__pages_owner_owner_component__["a" /* OwnerComponent */],
+            __WEBPACK_IMPORTED_MODULE_57__core_pipes_status_caffee_pipe__["a" /* StatusCaffeePipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_10__app_routing_module__["a" /* AppRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["c" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClientModule */],
-            __WEBPACK_IMPORTED_MODULE_6_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_28__environments_environment__["a" /* environment */].firebase),
+            __WEBPACK_IMPORTED_MODULE_6_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_30__environments_environment__["a" /* environment */].firebase),
             __WEBPACK_IMPORTED_MODULE_7_angularfire2_firestore__["a" /* AngularFirestoreModule */],
             __WEBPACK_IMPORTED_MODULE_8_angularfire2_auth__["b" /* AngularFireAuthModule */],
             __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__["a" /* AngularFireDatabaseModule */],
@@ -427,31 +444,33 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_13__angular_material__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_13__angular_material__["b" /* MatDialogModule */],
             __WEBPACK_IMPORTED_MODULE_13__angular_material__["c" /* MatInputModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["h" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_17_ngx_toastr__["a" /* ToastrModule */].forRoot(__WEBPACK_IMPORTED_MODULE_28__environments_environment__["a" /* environment */].toastr),
-            __WEBPACK_IMPORTED_MODULE_18_ngx_order_pipe__["OrderModule"],
-            __WEBPACK_IMPORTED_MODULE_19_ng2_filter_pipe__["Ng2FilterPipeModule"],
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["i" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_19_ngx_toastr__["a" /* ToastrModule */].forRoot(__WEBPACK_IMPORTED_MODULE_30__environments_environment__["a" /* environment */].toastr),
+            __WEBPACK_IMPORTED_MODULE_20_ngx_order_pipe__["OrderModule"],
+            __WEBPACK_IMPORTED_MODULE_21_ng2_filter_pipe__["Ng2FilterPipeModule"],
             __WEBPACK_IMPORTED_MODULE_15__angular_material_progress_spinner__["a" /* MatProgressSpinnerModule */],
-            __WEBPACK_IMPORTED_MODULE_14__angular_material_button_toggle__["a" /* MatButtonToggleModule */]
+            __WEBPACK_IMPORTED_MODULE_14__angular_material_button_toggle__["a" /* MatButtonToggleModule */],
+            __WEBPACK_IMPORTED_MODULE_17__angular_material_autocomplete__["a" /* MatAutocompleteModule */],
+            __WEBPACK_IMPORTED_MODULE_16__angular_material_form_field__["c" /* MatFormFieldModule */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_20__core_configs_service__["a" /* ConfigsService */],
-            __WEBPACK_IMPORTED_MODULE_21__core_services_global_data_service__["a" /* GlobalDataService */],
-            __WEBPACK_IMPORTED_MODULE_22__core_services_logout_service__["a" /* LogoutService */],
-            __WEBPACK_IMPORTED_MODULE_23_app_core_guards_guard_routing_guard__["a" /* GuardRoutingGuard */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["h" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_24_app_core_services_http_service__["a" /* HttpService */],
-            __WEBPACK_IMPORTED_MODULE_25_app_core_services_get_user_firebase_service__["a" /* GetUserFirebaseService */],
+            __WEBPACK_IMPORTED_MODULE_22__core_configs_service__["a" /* ConfigsService */],
+            __WEBPACK_IMPORTED_MODULE_23__core_services_global_data_service__["a" /* GlobalDataService */],
+            __WEBPACK_IMPORTED_MODULE_24__core_services_logout_service__["a" /* LogoutService */],
+            __WEBPACK_IMPORTED_MODULE_25_app_core_guards_guard_routing_guard__["a" /* GuardRoutingGuard */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["i" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_26_app_core_services_http_service__["a" /* HttpService */],
+            __WEBPACK_IMPORTED_MODULE_27_app_core_services_get_user_firebase_service__["a" /* GetUserFirebaseService */],
             __WEBPACK_IMPORTED_MODULE_12__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
             __WEBPACK_IMPORTED_MODULE_12__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
-            __WEBPACK_IMPORTED_MODULE_26_app_core_services_trigger_dashboard_service__["a" /* TriggerDashboardService */],
-            __WEBPACK_IMPORTED_MODULE_16__ng_bootstrap_ng_bootstrap_modal_modal_stack__["a" /* NgbModalStack */]
+            __WEBPACK_IMPORTED_MODULE_28_app_core_services_trigger_dashboard_service__["a" /* TriggerDashboardService */],
+            __WEBPACK_IMPORTED_MODULE_18__ng_bootstrap_ng_bootstrap_modal_modal_stack__["a" /* NgbModalStack */]
         ],
         bootstrap: [
-            __WEBPACK_IMPORTED_MODULE_27__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__app_component__["a" /* AppComponent */],
         ],
         entryComponents: [
-            __WEBPACK_IMPORTED_MODULE_42__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */]
+            __WEBPACK_IMPORTED_MODULE_44__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */]
         ]
     })
 ], AppModule);
@@ -507,43 +526,24 @@ var GoogleChartComponent = (function () {
         this._element = this.element.nativeElement;
     }
     GoogleChartComponent.prototype.ngOnInit = function () {
-        // setTimeout(() => {
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(this.drawChart);
-        // setTimeout(() => {
-        // 	console.log(this.chartOptions, this.chartType, this.chartData, this._element);
-        // 	this.drawGraph(this.chartOptions, this.chartType, this.chartData, this._element);
-        // }, 1000);
-        // }, 1000
-        // );
     };
     GoogleChartComponent.prototype.ngOnChanges = function () {
-        console.log('change data chart', this.chartData);
-        // setTimeout(() => {
-        // 	google.charts.load('current', {'packages': ['corechart']});
-        // 	google.charts.setOnLoadCallback(this.drawGraph);
-        // setTimeout(() => {
-        // 	this.drawGraph(this.chartOptions, this.chartType, this.chartData, this._element);
         this.drawChart();
-        // }, 1000);
-        // }, 1000);
     };
     GoogleChartComponent.prototype.drawChart = function () {
-        // console.log('Load chart!!!!', this.chartOptions, this.chartType, this.chartData, this._element);
         console.log('Load chart!!!!', this);
-        // google.charts.setOnLoadCallback(drawChart);
-        // function drawChart() {
         if (this) {
             var wrapper = void 0;
             wrapper = new google.visualization.ChartWrapper({
                 chartType: this.chartType,
                 dataTable: this.chartData,
                 options: this.chartOptions || {},
-                containerId: this._element // ele.id
+                containerId: this._element
             });
             wrapper.draw();
         }
-        // }
     };
     return GoogleChartComponent;
 }());
@@ -646,7 +646,7 @@ var _a;
 /***/ "../../../../../src/app/core/components/house-item/house-item.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"house-wrap\">\n\t<div class=\"house-container\" *ngFor=\"let item of inputData; let i = index\">\n\t\t<div class=\"house-header clear-fix\">\n\t\t\t<div class=\"house-header__label\">\n\t\t\t\t{{item.name || ''}}\n\t\t\t</div>\n\t\t\t<app-item-edit-btns *ngIf=\"!analytics\" [item]=\"item\"></app-item-edit-btns>\n\t\t\t<!--<app-item-checkbox [index]=\"i\" [element]=\"item\" [idCards]=\"idCards\" *ngIf=\"analytics\"></app-item-checkbox>-->\n\t\t\t<div class=\"checkbox-container\">\n\t\t\t\t<input id={{i}} (change)=\"onCheck($event, item)\" type=\"checkbox\" name=\"check\" [value]=\"isChecked[item._id]\" [ngClass]=\"{'checked': !!isChecked[item._id]}\">\n\t\t\t\t<label for={{i}}></label>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"house-item__content\" [id]=\"'check-' + i\" [ngClass]=\"{'colorable-img': !!isChecked[item._id]}\">\n\t\t\t<img src=\"./assets/img/coffee-house.jpg\" alt=\"\">\n\t\t</div>\n\n\t\t<div class=\"house-item__footer media justify-content-between align-items-center\">\n\t\t\t<div class=\"house-item__footer-marker\"\n\t\t\t\t [ngClass]=\"{'online': item.status === 'ONLINE', 'offline': item.status === 'OFFLINE', 'debtor': item.status === 'DEBTOR'}\">\n\t\t\t\t{{item.status | statusCaffee}}\n\t\t\t</div>\n\t\t\t<button class=\"house-item__footer-info bg-transparent border-0 media justify-content-between\"\n\t\t\t\t\tmat-raised-button>\n\t\t\t\t{{item.visitorsCount}}\n\t\t\t\t<img src=\"./assets/img/icon/person.svg\">\n\t\t\t</button>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"house-wrap\">\n\t<div class=\"house-container\" *ngFor=\"let item of inputData; let i = index\">\n\t\t<div class=\"house-header clear-fix\">\n\t\t\t<div class=\"house-header__label\">\n\t\t\t\t{{item.name || ''}}\n\t\t\t</div>\n\t\t\t<app-item-edit-btns *ngIf=\"!analytics\" [item]=\"item\"></app-item-edit-btns>\n\t\t\t<!--<app-item-checkbox [index]=\"i\" [element]=\"item\" [idCards]=\"idCards\" *ngIf=\"analytics\"></app-item-checkbox>-->\n\t\t\t<div class=\"checkbox-container mr-3\" *ngIf=\"analytics\">\n\t\t\t\t<input id={{i}} (change)=\"onCheck($event, item)\" type=\"checkbox\" name=\"check\" [value]=\"isChecked[item._id]\" [ngClass]=\"{'checked': !!isChecked[item._id]}\">\n\t\t\t\t<label for={{i}}></label>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"house-item__content\" [id]=\"'check-' + i\" [ngClass]=\"{'colorable-img': !!isChecked[item._id]}\">\n\t\t\t<img src=\"./assets/img/coffee-house.jpg\" alt=\"\">\n\t\t</div>\n\n\t\t<div class=\"house-item__footer media justify-content-between align-items-center\">\n\t\t\t<div class=\"house-item__footer-marker\"\n\t\t\t\t [ngClass]=\"{'online': item.status === 'ONLINE', 'offline': item.status === 'OFFLINE', 'debtor': item.status === 'DEBTOR'}\">\n\t\t\t\t{{item.status | statusCaffee}}\n\t\t\t</div>\n\t\t\t<a class=\"house-item__footer-info bg-transparent border-0 media justify-content-between\" (click)=\"navigateToUsersList(item)\"\n\t\t\t\t\tmat-raised-button>\n\t\t\t\t{{item.visitorsCount}}\n\t\t\t\t<img src=\"./assets/img/icon/person.svg\">\n\t\t\t</a>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -695,10 +695,13 @@ var HouseItemComponent = (function () {
     }
     HouseItemComponent.prototype.ngOnInit = function () {
     };
+    HouseItemComponent.prototype.navigateToUsersList = function (house) {
+        // [routerLink]="['../../users', {id: item._id}]"
+        console.log('role', this.router.url);
+        this.router.navigate(['pages/users', { id: house._id }]);
+    };
     HouseItemComponent.prototype.onCheck = function (e, el) {
         console.log(e);
-        // if (this.checked && (this.checked['_id'] === el._id)) {
-        console.log(Object.keys(this.isChecked).length, this.isChecked[el._id]);
         if (this.isChecked[el._id]) {
             this.isChecked = {};
         }
@@ -706,9 +709,7 @@ var HouseItemComponent = (function () {
             this.isChecked = {};
             this.isChecked[el['_id']] = el;
         }
-        console.log(Object.values(this.isChecked)[0]);
         this.checkedHouses.emit(Object.values(this.isChecked)[0]);
-        console.log('Checked', this.isChecked);
     };
     return HouseItemComponent;
 }());
@@ -976,18 +977,14 @@ var getLinks = function (role) {
                 link: 'houses-list',
                 name: 'Coffee Houses'
             },
-            {
-                link: 'users',
-                name: 'Users'
-            },
+            // {
+            // 	link: 'users',
+            // 	name: 'Users'
+            // },
             {
                 link: 'analytics',
                 name: 'Analytics'
             },
-            {
-                link: 'payplan',
-                name: 'Pay Plan'
-            }
         ],
         OWNER: [
             {
@@ -1166,20 +1163,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ConfigsService = (function () {
     function ConfigsService() {
-        // baseUrl = 'http://localhost:8031/api/v1/';
-        this.baseUrl = 'http://54.72.192.165:8031/api/v1/';
+        this.baseUrl = 'http://localhost:8031/api/v1/';
+        // baseUrl = 'http://54.72.192.165:8031/api/v1/';
         this.headersDefault = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('Authorization')
         });
         this.urlRequest = {
             adminLogin: 'admin/login',
+            adminRequest: 'adminRequest/',
             getCoffeeHouse: 'coffeeHouse',
             createCoffeeHouse: 'coffeeHouse',
             updateCoffeeHouse: 'coffeeHouse/',
             getOwners: 'admin/owner',
             admin: 'admin',
             removeCoffeeHouse: 'admin/remove/',
+            users: 'user/'
         };
     }
     return ConfigsService;
@@ -1196,7 +1195,7 @@ ConfigsService = __decorate([
 /***/ "../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"house-edit__wrap modal-added-coffee-house\">\n\t<div class=\"preloader media justify-content-center align-items-center\" *ngIf=\"spinner\">\n\t\t<mat-progress-spinner\n\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t[color]=\"'primary'\"\n\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t[value]=\"'30'\">\n\t\t</mat-progress-spinner>\n\t</div>\n\n\t<div class=\"house-edit__main\" [ngClass]=\"{'blur': spinner}\">\n\t\t<div class=\"main-info__container\">\n\t\t\t<div class=\"house-edit__photos\">\n\t\t\t\t<div class=\"edit-photo__container\">\n\t\t\t\t\t<div class=\"edit-photo__label\">Choose main photo</div>\n\t\t\t\t\t<div class=\"edit-photo__btn\" (click)=\"popupOpened = true\">\n\t\t\t\t\t\t<div class=\"edit-photo__btn-img\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"edit-photo__container\">\n\t\t\t\t\t<div class=\"edit-photo__label\">Choose additinal photos</div>\n\t\t\t\t\t<div class=\"edit-photo__btn\" (click)=\"popupOpened2 = true\">\n\t\t\t\t\t\t<div class=\"edit-photo__btn-img\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<form (submit)=\"createCoffeeHouse.valid ? sendCoffeeHouseFun() : ''\"\n\t\t\t\t  #createCoffeeHouse=\"ngForm\">\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tMain information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Shop name:\" name=\"name\" [(ngModel)]=\"data.name\"\n\t\t\t\t\t\t\t   #name=\"ngModel\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.name\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"number\" matInput placeholder=\"Coin exchange amount:\" name=\"coins\" #coins=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.coins\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.coins\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input matInput placeholder=\"Shop description:\" name=\"description\" #description=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.description\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.description\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Address in String:\" name=\"address\" #address=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.address\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.address\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tLocation information\n\t\t\t\t</p>\n\t\t\t\t<div class=\"main-info__input-wrap input-long text-center\">\n\t\t\t\t\t<button class=\"btn btn-success w-auto text-white\" mat-raised-button\n\t\t\t\t\t\t\t(click)=\"$event.preventDefault();\">\n\t\t\t\t\t\tPick location on map\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t\t<hr>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tSocial information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links instagram:\" name=\"instagram\"\n\t\t\t\t\t\t\t   #instagram=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.instagram\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.instagram\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.instagram || data.socials.instagram.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links facebook:\" name=\"facebook\"\n\t\t\t\t\t\t\t   #facebook=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.facebook\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.facebook\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.instagram || data.socials.instagram.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links twitter:\" name=\"twitter\"\n\t\t\t\t\t\t\t   #twitter=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.twitter\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.twitter\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.twitter || data.socials.twitter.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links g+:\" name=\"google\" #google=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.google\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials.google\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.google || data.socials.google.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links pinterest:\" name=\"pinterest\"\n\t\t\t\t\t\t\t   #pinterest=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.pinterest\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.pinterest\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.pinterest || data.socials.pinterest.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tWi-fi information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links SSID (wifi network name):\" name=\"ssid\"\n\t\t\t\t\t\t\t   #ssid=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.ssid\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.ssid\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"BSSID (wifi mac address):\" name=\"bssid\"\n\t\t\t\t\t\t\t   #bssid=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.bssid\" required>\n\t\t\t\t\t\t<mat-hint>8a:2a:88:b1:z3:c3</mat-hint>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.bssid\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Wifi wellcome message:\" name=\"welcomeMessage\"\n\t\t\t\t\t\t\t   #welcomeMessage=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.welcomeMessage\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.welcomeMessage\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Wifi password:\" name=\"wifiPassword\"\n\t\t\t\t\t\t\t   #wifiPassword=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.wifiPassword\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.wifiPassword\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"text-center mt-4\">\n\t\t\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button *ngIf=\"isCreate\">\n\t\t\t\t\t\tCreate\n\t\t\t\t\t</button>\n\t\t\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button *ngIf=\"!isCreate\">\n\t\t\t\t\t\tUpdate\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n\n\t<app-edit-photo (closed)=\"closePopup($event)\" *ngIf=\"popupOpened\"></app-edit-photo>\n\t<app-edit-secondary-photos (closed)=\"closePopup($event)\" *ngIf=\"popupOpened2\"></app-edit-secondary-photos>\n</div>\n"
+module.exports = "<div class=\"house-edit__wrap modal-added-coffee-house\">\n\t<div class=\"preloader media justify-content-center align-items-center\" *ngIf=\"spinner\">\n\t\t<mat-progress-spinner\n\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t[value]=\"'30'\">\n\t\t</mat-progress-spinner>\n\t</div>\n\n\t<div class=\"house-edit__main\" [ngClass]=\"{'blur': spinner}\">\n\t\t<div class=\"main-info__container\">\n\t\t\t<div class=\"house-edit__photos\">\n\t\t\t\t<div class=\"edit-photo__container\">\n\t\t\t\t\t<div class=\"edit-photo__label\">Choose main photo</div>\n\t\t\t\t\t<div class=\"edit-photo__btn\" (click)=\"popupOpened = true\">\n\t\t\t\t\t\t<div class=\"edit-photo__btn-img\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"edit-photo__container\">\n\t\t\t\t\t<div class=\"edit-photo__label\">Choose additinal photos</div>\n\t\t\t\t\t<div class=\"edit-photo__btn\" (click)=\"popupOpened2 = true\">\n\t\t\t\t\t\t<div class=\"edit-photo__btn-img\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<!--<mat-form-field class=\"example-full-width\">-->\n\t\t\t<!--<input type=\"text\" placeholder=\"Choose user\" aria-label=\"Number\" matInput [formControl]=\"stateCtrl\" [matAutocomplete]=\"auto\">-->\n\t\t\t<!--<mat-autocomplete #auto=\"matAutocomplete\">-->\n\t\t\t<!--<mat-option *ngFor=\"let option of filteredStates | async\" [value]=\"option.name\">-->\n\t\t\t<!--{{ option.name }}-->\n\t\t\t<!--</mat-option>-->\n\t\t\t<!--</mat-autocomplete>-->\n\t\t\t<!--</mat-form-field>-->\n\t\t\t<!--<form class=\"example-form\">-->\n\t\t\t<mat-form-field style=\"width: 100%;\">\n\t\t\t\t<input matInput placeholder=\"Select user\" aria-label=\"State\" [matAutocomplete]=\"auto\"\n\t\t\t\t\t   [formControl]=\"stateCtrl\" [(ngModel)]=\"selectedUser\">\n\t\t\t\t<mat-autocomplete #auto=\"matAutocomplete\" [displayWith]=\"displayFn\">\n\t\t\t\t\t<mat-option *ngFor=\"let state of filteredStates | async\" [value]=\"state\">\n\t\t\t\t\t\t<img style=\"vertical-align:middle;\" aria-hidden src=\"{{state.avatarUrl}}\" height=\"25\"/>\n\t\t\t\t\t\t<span>{{ state.name }}</span>\n\t\t\t\t\t</mat-option>\n\t\t\t\t</mat-autocomplete>\n\t\t\t</mat-form-field>\n\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button (click)=\"createAdminRequest(item._id, selectedUser)\">\n\t\t\t\tAdd admin\n\t\t\t</button>\n\n\t\t\t<br/>\n\t\t\t<!--</form>-->\n\n\t\t\t<hr>\n\n\t\t\t<form (submit)=\"createCoffeeHouse.valid ? sendCoffeeHouseFun() : ''\"\n\t\t\t\t  #createCoffeeHouse=\"ngForm\">\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tMain information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Shop name:\" name=\"name\" [(ngModel)]=\"data.name\"\n\t\t\t\t\t\t\t   #name=\"ngModel\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.name\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"number\" matInput placeholder=\"Coin exchange amount:\" name=\"coins\" #coins=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.coins\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.coins\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input matInput placeholder=\"Shop description:\" name=\"description\" #description=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.description\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.description\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Address in String:\" name=\"address\" #address=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.address\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.address\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\t\t\t\taddress {{data.address}}\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tLocation information\n\t\t\t\t</p>\n\t\t\t\t<div class=\"main-info__input-wrap input-long text-center\">\n\t\t\t\t\t<button class=\"btn btn-success w-auto text-white\" mat-raised-button\n\t\t\t\t\t\t\t(click)=\"$event.preventDefault();\">\n\t\t\t\t\t\tPick location on map\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t\t<hr>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tSocial information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links instagram:\" name=\"instagram\"\n\t\t\t\t\t\t\t   #instagram=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.instagram\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.instagram\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.instagram || data.socials.instagram.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links facebook:\" name=\"facebook\"\n\t\t\t\t\t\t\t   #facebook=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.facebook\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.facebook\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.instagram || data.socials.instagram.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links twitter:\" name=\"twitter\"\n\t\t\t\t\t\t\t   #twitter=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.twitter\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.twitter\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.twitter || data.socials.twitter.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links g+:\" name=\"google\" #google=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.google\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials.google\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.google || data.socials.google.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links pinterest:\" name=\"pinterest\"\n\t\t\t\t\t\t\t   #pinterest=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.pinterest\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.pinterest\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.pinterest || data.socials.pinterest.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tWi-fi information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links SSID (wifi network name):\" name=\"ssid\"\n\t\t\t\t\t\t\t   #ssid=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.ssid\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.ssid\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"BSSID (wifi mac address):\" name=\"bssid\"\n\t\t\t\t\t\t\t   #bssid=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.bssid\" required>\n\t\t\t\t\t\t<mat-hint>8a:2a:88:b1:z3:c3</mat-hint>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.bssid\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Wifi wellcome message:\" name=\"welcomeMessage\"\n\t\t\t\t\t\t\t   #welcomeMessage=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.welcomeMessage\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.welcomeMessage\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Wifi password:\" name=\"wifiPassword\"\n\t\t\t\t\t\t\t   #wifiPassword=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.wifiPassword\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.wifiPassword\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"text-center mt-4\">\n\t\t\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button *ngIf=\"isCreate\">\n\t\t\t\t\t\tCreate\n\t\t\t\t\t</button>\n\t\t\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button *ngIf=\"!isCreate\">\n\t\t\t\t\t\tUpdate\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n\n\t<app-edit-photo (closed)=\"closePopup($event)\" *ngIf=\"popupOpened\"></app-edit-photo>\n\t<app-edit-secondary-photos (closed)=\"closePopup($event)\" *ngIf=\"popupOpened2\"></app-edit-secondary-photos>\n</div>\n"
 
 /***/ }),
 
@@ -1222,13 +1221,19 @@ module.exports = module.exports.toString();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export State */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddedCoffeeHouseComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_startWith__ = __webpack_require__("../../../../rxjs/operators/startWith.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators_startWith__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators_map__ = __webpack_require__("../../../../rxjs/operators/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1240,12 +1245,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
 // import {NgForm, FormControl, FormGroup} from '@angular/forms';
 
 
 
 
-// import {Observable} from 'rxjs/Observable';
+var State = (function () {
+    function State(name, population, flag) {
+        this.name = name;
+        this.population = population;
+        this.flag = flag;
+    }
+    return State;
+}());
+
 var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
     function AddedCoffeeHouseComponent(activeModal, toastrService, httpService, configs) {
         this.activeModal = activeModal;
@@ -1254,6 +1270,32 @@ var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
         this.configs = configs;
         this.isCreate = true;
         this.spinner = false;
+        // options = ['one', 'two', 'three'];
+        // myControl: FormControl = new FormControl();
+        this.selectedUser = { name: '' };
+        // states: State[] = [
+        // 	{
+        // 		name: 'Arkansas',
+        // 		population: '2.978M',
+        // 		flag: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Arkansas.svg'
+        // 	},
+        // 	{
+        // 		name: 'California',
+        // 		population: '39.14M',
+        // 		flag: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg'
+        // 	},
+        // 	{
+        // 		name: 'Florida',
+        // 		population: '20.27M',
+        // 		flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Florida.svg'
+        // 	},
+        // 	{
+        // 		name: 'Texas',
+        // 		population: '27.47M',
+        // 		flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
+        // 	}
+        // ];
+        this.users = [];
         this.data = {
             _id: localStorage.token,
             avatarUrl: '',
@@ -1285,6 +1327,10 @@ var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
     }
     AddedCoffeeHouseComponent.prototype.ngOnInit = function () {
         var self = this;
+        console.log('valueChanges');
+        this.getUsers();
+        this.stateCtrl = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]();
+        console.dir(this.stateCtrl.valueChanges);
         if (this.item) {
             this.isCreate = false;
             this.spinner = true;
@@ -1306,10 +1352,10 @@ var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
                         22.28984200000002
                     ],
                     wifi: {
-                        bssid: response.wifi.bssid || '',
-                        ssid: response.wifi.ssid || '',
-                        wifiPassword: response.wifi.wifiPassword || '',
-                        welcomeMessage: response.wifi.welcomeMessage || '',
+                        bssid: response.wifi ? response.wifi.bssid : '',
+                        ssid: response.wifi ? response.wifi.ssid : '',
+                        wifiPassword: response.wifi ? response.wifi.wifiPassword : '',
+                        welcomeMessage: response.wifi ? response.wifi.welcomeMessage : '',
                     },
                     socials: {
                         facebook: response.socials ? response.socials.facebook : '',
@@ -1323,6 +1369,40 @@ var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
                 self.spinner = false;
             });
         }
+    };
+    AddedCoffeeHouseComponent.prototype.createAdminRequest = function (coffeeHouseId, user) {
+        var _this = this;
+        console.log(coffeeHouseId, user._id);
+        var requestData = {
+            coffeeHouseID: coffeeHouseId,
+            userID: user._id
+        };
+        this.httpService.post(this.configs.urlRequest.adminRequest, requestData)
+            .subscribe(function (response) {
+            console.log(response);
+            _this.toastrService.success('Request sent!');
+        });
+    };
+    AddedCoffeeHouseComponent.prototype.filterStates = function (name) {
+        return this.users.filter(function (state) {
+            return state.name.toLowerCase().indexOf(name.toLowerCase()) === 0;
+        });
+    };
+    AddedCoffeeHouseComponent.prototype.displayFn = function (user) {
+        return user ? user.name : user;
+    };
+    AddedCoffeeHouseComponent.prototype.getUsers = function () {
+        var _this = this;
+        return this.httpService.get(this.configs.urlRequest.users)
+            .subscribe(function (response) {
+            console.log('Response', response);
+            // return response;
+            _this.users = response;
+            _this.filteredStates = _this.stateCtrl.valueChanges
+                .pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators_startWith__["startWith"])({}), 
+            // map(state => state ? this.filterStates(state) : this.users.slice())
+            Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators_map__["map"])(function (user) { return user && typeof user === 'object' ? user['name'] : user; }), Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators_map__["map"])(function (name) { return name ? _this.filterStates(name) : _this.users.slice(); }));
+        });
     };
     AddedCoffeeHouseComponent.prototype.closePopup = function (popupOpened, popupOpened2) {
         this.popupOpened = popupOpened;
@@ -1373,9 +1453,9 @@ AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-added-coffee-house',
         template: __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.scss")]
+        styles: [__webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.scss")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_8_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _d || Object])
 ], AddedCoffeeHouseComponent);
 
 var AddedCoffeeHouseComponent_1, _a, _b, _c, _d;
@@ -2667,7 +2747,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/pages/analytics-detail/analytics-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"media justify-content-center align-content-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<!--<div class=\"preloader media justify-content-center align-items-center\">-->\n\t<!--<mat-progress-spinner-->\n\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t<!--[color]=\"'primary'\"-->\n\t<!--[mode]=\"'indeterminate'\"-->\n\t<!--[value]=\"'30'\">-->\n\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\n\t<div *ngIf=\"showCharts\">\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"visits_chart\" [chartData]=\"visitsChartData\" [chartOptions]=\"visitsChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('visits')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart [chartData]=\"timeChartData\" [chartOptions]=\"timeChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('time')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">\n\t\t\t\t<mat-progress-spinner\n\t\t\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t\t\t[value]=\"'30'\">\n\t\t\t\t</mat-progress-spinner>\n\t\t\t</div>\n\t\t\t<app-google-chart id=\"line_chart\" [chartData]=\"line_ChartData\" [chartOptions]=\"line_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('coffee')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('paychart')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n</div>"
+module.exports = "<div class=\"analytic-diagram__container\">\n\t<p>\n\t\t<!--{{idCards}}-->\n\t</p>\n\t<div class=\"mx-5\">\n\t\t<mat-button-toggle-group #group=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle>Real Time Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Unic Users</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Average Time</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Total Coffee</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Gold Coin</mat-button-toggle>\n\t\t\t<mat-button-toggle value=\"\">Universal Gold Coin</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\t<div class=\"date-tooggle-btn-group\">\n\t\t<mat-button-toggle-group #dateGroup=\"matButtonToggleGroup\">\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('day')\">Day</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('week')\" value='week'>Week</mat-button-toggle>\n\t\t\t<mat-button-toggle (click)=\"getDateForDate('month')\" value='month'>Month</mat-button-toggle>\n\t\t</mat-button-toggle-group>\n\t</div>\n\n\t<!--<div class=\"preloader media justify-content-center align-items-center\"></div>-->\n\t<!--<div style=\"position: absolute; z-index: 1; margin-top: 25%\" *ngIf=\"showSpinner\">-->\n\t\t<!--<mat-progress-spinner-->\n\t\t\t\t<!--class=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"-->\n\t\t\t\t<!--[color]=\"'primary'\"-->\n\t\t\t\t<!--[mode]=\"'indeterminate'\"-->\n\t\t\t\t<!--[value]=\"'30'\">-->\n\t\t<!--</mat-progress-spinner>-->\n\t<!--</div>-->\n\t<div *ngIf=\"showCharts\">\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"visits_chart\" [chartData]=\"visitsChartData\" [chartOptions]=\"columnChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t</app-google-chart>\n\t\t</div>\n\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('visits')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart [chartData]=\"timeChartData\" [chartOptions]=\"timeChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('time')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"line_chart\" [chartData]=\"columnChartData\" [chartOptions]=\"columnChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"ColumnChart\">\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('coffee')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"media justify-content-center\">\n\t\t\t<app-google-chart id=\"pie_chart\" [chartData]=\"pie_ChartData\" [chartOptions]=\"pie_ChartOptions\"\n\t\t\t\t\t\t\t  chartType=\"PieChart\">\n\t\t\t</app-google-chart>\n\t\t</div>\n\t\t<div class=\"mx-auto text-right chart-width\">\n\t\t\t<div class=\"export-btn-container\">\n\t\t\t\t<button mat-raised-button color=\"primary\" (click)=\"exportExcel('paychart')\">Export excel</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n</div>"
 
 /***/ }),
 
@@ -2718,7 +2798,6 @@ var AnalyticsDetailComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.httpService = httpService;
         this.idCards = [];
-        this.showSpinner = false;
         this.showCharts = false;
         this.counter = 0;
         this.date = {};
@@ -2729,31 +2808,13 @@ var AnalyticsDetailComponent = (function () {
             ['', 0, 0],
             ['', 0, 0],
         ];
-        this.line_ChartData = [
+        this.columnChartData = [
             ['Task', 'Hours per Day', 'Hours per Days'],
             ['', 0, 0, 0],
             ['', 0, 0, 0],
             ['', 0, 0, 0],
             ['', 0, 0, 0],
             ['', 0, 0, 0]
-            // [{v: [8, 0, 0], f: '8 am'}, 1, .25],
-            // [{v: [9, 0, 0], f: '9 am'}, 2, .5],
-            // [{v: [10, 0, 0], f: '10 am'}, 3, 1],
-            // ['Task', 'Hours per Day', 'Hours per Days'],
-            // ['', 10, 12],
-            // ['', 2, 7],
-            // ['', 2, 12],
-            // ['', 3, 18],
-            // ['', 7, 27],
-            // ['Commute',  2, 14],
-            // ['Watch TV', 2, 12],
-            // ['Eat',       2, 7],
-            // ['Commute',  2, 14],
-            // ['Watch TV', 2, 18],
-            // ['Sleep',    5, 47],
-            // ['Commute',  2, 14],
-            // ['Watch TV', 2, 54],
-            // ['Sleep',    7, 80]
         ];
         this.visitsChartData = [
             ['Date', 'All users', 'Unique users'],
@@ -2762,11 +2823,9 @@ var AnalyticsDetailComponent = (function () {
             ['', 0, 0]
         ];
         this.timeChartData = [
-            // data: [
             ['Period', 'User count'],
             ['', 0],
             ['', 0]
-            // ]
         ];
         this.pie_ChartOptions = {
             width: 900,
@@ -2776,30 +2835,7 @@ var AnalyticsDetailComponent = (function () {
             },
             sliceVisibilityThreshold: 0
         };
-        this.line_ChartOptions = {
-            // title: 'My Daily Activities',
-            width: 900,
-            height: 500,
-            // title: 'Population of Largest U.S. Cities',
-            // chartArea: { width: '70%' },
-            // legend: {position: 'top', maxLines: 3},
-            hAxis: {
-                minValue: 0,
-                textStyle: {
-                    bold: true,
-                    fontSize: 12,
-                    color: '#4d4d4d'
-                },
-                titleTextStyle: {
-                    bold: true,
-                    fontSize: 18,
-                    color: '#4d4d4d'
-                },
-                slantedText: true,
-                slantedTextAngle: 90
-            },
-        };
-        this.visitsChartOptions = {
+        this.columnChartOptions = {
             // title: 'My Daily Activities',
             width: 900,
             height: 500,
@@ -2826,9 +2862,6 @@ var AnalyticsDetailComponent = (function () {
             // title: 'My Daily Activities',
             width: 900,
             height: 500,
-            // title: 'Average: ' + this.timeChartData['average'],
-            // chartArea: { width: '70%' },
-            // legend: {position: 'top', maxLines: 3},
             hAxis: {
                 minValue: 0,
                 textStyle: {
@@ -2843,7 +2876,7 @@ var AnalyticsDetailComponent = (function () {
                 },
                 slantedText: true,
                 slantedTextAngle: 90
-            },
+            }
         };
     }
     AnalyticsDetailComponent.prototype.getDateByDate = function (param) {
@@ -2857,12 +2890,10 @@ var AnalyticsDetailComponent = (function () {
         if (prop.cofeeHouse && prop.cofeeHouse._id) {
             url = "bonusRequest/coffee/" + prop.cofeeHouse['_id'] + "?start=" + prop.date.start + "&end=" + prop.date.end;
         }
-        console.log('url', url, prop.cofeeHouse);
         this.httpService.get(url)
             .subscribe(function (res) {
-            console.log('Res', res);
             if (res.length < 2) {
-                _this.line_ChartData = res.concat([
+                _this.columnChartData = res.concat([
                     ['', 0, 0, 0],
                     ['', 0, 0, 0],
                     ['', 0, 0, 0],
@@ -2871,7 +2902,7 @@ var AnalyticsDetailComponent = (function () {
                 ]);
             }
             else {
-                _this.line_ChartData = res;
+                _this.columnChartData = res;
             }
             _this.counter += 1;
             if (_this.counter > 3) {
@@ -2884,7 +2915,6 @@ var AnalyticsDetailComponent = (function () {
         }
         this.httpService.get(urlPaychart)
             .subscribe(function (res) {
-            console.log('pie_ChartData Res', res);
             if (res.length < 2) {
                 _this.pie_ChartData = res.concat([
                     ['', 241],
@@ -2905,7 +2935,6 @@ var AnalyticsDetailComponent = (function () {
         }
         this.httpService.get(urlVisits)
             .subscribe(function (res) {
-            console.log('Visits chart data', res);
             if (res.length < 2) {
                 _this.visitsChartData = res.concat([
                     ['0m', 0, 0],
@@ -2926,7 +2955,6 @@ var AnalyticsDetailComponent = (function () {
         }
         this.httpService.get(urlTime)
             .subscribe(function (res) {
-            console.log('Time chart data', res);
             _this.timeChartOptions['title'] = 'Average: ' + res['average'];
             if (res['data'].length < 2) {
                 _this.timeChartData = res['data'].concat([
@@ -3020,7 +3048,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/pages/analytics/analytics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"analytic-wrap\">\n\t<div class=\"main-wrap\">\n\t\t<app-house-item [inputData]=\"data\" [analytics]=\"analytics\" (checkedHouses)=\"checkedHouses($event)\"></app-house-item>\n\n\t\t<div class=\"analytics-btn__container\">\n\t\t\t<button class=\"analytics-btn\" (click)=\"gooAnalyticsDetail(isChecked)\" mat-raised-button>\n\t\t\t\tGet analytics\n\t\t\t</button>\n\t\t</div>\n\t</div>\n</div>\n"
+module.exports = "\n<div class=\"analytic-wrap\">\n\n\t<div class=\"main-wrap\">\n\t\t<app-house-item [inputData]=\"data\" [analytics]=\"analytics\" (checkedHouses)=\"checkedHouses($event)\"></app-house-item>\n\t\t<div class=\"analytics-btn__container\">\n\t\t\t<button class=\"analytics-btn\" (click)=\"gooAnalyticsDetail(isChecked)\" mat-raised-button>\n\t\t\t\tGet analytics\n\t\t\t</button>\n\t\t</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -3271,7 +3299,7 @@ var _a, _b;
 /***/ "../../../../../src/app/pages/houses/houses.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"house-list-wrap\">\n\t<div class=\"main-wrap\">\n\t\t<app-house-item [inputData] = \"data\" [analytics] = \"analytics\"></app-house-item>\n\t</div>\n</div>"
+module.exports = "<div class=\"house-list-wrap\">\n\t<div class=\"main-wrap\">\n\t\t<app-house-item [inputData] = \"data\" [analytics] = \"analytics\"></app-house-item>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -3693,7 +3721,7 @@ var _a;
 /***/ "../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"super-owners__container\">\n\n\t<table class=\"owners-table\">\n\t\t<thead>\n\t\t<th></th>\n\t\t<th>Name</th>\n\t\t<th>Since</th>\n\t\t<th>\n\t\t\t<div class=\"table-owners__search-container\">\n\t\t\t\t<input type=\"text\" class=\"table-owners__search\" placeholder=\"Search\" ngModel #valueData=\"ngModel\">\n\t\t\t\t<div class=\"search-icon\"></div>\n\t\t\t</div>\n\t\t</th>\n\t\t</thead>\n\t\t<tbody>\n\t\t<tr class=\"owners-row\" *ngFor=\"let item of data | filterBy:{name: valueData.value}\">\n\t\t\t<td>\n\t\t\t\t<img [src]=\"item.avatarUrl || './assets/img/defaults/default-coffee-house.jpg'\">\n\t\t\t</td>\n\t\t\t<td>{{item.name}}</td>\n\t\t\t<td>{{item.since}}</td>\n\t\t\t<td></td>\n\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>"
+module.exports = "<div class=\"super-owners__container\">\n\n\t<table class=\"owners-table\">\n\t\t<thead>\n\t\t<th></th>\n\t\t<th>Name</th>\n\t\t<th>Since</th>\n\t\t<th>\n\t\t\t<div class=\"table-owners__search-container\">\n\t\t\t\t<input type=\"text\" class=\"table-owners__search\" placeholder=\"Search\" ngModel #valueData=\"ngModel\">\n\t\t\t\t<div class=\"search-icon\"></div>\n\t\t\t</div>\n\t\t</th>\n\t\t</thead>\n\t\t<tbody>\n\t\t<tr class=\"owners-row\" *ngFor=\"let item of data | filterBy:{name: valueData.value}\">\n\t\t\t<td>\n\t\t\t\t<img [src]=\"item.avatarUrl || './assets/img/defaults/default-coffee-house.jpg'\">\n\t\t\t</td>\n\t\t\t<td>{{item.name}}</td>\n\t\t\t<td>{{item.since}}</td>\n\t\t\t<td></td>\n\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n\n"
 
 /***/ }),
 
@@ -3893,7 +3921,7 @@ SuperAdminPayplanComponent = __decorate([
 /***/ "../../../../../src/app/pages/super-admin-users/super-admin-users.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n\tsuper-admin-users works!\n</p>\n"
+module.exports = "<div class=\"users-list-wrap\">\n\t<div class=\"main-wrap my-5\">\n\t\t<table class=\"table\">\n\t\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th scope=\"col\">#</th>\n\t\t\t\t<th scope=\"col\">Avatar</th>\n\t\t\t\t<th scope=\"col\">Username</th>\n\t\t\t\t<th scope=\"col\">Status</th>\n\t\t\t\t<th></th>\n\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t<tr *ngFor=\"let user of users; let i = index;\">\n\t\t\t\t<th class=\"align-middle\" scope=\"row\">{{i + 1}}</th>\n\t\t\t\t<td><img class=\"user-avatar\" src=\"{{user?.avatarUrl}}\"></td>\n\t\t\t\t<td class=\"align-middle\">{{user?.name}}</td>\n\t\t\t\t<td class=\"align-middle\">\n\t\t\t\t\t<span *ngIf=\"user && user?.adminRequestsCount > 0\">sent</span>\n\t\t\t\t</td>\n\t\t\t\t<td class=\"align-middle\" *ngIf=\"user\"><button mat-raised-button color=\"primary\" (click)=\"createAdminRequest(user._id)\" [disabled]=\"user.adminRequestsCount > 0\">Send admin request</button></td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -3905,7 +3933,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "* {\n  font-size: 1rem; }\n", ""]);
+exports.push([module.i, "* {\n  font-size: 1rem; }\n\n.user-avatar {\n  width: 60px; }\n", ""]);
 
 // exports
 
@@ -3921,6 +3949,12 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SuperAdminUsersComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_socket_io_client__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3931,10 +3965,71 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+// import {Socket} from 'ng-socket-io';
+
 var SuperAdminUsersComponent = (function () {
-    function SuperAdminUsersComponent() {
+    function SuperAdminUsersComponent(httpService, config, activatedRoute, toastrService) {
+        this.httpService = httpService;
+        this.config = config;
+        this.activatedRoute = activatedRoute;
+        this.toastrService = toastrService;
     }
+    SuperAdminUsersComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.httpService.get(this.config.urlRequest.users)
+            .subscribe(function (response) {
+            console.log('Response', response);
+            // return response;
+            _this.users = response;
+        });
+    };
+    SuperAdminUsersComponent.prototype.createAdminRequest = function (userId) {
+        var _this = this;
+        var requestData = {
+            coffeeHouseID: this.coffeeHouseId,
+            userID: userId
+        };
+        this.httpService.post(this.config.urlRequest.adminRequest, requestData)
+            .subscribe(function (response) {
+            console.log(response);
+            _this.toastrService.success('Request sent!');
+        });
+    };
     SuperAdminUsersComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var token = localStorage.getItem('Authorization');
+        this.socket = __WEBPACK_IMPORTED_MODULE_5_socket_io_client__["connect"]('http://localhost:8030/', {
+            query: 'token=' + token.slice(4, token.length)
+        });
+        this.activatedRoute.params.subscribe(function (params) {
+            if (params.id) {
+                _this.coffeeHouseId = params.id;
+                console.log('CoffeeHouse ID', params.id);
+                _this.socket.emit('inCoffeeHouse', params.id); // '59c9d506ce0e011b6d53d0c9'
+            }
+        });
+        this.socket.on('listOfCurrentVisitors', function (users) {
+            _this.users = users;
+        });
+        this.socket.on('newUserInCoffeeHouse', function (user) {
+            _this.users.push(user);
+        });
+        this.socket.on('userLeaveCoffeeHouse', function (id) {
+            var index = _this.users.findIndex(function (item) {
+                return item._id === id;
+            });
+            if (index !== -1) {
+                _this.users.splice(index, 1);
+            }
+        });
+        // this.socket.emit('hello', 'Socet message!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        // this.socket.on('world', (message) => {
+        // 	console.log(message);
+        // });
     };
     return SuperAdminUsersComponent;
 }());
@@ -3944,9 +4039,10 @@ SuperAdminUsersComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]) === "function" && _d || Object])
 ], SuperAdminUsersComponent);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=super-admin-users.component.js.map
 
 /***/ }),
@@ -4080,6 +4176,13 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 
 module.exports = __webpack_require__("../../../../../src/main.ts");
 
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+/* (ignored) */
 
 /***/ })
 

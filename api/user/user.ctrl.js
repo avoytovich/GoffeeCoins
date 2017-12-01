@@ -16,7 +16,7 @@ const Promise = require('bluebird');
 const userApiMethods = {
 
     signup({ body }) {
-        const data = pick(body, ['_id', 'name', 'avatarUrl'/*, 'referalId'*/]);
+        const data = pick(body, ['_id', 'name', 'avatarUrl', 'referalId']);
         return checkUserOnFirebase(data._id)
             .then(firebaseUser => {
                 data.email = firebaseUser.email;
@@ -25,9 +25,9 @@ const userApiMethods = {
             .then(async user => {
                 if (user) return user;
                 user = await User.create(data);
-                /*if (user.referalId) {
+                if (user.referalId) {
                     createFriendRegisteredNote(user.referalId, user._id)
-                }*/
+                }
                 return User.getUser(user._id);
             })
             .then(user => ({
@@ -55,7 +55,7 @@ const userApiMethods = {
                 }),
                 createFriendRegisteredNote(referalUser._id, user._id)
             )
-        }).then(([user, result]) => User.getUser(user._id));
+        }).then(() => User.getUser(_id));
     },
 
     login({ body: { _id } }) {

@@ -24,9 +24,8 @@ userRouter.post('/link', (req, res, next) => {
     req.checkBody({
         _id: VALIDATIONS.USER._id,
         referalID: {
-            notEmpty: true,
             matches: {
-                options: ['^[a-z\d]{6}$', 'i']
+                options: ['^[a-z0-9]{6}$', 'i']
             }
         }
     });

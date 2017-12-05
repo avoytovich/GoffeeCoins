@@ -1163,8 +1163,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ConfigsService = (function () {
     function ConfigsService() {
-        this.baseUrl = 'http://localhost:8031/api/v1/';
-        // baseUrl = 'http://54.72.192.165:8031/api/v1/';
+        // baseUrl = 'http://localhost:8031/api/v1/';
+        this.baseUrl = 'http://54.72.192.165:8031/api/v1/';
         this.headersDefault = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('Authorization')

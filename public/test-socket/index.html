@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js.map"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>
+    var socket = io.connect('http://192.168.88.59:8030', {
+        'query': 'token=' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Qlg5SzJ1bDRnWnJ1SU9zTFhKb0VYQmZ1aFIyIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MTE5NTkwNzd9.DevOwrihS4MRWYc1n6bJkgL1q-V7MXjRmef4drayUKs'
+    });
+
+    var visitors;
+
+    socket.on('connect', function() {
+
+        socket.emit('hello', 'Adminskyi');
+
+        setTimeout(function () {
+            socket.emit('inCoffeeHouse', '59c9d506ce0e011b6d53d0c9');
+        }, 3000);
+    });
+
+    socket.on('world', function (mes) {
+        console.log('world', mes);
+    });
+
+    socket.on('listOfCurrentVisitors', function (mes) {
+        console.log('listOfCurrentVisitors', mes);
+        visitors = mes;
+        console.log(visitors);
+    });
+
+    socket.on('newUserInCoffeeHouse', function (mes) {
+        console.log('newUserInCoffeeHouse', mes);
+        visitors.push(mes);
+        console.log(visitors);
+    });
+
+    socket.on('userLeaveCoffeeHouse', function (mes) {
+        console.log('userLeaveCoffeeHouse', mes);
+        visitors = visitors.filter(function (item) {
+            return String(item._id) !== String(mes);
+        });
+        console.log(visitors);
+    });
+
+    socket.on('error', function (err) {
+        console.log('error', err.message);
+    });
+</script>
+</body>
+</html>

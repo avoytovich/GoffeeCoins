@@ -52,6 +52,28 @@ const userApiMethods = {
             }));
     },
 
+    link({ body: { _id, referalID } }) {
+        const query = {
+            _id: new RegExp('^' + referalID)
+        };
+        return Promise.join(
+            User.findById(_id),
+            User.findOne(query)
+        ).then(([user, referalUser]) => {
+            if (!user || !referalUser) {
+                throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+            }
+            return Promise.join(
+                user.update({
+                    $set: {
+                        referalId: referalUser._id
+                    }
+                }),
+                createFriendRegisteredNote(referalUser._id, user._id)
+            )
+        }).then(() => User.getUser(_id));
+    },
+
     login({ body: { _id } }) {
         return checkUserOnFirebase(_id)
             .then(firebaseUser => User.getUser(_id))

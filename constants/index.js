@@ -82,10 +82,10 @@ module.exports = {
                 friendRegistered: 'Твій запрошений друг щойно зареєструвався. Вітаємо :)',
             },
             RU: {
-                bonusRequestFree: (n) => `Запрос на бесплатное кофе получено от ${n}`,
+                bonusRequestFree: (n) => `Запрос на бесплатный кофе получен от ${n}`,
                 bonusRequestFreeConfirmed: 'Запрос на бесплатный кофе принят!',
                 bonusRequestFreeRejected: 'Запрос на бесплатный кофе отклонен, непотраченные CoffeeCoins восстановлено.',
-                bonusRequestCoin: (n) => `Запрос на бонус получено от ${n}`,
+                bonusRequestCoin: (n) => `Запрос на бонус получен от ${n}`,
                 bonusRequestCoinConfirmed: (c) => `CoffeeCoin запрос принят, ${c} CoffeeCoin(-ов) добавлено.`,
                 bonusRequestCoinRejected: 'CoffeeCoin запрос отклонен...',
                 adminRequest: (n) => `Заведение ${n} приглашает Вас стать администратором!`,

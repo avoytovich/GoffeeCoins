@@ -51,6 +51,10 @@ const GENERAL = {
     NotEmpty: {
         notEmpty: true,
     },
+    optionalUrl: {
+        optional: true,
+        notEmpty: false,
+    }
 };
 
 module.exports = {
@@ -72,11 +76,11 @@ module.exports = {
         coins: GENERAL.coins,
         location: GENERAL.location,
         address: GENERAL.NotEmpty,
-        'socials.facebook': GENERAL.optionalLink,
-        'socials.instagram': GENERAL.optionalLink,
-        'socials.twitter': GENERAL.optionalLink,
-        'socials.google': GENERAL.optionalLink,
-        'socials.pinterest': GENERAL.optionalLink,
+        'socials.facebook': GENERAL.optionalUrl,
+        'socials.instagram': GENERAL.optionalUrl,
+        'socials.twitter': GENERAL.optionalUrl,
+        'socials.google': GENERAL.optionalUrl,
+        'socials.pinterest': GENERAL.optionalUrl,
         'wifi.bssid': GENERAL.NotEmpty,
         'wifi.ssid': GENERAL.NotEmpty,
         'wifi.wifiPassword': GENERAL.NotEmpty,

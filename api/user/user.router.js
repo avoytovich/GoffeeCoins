@@ -12,12 +12,25 @@ const responseHandler = require('../../middleware/responseHandler');
 userRouter.post('/', (req, res, next) => {
     req.sanitizeBody('name').trim();
     req.checkBody(
-        pick(VALIDATIONS.USER, ['_id', 'name', 'avatarUrl', 'referalId'])
+        pick(VALIDATIONS.USER, ['_id', 'name', 'avatarUrl'/*, 'referalId'*/])
     );
     next();
 }, responseHandler(userCtrl.signup, {
     status: CREATED.code,
 }));
+
+
+userRouter.post('/link', (req, res, next) => {
+    req.checkBody({
+        _id: VALIDATIONS.USER._id,
+        referalID: {
+            matches: {
+                options: ['^[a-z0-9]{6}$', 'i']
+            }
+        }
+    });
+    next();
+}, responseHandler(userCtrl.link));
 
 
 userRouter.post('/login', (req, res, next) => {

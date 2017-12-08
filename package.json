@@ -44,7 +44,8 @@
     "socket.io": "^2.0.3",
     "socketio-jwt": "^4.5.0",
     "tracer": "^0.8.11",
-    "validator": "^8.2.0"
+    "validator": "^8.2.0",
+    "xlsx": "^0.11.10"
   },
   "devDependencies": {
     "apidoc": "^0.17.6"

@@ -1164,7 +1164,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ConfigsService = (function () {
     function ConfigsService() {
         // baseUrl = 'http://localhost:8031/api/v1/';
-        this.baseUrl = 'http://54.72.192.165:8031/api/v1/';
+        this.baseUrl = '/api/v1/';
         this.headersDefault = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('Authorization')
@@ -1195,7 +1195,7 @@ ConfigsService = __decorate([
 /***/ "../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"house-edit__wrap modal-added-coffee-house\">\n\t<div class=\"preloader media justify-content-center align-items-center\" *ngIf=\"spinner\">\n\t\t<mat-progress-spinner\n\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t[value]=\"'30'\">\n\t\t</mat-progress-spinner>\n\t</div>\n\n\t<div class=\"house-edit__main\" [ngClass]=\"{'blur': spinner}\">\n\t\t<div class=\"main-info__container\">\n\t\t\t<div class=\"house-edit__photos\">\n\t\t\t\t<div class=\"edit-photo__container\">\n\t\t\t\t\t<div class=\"edit-photo__label\">Choose main photo</div>\n\t\t\t\t\t<div class=\"edit-photo__btn\" (click)=\"popupOpened = true\">\n\t\t\t\t\t\t<div class=\"edit-photo__btn-img\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"edit-photo__container\">\n\t\t\t\t\t<div class=\"edit-photo__label\">Choose additinal photos</div>\n\t\t\t\t\t<div class=\"edit-photo__btn\" (click)=\"popupOpened2 = true\">\n\t\t\t\t\t\t<div class=\"edit-photo__btn-img\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<!--<mat-form-field class=\"example-full-width\">-->\n\t\t\t<!--<input type=\"text\" placeholder=\"Choose user\" aria-label=\"Number\" matInput [formControl]=\"stateCtrl\" [matAutocomplete]=\"auto\">-->\n\t\t\t<!--<mat-autocomplete #auto=\"matAutocomplete\">-->\n\t\t\t<!--<mat-option *ngFor=\"let option of filteredStates | async\" [value]=\"option.name\">-->\n\t\t\t<!--{{ option.name }}-->\n\t\t\t<!--</mat-option>-->\n\t\t\t<!--</mat-autocomplete>-->\n\t\t\t<!--</mat-form-field>-->\n\t\t\t<!--<form class=\"example-form\">-->\n\t\t\t<mat-form-field style=\"width: 100%;\">\n\t\t\t\t<input matInput placeholder=\"Select user\" aria-label=\"State\" [matAutocomplete]=\"auto\"\n\t\t\t\t\t   [formControl]=\"stateCtrl\" [(ngModel)]=\"selectedUser\">\n\t\t\t\t<mat-autocomplete #auto=\"matAutocomplete\" [displayWith]=\"displayFn\">\n\t\t\t\t\t<mat-option *ngFor=\"let state of filteredStates | async\" [value]=\"state\">\n\t\t\t\t\t\t<img style=\"vertical-align:middle;\" aria-hidden src=\"{{state.avatarUrl}}\" height=\"25\"/>\n\t\t\t\t\t\t<span>{{ state.name }}</span>\n\t\t\t\t\t</mat-option>\n\t\t\t\t</mat-autocomplete>\n\t\t\t</mat-form-field>\n\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button (click)=\"createAdminRequest(item._id, selectedUser)\">\n\t\t\t\tAdd admin\n\t\t\t</button>\n\n\t\t\t<br/>\n\t\t\t<!--</form>-->\n\n\t\t\t<hr>\n\n\t\t\t<form (submit)=\"createCoffeeHouse.valid ? sendCoffeeHouseFun() : ''\"\n\t\t\t\t  #createCoffeeHouse=\"ngForm\">\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tMain information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Shop name:\" name=\"name\" [(ngModel)]=\"data.name\"\n\t\t\t\t\t\t\t   #name=\"ngModel\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.name\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"number\" matInput placeholder=\"Coin exchange amount:\" name=\"coins\" #coins=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.coins\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.coins\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input matInput placeholder=\"Shop description:\" name=\"description\" #description=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.description\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.description\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Address in String:\" name=\"address\" #address=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.address\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.address\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\t\t\t\taddress {{data.address}}\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tLocation information\n\t\t\t\t</p>\n\t\t\t\t<div class=\"main-info__input-wrap input-long text-center\">\n\t\t\t\t\t<button class=\"btn btn-success w-auto text-white\" mat-raised-button\n\t\t\t\t\t\t\t(click)=\"$event.preventDefault();\">\n\t\t\t\t\t\tPick location on map\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t\t<hr>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tSocial information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links instagram:\" name=\"instagram\"\n\t\t\t\t\t\t\t   #instagram=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.instagram\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.instagram\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.instagram || data.socials.instagram.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links facebook:\" name=\"facebook\"\n\t\t\t\t\t\t\t   #facebook=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.facebook\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.facebook\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.instagram || data.socials.instagram.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links twitter:\" name=\"twitter\"\n\t\t\t\t\t\t\t   #twitter=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.twitter\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.twitter\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.twitter || data.socials.twitter.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links g+:\" name=\"google\" #google=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.google\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials.google\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.google || data.socials.google.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links pinterest:\" name=\"pinterest\"\n\t\t\t\t\t\t\t   #pinterest=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.pinterest\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.pinterest\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.pinterest || data.socials.pinterest.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tWi-fi information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links SSID (wifi network name):\" name=\"ssid\"\n\t\t\t\t\t\t\t   #ssid=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.ssid\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.ssid\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"BSSID (wifi mac address):\" name=\"bssid\"\n\t\t\t\t\t\t\t   #bssid=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.bssid\" required>\n\t\t\t\t\t\t<mat-hint>8a:2a:88:b1:z3:c3</mat-hint>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.bssid\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Wifi wellcome message:\" name=\"welcomeMessage\"\n\t\t\t\t\t\t\t   #welcomeMessage=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.welcomeMessage\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.welcomeMessage\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Wifi password:\" name=\"wifiPassword\"\n\t\t\t\t\t\t\t   #wifiPassword=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.wifiPassword\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.wifiPassword\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"text-center mt-4\">\n\t\t\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button *ngIf=\"isCreate\">\n\t\t\t\t\t\tCreate\n\t\t\t\t\t</button>\n\t\t\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button *ngIf=\"!isCreate\">\n\t\t\t\t\t\tUpdate\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n\n\t<app-edit-photo (closed)=\"closePopup($event)\" *ngIf=\"popupOpened\"></app-edit-photo>\n\t<app-edit-secondary-photos (closed)=\"closePopup($event)\" *ngIf=\"popupOpened2\"></app-edit-secondary-photos>\n</div>\n"
+module.exports = "<div class=\"house-edit__wrap modal-added-coffee-house\">\n\t<div class=\"preloader media justify-content-center align-items-center\" *ngIf=\"spinner\">\n\t\t<mat-progress-spinner\n\t\t\t\tclass=\"example-margin mat-progress-spinner mat-primary mat-progress-spinner-indeterminate-animation\"\n\t\t\t\t[color]=\"'primary'\"\n\t\t\t\t[mode]=\"'indeterminate'\"\n\t\t\t\t[value]=\"'30'\">\n\t\t</mat-progress-spinner>\n\t</div>\n\n\t<div class=\"house-edit__main\" [ngClass]=\"{'blur': spinner}\">\n\t\t<div class=\"main-info__container\">\n\t\t\t<div class=\"house-edit__photos\">\n\t\t\t\t<div class=\"edit-photo__container\">\n\t\t\t\t\t<div class=\"edit-photo__label\">Choose main photo</div>\n\t\t\t\t\t<div class=\"edit-photo__btn\" (click)=\"popupOpened = true\">\n\t\t\t\t\t\t<div class=\"edit-photo__btn-img\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"edit-photo__container\">\n\t\t\t\t\t<div class=\"edit-photo__label\">Choose additinal photos</div>\n\t\t\t\t\t<div class=\"edit-photo__btn\" (click)=\"popupOpened2 = true\">\n\t\t\t\t\t\t<div class=\"edit-photo__btn-img\"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<!--<mat-form-field class=\"example-full-width\">-->\n\t\t\t<!--<input type=\"text\" placeholder=\"Choose user\" aria-label=\"Number\" matInput [formControl]=\"stateCtrl\" [matAutocomplete]=\"auto\">-->\n\t\t\t<!--<mat-autocomplete #auto=\"matAutocomplete\">-->\n\t\t\t<!--<mat-option *ngFor=\"let option of filteredStates | async\" [value]=\"option.name\">-->\n\t\t\t<!--{{ option.name }}-->\n\t\t\t<!--</mat-option>-->\n\t\t\t<!--</mat-autocomplete>-->\n\t\t\t<!--</mat-form-field>-->\n\t\t\t<!--<form class=\"example-form\">-->\n\t\t\t<mat-form-field style=\"width: 100%;\">\n\t\t\t\t<input matInput placeholder=\"Select user\" aria-label=\"State\" [matAutocomplete]=\"auto\"\n\t\t\t\t\t   [formControl]=\"stateCtrl\" [(ngModel)]=\"selectedUser\">\n\t\t\t\t<mat-autocomplete #auto=\"matAutocomplete\" [displayWith]=\"displayFn\">\n\t\t\t\t\t<mat-option *ngFor=\"let state of filteredStates | async\" [value]=\"state\">\n\t\t\t\t\t\t<img style=\"vertical-align:middle;\" aria-hidden src=\"{{state.avatarUrl}}\" height=\"25\"/>\n\t\t\t\t\t\t<span>{{ state.name }}</span>\n\t\t\t\t\t</mat-option>\n\t\t\t\t</mat-autocomplete>\n\t\t\t</mat-form-field>\n\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button (click)=\"createAdminRequest(item._id, selectedUser)\">\n\t\t\t\tAdd admin\n\t\t\t</button>\n\n\t\t\t<br/>\n\t\t\t<!--</form>-->\n\n\t\t\t<hr>\n\n\t\t\t<form (submit)=\"createCoffeeHouse.valid ? sendCoffeeHouseFun() : ''\"\n\t\t\t\t  #createCoffeeHouse=\"ngForm\">\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tMain information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Shop name:\" name=\"name\" [(ngModel)]=\"data.name\"\n\t\t\t\t\t\t\t   #name=\"ngModel\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.name\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"number\" matInput placeholder=\"Coin exchange amount:\" name=\"coins\" #coins=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.coins\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.coins\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input matInput placeholder=\"Shop description:\" name=\"description\" #description=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.description\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.description\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Address in String:\" name=\"address\" #address=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.address\"\n\t\t\t\t\t\t\t   required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.address\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\t\t\t\taddress {{data.address}}\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tLocation information\n\t\t\t\t</p>\n\t\t\t\t<div class=\"main-info__input-wrap input-long text-center\">\n\t\t\t\t\t<button class=\"btn btn-success w-auto text-white\" mat-raised-button\n\t\t\t\t\t\t\t(click)=\"$event.preventDefault();\">\n\t\t\t\t\t\tPick location on map\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t\t<hr>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tSocial information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links instagram:\" name=\"instagram\"\n\t\t\t\t\t\t\t   #instagram=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.instagram\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.instagram\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.instagram || data.socials.instagram.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links facebook:\" name=\"facebook\"\n\t\t\t\t\t\t\t   #facebook=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.facebook\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.facebook\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.instagram || data.socials.instagram.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links twitter:\" name=\"twitter\"\n\t\t\t\t\t\t\t   #twitter=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.twitter\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.twitter\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.twitter || data.socials.twitter.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links g+:\" name=\"google\" #google=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.google\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials.google\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.google || data.socials.google.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links pinterest:\" name=\"pinterest\"\n\t\t\t\t\t\t\t   #pinterest=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.socials.pinterest\" pattern=\"(https?://)(\\w*)(\\.)(\\w*)(\\D*)\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.socials || !data.socials.pinterest\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t\t<mat-error *ngIf=\"data.socials || data.socials.pinterest || data.socials.pinterest.length\">\n\t\t\t\t\t\t\tInvalid input\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<p class=\"main-info__label\">\n\t\t\t\t\tWi-fi information\n\t\t\t\t</p>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Social links SSID (wifi network name):\" name=\"ssid\"\n\t\t\t\t\t\t\t   #ssid=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.ssid\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.ssid\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"BSSID (wifi mac address):\" name=\"bssid\"\n\t\t\t\t\t\t\t   #bssid=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.bssid\" required>\n\t\t\t\t\t\t<mat-hint>8a:2a:88:b1:z3:c3</mat-hint>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.bssid\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pr-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Wifi wellcome message:\" name=\"welcomeMessage\"\n\t\t\t\t\t\t\t   #welcomeMessage=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.welcomeMessage\" required>\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.welcomeMessage\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"main-info__input-wrap pl-lg-4\">\n\t\t\t\t\t<mat-form-field class=\"w-100\">\n\t\t\t\t\t\t<input type=\"text\" matInput placeholder=\"Wifi password:\" name=\"wifiPassword\"\n\t\t\t\t\t\t\t   #wifiPassword=\"ngModel\"\n\t\t\t\t\t\t\t   [(ngModel)]=\"data.wifi.wifiPassword\">\n\t\t\t\t\t\t<mat-error *ngIf=\"!data.wifi || !data.wifi.wifiPassword\">\n\t\t\t\t\t\t\tObligatory field\n\t\t\t\t\t\t</mat-error>\n\t\t\t\t\t</mat-form-field>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"text-center mt-4\">\n\t\t\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button *ngIf=\"isCreate\">\n\t\t\t\t\t\tCreate\n\t\t\t\t\t</button>\n\t\t\t\t\t<button color=\"primary\" type=\"submit\" mat-raised-button *ngIf=\"!isCreate\">\n\t\t\t\t\t\tUpdate\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t</div>\n\t</div>\n\n\t<app-edit-photo [photoUrl]=\"data.avatarUrl\" (closed)=\"closePopup($event)\" *ngIf=\"popupOpened\"></app-edit-photo>\n\t<app-edit-secondary-photos (closed)=\"closePopup($event)\" *ngIf=\"popupOpened2\"></app-edit-secondary-photos>\n</div>\n"
 
 /***/ }),
 
@@ -1419,6 +1419,9 @@ var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
     };
     AddedCoffeeHouseComponent.prototype.createCoffeeHouseFun = function () {
         var self = this;
+        // TODO: EDIT THIS!!!
+        this.data.avatarUrl = 'http://sbgboost.s3.amazonaws.com/ylhyh_croper_ru.jpeg';
+        this.data.bannerUrls = ['http://sbgboost.s3.amazonaws.com/ylhyh_croper_ru.jpeg'];
         this.httpService.post(this.configs.urlRequest.createCoffeeHouse, JSON.stringify(this.data))
             .subscribe(function (data) {
             self.spinner = false;
@@ -1513,7 +1516,7 @@ var _a;
 /***/ "../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"edit-popup__container\">\n\t<div class=\"edit-popup\">\n\t\t<div class=\"edit-popup__label\">Edit you data</div>\n\t\t<div *ngIf=\"!setNewImg\" class=\"current-image\">\n\t\t\t<div *ngIf=\"!currentFileUrl\" class=\"avatar-loader\" alt=\"avatar loading...\"></div>\n\t\t\t<img src={{currentFileUrl}} alt=\"\">\n\t\t</div>\n\t\t<div *ngIf=\"!setNewImg\" class=\"set-new-img\" (click) = \"setImg();\">\n\t\t\tSet new image\n\t\t</div>\n\t\t<form *ngIf=\"setNewImg\" class=\"edit-popup__form\" (submit) = \"sendNewData($event);\">\n\t\t\t<!--<img-cropper [image]=\"data1\" [settings]=\"cropperSettings1\" (onCrop)=\"cropped($event)\"></img-cropper>-->\n\n\t\t\t<input class=\"edit-popup__send\" type=\"submit\" value=\"Send\">\n\t\t</form>\n\t\t<div class=\"close-btn\" (click) = \"closePopup()\"></div>\n\t</div>\n</div>\n\n"
+module.exports = "<div class=\"edit-popup__container\">\n\t<div class=\"edit-popup\">\n\t\t<div class=\"edit-popup__label\">Edit you data</div>\n\t\t<div *ngIf=\"!setNewImg\" class=\"current-image\">\n\t\t\t<div *ngIf=\"!photoUrl\" class=\"avatar-loader\" alt=\"avatar loading...\"></div>\n\t\t\t<img src={{photoUrl}} class=\"photo\" alt=\"\">\n\t\t</div>\n\t\t<div *ngIf=\"!setNewImg\" class=\"set-new-img\" (click) = \"setImg();\">\n\t\t\tSet new image\n\t\t</div>\n\t\t<form *ngIf=\"setNewImg\" class=\"edit-popup__form\" (submit) = \"sendNewData($event);\">\n\n\t\t\t<img-cropper [image]=\"data\" [settings]=\"cropperSettings\" (onCrop)=\"cropped($event)\"></img-cropper>\n\n\t\t\t<input class=\"edit-popup__send\" type=\"submit\" value=\"Send\">\n\t\t</form>\n\t\t<div class=\"close-btn\" (click) = \"closePopup()\"></div>\n\t</div>\n</div>\n\n"
 
 /***/ }),
 
@@ -1525,7 +1528,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".edit-popup__container {\n  position: fixed;\n  width: 100%;\n  height: 100vh;\n  top: 0;\n  left: 0;\n  z-index: 10;\n  background-color: rgba(0, 0, 0, 0.5); }\n\n.edit-popup {\n  position: absolute;\n  width: 800px;\n  height: 550px;\n  top: calc(50% - 275px);\n  left: calc(50% - 400px);\n  padding: 30px 40px 30px;\n  z-index: 10;\n  background-color: #fff; }\n\n.edit-popup__label {\n  margin-bottom: 20px;\n  text-align: center;\n  font-size: 20px;\n  font-family: 'RobotoM', sans-serif; }\n\n.edit-name {\n  width: 80%;\n  height: 30px; }\n\n.edit-popup input {\n  display: block;\n  margin: 10px auto 10px;\n  border: 1px solid #222;\n  font-size: 16px;\n  font-family: 'RobotoR', sans-serif;\n  padding: 0 10px; }\n\n.edit-popup__send {\n  position: absolute;\n  width: 100px;\n  height: 30px;\n  line-height: 30px;\n  bottom: 20px;\n  left: calc(50% - 50px);\n  cursor: pointer; }\n\n.close-btn {\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  right: -10px;\n  top: -10px;\n  background-color: #666;\n  border-radius: 50%;\n  cursor: pointer; }\n\n.close-btn:before, .close-btn:after {\n  position: absolute;\n  top: -3px;\n  left: 10.5px;\n  width: 1px;\n  height: 27px;\n  background-color: #222;\n  content: ''; }\n\n.close-btn:before {\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg); }\n\n.close-btn:after {\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg); }\n\n.current-image {\n  margin-top: 60px;\n  text-align: center; }\n\n.current-image .avatar-loader, .current-image .avatar-loader:before, .current-image .avatar-loader:after {\n  width: 100px;\n  height: 100px; }\n\n.set-new-img {\n  width: 50%;\n  height: 40px;\n  position: absolute;\n  left: 25%;\n  bottom: 30px;\n  text-align: center;\n  line-height: 40px;\n  background-color: #666;\n  color: #fff;\n  font-family: 'RobotoM', sans-serif;\n  font-size: 16px;\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, ".edit-popup__container {\n  position: fixed;\n  width: 100%;\n  height: 100vh;\n  top: 0;\n  left: 0;\n  z-index: 10;\n  background-color: rgba(0, 0, 0, 0.5); }\n\n.edit-popup {\n  position: absolute;\n  width: 800px;\n  height: 550px;\n  top: calc(50% - 275px);\n  left: calc(50% - 400px);\n  padding: 30px 40px 30px;\n  z-index: 10;\n  background-color: #fff; }\n\n.edit-popup__label {\n  margin-bottom: 20px;\n  text-align: center;\n  font-size: 20px;\n  font-family: 'RobotoM', sans-serif; }\n\n.edit-name {\n  width: 80%;\n  height: 30px; }\n\n.edit-popup input {\n  display: block;\n  margin: 10px auto 10px;\n  border: 1px solid #222;\n  font-size: 16px;\n  font-family: 'RobotoR', sans-serif;\n  padding: 0 10px; }\n\n.edit-popup__send {\n  position: absolute;\n  width: 100px;\n  height: 30px;\n  line-height: 30px;\n  bottom: 20px;\n  left: calc(50% - 50px);\n  cursor: pointer; }\n\n.close-btn {\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  right: -10px;\n  top: -10px;\n  background-color: #666;\n  border-radius: 50%;\n  cursor: pointer; }\n\n.close-btn:before, .close-btn:after {\n  position: absolute;\n  top: -3px;\n  left: 10.5px;\n  width: 1px;\n  height: 27px;\n  background-color: #222;\n  content: ''; }\n\n.close-btn:before {\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg); }\n\n.close-btn:after {\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg); }\n\n.current-image {\n  margin-top: 60px;\n  text-align: center; }\n\n.current-image .avatar-loader, .current-image .avatar-loader:before, .current-image .avatar-loader:after {\n  width: 100px;\n  height: 100px; }\n\n.current-image .photo {\n  width: 300px;\n  height: 300px; }\n\n.set-new-img {\n  width: 50%;\n  height: 40px;\n  position: absolute;\n  left: 25%;\n  bottom: 30px;\n  text-align: center;\n  line-height: 40px;\n  background-color: #666;\n  color: #fff;\n  font-family: 'RobotoM', sans-serif;\n  font-size: 16px;\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -1541,8 +1544,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EdditPhotoComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_firebase_app__ = __webpack_require__("../../../../firebase/app/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_firebase_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_img_cropper__ = __webpack_require__("../../../../ng2-img-cropper/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_core_services_get_user_firebase_service__ = __webpack_require__("../../../../../src/app/core/services/get-user-firebase.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1560,42 +1562,24 @@ var EdditPhotoComponent = (function () {
     function EdditPhotoComponent(getUserInfo) {
         this.getUserInfo = getUserInfo;
         this.setNewImg = false;
-        // @ViewChild('cropper', undefined) cropper: ImageCropperComponent;
         this.closed = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.name = 'Angular2';
-        // this.cropperSettings1 = new CropperSettings();
-        // this.cropperSettings1.width = 200;
-        // this.cropperSettings1.height = 200;
-        //
-        // this.cropperSettings1.croppedWidth = 500;
-        // this.cropperSettings1.croppedHeight = 375;
-        //
-        // this.cropperSettings1.canvasWidth = 400;
-        // this.cropperSettings1.canvasHeight = 300;
-        //
-        // this.cropperSettings1.minWidth = 10;
-        // this.cropperSettings1.minHeight = 10;
-        //
-        // this.cropperSettings1.rounded = false;
-        // this.cropperSettings1.keepAspect = false;
-        // this.cropperSettings1.preserveSize = true;
-        // this.cropperSettings1.cropperDrawSettings.strokeColor = 'rgba(99,99,99,0)';
-        // this.cropperSettings1.cropperDrawSettings.strokeWidth = 2;
-        this.data1 = {};
+        this.cropperSettings = new __WEBPACK_IMPORTED_MODULE_1_ng2_img_cropper__["a" /* CropperSettings */]();
+        this.cropperSettings.width = 200;
+        this.cropperSettings.height = 200;
+        this.cropperSettings.croppedWidth = 500;
+        this.cropperSettings.croppedHeight = 375;
+        this.cropperSettings.canvasWidth = 400;
+        this.cropperSettings.canvasHeight = 300;
+        this.cropperSettings.minWidth = 10;
+        this.cropperSettings.minHeight = 10;
+        this.cropperSettings.rounded = false;
+        this.cropperSettings.keepAspect = false;
+        this.cropperSettings.preserveSize = true;
+        this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(99,99,99,0)';
+        this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
+        this.data = {};
     }
     EdditPhotoComponent.prototype.ngOnInit = function () {
-        var GLOBAL = this;
-        var currentFileName;
-        var currentFile;
-        var db = __WEBPACK_IMPORTED_MODULE_1_firebase_app__["database"]().ref('/houses/house1');
-        db.once('value').then(function (snap) {
-            currentFileName = snap.val().image;
-        }).then(function () {
-            currentFile = GLOBAL.getUserInfo.getImg(currentFileName);
-            return currentFile;
-        }).then(function () {
-            GLOBAL.currentFileUrl = currentFile.za;
-        });
     };
     EdditPhotoComponent.prototype.setImg = function () {
         this.setNewImg = true;
@@ -1603,8 +1587,6 @@ var EdditPhotoComponent = (function () {
     EdditPhotoComponent.prototype.cropped = function (bounds) {
         this.croppedHeight = bounds.right - bounds.left;
         this.croppedWidth = bounds.right - bounds.left;
-        this.newAvatar = this.data1.image;
-        this.newFile = this.data1.image;
         var element = document.querySelectorAll('input[type=file]')[0];
         var fullFileName = element.value;
         var index = fullFileName.lastIndexOf('\\');
@@ -1618,29 +1600,36 @@ var EdditPhotoComponent = (function () {
         var that = this;
         myReader.onloadend = function (loadEvent) {
             image.src = loadEvent.target.result;
-            // that.cropper.setImage(image);
+            that.cropper.setImage(image);
             myReader.readAsDataURL(file);
         };
     };
-    ;
     EdditPhotoComponent.prototype.sendNewData = function ($event) {
         $event.preventDefault();
-        var GLOBAL = this;
-        var oldAvatarName = null;
-        // let token = window.localStorage.token;
-        var db = __WEBPACK_IMPORTED_MODULE_1_firebase_app__["database"]().ref('/houses/house1');
-        db.once('value').then(function (snap) {
-            oldAvatarName = snap.val().image;
-        }).then(function () {
-            console.log(oldAvatarName);
-            __WEBPACK_IMPORTED_MODULE_1_firebase_app__["storage"]().ref(oldAvatarName).delete();
-        }).then(function () {
-            db.update({ image: GLOBAL.newAvatar });
-        });
-        var index = this.newFile.indexOf(',');
-        var uploadingData = this.newFile.slice(index + 1, this.newFile.length);
-        console.log(uploadingData);
-        __WEBPACK_IMPORTED_MODULE_1_firebase_app__["storage"]().ref().child(this.newAvatar).putString(uploadingData, 'base64');
+        // const GLOBAL = this;
+        // let oldAvatarName = null;
+        //
+        // // let token = window.localStorage.token;
+        // const db = firebase.database().ref('/houses/house1');
+        //
+        //
+        // db.once('value').then(function (snap) {
+        // 	oldAvatarName = snap.val().image;
+        //
+        // }).then(function () {
+        // 	console.log(oldAvatarName);
+        // 	firebase.storage().ref(oldAvatarName).delete();
+        //
+        // }).then(function () {
+        // 	db.update({image: GLOBAL.newAvatar});
+        //
+        // });
+        //
+        // const index = this.newFile.indexOf(',');
+        // const uploadingData = this.newFile.slice(index + 1, this.newFile.length);
+        // console.log(uploadingData);
+        //
+        // firebase.storage().ref().child(this.newAvatar).putString(uploadingData, 'base64');
         this.closePopup();
     };
     EdditPhotoComponent.prototype.closePopup = function () {
@@ -1649,8 +1638,16 @@ var EdditPhotoComponent = (function () {
     return EdditPhotoComponent;
 }());
 __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", String)
+], EdditPhotoComponent.prototype, "photoUrl", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('cropper', undefined),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ng2_img_cropper__["b" /* ImageCropperComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng2_img_cropper__["b" /* ImageCropperComponent */]) === "function" && _a || Object)
+], EdditPhotoComponent.prototype, "cropper", void 0);
+__decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _b || Object)
 ], EdditPhotoComponent.prototype, "closed", void 0);
 EdditPhotoComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1658,10 +1655,10 @@ EdditPhotoComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.html"),
         styles: [__webpack_require__("../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_core_services_get_user_firebase_service__["a" /* GetUserFirebaseService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_core_services_get_user_firebase_service__["a" /* GetUserFirebaseService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_app_core_services_get_user_firebase_service__["a" /* GetUserFirebaseService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_core_services_get_user_firebase_service__["a" /* GetUserFirebaseService */]) === "function" && _c || Object])
 ], EdditPhotoComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=eddit-photo.component.js.map
 
 /***/ }),

@@ -54,6 +54,10 @@ const GENERAL = {
     optionalUrl: {
         optional: true,
         notEmpty: false,
+    },
+    optionalString: {
+        optional: true,
+        isURL: false,
     }
 };
 
@@ -83,7 +87,7 @@ module.exports = {
         'socials.pinterest': GENERAL.optionalUrl,
         'wifi.bssid': GENERAL.NotEmpty,
         'wifi.ssid': GENERAL.NotEmpty,
-        'wifi.wifiPassword': GENERAL.NotEmpty,
+        'wifi.wifiPassword': GENERAL.optionalString,
         'wifi.welcomeMessage': GENERAL.NotEmpty,
         owner: Object.assign({ optional: true }, GENERAL.firebaseId),
     }

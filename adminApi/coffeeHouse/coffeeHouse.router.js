@@ -38,7 +38,8 @@ housesRouter.route('/:_id')
         }
         req.checkBody(validations);
         next();
-    }, responseHandler(housesCtrl.updateHouse));
+    }, responseHandler(housesCtrl.updateHouse))
+    .delete(responseHandler(housesCtrl.removeHouse));
 
 
 module.exports = housesRouter;

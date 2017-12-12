@@ -90,6 +90,17 @@ const housesCtrl = {
             }));
     },
 
+    removeHouse({ params: { _id }, body, user }) {
+        return checkHouse(_id)
+            .then(house => {
+                if (!user.isOwnerInCoffeeHouse(house._id) &&
+                    !user.isGlobalAdmin()) {
+                    throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+                }
+
+                return CoffeeHouse.findByIdAndRemove(_id);
+            });
+    }
 };
 
 module.exports = housesCtrl;

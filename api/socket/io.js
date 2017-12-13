@@ -82,6 +82,7 @@ module.exports = server => {
                 const userToSend = pick(socket.user, defaultFields);
                 io.to(houseId).emit('newUserInCoffeeHouse', userToSend);
             }
+            io.emit('g_newUserInCoffeeHouse', {houseId: houseId, userId: userId});
         });
 
         socket.on('getRequests', () => {
@@ -98,6 +99,7 @@ module.exports = server => {
 
         socket.on('disconnect', () => {
             logger.log('disconnect', socket.userId);
+            io.emit('g_userLeaveCoffeeHouse', { userId: socket.userId, houseId: socket.houseId});
             if (socket.currentVisit) {
                 socket.currentVisit.getOut();
                 Object.assign(socket, { currentVisit: null });

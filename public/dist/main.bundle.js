@@ -293,35 +293,37 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_app_core_services_get_user_firebase_service__ = __webpack_require__("../../../../../src/app/core/services/get-user-firebase.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_app_core_services_trigger_dashboard_service__ = __webpack_require__("../../../../../src/app/core/services/trigger-dashboard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_pages_component__ = __webpack_require__("../../../../../src/app/pages/pages.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__core_components_house_item_house_item_component__ = __webpack_require__("../../../../../src/app/core/components/house-item/house-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_houses_houses_component__ = __webpack_require__("../../../../../src/app/pages/houses/houses.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__core_components_item_edit_btns_item_edit_btns_component__ = __webpack_require__("../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__core_components_item_checkbox_item_checkbox_component__ = __webpack_require__("../../../../../src/app/core/components/item-checkbox/item-checkbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__core_modals_edit_popup_edit_popup_component__ = __webpack_require__("../../../../../src/app/core/modals/edit-popup/edit-popup.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__core_modals_eddit_photo_eddit_photo_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-secondary-photos/eddit-secondary-photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__core_components_left_bar_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/left-bar/left-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__core_components_user_left_bar_user_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/user-left-bar/user-left-bar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__core_components_header_header_component__ = __webpack_require__("../../../../../src/app/core/components/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_house_edit_house_edit_component__ = __webpack_require__("../../../../../src/app/pages/house-edit/house-edit.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__core_components_google_chart_google_chart_component__ = __webpack_require__("../../../../../src/app/core/components/google-chart/google-chart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__core_dialogs_added_coffee_house_added_coffee_house_component__ = __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45_app_pages_analytics_analytics_component__ = __webpack_require__("../../../../../src/app/pages/analytics/analytics.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_app_pages_analytics_detail_analytics_detail_component__ = __webpack_require__("../../../../../src/app/pages/analytics-detail/analytics-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47_app_pages_payment_payment_component__ = __webpack_require__("../../../../../src/app/pages/payment/payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48_app_pages_contact_contact_component__ = __webpack_require__("../../../../../src/app/pages/contact/contact.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49_app_pages_login_login_component__ = __webpack_require__("../../../../../src/app/pages/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_owners_super_admin_owners_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-owners/super-admin-owners.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_houses_super_admin_houses_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_app_pages_super_admin_users_super_admin_users_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53_app_pages_super_admin_payplan_super_admin_payplan_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-payplan/super-admin-payplan.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54_app_pages_super_house_super_house_component__ = __webpack_require__("../../../../../src/app/pages/super-house/super-house.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__pages_all_owners_all_owners_component__ = __webpack_require__("../../../../../src/app/pages/all-owners/all-owners.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__pages_owner_owner_component__ = __webpack_require__("../../../../../src/app/pages/owner/owner.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__core_pipes_status_caffee_pipe__ = __webpack_require__("../../../../../src/app/core/pipes/status-caffee.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__core_services_socket_io_service__ = __webpack_require__("../../../../../src/app/core/services/socket-io.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_pages_component__ = __webpack_require__("../../../../../src/app/pages/pages.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__core_components_house_item_house_item_component__ = __webpack_require__("../../../../../src/app/core/components/house-item/house-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_houses_houses_component__ = __webpack_require__("../../../../../src/app/pages/houses/houses.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__core_components_item_edit_btns_item_edit_btns_component__ = __webpack_require__("../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__core_components_item_checkbox_item_checkbox_component__ = __webpack_require__("../../../../../src/app/core/components/item-checkbox/item-checkbox.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__core_modals_edit_popup_edit_popup_component__ = __webpack_require__("../../../../../src/app/core/modals/edit-popup/edit-popup.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__core_modals_eddit_photo_eddit_photo_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-photo/eddit-photo.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__ = __webpack_require__("../../../../../src/app/core/modals/eddit-secondary-photos/eddit-secondary-photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__core_components_left_bar_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/left-bar/left-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__core_components_user_left_bar_user_left_bar_component__ = __webpack_require__("../../../../../src/app/core/components/user-left-bar/user-left-bar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__core_components_header_header_component__ = __webpack_require__("../../../../../src/app/core/components/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_house_edit_house_edit_component__ = __webpack_require__("../../../../../src/app/pages/house-edit/house-edit.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__core_components_google_chart_google_chart_component__ = __webpack_require__("../../../../../src/app/core/components/google-chart/google-chart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__core_dialogs_added_coffee_house_added_coffee_house_component__ = __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46_app_pages_analytics_analytics_component__ = __webpack_require__("../../../../../src/app/pages/analytics/analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47_app_pages_analytics_detail_analytics_detail_component__ = __webpack_require__("../../../../../src/app/pages/analytics-detail/analytics-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48_app_pages_payment_payment_component__ = __webpack_require__("../../../../../src/app/pages/payment/payment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49_app_pages_contact_contact_component__ = __webpack_require__("../../../../../src/app/pages/contact/contact.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50_app_pages_login_login_component__ = __webpack_require__("../../../../../src/app/pages/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_owners_super_admin_owners_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-owners/super-admin-owners.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_app_pages_super_admin_houses_super_admin_houses_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53_app_pages_super_admin_users_super_admin_users_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54_app_pages_super_admin_payplan_super_admin_payplan_component__ = __webpack_require__("../../../../../src/app/pages/super-admin-payplan/super-admin-payplan.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55_app_pages_super_house_super_house_component__ = __webpack_require__("../../../../../src/app/pages/super-house/super-house.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__pages_all_owners_all_owners_component__ = __webpack_require__("../../../../../src/app/pages/all-owners/all-owners.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__pages_owner_owner_component__ = __webpack_require__("../../../../../src/app/pages/owner/owner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__core_pipes_status_caffee_pipe__ = __webpack_require__("../../../../../src/app/core/pipes/status-caffee.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__core_services_coffee_houses_service__ = __webpack_require__("../../../../../src/app/core/services/coffee-houses.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -360,6 +362,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // Component imports
 
 
@@ -391,6 +394,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -399,34 +403,34 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_29__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__pages_pages_component__["a" /* PagesComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__core_components_house_item_house_item_component__["a" /* HouseItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__pages_houses_houses_component__["a" /* HouseListComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__core_components_item_edit_btns_item_edit_btns_component__["a" /* ItemEditBtnsComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__core_components_item_checkbox_item_checkbox_component__["a" /* ItemCheckboxComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__core_modals_edit_popup_edit_popup_component__["a" /* EditPopupComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__core_modals_eddit_photo_eddit_photo_component__["a" /* EdditPhotoComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__["a" /* EdditSecondaryPhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__core_components_left_bar_left_bar_component__["a" /* LeftBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__core_components_user_left_bar_user_left_bar_component__["a" /* UserLeftBarComponent */],
-            __WEBPACK_IMPORTED_MODULE_41__core_components_header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_42__pages_house_edit_house_edit_component__["a" /* HouseEditComponent */],
-            __WEBPACK_IMPORTED_MODULE_43__core_components_google_chart_google_chart_component__["a" /* GoogleChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_45_app_pages_analytics_analytics_component__["a" /* AnalyticsComponent */],
-            __WEBPACK_IMPORTED_MODULE_46_app_pages_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_47_app_pages_payment_payment_component__["a" /* PaymentComponent */],
-            __WEBPACK_IMPORTED_MODULE_48_app_pages_contact_contact_component__["a" /* ContactComponent */],
-            __WEBPACK_IMPORTED_MODULE_49_app_pages_login_login_component__["a" /* LoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_50_app_pages_super_admin_owners_super_admin_owners_component__["a" /* SuperAdminOwnersComponent */],
-            __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_houses_super_admin_houses_component__["a" /* SuperAdminHousesComponent */],
-            __WEBPACK_IMPORTED_MODULE_52_app_pages_super_admin_users_super_admin_users_component__["a" /* SuperAdminUsersComponent */],
-            __WEBPACK_IMPORTED_MODULE_53_app_pages_super_admin_payplan_super_admin_payplan_component__["a" /* SuperAdminPayplanComponent */],
-            __WEBPACK_IMPORTED_MODULE_54_app_pages_super_house_super_house_component__["a" /* SuperHouseComponent */],
-            __WEBPACK_IMPORTED_MODULE_44__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */],
-            __WEBPACK_IMPORTED_MODULE_55__pages_all_owners_all_owners_component__["a" /* AllOwnersComponent */],
-            __WEBPACK_IMPORTED_MODULE_56__pages_owner_owner_component__["a" /* OwnerComponent */],
-            __WEBPACK_IMPORTED_MODULE_57__core_pipes_status_caffee_pipe__["a" /* StatusCaffeePipe */]
+            __WEBPACK_IMPORTED_MODULE_30__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__pages_pages_component__["a" /* PagesComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__core_components_house_item_house_item_component__["a" /* HouseItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__pages_houses_houses_component__["a" /* HouseListComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__core_components_item_edit_btns_item_edit_btns_component__["a" /* ItemEditBtnsComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__core_components_item_checkbox_item_checkbox_component__["a" /* ItemCheckboxComponent */],
+            __WEBPACK_IMPORTED_MODULE_37__core_modals_edit_popup_edit_popup_component__["a" /* EditPopupComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__core_modals_eddit_photo_eddit_photo_component__["a" /* EdditPhotoComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__core_modals_eddit_secondary_photos_eddit_secondary_photos_component__["a" /* EdditSecondaryPhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__core_components_left_bar_left_bar_component__["a" /* LeftBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__core_components_user_left_bar_user_left_bar_component__["a" /* UserLeftBarComponent */],
+            __WEBPACK_IMPORTED_MODULE_42__core_components_header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_43__pages_house_edit_house_edit_component__["a" /* HouseEditComponent */],
+            __WEBPACK_IMPORTED_MODULE_44__core_components_google_chart_google_chart_component__["a" /* GoogleChartComponent */],
+            __WEBPACK_IMPORTED_MODULE_46_app_pages_analytics_analytics_component__["a" /* AnalyticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_47_app_pages_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_48_app_pages_payment_payment_component__["a" /* PaymentComponent */],
+            __WEBPACK_IMPORTED_MODULE_49_app_pages_contact_contact_component__["a" /* ContactComponent */],
+            __WEBPACK_IMPORTED_MODULE_50_app_pages_login_login_component__["a" /* LoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_51_app_pages_super_admin_owners_super_admin_owners_component__["a" /* SuperAdminOwnersComponent */],
+            __WEBPACK_IMPORTED_MODULE_52_app_pages_super_admin_houses_super_admin_houses_component__["a" /* SuperAdminHousesComponent */],
+            __WEBPACK_IMPORTED_MODULE_53_app_pages_super_admin_users_super_admin_users_component__["a" /* SuperAdminUsersComponent */],
+            __WEBPACK_IMPORTED_MODULE_54_app_pages_super_admin_payplan_super_admin_payplan_component__["a" /* SuperAdminPayplanComponent */],
+            __WEBPACK_IMPORTED_MODULE_55_app_pages_super_house_super_house_component__["a" /* SuperHouseComponent */],
+            __WEBPACK_IMPORTED_MODULE_45__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */],
+            __WEBPACK_IMPORTED_MODULE_56__pages_all_owners_all_owners_component__["a" /* AllOwnersComponent */],
+            __WEBPACK_IMPORTED_MODULE_57__pages_owner_owner_component__["a" /* OwnerComponent */],
+            __WEBPACK_IMPORTED_MODULE_58__core_pipes_status_caffee_pipe__["a" /* StatusCaffeePipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -434,7 +438,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClientModule */],
-            __WEBPACK_IMPORTED_MODULE_6_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_30__environments_environment__["a" /* environment */].firebase),
+            __WEBPACK_IMPORTED_MODULE_6_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_31__environments_environment__["a" /* environment */].firebase),
             __WEBPACK_IMPORTED_MODULE_7_angularfire2_firestore__["a" /* AngularFirestoreModule */],
             __WEBPACK_IMPORTED_MODULE_8_angularfire2_auth__["b" /* AngularFireAuthModule */],
             __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__["a" /* AngularFireDatabaseModule */],
@@ -445,7 +449,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_13__angular_material__["b" /* MatDialogModule */],
             __WEBPACK_IMPORTED_MODULE_13__angular_material__["c" /* MatInputModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["i" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_19_ngx_toastr__["a" /* ToastrModule */].forRoot(__WEBPACK_IMPORTED_MODULE_30__environments_environment__["a" /* environment */].toastr),
+            __WEBPACK_IMPORTED_MODULE_19_ngx_toastr__["a" /* ToastrModule */].forRoot(__WEBPACK_IMPORTED_MODULE_31__environments_environment__["a" /* environment */].toastr),
             __WEBPACK_IMPORTED_MODULE_20_ngx_order_pipe__["OrderModule"],
             __WEBPACK_IMPORTED_MODULE_21_ng2_filter_pipe__["Ng2FilterPipeModule"],
             __WEBPACK_IMPORTED_MODULE_15__angular_material_progress_spinner__["a" /* MatProgressSpinnerModule */],
@@ -464,13 +468,15 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */],
             __WEBPACK_IMPORTED_MODULE_12__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */],
             __WEBPACK_IMPORTED_MODULE_28_app_core_services_trigger_dashboard_service__["a" /* TriggerDashboardService */],
-            __WEBPACK_IMPORTED_MODULE_18__ng_bootstrap_ng_bootstrap_modal_modal_stack__["a" /* NgbModalStack */]
+            __WEBPACK_IMPORTED_MODULE_18__ng_bootstrap_ng_bootstrap_modal_modal_stack__["a" /* NgbModalStack */],
+            __WEBPACK_IMPORTED_MODULE_29__core_services_socket_io_service__["a" /* SocketIOService */],
+            __WEBPACK_IMPORTED_MODULE_59__core_services_coffee_houses_service__["a" /* CoffeeHousesService */]
         ],
         bootstrap: [
-            __WEBPACK_IMPORTED_MODULE_29__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__app_component__["a" /* AppComponent */],
         ],
         entryComponents: [
-            __WEBPACK_IMPORTED_MODULE_44__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */]
+            __WEBPACK_IMPORTED_MODULE_45__core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */]
         ]
     })
 ], AppModule);
@@ -576,7 +582,7 @@ var _a;
 /***/ "../../../../../src/app/core/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"header-container\">\n\t<div class=\"container-fluid\">\n\t\t<div class=\"row no-gutters align-items-center text-white\">\n\t\t\t<div class=\"col col-100\">\n\t\t\t\t<p class=\"header-label\">My Coffee House</p>\n\t\t\t</div>\n\t\t\t<div class=\"col col-auto pl-3 align-items-center\">\n\t\t\t\t<div class=\"media align-items-center\">\n\t\t\t\t\t<div class=\"text-prev-button pr-4\">\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\tAdded new Coffee House\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<button class=\"added-new\" mat-icon-button (click)=\"added()\">\n\t\t\t\t\t\t\t+\n\t\t\t\t\t\t</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"header-container\">\n\t<div class=\"container-fluid\">\n\t\t<div class=\"row no-gutters align-items-center text-white\">\n\t\t\t<div class=\"col col-100\">\n\t\t\t\t<p class=\"header-label\">My Coffee House</p>\n\t\t\t</div>\n\t\t\t<div class=\"col col-auto pl-3 align-items-center\">\n\t\t\t\t<div class=\"media align-items-center\">\n\t\t\t\t\t<div class=\"text-prev-button pr-4\">\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\tAdd new Coffee House\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<button class=\"added-new\" mat-icon-button (click)=\"added()\">\n\t\t\t\t\t\t\t+\n\t\t\t\t\t\t</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -646,7 +652,7 @@ var _a;
 /***/ "../../../../../src/app/core/components/house-item/house-item.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"house-wrap\">\n\t<div class=\"house-container\" *ngFor=\"let item of inputData; let i = index\">\n\t\t<div class=\"house-header clear-fix\">\n\t\t\t<div class=\"house-header__label\">\n\t\t\t\t{{item.name || ''}}\n\t\t\t</div>\n\t\t\t<app-item-edit-btns *ngIf=\"!analytics\" [item]=\"item\"></app-item-edit-btns>\n\t\t\t<!--<app-item-checkbox [index]=\"i\" [element]=\"item\" [idCards]=\"idCards\" *ngIf=\"analytics\"></app-item-checkbox>-->\n\t\t\t<div class=\"checkbox-container mr-3\" *ngIf=\"analytics\">\n\t\t\t\t<input id={{i}} (change)=\"onCheck($event, item)\" type=\"checkbox\" name=\"check\" [value]=\"isChecked[item._id]\" [ngClass]=\"{'checked': !!isChecked[item._id]}\">\n\t\t\t\t<label for={{i}}></label>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"house-item__content\" [id]=\"'check-' + i\" [ngClass]=\"{'colorable-img': !!isChecked[item._id]}\">\n\t\t\t<img src=\"./assets/img/coffee-house.jpg\" alt=\"\">\n\t\t</div>\n\n\t\t<div class=\"house-item__footer media justify-content-between align-items-center\">\n\t\t\t<div class=\"house-item__footer-marker\"\n\t\t\t\t [ngClass]=\"{'online': item.status === 'ONLINE', 'offline': item.status === 'OFFLINE', 'debtor': item.status === 'DEBTOR'}\">\n\t\t\t\t{{item.status | statusCaffee}}\n\t\t\t</div>\n\t\t\t<a class=\"house-item__footer-info bg-transparent border-0 media justify-content-between\" (click)=\"navigateToUsersList(item)\"\n\t\t\t\t\tmat-raised-button>\n\t\t\t\t{{item.visitorsCount}}\n\t\t\t\t<img src=\"./assets/img/icon/person.svg\">\n\t\t\t</a>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"house-wrap\">\n\t<div class=\"house-container\" *ngFor=\"let item of inputData; let i = index\">\n\t\t<div class=\"house-header clear-fix\">\n\t\t\t<div class=\"house-header__label\">\n\t\t\t\t{{item.name || ''}}\n\t\t\t</div>\n\t\t\t<app-item-edit-btns *ngIf=\"!analytics\" [item]=\"item\"></app-item-edit-btns>\n\t\t\t<!--<app-item-checkbox [index]=\"i\" [element]=\"item\" [idCards]=\"idCards\" *ngIf=\"analytics\"></app-item-checkbox>-->\n\t\t\t<div class=\"checkbox-container mr-3\" *ngIf=\"analytics\">\n\t\t\t\t<input id={{i}} (change)=\"onCheck($event, item)\" type=\"checkbox\" name=\"check\" [value]=\"isChecked[item._id]\" [ngClass]=\"{'checked': !!isChecked[item._id]}\">\n\t\t\t\t<label for={{i}}></label>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"house-item__content\" [id]=\"'check-' + i\" [ngClass]=\"{'colorable-img': !!isChecked[item._id]}\">\n\t\t\t<img src=\"./assets/img/coffee-house.jpg\" alt=\"\">\n\t\t</div>\n\n\t\t<div class=\"house-item__footer media justify-content-between align-items-center\">\n\t\t\t<div class=\"house-item__footer-marker\"\n\t\t\t\t [ngClass]=\"{'online': item.status === 'ONLINE', 'offline': item.status === 'OFFLINE', 'debtor': item.status === 'DEBTOR'}\">\n\t\t\t\t{{item.status | statusCaffee}}\n\t\t\t</div>\n\t\t\t<a class=\"house-item__footer-info bg-transparent border-0 media justify-content-between\" (click)=\"navigateToUsersList(item)\"\n\t\t\t\t\tmat-raised-button>\n\t\t\t\t{{item.visitorsCount}}\n\t\t\t\t<img src=\"./assets/img/icon/person.svg\">\n\t\t\t</a>\n\t\t</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -847,7 +853,7 @@ ItemCheckboxComponent = __decorate([
 /***/ "../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"house-icons\">\n\t<button class=\"house-icon__edit bg-transparent border-0\" mat-icon-button (click)=\"edit()\">\n\t\t<img src=\"./assets/img/icon/edit.svg\">\n\t</button>\n\t<button class=\"house-icon__delete\" mat-icon-button>\n\t\t<img src=\"./assets/img/icon/delete.svg\">\n\t</button>\n</div>"
+module.exports = "<div class=\"house-icons\">\n\t<button class=\"house-icon__edit bg-transparent border-0\" mat-icon-button (click)=\"edit()\">\n\t\t<img src=\"./assets/img/icon/edit.svg\">\n\t</button>\n\t<button class=\"house-icon__delete\" mat-icon-button (click)=\"remove()\">\n\t\t<img src=\"./assets/img/icon/delete.svg\">\n\t</button>\n</div>\n"
 
 /***/ }),
 
@@ -877,6 +883,10 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_core_dialogs_added_coffee_house_added_coffee_house_component__ = __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_coffee_houses_service__ = __webpack_require__("../../../../../src/app/core/services/coffee-houses.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -889,15 +899,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var ItemEditBtnsComponent = (function () {
-    function ItemEditBtnsComponent(modalService) {
+    function ItemEditBtnsComponent(modalService, httpService, configs, toastrService, coffeeHousesService) {
         this.modalService = modalService;
+        this.httpService = httpService;
+        this.configs = configs;
+        this.toastrService = toastrService;
+        this.coffeeHousesService = coffeeHousesService;
     }
     ItemEditBtnsComponent.prototype.ngOnInit = function () {
     };
     ItemEditBtnsComponent.prototype.edit = function () {
         var modalRef = this.modalService.open(__WEBPACK_IMPORTED_MODULE_2_app_core_dialogs_added_coffee_house_added_coffee_house_component__["a" /* AddedCoffeeHouseComponent */]);
         modalRef.componentInstance.item = this.item;
+    };
+    ItemEditBtnsComponent.prototype.remove = function () {
+        var _this = this;
+        this.httpService.delete(this.configs.urlRequest.updateCoffeeHouse + this.item._id, {})
+            .subscribe(function (response) {
+            _this.toastrService.success('Removed successfully!');
+            _this.coffeeHousesService.onChanged.emit(response);
+        });
     };
     return ItemEditBtnsComponent;
 }());
@@ -911,10 +937,10 @@ ItemEditBtnsComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.html"),
         styles: [__webpack_require__("../../../../../src/app/core/components/item-edit-btns/item-edit-btns.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_http_service__["a" /* HttpService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__configs_service__["a" /* ConfigsService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ngx_toastr__["b" /* ToastrService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__services_coffee_houses_service__["a" /* CoffeeHousesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_coffee_houses_service__["a" /* CoffeeHousesService */]) === "function" && _e || Object])
 ], ItemEditBtnsComponent);
 
-var _a;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=item-edit-btns.component.js.map
 
 /***/ }),
@@ -1163,6 +1189,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ConfigsService = (function () {
     function ConfigsService() {
+        // TODO: fix base url for production
         // baseUrl = 'http://localhost:8031/api/v1/';
         this.baseUrl = '/api/v1/';
         this.headersDefault = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
@@ -1234,6 +1261,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_coffee_houses_service__ = __webpack_require__("../../../../../src/app/core/services/coffee-houses.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1253,6 +1281,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var State = (function () {
     function State(name, population, flag) {
         this.name = name;
@@ -1263,11 +1292,12 @@ var State = (function () {
 }());
 
 var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
-    function AddedCoffeeHouseComponent(activeModal, toastrService, httpService, configs) {
+    function AddedCoffeeHouseComponent(activeModal, toastrService, httpService, configs, coffeeHousesService) {
         this.activeModal = activeModal;
         this.toastrService = toastrService;
         this.httpService = httpService;
         this.configs = configs;
+        this.coffeeHousesService = coffeeHousesService;
         this.isCreate = true;
         this.spinner = false;
         // options = ['one', 'two', 'three'];
@@ -1424,15 +1454,18 @@ var AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = (function () {
         this.data.bannerUrls = ['http://sbgboost.s3.amazonaws.com/ylhyh_croper_ru.jpeg'];
         this.httpService.post(this.configs.urlRequest.createCoffeeHouse, JSON.stringify(this.data))
             .subscribe(function (data) {
+            self.coffeeHousesService.onChanged.emit(data);
             self.spinner = false;
             self.toastrService.success('Created');
             self.activeModal.close(AddedCoffeeHouseComponent_1);
         });
     };
     AddedCoffeeHouseComponent.prototype.updateCoffeeHouseFun = function () {
+        var _this = this;
         var self = this;
         this.httpService.put(this.configs.urlRequest.updateCoffeeHouse + this.item['_id'], JSON.stringify(this.data))
             .subscribe(function (data) {
+            _this.coffeeHousesService.onChanged.emit(data);
             self.toastrService.success('Updated');
             self.activeModal.close(AddedCoffeeHouseComponent_1);
             self.spinner = false;
@@ -1458,10 +1491,10 @@ AddedCoffeeHouseComponent = AddedCoffeeHouseComponent_1 = __decorate([
         template: __webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.html"),
         styles: [__webpack_require__("../../../../../src/app/core/dialogs/added-coffee-house/added-coffee-house.component.scss")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_8_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbActiveModal */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_ngx_toastr__["b" /* ToastrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_8_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_9__services_coffee_houses_service__["a" /* CoffeeHousesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_coffee_houses_service__["a" /* CoffeeHousesService */]) === "function" && _e || Object])
 ], AddedCoffeeHouseComponent);
 
-var AddedCoffeeHouseComponent_1, _a, _b, _c, _d;
+var AddedCoffeeHouseComponent_1, _a, _b, _c, _d, _e;
 //# sourceMappingURL=added-coffee-house.component.js.map
 
 /***/ }),
@@ -2041,6 +2074,37 @@ StatusCaffeePipe = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/core/services/coffee-houses.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoffeeHousesService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CoffeeHousesService = (function () {
+    function CoffeeHousesService() {
+        this.onChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    return CoffeeHousesService;
+}());
+CoffeeHousesService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [])
+], CoffeeHousesService);
+
+//# sourceMappingURL=coffee-houses.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/core/services/get-user-firebase.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2542,6 +2606,22 @@ var HttpService = (function () {
             return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
         });
     };
+    HttpService.prototype.delete = function (url, data, header) {
+        // const headers = new Headers(header ? header : this.config.headersDefault);
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('Authorization')
+        });
+        var self = this;
+        return this.http.delete(this.config.baseUrl + url, { headers: headers })
+            .map(function (response) {
+            return response.json();
+        })
+            .catch(function (error) {
+            self.errorHandler(error);
+            return __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__["Observable"].throw(error);
+        });
+    };
     HttpService.prototype.errorHandler = function (error) {
         console.error(error);
         if (error.status === 401) {
@@ -2614,6 +2694,51 @@ LogoutService = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=logout.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/core/services/socket-io.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocketIOService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_socket_io_client__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SocketIOService = (function () {
+    function SocketIOService(configs) {
+        this.configs = configs;
+        var token = localStorage.getItem('Authorization');
+        this.socket = __WEBPACK_IMPORTED_MODULE_1_socket_io_client__["connect"](window.location.hostname + ':8030', {
+            query: 'token=' + token.slice(4, token.length)
+        });
+    }
+    SocketIOService.prototype.inCoffeeHouse = function (id) {
+        console.log('CoffeeHouse ID', id);
+        this.socket.emit('inCoffeeHouse', id);
+    };
+    return SocketIOService;
+}());
+SocketIOService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__configs_service__["a" /* ConfigsService */]) === "function" && _a || Object])
+], SocketIOService);
+
+var _a;
+//# sourceMappingURL=socket-io.service.js.map
 
 /***/ }),
 
@@ -3076,6 +3201,9 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__ = __webpack_require__("../../../../../src/app/core/services/global-data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_services_coffee_houses_service__ = __webpack_require__("../../../../../src/app/core/services/coffee-houses.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_socket_io_service__ = __webpack_require__("../../../../../src/app/core/services/socket-io.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3089,23 +3217,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var AnalyticsComponent = (function () {
-    function AnalyticsComponent(globalData, router, httpService) {
+    function AnalyticsComponent(globalData, router, httpService, configs, coffeeHousesService, socketIOService) {
+        var _this = this;
         this.globalData = globalData;
         this.router = router;
         this.httpService = httpService;
+        this.configs = configs;
+        this.coffeeHousesService = coffeeHousesService;
+        this.socketIOService = socketIOService;
         this.isChecked = {};
         this.analytics = true;
+        this.coffeeHousesService.onChanged.subscribe(function () { return _this.getCoffeeHouse(); });
+        this.socketIOService.socket.on('g_newUserInCoffeeHouse', function (value) {
+            var index = _this.data.findIndex(function (item) {
+                return item._id === value.houseId;
+            });
+            if (index !== -1) {
+                _this.data[index].visitorsCount++;
+            }
+        });
+        this.socketIOService.socket.on('g_userLeaveCoffeeHouse', function (value) {
+            var index = _this.data.findIndex(function (item) {
+                return item._id === value.houseId;
+            });
+            if (index !== -1 && _this.data[index].visitorsCount > 0) {
+                _this.data[index].visitorsCount--;
+            }
+        });
     }
     AnalyticsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.httpService.get('coffeeHouse/')
-            .subscribe(function (res) {
-            console.log('Res', res);
-            _this.data = res;
+        this.getCoffeeHouse();
+    };
+    AnalyticsComponent.prototype.getCoffeeHouse = function () {
+        var self = this;
+        this.httpService.get(this.configs.urlRequest.getCoffeeHouse, {
+            headers: {
+                'Authorization': localStorage.getItem('Authorization')
+            }
+        })
+            .subscribe(function (data) {
+            self.data = data;
         });
-        // this.data = this.globalData.getGlobalData();
-        // console.log('Houses', this.data);
     };
     AnalyticsComponent.prototype.checkedHouses = function (ev) {
         console.log('Houses', ev);
@@ -3129,10 +3285,10 @@ AnalyticsComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/analytics/analytics.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/analytics/analytics.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__["a" /* GlobalDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__["a" /* GlobalDataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__["a" /* GlobalDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_global_data_service__["a" /* GlobalDataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__core_services_http_service__["a" /* HttpService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__core_configs_service__["a" /* ConfigsService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__core_services_coffee_houses_service__["a" /* CoffeeHousesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__core_services_coffee_houses_service__["a" /* CoffeeHousesService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__core_services_socket_io_service__["a" /* SocketIOService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__core_services_socket_io_service__["a" /* SocketIOService */]) === "function" && _f || Object])
 ], AnalyticsComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=analytics.component.js.map
 
 /***/ }),
@@ -3327,6 +3483,8 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_services_coffee_houses_service__ = __webpack_require__("../../../../../src/app/core/services/coffee-houses.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_services_socket_io_service__ = __webpack_require__("../../../../../src/app/core/services/socket-io.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3340,13 +3498,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var HouseListComponent = (function () {
-    function HouseListComponent(configs, httpService) {
+    function HouseListComponent(configs, httpService, coffeeHousesService, socketIOService) {
+        var _this = this;
         this.configs = configs;
         this.httpService = httpService;
+        this.coffeeHousesService = coffeeHousesService;
+        this.socketIOService = socketIOService;
         this.analytics = false;
+        this.coffeeHousesService.onChanged.subscribe(function () { return _this.getCoffeeHouse(); });
+        this.socketIOService.socket.on('g_newUserInCoffeeHouse', function (value) {
+            var index = _this.data.findIndex(function (item) {
+                return item._id === value.houseId;
+            });
+            if (index !== -1) {
+                _this.data[index].visitorsCount++;
+            }
+        });
+        this.socketIOService.socket.on('g_userLeaveCoffeeHouse', function (value) {
+            var index = _this.data.findIndex(function (item) {
+                return item._id === value.houseId;
+            });
+            if (index !== -1 && _this.data[index].visitorsCount > 0) {
+                _this.data[index].visitorsCount--;
+            }
+        });
     }
-    HouseListComponent.prototype.ngOnInit = function () {
+    HouseListComponent.prototype.getCoffeeHouse = function () {
         var self = this;
         var searchParams = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["f" /* URLSearchParams */]();
         searchParams.set('owner', localStorage.token);
@@ -3360,6 +3540,9 @@ var HouseListComponent = (function () {
             self.data = response;
         });
     };
+    HouseListComponent.prototype.ngOnInit = function () {
+        this.getCoffeeHouse();
+    };
     return HouseListComponent;
 }());
 HouseListComponent = __decorate([
@@ -3368,10 +3551,10 @@ HouseListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/houses/houses.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/houses/houses.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_core_services_http_service__["a" /* HttpService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_core_services_http_service__["a" /* HttpService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__core_services_coffee_houses_service__["a" /* CoffeeHousesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__core_services_coffee_houses_service__["a" /* CoffeeHousesService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__core_services_socket_io_service__["a" /* SocketIOService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__core_services_socket_io_service__["a" /* SocketIOService */]) === "function" && _d || Object])
 ], HouseListComponent);
 
-var _a, _b;
+var _a, _b, _c, _d;
 //# sourceMappingURL=houses.component.js.map
 
 /***/ }),
@@ -3493,7 +3676,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/pages/owner/owner.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"house-list-wrap\">\n\t<div class=\"main-wrap\">\n\t\t<app-house-item [inputData]=\"data\" [analytics]=\"analytics\"></app-house-item>\n\t</div>\n</div>"
+module.exports = "<div class=\"house-list-wrap\">\n\t<div class=\"main-wrap\">\n\t\t<app-house-item [inputData]=\"houses\" [analytics]=\"analytics\"></app-house-item>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -3526,6 +3709,8 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_core_services_global_data_service__ = __webpack_require__("../../../../../src/app/core/services/global-data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_services_socket_io_service__ = __webpack_require__("../../../../../src/app/core/services/socket-io.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_services_coffee_houses_service__ = __webpack_require__("../../../../../src/app/core/services/coffee-houses.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3541,18 +3726,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var OwnerComponent = (function () {
-    function OwnerComponent(router, activatedRoute, globalData, httpService, configs) {
+    function OwnerComponent(router, activatedRoute, globalData, httpService, socketIOService, configs, coffeeHousesService) {
+        var _this = this;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.globalData = globalData;
         this.httpService = httpService;
+        this.socketIOService = socketIOService;
         this.configs = configs;
+        this.coffeeHousesService = coffeeHousesService;
+        this.houses = [];
         this.analytics = false;
+        this.socketIOService.socket.on('g_newUserInCoffeeHouse', function (data) {
+            var index = _this.houses.findIndex(function (item) {
+                return item._id === data.houseId;
+            });
+            if (index !== -1) {
+                _this.houses[index].visitorsCount++;
+            }
+        });
+        this.socketIOService.socket.on('g_userLeaveCoffeeHouse', function (data) {
+            var index = _this.houses.findIndex(function (item) {
+                return item._id === data.houseId;
+            });
+            if (index !== -1 && _this.houses[index].visitorsCount > 0) {
+                _this.houses[index].visitorsCount--;
+            }
+        });
+        this.coffeeHousesService.onChanged.subscribe(function () {
+            _this.getCoffeeHouse();
+        });
     }
-    OwnerComponent.prototype.ngOnInit = function () {
+    OwnerComponent.prototype.getCoffeeHouse = function () {
         var _this = this;
-        var self = this;
         var searchParams = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["f" /* URLSearchParams */]();
         this.activatedRoute.params.subscribe(function (params) {
             for (var item in params) {
@@ -3562,11 +3771,14 @@ var OwnerComponent = (function () {
                 headers: _this.configs.headersDefault,
                 search: searchParams
             });
-            self.httpService.get(self.configs.urlRequest.getCoffeeHouse, options)
+            _this.httpService.get(_this.configs.urlRequest.getCoffeeHouse, options)
                 .subscribe(function (response) {
-                self.data = response;
+                _this.houses = response;
             });
         });
+    };
+    OwnerComponent.prototype.ngOnInit = function () {
+        this.getCoffeeHouse();
     };
     return OwnerComponent;
 }());
@@ -3576,10 +3788,10 @@ OwnerComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/owner/owner.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/owner/owner.component.scss"), __webpack_require__("../../../../../src/app/pages/houses/houses.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_app_core_services_global_data_service__["a" /* GlobalDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_core_services_global_data_service__["a" /* GlobalDataService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__["a" /* HttpService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_app_core_services_global_data_service__["a" /* GlobalDataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_core_services_global_data_service__["a" /* GlobalDataService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_core_services_http_service__["a" /* HttpService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__core_services_socket_io_service__["a" /* SocketIOService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__core_services_socket_io_service__["a" /* SocketIOService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__core_services_coffee_houses_service__["a" /* CoffeeHousesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__core_services_coffee_houses_service__["a" /* CoffeeHousesService */]) === "function" && _g || Object])
 ], OwnerComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=owner.component.js.map
 
 /***/ }),
@@ -3748,6 +3960,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__ = __webpack_require__("../../../../../src/app/core/services/http.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_services_coffee_houses_service__ = __webpack_require__("../../../../../src/app/core/services/coffee-houses.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3760,12 +3973,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SuperAdminHousesComponent = (function () {
-    function SuperAdminHousesComponent(httpService, configs) {
+    function SuperAdminHousesComponent(httpService, configs, coffeeHousesService) {
+        var _this = this;
         this.httpService = httpService;
         this.configs = configs;
+        this.coffeeHousesService = coffeeHousesService;
+        coffeeHousesService.onChanged.subscribe(function () { return _this.getCoffeeHouse(); });
     }
-    SuperAdminHousesComponent.prototype.ngOnInit = function () {
+    SuperAdminHousesComponent.prototype.getCoffeeHouse = function () {
         var self = this;
         this.httpService.get(this.configs.urlRequest.getCoffeeHouse, {
             headers: {
@@ -3777,6 +3994,9 @@ var SuperAdminHousesComponent = (function () {
             self.data = data;
         });
     };
+    SuperAdminHousesComponent.prototype.ngOnInit = function () {
+        this.getCoffeeHouse();
+    };
     return SuperAdminHousesComponent;
 }());
 SuperAdminHousesComponent = __decorate([
@@ -3785,10 +4005,10 @@ SuperAdminHousesComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/super-admin-houses/super-admin-houses.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__core_services_coffee_houses_service__["a" /* CoffeeHousesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__core_services_coffee_houses_service__["a" /* CoffeeHousesService */]) === "function" && _c || Object])
 ], SuperAdminHousesComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=super-admin-houses.component.js.map
 
 /***/ }),
@@ -3950,8 +4170,7 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_core_configs_service__ = __webpack_require__("../../../../../src/app/core/configs.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__ = __webpack_require__("../../../../ngx-toastr/toastr.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_socket_io_client__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_services_socket_io_service__ = __webpack_require__("../../../../../src/app/core/services/socket-io.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3966,14 +4185,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import {Socket} from 'ng-socket-io';
 
 var SuperAdminUsersComponent = (function () {
-    function SuperAdminUsersComponent(httpService, config, activatedRoute, toastrService) {
+    function SuperAdminUsersComponent(httpService, config, activatedRoute, toastrService, socketIOService) {
         this.httpService = httpService;
         this.config = config;
         this.activatedRoute = activatedRoute;
         this.toastrService = toastrService;
+        this.socketIOService = socketIOService;
+        this.users = [];
     }
     SuperAdminUsersComponent.prototype.getUsers = function () {
         var _this = this;
@@ -3998,24 +4218,19 @@ var SuperAdminUsersComponent = (function () {
     };
     SuperAdminUsersComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var token = localStorage.getItem('Authorization');
-        this.socket = __WEBPACK_IMPORTED_MODULE_5_socket_io_client__["connect"]('http://localhost:8030/', {
-            query: 'token=' + token.slice(4, token.length)
-        });
         this.activatedRoute.params.subscribe(function (params) {
             if (params.id) {
                 _this.coffeeHouseId = params.id;
-                console.log('CoffeeHouse ID', params.id);
-                _this.socket.emit('inCoffeeHouse', params.id); // '59c9d506ce0e011b6d53d0c9'
+                _this.socketIOService.inCoffeeHouse(params.id); // '59c9d506ce0e011b6d53d0c9'
             }
         });
-        this.socket.on('listOfCurrentVisitors', function (users) {
+        this.socketIOService.socket.on('listOfCurrentVisitors', function (users) {
             _this.users = users;
         });
-        this.socket.on('newUserInCoffeeHouse', function (user) {
+        this.socketIOService.socket.on('newUserInCoffeeHouse', function (user) {
             _this.users.push(user);
         });
-        this.socket.on('userLeaveCoffeeHouse', function (id) {
+        this.socketIOService.socket.on('userLeaveCoffeeHouse', function (id) {
             var index = _this.users.findIndex(function (item) {
                 return item._id === id;
             });
@@ -4036,10 +4251,10 @@ SuperAdminUsersComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/super-admin-users/super-admin-users.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_core_services_http_service__["a" /* HttpService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_app_core_configs_service__["a" /* ConfigsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_core_configs_service__["a" /* ConfigsService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ngx_toastr__["b" /* ToastrService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__core_services_socket_io_service__["a" /* SocketIOService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__core_services_socket_io_service__["a" /* SocketIOService */]) === "function" && _e || Object])
 ], SuperAdminUsersComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=super-admin-users.component.js.map
 
 /***/ }),

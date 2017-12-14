@@ -10,5 +10,7 @@ const responseHandler = require('../../middleware/responseHandler');
 
 
 userRouter.get('/', responseHandler(userCtrl.getUsers));
+userRouter.delete('/:_id', responseHandler(userCtrl.removeUser));
+
 
 module.exports = userRouter;

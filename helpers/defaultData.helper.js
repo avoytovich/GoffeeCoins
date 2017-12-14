@@ -12,6 +12,10 @@ const {
 } = require('../constants/default');
 
 
+// TODO: REMOVE THIS!!
+const User = require('../models/user.model');
+User.create({_id: '123', name: 'Example', avatarUrl: 'Example', }, function (err, small) {});
+
 Admin.getOrCreate(GLOBAL_ADMIN)
     .then(admin => logger.info('Global Admin created'))
     .catch(err => logger.error(err));

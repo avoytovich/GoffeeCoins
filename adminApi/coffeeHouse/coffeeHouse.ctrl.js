@@ -62,6 +62,13 @@ const housesCtrl = {
             })
     },
 
+    async getVisitors({ params: { _id } }) {
+        return await Visitor.find({
+            coffeeHouseID: _id,
+            exitTime: {$exists: false}
+        }).populate('userID')
+    },
+
     updateHouse({ params: { _id }, body, user }) {
         return checkHouse(_id)
             .then(house => {

@@ -1,0 +1,7 @@
+{
+    "verbose": false,
+    "ignore": [".idea/*", "apidoc/*"],
+    "execMap": {
+      "node": "server"
+    }
+  }

@@ -56,17 +56,6 @@ module.exports = server => {
             socket.emit('world', `${mes} world`)
         });
 
-        socket.on('requestCurrentVisitors', (houseId, callback) => {
-            const visitorsSockets = sockets.filter(sock => {
-                // TODO:: Add check in current admin
-                return (String(sock.houseId) === String(houseId));
-            }).map(sock => sock.userId);
-            getVisitorsWithAdmins(visitorsSockets)
-                .then(currentVisitors => {
-                    callback(currentVisitors);
-                });
-        });
-
         socket.on('inCoffeeHouse', houseId => {
             // logger.log(houseId);
             Object.assign(socket, { houseId });
@@ -97,6 +86,19 @@ module.exports = server => {
             io.emit('broadcast_newUserInCoffeeHouse', {houseId: houseId, userId: userId});
         });
 
+        socket.on('leaveCoffeeHouse', houseId => {
+            io.emit('broadcast_userLeaveCoffeeHouse', { userId: socket.userId, houseId: socket.houseId});
+            if (socket.currentVisit) {
+                socket.currentVisit.getOut();
+                Object.assign(socket, { currentVisit: null });
+            }
+            if (!socket.adminFor) {
+                io.to(socket.houseId).emit('userLeaveCoffeeHouse', socket.userId);
+            } else {
+                socket.leave(socket.houseId);
+            }
+        });
+
         socket.on('getRequests', () => {
             if (socket.adminFor) {
                 getRequests(socket.adminFor)
@@ -122,7 +124,7 @@ module.exports = server => {
                 socket.leave(socket.houseId);
             }
         });
-
+        
     });
 
     return io;

@@ -41,5 +41,8 @@ housesRouter.route('/:_id')
     }, responseHandler(housesCtrl.updateHouse))
     .delete(responseHandler(housesCtrl.removeHouse));
 
+housesRouter.route('/:_id/visitors')
+    .all(param('_id').isMongoId())
+    .get(responseHandler(housesCtrl.getVisitors))
 
 module.exports = housesRouter;

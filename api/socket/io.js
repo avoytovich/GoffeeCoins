@@ -12,6 +12,7 @@ const {
     defaultFields,
     getVisitors,
     getRequests,
+    getVisitorsWithAdmins,
     isAdmin,
 } = require('./io.helpers.js');
 
@@ -55,6 +56,17 @@ module.exports = server => {
             socket.emit('world', `${mes} world`)
         });
 
+        socket.on('requestCurrentVisitors', (houseId, callback) => {
+            const visitorsSockets = sockets.filter(sock => {
+                // TODO:: Add check in current admin
+                return (String(sock.houseId) === String(houseId));
+            }).map(sock => sock.userId);
+            getVisitorsWithAdmins(visitorsSockets)
+                .then(currentVisitors => {
+                    callback(currentVisitors);
+                });
+        });
+
         socket.on('inCoffeeHouse', houseId => {
             // logger.log(houseId);
             Object.assign(socket, { houseId });
@@ -82,7 +94,7 @@ module.exports = server => {
                 const userToSend = pick(socket.user, defaultFields);
                 io.to(houseId).emit('newUserInCoffeeHouse', userToSend);
             }
-            io.emit('g_newUserInCoffeeHouse', {houseId: houseId, userId: userId});
+            io.emit('broadcast_newUserInCoffeeHouse', {houseId: houseId, userId: userId});
         });
 
         socket.on('getRequests', () => {
@@ -99,7 +111,7 @@ module.exports = server => {
 
         socket.on('disconnect', () => {
             logger.log('disconnect', socket.userId);
-            io.emit('g_userLeaveCoffeeHouse', { userId: socket.userId, houseId: socket.houseId});
+            io.emit('broadcast_userLeaveCoffeeHouse', { userId: socket.userId, houseId: socket.houseId});
             if (socket.currentVisit) {
                 socket.currentVisit.getOut();
                 Object.assign(socket, { currentVisit: null });

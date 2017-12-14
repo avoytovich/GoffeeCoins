@@ -16,9 +16,21 @@ const socketHelpers = {
         Object.assign(sock, { user });
     },
 
+    async getUserByIdWithAdmins(userId) {
+        let user = await User.getUser(userId);
+        if (!user) user = await Admin.findById(userId);
+        return user;
+    },
+
     async createVisit(userID, coffeeHouseID, socket) {
         const currentVisit = await Visitor.create({ userID, coffeeHouseID });
         Object.assign(socket, { currentVisit });
+    },
+
+    getVisitorsWithAdmins(ids) {
+        return Promise.map(ids, id => {
+            return socketHelpers.getUserByIdWithAdmins(id);
+        });
     },
 
     getVisitors(ids) {

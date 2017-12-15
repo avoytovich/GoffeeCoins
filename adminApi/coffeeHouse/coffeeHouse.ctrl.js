@@ -10,6 +10,7 @@ const Promise = require('bluebird');
 const pick = require('lodash/pick');
 const { FORBIDDEN, NOT_FOUND } = require('http-statuses');
 const { checkHouse } = require('../../api/bonusRequest/bonusRequest.helpers');
+const socketHelpers = require('../../api/socket/io.helpers');
 const { discharge } = require('../../api/coffeeHouse/coffeeHouse.ctrl');
 
 const housesCtrl = {
@@ -63,10 +64,14 @@ const housesCtrl = {
     },
 
     async getVisitors({ params: { _id } }) {
-        return await Visitor.find({
+        let visitors = await Visitor.find({
             coffeeHouseID: _id,
             exitTime: {$exists: false}
-        }).populate('userID')
+        });
+        const visitorsId = visitors.map(visitor => visitor.userID);        
+        return Promise.map(visitorsId, id => {
+            return User.getUser(id, socketHelpers.defaultFields.join(' '));
+        });
     },
 
     updateHouse({ params: { _id }, body, user }) {

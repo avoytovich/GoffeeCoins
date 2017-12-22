@@ -70,8 +70,39 @@ const housesCtrl = {
         });
         const visitorsId = visitors.map(visitor => visitor.userID);        
         return Promise.map(visitorsId, id => {
-            return User.getUser(id, socketHelpers.defaultFields.join(' '));
+            return User.getUser(id, socketHelpers.defaultFields.join(' ')  + ' adminInCoffeeHouses');
         });
+    },
+
+    removeAdmin({ body: { coffeeHouseID, userID }, user }) {
+        if (user.isOwnerInCoffeeHouse(coffeeHouseID)) {
+            throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+        }
+        const data = {
+            userID,
+            coffeeHouseID,
+        };
+
+        return Promise.join(
+            User.findById(userID).then(user => {
+                var index = user.adminInCoffeeHouses.indexOf(coffeeHouseID);
+                if (index > -1) {
+                    user.adminInCoffeeHouses.splice(index, 1);
+                    return user.save();
+                }
+                return user;
+            }),
+            CoffeeHouse.findById(coffeeHouseID).then(coffeeHouse => {
+                var index = coffeeHouse.admins.indexOf(userID);
+                if (index > -1) {
+                    coffeeHouse.admins.splice(index, 1);
+                    return coffeeHouse.save();
+                }
+                return coffeeHouse;
+            })
+        ).then((updatedUser, coffeeHouse) => {
+            return updatedUser[0];
+        })
     },
 
     updateHouse({ params: { _id }, body, user }) {

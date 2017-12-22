@@ -28,6 +28,14 @@ housesRouter.post('/discharge', (req, res, next) => {
 }, responseHandler(housesCtrl.discharge));
 
 
+housesRouter.post('/remove-admin', (req, res, next) => {
+    req.checkBody({
+        coffeeHouseID: VALIDATIONS.MONGOID,
+        userID: VALIDATIONS.USER._id,
+    });
+    next();
+}, responseHandler(housesCtrl.removeAdmin));
+
 housesRouter.route('/:_id')
     .all(param('_id').isMongoId())
     .get(responseHandler(housesCtrl.getHouse))

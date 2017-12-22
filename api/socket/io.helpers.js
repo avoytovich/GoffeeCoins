@@ -8,7 +8,7 @@ const Promise = require('bluebird');
 
 const socketHelpers = {
 
-    defaultFields: ['_id', 'name', 'coins', 'avatarUrl'],
+    defaultFields: ['_id', 'name', 'coins', 'createdAt', 'avatarUrl'],
 
     async getUser(userId, sock) {
         let user = await User.getUser(userId);

@@ -35,6 +35,10 @@ const AdminSchema = new mongoose.Schema({
         type: String,
         default: ADMIN_TYPES.OWNER,
     },
+    verificationCode: {
+        type: String,
+        required: false,
+    },
     disabled: {
         blocked: {
             type: Boolean,

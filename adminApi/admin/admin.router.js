@@ -16,6 +16,9 @@ adminRouter.post('/login', (req, res, next) => {
     next();
 }, responseHandler(adminCtrl.login));
 
+adminRouter.put('/forgot-password', responseHandler(adminCtrl.forgotPassword));
+
+adminRouter.put('/reset-password', responseHandler(adminCtrl.resetPassword));
 
 adminRouter.use(passport.authenticate('jwt', { session: false }));
 

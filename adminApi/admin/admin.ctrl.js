@@ -6,6 +6,10 @@ const {
     blockUser,
     removeUser
 } = require('../../helpers/auth.helper');
+const {
+    forgotPassword, resetPassword
+} = require('./admin.helpers');
+
 const ERRORS = require('../../constants/errors');
 const { GLOBAL_ADMIN } = require('../../constants/default');
 const { ADMIN_TYPES } = require('../../constants');
@@ -54,6 +58,14 @@ const adminCtrl = {
             }, {
                 new: true
             }));
+    },
+
+    forgotPassword({ body: { email }}) {
+        return forgotPassword(email);
+    },
+
+    resetPassword({ body: { code, email, password }}) {
+        return resetPassword(email, code, password);
     },
 
     remove({ params: { _id }, user }) {

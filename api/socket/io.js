@@ -5,7 +5,6 @@ const socketioJwt = require('socketio-jwt');
 const { secret } = require('../../env');
 const logger = require('../../libs/logger');
 const pick = require('lodash/pick');
-// const { io: adminIo } = require('../../adminApi/server');
 
 const {
     getUser,
@@ -13,6 +12,7 @@ const {
     defaultFields,
     getVisitors,
     getRequests,
+    isAdmin,
 } = require('./io.helpers.js');
 
 module.exports = server => {
@@ -59,13 +59,13 @@ module.exports = server => {
             // logger.log(houseId);
             Object.assign(socket, { houseId });
             const userId = socket.userId || socket.decoded_token._id;
-            const isAdmin = socket.user && socket.user.isAdminInCoffeeHouse(houseId);
+            const isAdminOfHouse = isAdmin(socket.user, houseId);
 
             if (!socket.currentVisit) {
                 createVisit(userId, houseId, socket);
             }
 
-            if (isAdmin) {
+            if (isAdminOfHouse) {
                 socket.join(houseId);
                 Object.assign(socket, { adminFor: houseId });
                 const visitorsSockets = sockets.filter(sock => {

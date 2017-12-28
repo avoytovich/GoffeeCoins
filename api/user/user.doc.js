@@ -7,13 +7,37 @@
  * @apiParam {String} _id Users UID from firebase.
  * @apiParam {String} name Users Name.
  * @apiParam {String} avatarUrl avatar url link.
- * @apiParam {String} referalId referal id. (optional)
  *
- * @apiSuccess {Object} user User data object. `{ _id, coins, name, avatarUrl, adminInCoffeeHouses, referalId }`
+ * @apiSuccess {Object} user User data object. `{ _id, coins, name, avatarUrl, adminInCoffeeHouses, referalID }`
  * @apiSuccess {String} token  User access token (JWT)
  *
  * @apiSuccessExample {json} Success-Response
- * {"user":{"coins":0,"_id":"1ZGHn5F5bqYn5UUnvhHcEl1hI9o1","name":"bvd","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2NjA4NDQxfQ.nsT6boaZhxnMKhq-WRb-Z5KeGhBG8ny8ValKrCzuMPQ"}
+ * {"user":{"coins":0,"_id":"1ZGHn5F5bqYn5UUnvhHcEl1hI9o1","name":"bvd","referalID":"1ZGHn5","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2NjA4NDQxfQ.nsT6boaZhxnMKhq-WRb-Z5KeGhBG8ny8ValKrCzuMPQ"}
+ *
+ * @apiError {Boolean} success `false`
+ * @apiError {String} message Error message
+ */
+
+
+/**
+ * @api {post} /api/v1/user/link link user by referalID
+ * @apiName Link referal user
+ * @apiDescription ## Used to get token
+ * @apiGroup Auth
+ *
+ * @apiParam {String} _id Users UID from firebase.
+ * @apiParam {String} referalID Your friend referalID.
+ *
+ * @apiSuccess {String} _id UID.
+ * @apiSuccess {String} name
+ * @apiSuccess {Number} coins
+ * @apiSuccess {Number} coffeeHouseCoins Default coin count to get free coffee
+ * @apiSuccess {String} avatarUrl
+ * @apiSuccess {String} referalID Your referalID
+ * @apiSuccess {String[]} adminInCoffeeHouses (optional)
+ *
+ * @apiSuccessExample {json} Success-Response
+ * {"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
@@ -32,7 +56,7 @@
  * @apiSuccess {String} token  User access token (JWT).
  *
  * @apiSuccessExample {json} Success-Response
- * {"user":{"coins":0,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Qlg5SzJ1bDRnWnJ1SU9zTFhKb0VYQmZ1aFIyIiwiaWF0IjoxNTA2NjA4NTI3fQ.nqlyYU2SdCyfG9AjO-N-FpvgvwKbZ3HiUx_YdDuC2PU"}
+ * {"user":{"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Qlg5SzJ1bDRnWnJ1SU9zTFhKb0VYQmZ1aFIyIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MTIxMjE4OTR9.6U02XHTNqbGkQN6nTdgKSFadx93fiI523JgPDMdk5EQ"}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
@@ -52,11 +76,11 @@
  * @apiSuccess {Number} coins
  * @apiSuccess {Number} coffeeHouseCoins Default coin count to get free coffee
  * @apiSuccess {String} avatarUrl
- * @apiSuccess {String} referalId (optional)
+ * @apiSuccess {String} referalID Your referalID
  * @apiSuccess {String[]} adminInCoffeeHouses (optional)
  *
  * @apiSuccessExample {json} Success-Response
- * {"coins":0,"coffeeHouseCoins":10,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]}
+ * {"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
@@ -78,11 +102,11 @@
  * @apiSuccess {String} name
  * @apiSuccess {Number} coins
  * @apiSuccess {String} avatarUrl
- * @apiSuccess {String} referalId (optional)
+ * @apiSuccess {String} referalID Your referalID
  * @apiSuccess {String[]} adminInCoffeeHouses (optional)
  *
  * @apiSuccessExample {json} Success-Response
- * {"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]}
+ * {"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","referalID":"5BX9K2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]}
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message

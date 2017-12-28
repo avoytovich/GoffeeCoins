@@ -6,13 +6,13 @@ const AdminRequest = require('./adminRequest.model');
 const Promise = require('bluebird');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require('jsonwebtoken');
+const config = require('../env');
 const {
     modelOptions,
     MODELS,
     UNIQUE_VL_OPTIONS,
     DEFAULT_COIN_COUNT,
-} = require('../constants/index');
-const config = require('../env/index');
+} = require('../constants');
 
 
 const UserSchema = new mongoose.Schema({
@@ -74,7 +74,8 @@ UserSchema.statics.getUser = function (id, selection) {
             const additionalData = {
                 coins,
                 adminRequestsCount,
-                coffeeHouseCoins: DEFAULT_COIN_COUNT
+                coffeeHouseCoins: DEFAULT_COIN_COUNT,
+                referalID: String(user._id).slice(0, 6),
             };
             Object.assign(user._doc, additionalData);
             Object.assign(user, additionalData);

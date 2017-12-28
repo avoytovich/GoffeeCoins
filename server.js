@@ -20,7 +20,7 @@ if (!config.isProduction) {
     });
 }
 
-require('events').EventEmitter.prototype._maxListeners = 100;
+require('events').EventEmitter.prototype._maxListeners = 1000;
 
 // Memory usage
 setInterval(() => {

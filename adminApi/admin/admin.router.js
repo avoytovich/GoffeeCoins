@@ -44,7 +44,7 @@ adminRouter.route('/owner')
 adminRouter.put('/block/:_id', (req, res, next) => {
     req.checkParams({ _id: VALIDATIONS.USER._id });
     next();
-}, responseHandler(adminCtrl.block));
+}, responseHandler(adminCtrl.setBlock));
 
 
 adminRouter.delete('/:_id', (req, res, next) => {

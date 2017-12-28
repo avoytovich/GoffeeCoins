@@ -3,7 +3,7 @@
 const Admin = require('../../models/admin.model');
 const {
     checkUserOnFirebase,
-    blockUser,
+    setBlockForUser,
     removeUser
 } = require('../../helpers/auth.helper');
 const {
@@ -44,17 +44,18 @@ const adminCtrl = {
     owners() {
         return Admin.find({
             internal: false,
+            'disabled.removed': false,
             type: ADMIN_TYPES.OWNER
         })
     },
 
-    block({ params: { _id }, user }) {
+    setBlock({ params: { _id }, body: { block }, user }) {
         if (_id === String(user._id) || _id === GLOBAL_ADMIN.id) {
             throw FORBIDDEN.createError();
         }
-        return blockUser(_id)
+        return setBlockForUser(_id, block)
             .then(firebaseUser => Admin.findByIdAndUpdate(_id, {
-                'disabled.blocked': true
+                'disabled.blocked': block
             }, {
                 new: true
             }));
@@ -73,7 +74,7 @@ const adminCtrl = {
             throw FORBIDDEN.createError();
         }
         return removeUser(_id)
-            .then(firebaseUser => Admin.findByIdAndUpdate(_id, {
+        .then(firebaseUser => Admin.findByIdAndUpdate(_id, {
                 'disabled.removed': true
             }, {
                 new: true

@@ -39,10 +39,10 @@ module.exports = {
             });
     },
 
-    blockUser(uid) {
+    setBlockForUser(uid, state) {
         return FirebaseAuth
             .updateUser(uid, {
-                disabled: true
+                disabled: state
             })
             .catch(error => {
                 throw NOT_FOUND.createError(error.message);

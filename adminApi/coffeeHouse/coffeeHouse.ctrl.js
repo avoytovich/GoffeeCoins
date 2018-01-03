@@ -2,6 +2,7 @@
 
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Visitor = require('../../models/visitor.model');
+const AdminRequest = require('../../models/adminRequest.model');
 const User = require('../../models/user.model');
 const logger = require('../../libs/logger');
 const { ADMIN_TYPES } = require('../../constants');
@@ -12,6 +13,7 @@ const { FORBIDDEN, NOT_FOUND } = require('http-statuses');
 const { checkHouse } = require('../../api/bonusRequest/bonusRequest.helpers');
 const socketHelpers = require('../../api/socket/io.helpers');
 const { discharge } = require('../../api/coffeeHouse/coffeeHouse.ctrl');
+const { updateUserAdminField, updateOwnerField } = require('../../adminApi/coffeeHouse/coffeeHouse.helpers');
 
 const housesCtrl = {
 
@@ -85,6 +87,7 @@ const housesCtrl = {
         };
 
         return Promise.join(
+            AdminRequest.remove(data),
             User.findById(userID).then(user => {
                 var index = user.adminInCoffeeHouses.indexOf(coffeeHouseID);
                 if (index > -1) {
@@ -101,12 +104,16 @@ const housesCtrl = {
                 }
                 return coffeeHouse;
             })
-        ).then((updatedUser, coffeeHouse) => {
-            return updatedUser[0];
+        ).then((adminRequest) => {
+            return adminRequest[1];
         })
     },
 
-    updateHouse({ params: { _id }, body, user }) {
+    updateHouse({ params: { _id }, body, user }) {        
+        const data = pick(body, housesCtrl.fields.filter(item => {
+            return item in body;
+        }));
+
         return checkHouse(_id)
             .then(house => {
                 if (!user.isOwnerInCoffeeHouse(house._id) &&
@@ -114,16 +121,14 @@ const housesCtrl = {
                     throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 
-                const data = pick(body, housesCtrl.fields.filter(item => {
-                    return item in body;
-                }));
-
                 return CoffeeHouse.findByIdAndUpdate(_id, {
                     $set: data
                 }, {
                     new: true
                 });
-            });
+            })
+            .then(coffeeHouse => updateUserAdminField(data.admins, coffeeHouse._id))
+            .then((coffeeHouse) => updateOwnerField(data.owner, _id));
     },
 
     discharge({ body: { coffeeHouseID, userID } }) {

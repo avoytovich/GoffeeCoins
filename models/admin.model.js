@@ -39,6 +39,10 @@ const AdminSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    activationCode: {
+        type: String,
+        required: false,
+    },
     disabled: {
         blocked: {
             type: Boolean,

@@ -13,7 +13,7 @@ const {
     updateUser
 } = require('../../helpers/auth.helper');
 const {
-    forgotPassword, resetPassword
+    forgotPassword, resetPassword, activateOwner
 } = require('./admin.helpers');
 
 const ERRORS = require('../../constants/errors');
@@ -49,6 +49,10 @@ const adminCtrl = {
         return user;
     },
 
+    activateOwner({ body: { id, activationCode, password } }) {
+        return activateOwner(id, activationCode, password);
+    },
+
     updateOwner({ body }) {
         const data = pick(body, adminCtrl.fields.filter(item => {
             return item in body;
@@ -66,29 +70,29 @@ const adminCtrl = {
     },
 
     createOwner({ body: { email, name, avatarUrl } }) {
-        const tempPassword = Crypto.randomBytes(12).toString('hex'); // 'password';
+        const tempPassword = Crypto.randomBytes(16).toString('hex');
+        const activationCode = Crypto.randomBytes(16).toString('hex');
 
-        return getOrCreateAuthUser({ email, displayName: name, password: tempPassword, emailVerified: true }).then(fbuser => {
+        return getOrCreateAuthUser({ email, displayName: name, password: tempPassword, disabled: true, emailVerified: false }).then(fbuser => {
             return Admin.findById(fbuser.uid).then(admin => {
                 if (admin) {
                     throw BAD_REQUEST.createError('Owner already registered');
                 } else {
-                    return Admin.create({ _id: fbuser.uid, email, name, avatarUrl });
+                    return Admin.create({ _id: fbuser.uid, email, name, avatarUrl, activationCode, 'disabled.blocked': true });
                 }
             })
         }).then(admin => {
             return mailjet.sendEmail({
-                type: 'forgot-password',
-                subject: 'Set up a new password',
+                type: 'join-owner',
+                subject: 'Welcome to CoffeeCoin!',
                 email,
-                verificationCode: admin.verificationCode,
+                id: admin._id,
                 productName: 'Coffee Coins',
                 name: admin.name,
-                action_url: 'http://localhost:4200/reset-password?email=' + email + '&code=' + admin.verificationCode
+                action_url: 'http://localhost:4200/activate-owner?id=' + admin._id + '&code=' + admin.activationCode
             });
         });
     },
-
     owners() {
         return Admin.find({
             internal: false,
@@ -123,7 +127,8 @@ const adminCtrl = {
         }
         return removeUser(_id)
             .then(firebaseUser => Admin.findByIdAndUpdate(_id, {
-                'disabled.removed': true
+                'disabled.removed': true,
+                'disabled.disabled': true
             }, {
                     new: true
                 }));

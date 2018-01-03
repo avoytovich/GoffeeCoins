@@ -20,6 +20,8 @@ adminRouter.put('/forgot-password', responseHandler(adminCtrl.forgotPassword));
 
 adminRouter.put('/reset-password', responseHandler(adminCtrl.resetPassword));
 
+adminRouter.put('/activate', responseHandler(adminCtrl.activateOwner));
+
 adminRouter.use(passport.authenticate('jwt', { session: false }));
 
 

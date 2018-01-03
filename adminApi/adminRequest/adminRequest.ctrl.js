@@ -8,8 +8,8 @@ const { COFFEEHOUSE, REQUESTS } = require('../../constants/errors');
 
 module.exports = {
 
-    create({ body: { coffeeHouseID, userID }, user }) {
-        if (!user.isOwnerInCoffeeHouse(coffeeHouseID)) {
+    create({ body: { coffeeHouseID, userID }, user }) {        
+        if (!user.isOwnerInCoffeeHouse(coffeeHouseID) && !user.isGlobalAdmin()) {
             throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
         }
         const data = {

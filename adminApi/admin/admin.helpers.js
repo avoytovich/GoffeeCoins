@@ -38,6 +38,42 @@ const adminHelpers = {
       })
   },
 
+  activateOwner(id, activationCode, password) {
+    if (!id) {
+      throw NOT_FOUND.createError("id is missing");
+    }
+
+    if (!activationCode) {
+      throw NOT_FOUND.createError("Activation code is missing");
+    }
+
+    if (!password) {
+      throw NOT_FOUND.createError("Password is missing");
+    }
+
+    return Admin.findById(id)
+      .then(admin => {
+        if (!admin) {
+          throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+        }
+
+        if (admin.activationCode !== activationCode) {
+          throw NOT_FOUND.createError('Activation code not found');
+        }
+
+        return FirebaseAuth.getUser(id).then(user => {
+          return FirebaseAuth.updateUser(user.uid, { password, disabled: false, emailVerified: true  })
+        }).then(firebaseUser => {
+          admin.activationCode = '';
+          admin.disabled.blocked = false;
+          return admin.save();
+        }).then(() => {
+          return { message: 'Done!' }
+        });
+
+      });
+  },
+
   resetPassword(email, code, password) {
     if (!email) {
       throw NOT_FOUND.createError("Email code is missing");

@@ -1,27 +1,41 @@
 'use strict';
 
 const Admin = require('../../models/admin.model');
+const Crypto = require('crypto');
 const { NOT_FOUND, FORBIDDEN, CREATED } = require('http-statuses');
 const ERRORS = require('../../constants/errors');
 const { FirebaseAuth } = require('../../libs/firebase');
+const mailjet = require('../../libs/mailjet');
 
 const adminHelpers = {
 
   forgotPassword(email) {
-    return Admin.findOneAndUpdate({ email }, {verificationCode: '01'})
+    const code = Crypto.randomBytes(16).toString('hex');
+    return Admin.findOne({ email })
       .then(admin => {
         if (!admin) {
           throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
         }
+
+        admin.verificationCode = code;
+        return admin.save()
       })
       .then(admin => {
-        console.log('SEND EMAIL')
+        return mailjet.sendEmail({
+          type: 'forgot-password',
+          subject: 'Set up a new password',
+          email,
+          verificationCode: admin.verificationCode,
+          productName: 'Coffee Coins',
+          name: admin.name,
+          action_url: 'http://localhost:4200/reset-password?email=' + email + '&code=' + admin.verificationCode
+        });
       })
       .then(() => {
         return {
-            message: 'Email with reset password link was sent on your email'
+          message: 'Email with reset password link was sent on your email'
         };
-    })
+      })
   },
 
   resetPassword(email, code, password) {
@@ -53,7 +67,7 @@ const adminHelpers = {
           admin.verificationCode = '';
           return admin.save();
         }).then(() => {
-          return {message: 'all ok'}
+          return { message: 'all ok' }
         });
 
       });

@@ -25,16 +25,13 @@ adminRouter.use(passport.authenticate('jwt', { session: false }));
 
 adminRouter.get('/', responseHandler(adminCtrl.me));
 
-
 adminRouter.route('/owner')
     .all(accessLevel(ADMIN_TYPES.GLOBAL))
     .get(responseHandler(adminCtrl.owners))
+    .put(responseHandler(adminCtrl.updateOwner))
     .post((req, res, next) => {
         req.sanitizeBody('name').trim();
         req.sanitizeBody('email').normalizeEmail();
-        req.checkBody(
-            pick(VALIDATIONS.USER, ['_id', 'email', 'name', 'avatarUrl'])
-        );
         next();
     }, responseHandler(adminCtrl.createOwner, {
         status: CREATED.code

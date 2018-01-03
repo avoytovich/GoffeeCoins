@@ -17,6 +17,7 @@ const housesCtrl = {
 
     fields: [
         'name',
+        'admins',
         'avatarUrl',
         'bannerUrls',
         'description',
@@ -43,7 +44,7 @@ const housesCtrl = {
         Object.assign(queryData, query);
         if (user.type === ADMIN_TYPES.OWNER) queryData.owner = user._id;
         return CoffeeHouse.find(queryData)
-            .select('name avatarUrl status')
+            .select('name address createdAt avatarUrl status')
             .lean()
             .then(houses => Promise.map(houses, async house => {
                 house.visitorsCount = await Visitor.count({

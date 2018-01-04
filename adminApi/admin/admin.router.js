@@ -16,7 +16,10 @@ adminRouter.post('/login', (req, res, next) => {
     next();
 }, responseHandler(adminCtrl.login));
 
-adminRouter.put('/forgot-password', responseHandler(adminCtrl.forgotPassword));
+adminRouter.put('/forgot-password', (req, res, next) => {
+    req.sanitizeBody('email').normalizeEmail();
+    next();
+}, responseHandler(adminCtrl.forgotPassword));
 
 adminRouter.put('/reset-password', responseHandler(adminCtrl.resetPassword));
 

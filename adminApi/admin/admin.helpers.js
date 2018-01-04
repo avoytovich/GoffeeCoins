@@ -28,7 +28,7 @@ const adminHelpers = {
           verificationCode: admin.verificationCode,
           productName: 'Coffee Coins',
           name: admin.name,
-          action_url: 'http://localhost:4200/reset-password?email=' + email + '&code=' + admin.verificationCode
+          action_url: 'http://localhost:4200/reset-password?id=' + admin._id + '&email=' + email + '&code=' + admin.verificationCode
         });
       })
       .then(() => {
@@ -38,7 +38,7 @@ const adminHelpers = {
       })
   },
 
-  activateOwner(id, activationCode, password) {
+  activateOwner(id, name, activationCode, password) {
     if (!id) {
       throw NOT_FOUND.createError("id is missing");
     }
@@ -49,6 +49,10 @@ const adminHelpers = {
 
     if (!password) {
       throw NOT_FOUND.createError("Password is missing");
+    }
+
+    if (!name) {
+      throw NOT_FOUND.createError("Name is missing");
     }
 
     return Admin.findById(id)
@@ -62,8 +66,9 @@ const adminHelpers = {
         }
 
         return FirebaseAuth.getUser(id).then(user => {
-          return FirebaseAuth.updateUser(user.uid, { password, disabled: false, emailVerified: true  })
+          return FirebaseAuth.updateUser(user.uid, { password, displayName: name, disabled: false, emailVerified: true  })
         }).then(firebaseUser => {
+          admin.name = name;
           admin.activationCode = '';
           admin.disabled.blocked = false;
           return admin.save();
@@ -74,9 +79,9 @@ const adminHelpers = {
       });
   },
 
-  resetPassword(email, code, password) {
-    if (!email) {
-      throw NOT_FOUND.createError("Email code is missing");
+  resetPassword(id, code, password) {
+    if (!id) {
+      throw NOT_FOUND.createError("Id is missing");
     }
 
     if (!code) {
@@ -87,7 +92,7 @@ const adminHelpers = {
       throw NOT_FOUND.createError("Password is missing");
     }
 
-    return Admin.findOne({ email })
+    return Admin.findById(id)
       .then(admin => {
         if (!admin) {
           throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
@@ -97,7 +102,8 @@ const adminHelpers = {
           throw NOT_FOUND.createError('Verification code not found');
         }
 
-        return FirebaseAuth.getUserByEmail(email).then(user => {
+        return FirebaseAuth.getUser(id).then(user => {
+          console.log('?>', user)
           return FirebaseAuth.updateUser(user.uid, { password })
         }).then(firebaseUser => {
           admin.verificationCode = '';

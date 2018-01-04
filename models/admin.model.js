@@ -100,7 +100,13 @@ AdminSchema.methods.isGlobalAdmin = function () {
     return String(this._id) === String(GLOBAL_ADMIN.id);
 };
 
+
+AdminSchema.virtual('new').get(function () {
+    return this.activationCode !== '';
+  });
+
 AdminSchema.plugin(uniqueValidator, UNIQUE_VL_OPTIONS);
+AdminSchema.set('toJSON', { getters: true, virtuals: true });
 
 const Admin = mongoose.model(MODELS.ADMIN, AdminSchema);
 

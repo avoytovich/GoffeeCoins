@@ -62,7 +62,7 @@ module.exports = server => {
             const userId = socket.userId || socket.decoded_token._id;
             const isAdminOfHouse = isAdmin(socket.user, houseId);
 
-            if (!socket.currentVisit) {
+            if (!socket.currentVisit && !isAdminOfHouse) {
                 createVisit(userId, houseId, socket);
             }
 

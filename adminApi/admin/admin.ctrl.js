@@ -49,8 +49,8 @@ const adminCtrl = {
         return user;
     },
 
-    activateOwner({ body: { id, activationCode, password } }) {
-        return activateOwner(id, activationCode, password);
+    activateOwner({ body: { id, name, activationCode, password } }) {
+        return activateOwner(id, name, activationCode, password);
     },
 
     updateOwner({ body }) {
@@ -91,7 +91,7 @@ const adminCtrl = {
                 id: admin._id,
                 productName: 'Coffee Coins',
                 name: admin.name,
-                action_url: 'http://localhost:4200/activate-owner?id=' + admin._id + '&code=' + admin.activationCode
+                action_url: 'http://localhost:4200/activate-owner?name=' + name + '&id=' + admin._id + '&code=' + admin.activationCode
             });
         });
     },
@@ -119,21 +119,21 @@ const adminCtrl = {
         return forgotPassword(email);
     },
 
-    resetPassword({ body: { code, email, password } }) {
-        return resetPassword(email, code, password);
+    resetPassword({ body: { id, verificationCode, password } }) {
+        return resetPassword(id, verificationCode, password);
     },
 
     remove({ params: { _id }, user }) {
         if (_id === String(user._id) || _id === GLOBAL_ADMIN.id) {
             throw FORBIDDEN.createError();
         }
-        return removeUser(_id)
-            .then(firebaseUser => Admin.findByIdAndUpdate(_id, {
-                'disabled.removed': true,
-                'disabled.disabled': true
-            }, {
-                    new: true
-                }));
+        return Admin.findByIdAndUpdate(_id, {
+            'disabled.removed': true,
+            'disabled.disabled': true
+        }, {
+                new: true
+            })
+            .then(admin => removeUser(_id));   
     },
 
 };

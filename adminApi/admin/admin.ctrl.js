@@ -58,14 +58,14 @@ const adminCtrl = {
             return item in body;
         }));
 
-        return Admin.findByIdAndUpdate(body._id, {
-            $set: data
-        }, { new: true }).then(newAdmin => {
-            if ('email' in body) {
-                return updateUser(body._id, { email: body.email });
-            } else {
-                return newAdmin;
-            }
+        return updateUser(body._id, { email: body.email }).then(fbuser => {
+            return Admin.findByIdAndUpdate(body._id, {
+                $set: data
+            }, { new: true }).then(newAdmin => { 
+                    return newAdmin;
+            })
+        }).catch(err => {
+            throw BAD_REQUEST.createError(err.code || err.message);
         })
     },
 
@@ -76,11 +76,13 @@ const adminCtrl = {
         return getOrCreateAuthUser({ email, displayName: name, password: tempPassword, disabled: true, emailVerified: false }).then(fbuser => {
             return Admin.findById(fbuser.uid).then(admin => {
                 if (admin) {
-                    throw BAD_REQUEST.createError('Owner already registered');
+                    throw new Error('already-exist');
                 } else {
                     return Admin.create({ _id: fbuser.uid, email, name, avatarUrl, activationCode, 'disabled.blocked': true });
                 }
             })
+        }).catch(err => {
+            throw BAD_REQUEST.createError(err.code || err.message);
         }).then(admin => {
             return mailjet.sendEmail({
                 type: 'join-owner',

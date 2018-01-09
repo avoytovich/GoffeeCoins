@@ -2,9 +2,7 @@
 
 const mongoose = require('../libs/mongoose');
 const {
-    modelOptions,
-    MODELS,
-    NOTIFICATIONS,
+    modelOptions, MODELS, NOTIFICATIONS,
 } = require('../constants/index');
 
 const queryHelper = query => {

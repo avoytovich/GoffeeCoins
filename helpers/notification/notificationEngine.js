@@ -7,9 +7,7 @@ const Note = require('../../models/notification.model.js');
 const DeviceToken = require('../../models/deviceToken.model.js');
 const Promise = require('bluebird');
 const { NOTIFICATIONS: {
-    KEYS,
-    LANGUAGES,
-    MESSAGES,
+    KEYS, LANGUAGES, MESSAGES,
 } } = require('../../constants/index');
 
 
@@ -18,6 +16,11 @@ function sendPush(token, data) {
         case 64: return sendPushiOS(token, data);
         case 152: return sendPushAndroid(token, data);
     }
+}
+
+function translate(note, lang) {
+  note.body = getMessage(note, lang) || getMessage(note, LANGUAGES.UA);
+  return note;
 }
 
 function createNote(data) {
@@ -62,4 +65,4 @@ function pushNotification(userID, note) {
         });
 }
 
-module.exports = { createNote, getMessage };
+module.exports = { createNote, getMessage, translate };

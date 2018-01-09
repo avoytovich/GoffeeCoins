@@ -5,7 +5,7 @@ const Visitor = require('../../models/visitor.model');
 const AdminRequest = require('../../models/adminRequest.model');
 const User = require('../../models/user.model');
 const logger = require('../../libs/logger');
-const { ADMIN_TYPES } = require('../../constants');
+const { ADMIN_TYPES, REQUEST_STATUSES } = require('../../constants');
 const { COFFEEHOUSE } = require('../../constants/errors');
 const Promise = require('bluebird');
 const pick = require('lodash/pick');
@@ -51,7 +51,7 @@ const housesCtrl = {
             .then(houses => Promise.map(houses, async house => {
                 house.visitorsCount = await Visitor.count({
                     coffeeHouseID: house._id,
-                    exitTime: {$exists: false}
+                    exitTime: { $exists: false }
                 });
                 return house;
             }));
@@ -69,12 +69,22 @@ const housesCtrl = {
     async getVisitors({ params: { _id } }) {
         let visitors = await Visitor.find({
             coffeeHouseID: _id,
-            exitTime: {$exists: false}
+            exitTime: { $exists: false }
         });
-        const visitorsId = visitors.map(visitor => visitor.userID);        
+        const visitorsId = visitors.map(visitor => visitor.userID);
         return Promise.map(visitorsId, id => {
-            return User.getUser(id, socketHelpers.defaultFields.join(' ')  + ' adminInCoffeeHouses');
+            return User.getUser(id, socketHelpers.defaultFields.join(' ') + ' adminInCoffeeHouses');
         });
+    },
+
+    getAdmins({ params: { _id } }) {
+        // Get admins with requsets
+        return AdminRequest.find({ coffeeHouseID: _id, status: REQUEST_STATUSES.CREATED })
+            .then(requests => Promise.map(requests, request => User.findById(request.userID)))
+            .then(requests => Promise.join(requests, User.find({ adminInCoffeeHouses: _id }).select('+createdAt')))
+            .then(data => {
+                return { admins: data[1], requests: data[0]};
+            });
     },
 
     removeAdmin({ body: { coffeeHouseID, userID }, user }) {
@@ -109,7 +119,7 @@ const housesCtrl = {
         })
     },
 
-    updateHouse({ params: { _id }, body, user }) {        
+    updateHouse({ params: { _id }, body, user }) {
         const data = pick(body, housesCtrl.fields.filter(item => {
             return item in body;
         }));
@@ -124,11 +134,11 @@ const housesCtrl = {
                 return CoffeeHouse.findByIdAndUpdate(_id, {
                     $set: data
                 }, {
-                    new: true
-                });
+                        new: true
+                    });
             })
-            .then(coffeeHouse => updateUserAdminField(data.admins, coffeeHouse._id))
-            .then((coffeeHouse) => updateOwnerField(data.owner, _id));
+            // .then(coffeeHouse => updateUserAdminField(['123'], coffeeHouse._id))
+            .then(coffeeHouse => updateOwnerField(data.owner, _id));
     },
 
     discharge({ body: { coffeeHouseID, userID } }) {

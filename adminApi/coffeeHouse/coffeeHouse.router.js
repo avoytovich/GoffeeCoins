@@ -51,6 +51,10 @@ housesRouter.route('/:_id')
 
 housesRouter.route('/:_id/visitors')
     .all(param('_id').isMongoId())
-    .get(responseHandler(housesCtrl.getVisitors))
+    .get(responseHandler(housesCtrl.getVisitors));
+
+housesRouter.route('/:_id/admins')
+    .all(param('_id').isMongoId())
+    .get(responseHandler(housesCtrl.getAdmins))
 
 module.exports = housesRouter;

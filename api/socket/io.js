@@ -57,7 +57,6 @@ module.exports = server => {
         });
 
         socket.on('inCoffeeHouse', houseId => {
-            // logger.log(houseId);
             Object.assign(socket, { houseId });
             const userId = socket.userId || socket.decoded_token._id;
             const isAdminOfHouse = isAdmin(socket.user, houseId);

@@ -137,7 +137,7 @@ const housesCtrl = {
                         new: true
                     });
             })
-            // .then(coffeeHouse => updateUserAdminField(['123'], coffeeHouse._id))
+            // .then(coffeeHouse => updateUserAdminField(['585e5f70ec82991168ae7a03'], coffeeHouse._id))
             .then(coffeeHouse => updateOwnerField(data.owner, _id));
     },
 

@@ -30,8 +30,7 @@ housesRouter.post('/discharge', (req, res, next) => {
 
 housesRouter.post('/remove-admin', (req, res, next) => {
     req.checkBody({
-        coffeeHouseID: VALIDATIONS.MONGOID,
-        userID: VALIDATIONS.USER._id,
+        coffeeHouseID: VALIDATIONS.MONGOID
     });
     next();
 }, responseHandler(housesCtrl.removeAdmin));

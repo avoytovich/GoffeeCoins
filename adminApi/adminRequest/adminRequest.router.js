@@ -8,7 +8,6 @@ const responseHandler = require('../../middleware/responseHandler');
 
 adminRequestRouter.post('/', (req, res, next) => {
     req.checkBody({
-        userID: Validations.USER._id,
         coffeeHouseID: Validations.MONGOID,
     });
     next();

@@ -18,7 +18,7 @@ const AdminSchema = new mongoose.Schema({
     email: {
         type: String,
         lowercase: true,
-        select: false,
+        // select: false,
     },
     name: {
         type: String,
@@ -34,6 +34,14 @@ const AdminSchema = new mongoose.Schema({
     type: {
         type: String,
         default: ADMIN_TYPES.OWNER,
+    },
+    verificationCode: {
+        type: String,
+        required: false,
+    },
+    activationCode: {
+        type: String,
+        required: false,
     },
     disabled: {
         blocked: {
@@ -92,7 +100,13 @@ AdminSchema.methods.isGlobalAdmin = function () {
     return String(this._id) === String(GLOBAL_ADMIN.id);
 };
 
+
+AdminSchema.virtual('new').get(function () {
+    return this.activationCode !== '';
+  });
+
 AdminSchema.plugin(uniqueValidator, UNIQUE_VL_OPTIONS);
+AdminSchema.set('toJSON', { getters: true, virtuals: true });
 
 const Admin = mongoose.model(MODELS.ADMIN, AdminSchema);
 

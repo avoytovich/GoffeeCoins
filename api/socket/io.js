@@ -12,6 +12,7 @@ const {
     defaultFields,
     getVisitors,
     getRequests,
+    getVisitorsWithAdmins,
     isAdmin,
 } = require('./io.helpers.js');
 
@@ -56,12 +57,11 @@ module.exports = server => {
         });
 
         socket.on('inCoffeeHouse', houseId => {
-            // logger.log(houseId);
             Object.assign(socket, { houseId });
             const userId = socket.userId || socket.decoded_token._id;
             const isAdminOfHouse = isAdmin(socket.user, houseId);
 
-            if (!socket.currentVisit) {
+            if (!socket.currentVisit && !isAdminOfHouse) {
                 createVisit(userId, houseId, socket);
             }
 
@@ -82,6 +82,20 @@ module.exports = server => {
                 const userToSend = pick(socket.user, defaultFields);
                 io.to(houseId).emit('newUserInCoffeeHouse', userToSend);
             }
+            io.emit('broadcast_newUserInCoffeeHouse', {houseId: houseId, userId: userId});
+        });
+
+        socket.on('leaveCoffeeHouse', houseId => {
+            io.emit('broadcast_userLeaveCoffeeHouse', { userId: socket.userId, houseId: socket.houseId});
+            if (socket.currentVisit) {
+                socket.currentVisit.getOut();
+                Object.assign(socket, { currentVisit: null });
+            }
+            if (!socket.adminFor) {
+                io.to(socket.houseId).emit('userLeaveCoffeeHouse', socket.userId);
+            } else {
+                socket.leave(socket.houseId);
+            }
         });
 
         socket.on('getRequests', () => {
@@ -98,6 +112,7 @@ module.exports = server => {
 
         socket.on('disconnect', () => {
             logger.log('disconnect', socket.userId);
+            io.emit('broadcast_userLeaveCoffeeHouse', { userId: socket.userId, houseId: socket.houseId});
             if (socket.currentVisit) {
                 socket.currentVisit.getOut();
                 Object.assign(socket, { currentVisit: null });
@@ -108,7 +123,7 @@ module.exports = server => {
                 socket.leave(socket.houseId);
             }
         });
-
+        
     });
 
     return io;

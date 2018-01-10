@@ -26,23 +26,28 @@ module.exports = {
             });
     },
 
+    createUser(data) {
+        return FirebaseAuth.createUser(data);
+    },
+
+    updateUser(uid, data) {
+        return FirebaseAuth.updateUser(uid, data);
+    },
+
     getOrCreateAuthUser(data) {
         return FirebaseAuth.getUserByEmail(data.email)
             .then(userRecord =>  {
-                if (!userRecord) {
-                    return FirebaseAuth.createUser(data);
-                }
                 return userRecord;
             })
             .catch(error => {
-                logger.log(error);
+                return FirebaseAuth.createUser(data);
             });
     },
 
-    blockUser(uid) {
+    setBlockForUser(uid, state) {
         return FirebaseAuth
             .updateUser(uid, {
-                disabled: true
+                disabled: state
             })
             .catch(error => {
                 throw NOT_FOUND.createError(error.message);

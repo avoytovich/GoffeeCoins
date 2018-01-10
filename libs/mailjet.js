@@ -1,8 +1,28 @@
 'use strict';
 
-const { mailjet: { apiKey, secretKey } } = require('../env');
+const { mailjet } = require('../env');
 const { connect } = require('node-mailjet');
 
-const mailjetClient = connect(apiKey, secretKey);
 
-module.exports = mailjetClient;
+
+class EmailService {
+    constructor() {
+        this.client = connect(mailjet.apiKey, mailjet.secretKey);
+    }
+
+    sendEmail(options) {
+        const htmlTpl = require(`../views/${options.type}-template`);
+
+        var emailData = {
+            'FromEmail': mailjet.email,
+            'FromName': mailjet.from,
+            'Subject': options.subject,
+            'HTML-part': htmlTpl(options),
+            'Recipients': [{ 'Email': options.email }]
+        }
+
+        return this.client.post('send').request(emailData)
+    }
+}
+
+module.exports = new EmailService();

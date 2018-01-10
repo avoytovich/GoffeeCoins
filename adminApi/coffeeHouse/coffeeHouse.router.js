@@ -28,6 +28,13 @@ housesRouter.post('/discharge', (req, res, next) => {
 }, responseHandler(housesCtrl.discharge));
 
 
+housesRouter.post('/remove-admin', (req, res, next) => {
+    req.checkBody({
+        coffeeHouseID: VALIDATIONS.MONGOID
+    });
+    next();
+}, responseHandler(housesCtrl.removeAdmin));
+
 housesRouter.route('/:_id')
     .all(param('_id').isMongoId())
     .get(responseHandler(housesCtrl.getHouse))
@@ -38,7 +45,15 @@ housesRouter.route('/:_id')
         }
         req.checkBody(validations);
         next();
-    }, responseHandler(housesCtrl.updateHouse));
+    }, responseHandler(housesCtrl.updateHouse))
+    .delete(responseHandler(housesCtrl.removeHouse));
 
+housesRouter.route('/:_id/visitors')
+    .all(param('_id').isMongoId())
+    .get(responseHandler(housesCtrl.getVisitors));
+
+housesRouter.route('/:_id/admins')
+    .all(param('_id').isMongoId())
+    .get(responseHandler(housesCtrl.getAdmins))
 
 module.exports = housesRouter;

@@ -22,6 +22,13 @@ const userApiMethods = {
             .select('name avatarUrl disabled adminInCoffeeHouses')
     },
 
+    removeUser({ params: { _id }, body, user }) {
+        if (!user.isGlobalAdmin()) {
+            throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+        }
+
+        return User.findByIdAndRemove(_id);
+    }
 };
 
 module.exports = userApiMethods;

@@ -8,7 +8,7 @@ const DeviceToken = require('../../models/deviceToken.model.js');
 const Promise = require('bluebird');
 const { NOTIFICATIONS: {
     KEYS, LANGUAGES, MESSAGES,
-} } = require('../../constants/index');
+} } = require('../../constants');
 
 
 function sendPush(token, data) {
@@ -23,10 +23,12 @@ function translate(note, lang) {
   return note;
 }
 
-function createNote(data) {
+function createNote(data, { mustSend = true }) {
     return Note.create(data)
         .then(note => Note.getNote(note._id))
-        .then(note => pushNotification(data.userID, note));
+        .then(note => {
+            if (mustSend) pushNotification(data.userID, note);
+        });
 }
 
 function getMessage(data, lang) {

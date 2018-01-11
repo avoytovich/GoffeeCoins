@@ -46,9 +46,11 @@ module.exports = {
         TITLE: 'CoffeeCoin',
         KEYS: {
             bonusRequestFree: 'bonusRequestFree',
+            bonusRequestFreeSent: 'bonusRequestFreeSent',
             bonusRequestFreeConfirmed: 'bonusRequestFreeConfirmed',
             bonusRequestFreeRejected: 'bonusRequestFreeRejected',
             bonusRequestCoin: 'bonusRequestCoin',
+            bonusRequestCoinSent: 'bonusRequestCoinSent',
             bonusRequestCoinConfirmed: 'bonusRequestCoinConfirmed',
             bonusRequestCoinRejected: 'bonusRequestCoinRejected',
             adminRequest: 'adminRequest',
@@ -62,9 +64,11 @@ module.exports = {
         MESSAGES: {
             EN: {
                 bonusRequestFree: (n) => `Free coffee request received from ${n}`,
+                bonusRequestFreeSent: 'Free coffee request  was sent.',
                 bonusRequestFreeConfirmed: 'Free coffee request accepted!',
                 bonusRequestFreeRejected: 'Free coffee request failed, unspent Coins have been replenished.',
                 bonusRequestCoin: (n) => `Bonus request received from ${n}`,
+                bonusRequestCoinSent: (c) => `Bonus request for ${c} Coins was sent.`,
                 bonusRequestCoinConfirmed: (c) => `Request accepted, ${c} Coin(s) added.`,
                 bonusRequestCoinRejected: 'Coin request has been declined by administrator.',
                 adminRequest: (n) => `Administrator request received from ${n}`,
@@ -72,9 +76,11 @@ module.exports = {
             },
             UA: {
                 bonusRequestFree: (n) => `Запит на безкоштовну каву отримано від ${n}`,
+                bonusRequestFreeSent: 'Запит на безкоштовну каву відправлено.',
                 bonusRequestFreeConfirmed: 'Запит на безкоштовну каву прийнято!',
                 bonusRequestFreeRejected: 'Запит на безкоштовну каву відхилено, не витрачені Coins відновлено.',
                 bonusRequestCoin: (n) => `Отримано запит на Coins від ${n}`,
+                bonusRequestCoinSent: (c) => `Відправлено запит на ${c} Coins.`,
                 bonusRequestCoinConfirmed: (c) => `Запит прийнято, ${c} Coins нараховані.`,
                 bonusRequestCoinRejected: 'Запит на Coins був відхилений адміністратором закладу.',
                 adminRequest: (n) => `Заклад ${n} запрошує Вас стати адміністратором.`,
@@ -82,9 +88,11 @@ module.exports = {
             },
             RU: {
                 bonusRequestFree: (n) => `Запрос на бесплатный кофе получен от ${n}`,
+                bonusRequestFreeSent: 'Запрос на бесплатный кофе отправлен.',
                 bonusRequestFreeConfirmed: 'Запрос на бесплатный кофе принят!',
                 bonusRequestFreeRejected: 'Запрос на бесплатный кофе отклонен, не использованные Coins восстановлены.',
                 bonusRequestCoin: (n) => `Запрос на Coins получен от ${n}`,
+                bonusRequestCoinSent: (c) => `Отправлен запрос на ${c} Coins.`,
                 bonusRequestCoinConfirmed: (c) => `Запрос принят, ${c} Coins засчитано.`,
                 bonusRequestCoinRejected: 'Запрос на Coins был отклонён администратором заведения.',
                 adminRequest: (n) => `Заведение ${n} приглашает Вас стать администратором.`,

@@ -23,20 +23,29 @@ function translate(note, lang) {
   return note;
 }
 
-function createNote(data, { mustSend = true }) {
+function createNote(data, { mustSend = true } = {}) {
     return Note.create(data)
         .then(note => Note.getNote(note._id))
         .then(note => {
-            if (mustSend) pushNotification(data.userID, note);
+            if (mustSend) {
+                return pushNotification(data.userID, note);
+            }
         });
+}
+
+function removeNote(query) {
+    return Note.remove(query);
+        //.then(logger.log);
 }
 
 function getMessage(data, lang) {
     switch (data.key) {
         case KEYS.bonusRequestFree:          return MESSAGES[lang].bonusRequestFree(data.sender.name);
+        case KEYS.bonusRequestFreeSent:      return MESSAGES[lang].bonusRequestFreeSent;
         case KEYS.bonusRequestFreeConfirmed: return MESSAGES[lang].bonusRequestFreeConfirmed;
         case KEYS.bonusRequestFreeRejected:  return MESSAGES[lang].bonusRequestFreeRejected;
         case KEYS.bonusRequestCoin:          return MESSAGES[lang].bonusRequestCoin(data.sender.name);
+        case KEYS.bonusRequestCoinSent:      return MESSAGES[lang].bonusRequestCoinSent(data.bonusRequest.count);
         case KEYS.bonusRequestCoinConfirmed: return MESSAGES[lang].bonusRequestCoinConfirmed(data.bonusRequest.count);
         case KEYS.bonusRequestCoinRejected:  return MESSAGES[lang].bonusRequestCoinRejected;
         case KEYS.adminRequest:              return MESSAGES[lang].adminRequest(data.coffeeHouseID.name);
@@ -55,7 +64,7 @@ function pushNotification(userID, note) {
         })
         .then(([tokens, body]) => {
             logger.log(body);
-            Note.findByIdAndUpdate(note._id, { body }).then(() => {});
+            // Note.findByIdAndUpdate(note._id, { body }).then(() => {});
             const data = Object.assign({}, note, { body });
             return Promise.map(tokens, token => sendPush(token, data));
         })
@@ -67,4 +76,4 @@ function pushNotification(userID, note) {
         });
 }
 
-module.exports = { createNote, getMessage, translate };
+module.exports = { createNote, getMessage, translate, removeNote };

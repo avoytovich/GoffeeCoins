@@ -6,10 +6,11 @@
 		"search": "Поиск",
 		"since": "После",
 		"reset": "Перезапуск",
+		"reset_password": "Сброс пароля",
 		"cancel": "Отмена",
 		"block": "Заблокировать",
 		"unblock": "Разблокировать",
-		"control": "Контроль",
+		"control": "Управление",
 		"address": "Адрес",
 		"avatar": "Аватар",
 		"online": "Онлайн",
@@ -28,7 +29,7 @@
 		"login": "Войти",
 		"forgot_password": "Забыли пароль?",
 		"logout": "Выйти",
-		"required": "Обязательно",
+		"required": "обязательно",
 		"update": "Обновить",
 		"get_analytics": "Получить аналитику",
 		"coffee_house_owner": "Владец Кофейни",
@@ -36,10 +37,10 @@
 		"administrator": "Администратор",
 		"main_information": "Основная информация",
 		"administrators": "Администраторы",
-		"coin_amount": "Количество Coins",
+		"coin_amount": "Кол-во Coins",
 		"description": "Описание",
-		"full_name": "Полное имя"
-
+		"full_name": "Полное имя",
+		"activate": "Активировать"
 	},
 	"text": {
 		"edit_you_data": "Редактирование данных",
@@ -51,6 +52,7 @@
 		"not_valid_email": "Неверный формат почты",
 		"not_valid_name": "Неверный формат имени",
 		"confirm_password_is": "Подтверждение пароля - ",
+		"required_field": "Это поле обязательно к заполнению",
 		"email_is": "Заполнение e-mail адреса - ",
 		"total_users": "Общее количество пользователей",
 		"average_time": "Среднее время",
@@ -73,11 +75,16 @@
 		"social_information": "Социальная информация",
 		"send_admin_request": "Отправить запрос на админа",
 		"incorrect_email_or_password": "Неверный e-mail или пароль",
-		"account_has_been_disabled": "Аккаунт пользователя был отключён администратором."
+		"account_has_been_disabled": "Аккаунт пользователя был отключён администратором.",
+		"location_information": "Информация о местонахождении",
+		"reset_password": "Сброс пароля",
+		"account_not_found": "Аккаунт не найден!",
+		"reset_password_link_was_sent": "Письмо со ссылкой для восстановления пароля отправлено на ваш электронный ящик"
 	},
-	"links": {
-		"coffee_house_owners": "Владельцы Кофейни",
+	"item": {
+		"coffee_house_owners": "Владельцы кофеен",
 		"coffee_houses": "Кофейни",
+		"owner_coffee_houses": "Кофейни владельца",
 		"analytics": "Аналитика",
 		"contact": "Cвязаться с нами"
 	},
@@ -91,13 +98,13 @@
 	"owner": {
 		"item": "Владец",
 		"new": "Новый Владелец",
-		"create_new_owner": "Создать нового Владельца"
+		"create_new_owner": "Создать нового владельца"
 	},
 	"coffee_house": {
-		"shop_name": "Название Кофейни",
+		"shop_name": "Название кофейни",
 		"new": "Новая Кофейня",
 		"item": "Кофейня",
-		"name": "Название Кофейни",
+		"name": "Название кофейни",
 		"shop_description": "Описание",
 		"not_valid": "Неверный формат названия"
 	}

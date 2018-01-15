@@ -6,6 +6,7 @@ const { NOT_FOUND, FORBIDDEN, CREATED } = require('http-statuses');
 const ERRORS = require('../../constants/errors');
 const { FirebaseAuth } = require('../../libs/firebase');
 const mailjet = require('../../libs/mailjet');
+const config = require('../../env');
 
 const adminHelpers = {
 
@@ -28,7 +29,7 @@ const adminHelpers = {
           verificationCode: admin.verificationCode,
           productName: 'Coffee Coins',
           name: admin.name,
-          action_url: 'http://localhost:4200/reset-password?id=' + admin._id + '&email=' + email + '&code=' + admin.verificationCode
+          action_url: config.endpoint + ':' + config.adminPort + '/reset-password?id=' + admin._id + '&email=' + email + '&code=' + admin.verificationCode
         });
       })
       .then(() => {

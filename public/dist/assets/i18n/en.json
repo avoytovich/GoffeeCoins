@@ -38,8 +38,9 @@
 		"administrators": "Administrators",
 		"coin_amount": "Coin amount",
 		"description": "Description",
-		"full_name": "Full name"
-
+		"full_name": "Full name",
+		"reset_password": "Reset password",
+		"activate": "Activate"
 	},
 	"text": {
 		"edit_you_data": "Edit your data",
@@ -51,6 +52,7 @@
 		"not_valid_email": "Not a valid email",
 		"not_valid_name": "Not a valid user name",
 		"confirm_password_is": "Password confirmation is",
+		"required_field": "This field is required",
 		"email_is": "Email is",
 		"total_users": "Total users",
 		"average_time": "Average time",
@@ -73,11 +75,15 @@
 		"social_information": "Social information",
 		"send_admin_request": "Send admin request",
 		"incorrect_email_or_password": "Incorrect email or password.",
-		"account_has_been_disabled": "The user account has been disabled by an administrator."
+		"account_has_been_disabled": "The user account has been disabled by an administrator.",
+		"location_information": "Location information",
+		"account_not_found": "No such account found",
+		"reset_password_link_was_sent": "Електронна пошта з посиланням для ві на пароль було скинуто на ваш електронний лист"
 	},
-	"links": {
+	"item": {
 		"coffee_house_owners": "Coffee House Owners",
 		"coffee_houses": "Coffee Houses",
+		"owner_coffee_houses": "Owner Coffee Houses",
 		"analytics": "Analytics",
 		"contact": "Contact us"
 	},

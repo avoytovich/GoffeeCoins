@@ -22,6 +22,39 @@
 		font-size: 35px;
 	}
 
+	@media (max-width: 1024px) {
+		.small-btn {
+			font-size: 0;
+		}
+	}
+
+
+	@media (max-width: 576px) {
+		.small-btn {
+			min-width: auto !important;
+		}
+
+		.mat-cell {
+			font-size: 12px;
+		}
+
+		.mat-column-select {
+			max-width: 30px !important;
+		}
+
+		.mat-column-avatar .img-circle {
+			max-width: 40px;
+			height: 40px;
+		}
+
+		.mat-row, .mat-header-row {
+			padding: 0 4px;
+		}
+
+
+	}
+
+
 	.header-block {
 		margin-top: -15px;
 		width: 100%;

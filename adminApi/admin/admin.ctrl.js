@@ -21,6 +21,7 @@ const { GLOBAL_ADMIN } = require('../../constants/default');
 const { ADMIN_TYPES } = require('../../constants');
 const { NOT_FOUND, FORBIDDEN, BAD_REQUEST } = require('http-statuses');
 const Promise = require('bluebird');
+const config = require('../../env');
 
 
 const adminCtrl = {
@@ -91,7 +92,7 @@ const adminCtrl = {
                 id: admin._id,
                 productName: 'Coffee Coins',
                 name: admin.name,
-                action_url: 'http://localhost:4200/activate-owner?name=' + name + '&id=' + admin._id + '&code=' + admin.activationCode
+                action_url: config.endpoint + ':' + config.adminPort + '/activate-owner?name=' + name + '&id=' + admin._id + '&code=' + admin.activationCode
             });
         });
     },

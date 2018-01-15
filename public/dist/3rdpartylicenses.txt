@@ -1,4 +1,4 @@
-ngx-order-pipe@1.1.1
+ngx-order-pipe@1.1.2
 MIT
 MIT License
 
@@ -204,10 +204,6 @@ after@0.8.2
 MIT
 MIT
 
-isarray@2.0.1
-MIT
-MIT
-
 socket.io-client@2.0.4
 MIT
 The MIT License (MIT)
@@ -233,7 +229,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@angular/core@5.1.2
+@angular/core@5.2.0
 MIT
 MIT
 

@@ -1164,7 +1164,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ConfigsService = (function () {
     function ConfigsService() {
         // baseUrl = 'http://localhost:8031/api/v1/';
-        this.baseUrl = 'http://54.72.192.165:8031/api/v1/';
+        this.baseUrl = 'http://52.19.188.118:8031/api/v1/';
         this.headersDefault = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('Authorization')
@@ -2462,7 +2462,7 @@ var HttpService = (function () {
         this.toastrService = toastrService;
         this.credential = localStorage.getItem('Authorization');
     }
-    // http://54.72.192.165:8031/api/v1/ Base Url
+    // http://52.19.188.118:8031/api/v1/ Base Url
     HttpService.prototype.login = function (url, data) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
             'Content-Type': 'application/json',

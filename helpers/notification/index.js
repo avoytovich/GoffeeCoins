@@ -135,6 +135,42 @@ const publicMethods = {
         });
     },
 
+    createAdminRequestConfirmedNote(request) {
+        return Promise.all([
+            removeNote({
+                key: KEYS.adminRequest,
+                userID: request.userID,
+                adminRequest: request._id,
+                coffeeHouseID: request.coffeeHouseID,
+            }),
+            createNote({
+                key: KEYS.adminRequestConfirmed,
+                userID: request.userID,
+                coffeeHouseID: request.coffeeHouseID,
+            }),
+        ]);
+    },
+
+    // if rejected
+    removeAdminRequestNote(request) {
+        return removeNote({
+            key: KEYS.adminRequest,
+            userID: request.userID,
+            adminRequest: request._id,
+            coffeeHouseID: request.coffeeHouseID,
+        });
+    },
+
+    createFiredNote(userID, coffeeHouseID) {
+        return createNote({
+            key: KEYS.fired,
+            userID,
+            coffeeHouseID,
+        }, {
+            mustSend: false,
+        });
+    },
+
     createFriendRegisteredNote(userID, sender) {
         return createNote({
             userID,

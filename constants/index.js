@@ -54,6 +54,8 @@ module.exports = {
             bonusRequestCoinConfirmed: 'bonusRequestCoinConfirmed',
             bonusRequestCoinRejected: 'bonusRequestCoinRejected',
             adminRequest: 'adminRequest',
+            adminRequestConfirmed: 'adminRequestConfirmed',
+            fired: 'fired',
             friendRegistered: 'friendRegistered',
         },
         LANGUAGES: {
@@ -72,6 +74,8 @@ module.exports = {
                 bonusRequestCoinConfirmed: (c) => `Request accepted, ${c} Coin(s) added.`,
                 bonusRequestCoinRejected: 'Coin request has been declined by administrator.',
                 adminRequest: (n) => `Administrator request received from ${n}`,
+                adminRequestConfirmed: (n) => `You've become an admin at ${n}`,
+                fired: (n) => `You've resigned from admin position at ${n}`,
                 friendRegistered: 'Your referred friend has just registered. Bonus Coin added. Well done :)',
             },
             UA: {
@@ -84,6 +88,8 @@ module.exports = {
                 bonusRequestCoinConfirmed: (c) => `Запит прийнято, ${c} Coins нараховані.`,
                 bonusRequestCoinRejected: 'Запит на Coins був відхилений адміністратором закладу.',
                 adminRequest: (n) => `Заклад ${n} запрошує Вас стати адміністратором.`,
+                adminRequestConfirmed: (n) => `Ти став адміністратором в ${n}`,
+                fired: (n) => `Ти звільнився з посади адміністратора в ${n}`,
                 friendRegistered: 'Твій запрошений друг щойно зареєструвався. Бонусний Coin нараховано. Вітаємо:)',
             },
             RU: {
@@ -96,6 +102,8 @@ module.exports = {
                 bonusRequestCoinConfirmed: (c) => `Запрос принят, ${c} Coins засчитано.`,
                 bonusRequestCoinRejected: 'Запрос на Coins был отклонён администратором заведения.',
                 adminRequest: (n) => `Заведение ${n} приглашает Вас стать администратором.`,
+                adminRequestConfirmed: (n) => `Ты стал администратором в ${n}`,
+                fired: (n) => `Ты уволился с поста администратора в ${n}`,
                 friendRegistered: 'Твой приглашенный друг только что зарегистрировался. Бонусный Coin засчитан. Поздравляем :)',
             },
         },

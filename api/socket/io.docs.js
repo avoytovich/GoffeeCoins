@@ -83,7 +83,7 @@
  * @apiGroup SOCKET Listeners
  * @apiVersion 0.0.0
  *
- * @apiParam {Array} users `[ { _id, name, coins, avatarUrl }, ... ]`
+ * @apiParam {Array} users `[ { _id, name, coins, createdAt, avatarUrl, coffeeHouseCoins }, ... ]`
  */
 
 
@@ -98,5 +98,5 @@
  * @apiGroup SOCKET Listeners
  * @apiVersion 0.0.0
  *
- * @apiParam {Object} user `{ _id, name, coins, avatarUrl }`
+ * @apiParam {Object} user `{ _id, name, coins, createdAt, avatarUrl, coffeeHouseCoins }`
  */

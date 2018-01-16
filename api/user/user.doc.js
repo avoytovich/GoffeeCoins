@@ -121,10 +121,10 @@
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
- * @apiSuccess {Array} Users `[{_id, name, avatarUrl, coins}]`
+ * @apiSuccess {Array} Users `[{_id, name, avatarUrl, coins, coffeeHouseCoins}]`
  *
  * @apiSuccessExample {json} Success-Response
- * [{"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","coins":17000000000}]
+ * [{"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","coins":17000000000,"coffeeHouseCoins":10}]
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
@@ -142,7 +142,7 @@
  * @apiParam {String} _id your friend UID. (url param)
  *
  * @apiParamExample {url} Url-Example
- * http://54.72.192.165:8030/api/v1/user/invited/5BX9K2ul4gZruIOsLXJoEXBfuhR2
+ * http://52.19.188.118:8030/api/v1/user/invited/5BX9K2ul4gZruIOsLXJoEXBfuhR2
  *
  * @apiSuccess {Number} coins your coins
  *

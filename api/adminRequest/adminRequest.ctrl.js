@@ -1,7 +1,6 @@
 'use strict';
 
 const AdminRequest = require('../../models/adminRequest.model');
-const { REQUEST_STATUSES } = require('../../constants');
 const helpers = require('./adminRequest.helpers');
 
 module.exports = {

@@ -4,6 +4,7 @@ const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Coin = require('../../models/coin.model');
 const AdminRequest = require('../../models/adminRequest.model');
 const { getHouseWithLastVisit } = require('./coffeeHouse.helpers');
+const { createFiredNote } = require('../../helpers/notification');
 const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const { COFFEEHOUSE } = require('../../constants/errors');
 const Promise = require('bluebird');
@@ -59,7 +60,8 @@ const housesApiMethods = {
             }}),
             CoffeeHouse.findByIdAndUpdate(coffeeHouseID, {$pull: {
                 admins: user._id
-            }})
+            }}),
+            createFiredNote(user._id, coffeeHouseID)
         ).then(result => {});
     },
 };

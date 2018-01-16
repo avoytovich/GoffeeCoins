@@ -147,6 +147,8 @@ const publicMethods = {
                 key: KEYS.adminRequestConfirmed,
                 userID: request.userID,
                 coffeeHouseID: request.coffeeHouseID,
+            }, {
+                mustSend: false,
             }),
         ]);
     },

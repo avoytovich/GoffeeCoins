@@ -45,7 +45,9 @@ const adminRequestHelpers = {
                     $addToSet: {
                         admins: user._id
                     }
-                }, {new: true}),
+                }, {
+                    new: true
+                }),
                 createAdminRequestConfirmedNote(request)
             ));
     },

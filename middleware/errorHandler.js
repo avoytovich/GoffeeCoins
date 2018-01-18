@@ -14,6 +14,7 @@ module.exports = (err, req, res, next) => {
 
     return res.status(status).json({
         message,
+        key: err.key,
         success: false,
     });
 };

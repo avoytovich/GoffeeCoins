@@ -5,6 +5,7 @@ const { UNAUTHORIZED, NOT_FOUND } = require('http-statuses');
 const ERRORS = require('../constants/errors');
 const logger = require('../libs/logger');
 const HttpError = require('./httpError.helper');
+const { ERROR, MATCH } = require('../constants');
 
 
 module.exports = {
@@ -12,8 +13,11 @@ module.exports = {
     checkUserOnFirebase(uid) {
         return FirebaseAuth.getUser(uid)
             .catch(error => {
-                throw HttpError.unauthorized(error.message, 12);
-                //throw UNAUTHORIZED.createError(error.message);
+                if (error.errorInfo.code.match(MATCH)) {
+                    throw HttpError.unauthorized(error.message, ERROR.firebase.notFound);
+                } else {
+                    throw HttpError.unauthorized(error.message, ERROR.firebase.another);
+                }
             })
             .then(userRecord => userRecord.toJSON())
             .then(firebaseUser => {

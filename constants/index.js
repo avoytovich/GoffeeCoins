@@ -93,4 +93,14 @@ module.exports = {
             },
         },
     },
+    ERROR: {
+        firebase: {
+            notFound: 'NOT_FOUND_IN_FIREBASE',
+            another: 'ANOTHER_FIREBASE_ERROR'
+        },
+        db: {
+            notFound: 'NOT_FOUND_IN_DB'
+        }
+    },
+    MATCH: /auth\/user-not-found/g
 };

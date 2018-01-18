@@ -50,12 +50,4 @@ class HttpError extends Error {
     }
 }
 
-/*try {
-    throw HttpError.unauthorized();
-} catch(e){
-    console.log(e.status); //400
-    console.log(e.message);
-    console.log(e.key); //7
-}*/
-
 module.exports = HttpError;

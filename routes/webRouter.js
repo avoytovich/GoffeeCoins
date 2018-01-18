@@ -14,6 +14,11 @@ const userRouter = require('../adminApi/user/user.router');
 
 
 webRouter.use(morgan('web'));
+const upload = require('../libs/aws-s3').upload;
+webRouter.post('/upload', upload.array('photos', 3), function(req, res, next) {
+  console.log(req.files)
+    res.send('Successfully uploaded  files!')
+  })
 // webRouter.use(sessionMiddleware);
 // webRouter.use(passport.initialize());
 // webRouter.use(passport.session());

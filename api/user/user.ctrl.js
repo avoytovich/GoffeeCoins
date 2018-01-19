@@ -9,7 +9,8 @@ const { DEFAULT_COIN_COUNT } = require('../../constants');
 const { COFFEEHOUSE, OWNER_ADMIN } = require('../../constants/default');
 const { checkUserOnFirebase } = require('../../helpers/auth.helper');
 const { createFriendRegisteredNote } = require('../../helpers/notification');
-const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
+const HttpError = require('./../../helpers/httpError.helper');
+//const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const pick = require('lodash/pick');
 const Promise = require('bluebird');
 
@@ -61,7 +62,8 @@ const userApiMethods = {
             User.findOne(query)
         ).then(([user, referalUser]) => {
             if (!user || !referalUser) {
-                throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+                throw HttpError.notFound(ERRORS.USER.NOT_FOUND);
+                //throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
             }
             return Promise.join(
                 user.update({
@@ -79,7 +81,8 @@ const userApiMethods = {
             .then(firebaseUser => User.getUser(_id))
             .then(user => {
                 if (!user) {
-                    throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+                    throw HttpError.notFound(ERRORS.USER.NOT_FOUND);
+                    //throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
                 }
                 return {
                     user,
@@ -112,14 +115,17 @@ const userApiMethods = {
         const ctx = {};
         return User.getUser(_id, '+referalId')
             .then(friend => {
-                if (!friend) throw NOT_FOUND.createError();
+                if (!friend) throw HttpError.notFound();
+                //if (!friend) throw NOT_FOUND.createError();
                 if (String(friend.referalId) !== String(user._id)) {
-                    throw FORBIDDEN.createError(ERRORS.USER.NOT_INVITED);
+                    throw HttpError.forbidden(ERRORS.USER.NOT_INVITED);
+                    //throw FORBIDDEN.createError(ERRORS.USER.NOT_INVITED);
                 }
                 if (friend.coins < DEFAULT_COIN_COUNT) {
-                    throw FORBIDDEN.createError(
+                    throw HttpError.forbidden(ERRORS.BONUS_REQUESTS.NOT_ENOUGHT_BONUSES);
+                    /*throw FORBIDDEN.createError(
                         ERRORS.BONUS_REQUESTS.NOT_ENOUGHT_BONUSES
-                    );
+                    );*/
                 }
                 ctx.friend = friend;
                 return Promise.join(

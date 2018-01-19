@@ -5,7 +5,8 @@ const Coin = require('../../models/coin.model');
 const { BONUS_TYPES }  = require('../../constants');
 const { COFFEEHOUSE }  = require('../../constants/errors');
 const helpers = require('./bonusRequest.helpers');
-const { FORBIDDEN } = require('http-statuses');
+//const { FORBIDDEN } = require('http-statuses');
+const HttpError = require('./../../helpers/httpError.helper');
 
 
 const bonusRequestApi = {
@@ -15,7 +16,8 @@ const bonusRequestApi = {
             .then(house => {
                 // await helpers.isInCoffeeHouseNow(user._id, house._id);
                 if (user.isAdminInCoffeeHouse(coffeeHouseID)) {
-                    throw FORBIDDEN.createError(COFFEEHOUSE.NOT_USER);
+                    throw HttpError.forbidden(COFFEEHOUSE.NOT_USER);
+                    //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_USER);
                 }
                 if (type === BONUS_TYPES.FREE) {
                     return helpers.createFreeRequest(user, house);
@@ -34,7 +36,8 @@ const bonusRequestApi = {
         return helpers.checkHouse(coffeeHouseID)
             .then(() => {
                 if (!user.isAdminInCoffeeHouse(coffeeHouseID)) {
-                    throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
+                    throw HttpError.forbidden(COFFEEHOUSE.NOT_ADMIN);
+                    //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
                 }
                 return BonusRequest.getRequests(coffeeHouseID);
             });

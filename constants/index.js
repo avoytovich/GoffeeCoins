@@ -3,6 +3,7 @@
 module.exports = {
     REGEX: {
         firebaseId: ['^[a-zA-Z0-9]{28}$', 'g'],
+        MATCH: /auth\/user-not-found/g
     },
     modelOptions: {
         timestamps: true,
@@ -96,11 +97,14 @@ module.exports = {
     ERROR: {
         firebase: {
             notFound: 'NOT_FOUND_IN_FIREBASE',
-            another: 'ANOTHER_FIREBASE_ERROR'
+            another: 'ANOTnaturalizedHER_FIREBASE_ERROR'
         },
         db: {
-            notFound: 'NOT_FOUND_IN_DB'
+            notFound: 'NOT_FOUND_IN_DB',
+            forbidden: 'FORBIDDEN',
+            serverError: 'SERVER_ERROR',
+            unauthorized: 'UNAUTHORIZED',
+            badRequest: 'BAD_REQUEST'
         }
-    },
-    MATCH: /auth\/user-not-found/g
+    }
 };

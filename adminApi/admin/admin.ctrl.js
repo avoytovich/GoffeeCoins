@@ -19,9 +19,10 @@ const {
 const ERRORS = require('../../constants/errors');
 const { GLOBAL_ADMIN } = require('../../constants/default');
 const { ADMIN_TYPES } = require('../../constants');
-const { NOT_FOUND, FORBIDDEN, BAD_REQUEST } = require('http-statuses');
+//const { NOT_FOUND, FORBIDDEN, BAD_REQUEST } = require('http-statuses');
 const Promise = require('bluebird');
 const config = require('../../env');
+const HttpError = require('./../../helpers/httpError.helper');
 
 
 const adminCtrl = {
@@ -37,7 +38,8 @@ const adminCtrl = {
             .then(firebaseUser => Admin.findById(_id))
             .then(admin => {
                 if (!admin) {
-                    throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+                    throw HttpError.notFound(ERRORS.USER.NOT_FOUND);
+                    //throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
                 }
                 return {
                     admin,
@@ -66,7 +68,8 @@ const adminCtrl = {
                     return newAdmin;
             })
         }).catch(err => {
-            throw BAD_REQUEST.createError(err.code || err.message);
+            throw HttpError.badRequest(err.code || err.message);
+            //throw BAD_REQUEST.createError(err.code || err.message);
         })
     },
 
@@ -83,7 +86,8 @@ const adminCtrl = {
                 }
             })
         }).catch(err => {
-            throw BAD_REQUEST.createError(err.code || err.message);
+            throw HttpError.badRequest(err.code || err.message);
+            //throw BAD_REQUEST.createError(err.code || err.message);
         }).then(admin => {
             return mailjet.sendEmail({
                 type: 'join-owner',
@@ -106,7 +110,8 @@ const adminCtrl = {
 
     setBlock({ params: { _id }, body: { block }, user }) {
         if (_id === String(user._id) || _id === GLOBAL_ADMIN.id) {
-            throw FORBIDDEN.createError();
+            throw HttpError.forbidden();
+            //throw FORBIDDEN.createError();
         }
         return setBlockForUser(_id, block)
             .then(firebaseUser => Admin.findByIdAndUpdate(_id, {
@@ -126,7 +131,8 @@ const adminCtrl = {
 
     remove({ params: { _id }, user }) {
         if (_id === String(user._id) || _id === GLOBAL_ADMIN.id) {
-            throw FORBIDDEN.createError();
+            throw HttpError.forbidden();
+            //throw FORBIDDEN.createError();
         }
         return Admin.findByIdAndUpdate(_id, {
             'disabled.removed': true,

@@ -4,10 +4,11 @@ const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Coin = require('../../models/coin.model');
 const AdminRequest = require('../../models/adminRequest.model');
 const { getHouseWithLastVisit } = require('./coffeeHouse.helpers');
-const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
+//const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const { COFFEEHOUSE } = require('../../constants/errors');
 const Promise = require('bluebird');
 const logger = require('../../libs/logger');
+const HttpError = require('./../../helpers/httpError.helper');
 
 
 const housesApiMethods = {
@@ -29,7 +30,8 @@ const housesApiMethods = {
             .select('-wifi -admins -owner')
             .lean()
             .then(async house => {
-                if (!house) throw NOT_FOUND.createError();
+                if (!house) throw HttpError.notFound();
+                //if (!house) throw NOT_FOUND.createError();
                 if (user) {
                     house = await getHouseWithLastVisit(user._id, house);
                     house.allCoinsCount = await Coin.count({
@@ -47,7 +49,8 @@ const housesApiMethods = {
 
     discharge({ params: { coffeeHouseID }, user }) {
         if (!user.isAdminInCoffeeHouse(coffeeHouseID)) {
-            throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
+            throw HttpError.forbidden(COFFEEHOUSE.NOT_ADMIN);
+            //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
         }
         return Promise.join(
             AdminRequest.remove({

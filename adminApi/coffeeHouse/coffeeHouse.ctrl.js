@@ -9,11 +9,12 @@ const { ADMIN_TYPES, REQUEST_STATUSES } = require('../../constants');
 const { COFFEEHOUSE } = require('../../constants/errors');
 const Promise = require('bluebird');
 const pick = require('lodash/pick');
-const { FORBIDDEN, NOT_FOUND } = require('http-statuses');
+//const { FORBIDDEN, NOT_FOUND } = require('http-statuses');
 const { checkHouse } = require('../../api/bonusRequest/bonusRequest.helpers');
 const socketHelpers = require('../../api/socket/io.helpers');
 const { discharge } = require('../../api/coffeeHouse/coffeeHouse.ctrl');
 const { updateUserAdminField, updateOwnerField } = require('../../adminApi/coffeeHouse/coffeeHouse.helpers');
+const HttpError = require('./../../helpers/httpError.helper');
 
 const housesCtrl = {
 
@@ -61,7 +62,7 @@ const housesCtrl = {
         return CoffeeHouse.findById(_id, '+location')
             .populate('admins owner', 'name avatarUrl createdAt')
             .then(house => {
-                if (!house) throw NOT_FOUND.createError();
+                if (!house) throw HttpError.notFound();/*NOT_FOUND.createError();*/
                 return house;
             })
     },
@@ -89,7 +90,8 @@ const housesCtrl = {
 
     removeAdmin({ body: { coffeeHouseID, userID }, user }) {
         if (user.isOwnerInCoffeeHouse(coffeeHouseID)) {
-            throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+            throw HttpError.forbidden(COFFEEHOUSE.NOT_OWNER);
+            //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
         }
         const data = {
             userID,
@@ -128,7 +130,8 @@ const housesCtrl = {
             .then(house => {
                 if (!user.isOwnerInCoffeeHouse(house._id) &&
                     !user.isGlobalAdmin()) {
-                    throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+                    throw HttpError.forbidden(COFFEEHOUSE.NOT_OWNER);
+                    //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 
                 return CoffeeHouse.findByIdAndUpdate(_id, {
@@ -154,7 +157,8 @@ const housesCtrl = {
             .then(house => {
                 if (!user.isOwnerInCoffeeHouse(house._id) &&
                     !user.isGlobalAdmin()) {
-                    throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+                    throw HttpError.forbidden(COFFEEHOUSE.NOT_OWNER);
+                    //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 
                 return CoffeeHouse.findByIdAndRemove(_id);

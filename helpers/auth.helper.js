@@ -1,11 +1,11 @@
 'use strict';
 
 const { FirebaseAuth } = require('../libs/firebase');
-const { UNAUTHORIZED, NOT_FOUND } = require('http-statuses');
+//const { UNAUTHORIZED, NOT_FOUND } = require('http-statuses');
 const ERRORS = require('../constants/errors');
 const logger = require('../libs/logger');
 const HttpError = require('./httpError.helper');
-const { ERROR, MATCH } = require('../constants');
+const { ERROR, REGEX } = require('../constants');
 
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
     checkUserOnFirebase(uid) {
         return FirebaseAuth.getUser(uid)
             .catch(error => {
-                if (error.errorInfo.code.match(MATCH)) {
+                if (error.errorInfo.code.match(REGEX.MATCH)) {
                     throw HttpError.unauthorized(error.message, ERROR.firebase.notFound);
                 } else {
                     throw HttpError.unauthorized(error.message, ERROR.firebase.another);
@@ -22,7 +22,8 @@ module.exports = {
             .then(userRecord => userRecord.toJSON())
             .then(firebaseUser => {
                 if (firebaseUser.disabled) {
-                    throw UNAUTHORIZED.createError(ERRORS.FORBIDDEN.DISABLED);
+                    throw HttpError.unauthorized(ERRORS.FORBIDDEN.DISABLED);
+                    //throw UNAUTHORIZED.createError(ERRORS.FORBIDDEN.DISABLED);
                 }
                 if (!firebaseUser.email) {
                     const { providerData: [ provider ] } = firebaseUser;
@@ -56,14 +57,16 @@ module.exports = {
                 disabled: state
             })
             .catch(error => {
-                throw NOT_FOUND.createError(error.message);
+                throw HttpError.notFound(error.message);
+                //throw NOT_FOUND.createError(error.message);
             });
     },
 
     removeUser(uid) {
         return FirebaseAuth.deleteUser(uid)
             .catch(error => {
-                throw NOT_FOUND.createError(error.message);
+                throw HttpError.notFound(error.message);
+                //throw NOT_FOUND.createError(error.message);
             });
     },
 

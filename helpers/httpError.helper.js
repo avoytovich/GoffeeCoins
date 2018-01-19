@@ -1,5 +1,6 @@
 const { NOT_FOUND, BAD_REQUEST, UNAUTHORIZED,
     INTERNAL_SERVER_ERROR, FORBIDDEN } = require('http-statuses');
+const { ERROR } = require('../constants');
 
 class HttpError extends Error {
     constructor(status, message, key, ...params) {
@@ -13,7 +14,7 @@ class HttpError extends Error {
         return new HttpError(
             BAD_REQUEST.code,
             message || BAD_REQUEST.message,
-            key
+            key || ERROR.db.badRequest
         )
     }
 
@@ -21,15 +22,15 @@ class HttpError extends Error {
         return new HttpError(
             UNAUTHORIZED.code,
             message || UNAUTHORIZED.message,
-            key
+            key || ERROR.db.unauthorized
         )
     }
 
-    static fobidden(message, key) {
+    static forbidden(message, key) {
         return new HttpError(
             FORBIDDEN.code,
             message || FORBIDDEN.message,
-            key
+            key || ERROR.db.forbidden
         )
     }
 
@@ -37,7 +38,7 @@ class HttpError extends Error {
         return new HttpError(
             NOT_FOUND.code,
             message || NOT_FOUND.message,
-            key
+            key || ERROR.db.notFound
         )
     }
 
@@ -45,7 +46,7 @@ class HttpError extends Error {
         return new HttpError(
             INTERNAL_SERVER_ERROR.code,
             message || INTERNAL_SERVER_ERROR.message,
-            key
+            key || ERROR.db.serverError
         )
     }
 }

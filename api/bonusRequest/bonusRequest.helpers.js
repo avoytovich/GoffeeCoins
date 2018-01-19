@@ -8,7 +8,7 @@ const {
     createCoinRequestNote,
     createFreeRequestNote
 } = require('../../helpers/notification');
-const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
+//const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const Promise = require('bluebird');
 const {
     BONUS_TYPES,
@@ -19,6 +19,7 @@ const {
     REQUESTS,
     COFFEEHOUSE
 } = require('../../constants/errors');
+const HttpError = require('./../../helpers/httpError.helper');
 
 
 const bonusHelpers = {
@@ -26,14 +27,16 @@ const bonusHelpers = {
     async isInCoffeeHouseNow(userID, houseID) {
         const lastVisit = await Visitor.getLastVisit(userID, houseID);
         if (lastVisit.exitTime) {
-            throw FORBIDDEN.createError(BONUS_REQUESTS.NOT_IN);
+            throw HttpError.forbidden(BONUS_REQUESTS.NOT_IN);
+            //throw FORBIDDEN.createError(BONUS_REQUESTS.NOT_IN);
         }
     },
 
     async checkHouse(coffeeHouseID) {
         const house = await CoffeeHouse.findById(coffeeHouseID);
         if (!house) {
-            throw NOT_FOUND.createError(COFFEEHOUSE.NOT_FOUND);
+            throw HttpError.notFound(COFFEEHOUSE.NOT_FOUND);
+            //throw NOT_FOUND.createError(COFFEEHOUSE.NOT_FOUND);
         }
         return house;
     },
@@ -41,7 +44,8 @@ const bonusHelpers = {
     createFreeRequest(user, house) {
         const ctx = {};
         if (user.coins < house.coins) {
-            throw FORBIDDEN.createError(BONUS_REQUESTS.NOT_ENOUGHT_BONUSES);
+            throw HttpError.forbidden(BONUS_REQUESTS.NOT_ENOUGHT_BONUSES);
+            //throw FORBIDDEN.createError(BONUS_REQUESTS.NOT_ENOUGHT_BONUSES);
         }
         return BonusRequest.create({
             coffeeHouseID: house._id,
@@ -87,16 +91,19 @@ const bonusHelpers = {
         return BonusRequest.findById(id)
             .then(async request => {
                 if (!request) {
-                    throw NOT_FOUND.createError();
+                    throw HttpError.notFound();
+                    //throw NOT_FOUND.createError();
                 }
                 if (request.status !== REQUEST_STATUSES.CREATED) {
-                    throw FORBIDDEN.createError(
+                    throw HttpError.forbidden(REQUESTS.HAS_BEEN_PROCESSED(request.status));
+                    /*throw FORBIDDEN.createError(
                         REQUESTS.HAS_BEEN_PROCESSED(request.status)
-                    );
+                    );*/
                 }
                 await bonusHelpers.checkHouse(request.coffeeHouseID);
                 if (!user.isAdminInCoffeeHouse(request.coffeeHouseID)) {
-                    throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
+                    throw HttpError.forbidden(COFFEEHOUSE.NOT_ADMIN);
+                    //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_ADMIN);
                 }
                 return request;
             });

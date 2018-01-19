@@ -51,3 +51,6 @@ jspm_packages
 .idea
 apidoc
 package-lock.json
+
+# Webstorm linter
+.eslintrc

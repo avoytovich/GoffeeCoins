@@ -3,6 +3,7 @@
  * @apiName Get coffee shops by coords
  * @apiDescription ## Get coffee shops by coords in radius 5km
  * @apiGroup Coffee House
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -19,6 +20,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -27,6 +29,7 @@
  * @apiName Get wifi
  * @apiDescription ## Get wifi info of coffee shops by coords in radius 100km
  * @apiGroup Coffee House
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -43,6 +46,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -51,6 +55,7 @@
  * @apiName Get by id
  * @apiDescription ## Get coffee shop by id
  * @apiGroup Coffee House
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -75,6 +80,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -83,6 +89,7 @@
  * @apiName Discharge
  * @apiDescription ## Discharge from coffee house if you are admin
  * @apiGroup Coffee House
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -99,4 +106,5 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */

@@ -3,6 +3,7 @@
  * @apiName Confirm Admin Request
  * @apiDescription ## Confirm Admin Request if you are admin
  * @apiGroup Admin Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -16,6 +17,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -24,6 +26,7 @@
  * @apiName Reject Admin Request
  * @apiDescription ## Reject Admin Request if you are admin
  * @apiGroup Admin Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -37,6 +40,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -45,6 +49,7 @@
  * @apiName Get info for Admin Panel
  * @apiDescription ## Get info for Admin Panel (if you are admin)
  * @apiGroup Admin Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -52,4 +57,5 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */

@@ -3,6 +3,7 @@
  * @apiName SignUp
  * @apiDescription ## Save new user information created by firebase
  * @apiGroup Auth
+ * @apiVersion 0.1.0
  *
  * @apiParam {String} _id Users UID from firebase.
  * @apiParam {String} name Users Name.
@@ -16,6 +17,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -24,6 +26,7 @@
  * @apiName Link referal user
  * @apiDescription ## Used to get token
  * @apiGroup Auth
+ * @apiVersion 0.1.0
  *
  * @apiParam {String} _id Users UID from firebase.
  * @apiParam {String} referalID Your friend referalID.
@@ -41,14 +44,16 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
 /**
  * @api {post} /api/v1/user/login Login
  * @apiName Login
- * @apiDescription ## Used to get token
+ * @apiDHttpErrorescription ## Used to get token
  * @apiGroup Auth
+ * @apiVersion 0.1.0
  *
  * @apiParam {String} _id Users UID from firebase.
  *
@@ -60,6 +65,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -68,6 +74,7 @@
  * @apiName Get Me
  * @apiDescription ## Get current user
  * @apiGroup User
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -84,6 +91,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -92,6 +100,7 @@
  * @apiName Update Me
  * @apiDescription ## Update current user information
  * @apiGroup User
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -110,6 +119,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -118,6 +128,7 @@
  * @apiName Get invited friends
  * @apiDescription ## Get invited friends
  * @apiGroup User
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -128,6 +139,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -136,6 +148,7 @@
  * @apiName Get bonus for invite
  * @apiDescription ## Get bonus for invited friends
  * @apiGroup User
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -151,4 +164,5 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */

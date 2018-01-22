@@ -3,6 +3,7 @@
  * @apiName Send bonus request
  * @apiDescription ##
  * @apiGroup Bonus Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -22,6 +23,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -30,6 +32,7 @@
  * @apiName Get Bonus Requests
  * @apiDescription ## Get Bonus Requests if you are admin
  * @apiGroup Bonus Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -42,6 +45,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -50,6 +54,7 @@
  * @apiName Confirm Bonus Request
  * @apiDescription ## Confirm Bonus Request if you are admin
  * @apiGroup Bonus Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -63,6 +68,7 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */
 
 
@@ -71,6 +77,7 @@
  * @apiName Reject Bonus Request
  * @apiDescription ## Reject Bonus Request if you are admin
  * @apiGroup Bonus Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -84,4 +91,5 @@
  *
  * @apiError {Boolean} success `false`
  * @apiError {String} message Error message
+ * @apiError {String} key Error key
  */

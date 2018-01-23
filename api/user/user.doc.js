@@ -15,9 +15,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"user":{"coins":0,"_id":"1ZGHn5F5bqYn5UUnvhHcEl1hI9o1","name":"bvd","referalID":"1ZGHn5","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2NjA4NDQxfQ.nsT6boaZhxnMKhq-WRb-Z5KeGhBG8ny8ValKrCzuMPQ"}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -42,9 +41,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -63,9 +61,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"user":{"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Qlg5SzJ1bDRnWnJ1SU9zTFhKb0VYQmZ1aFIyIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MTIxMjE4OTR9.6U02XHTNqbGkQN6nTdgKSFadx93fiI523JgPDMdk5EQ"}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -89,9 +86,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -117,9 +113,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","referalID":"5BX9K2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -137,9 +132,8 @@
  * @apiSuccessExample {json} Success-Response
  * [{"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","coins":17000000000,"coffeeHouseCoins":10}]
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -162,7 +156,6 @@
  * @apiSuccessExample {json} Success-Response
  * {"coins":17000000000}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */

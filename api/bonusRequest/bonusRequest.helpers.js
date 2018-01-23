@@ -6,7 +6,9 @@ const BonusRequest = require('../../models/bonusRequest.model');
 const Coin = require('../../models/coin.model');
 const {
     createCoinRequestNote,
-    createFreeRequestNote
+    createFreeRequestNote,
+    createCoinRequestSentNote,
+    createFreeRequestSentNote,
 } = require('../../helpers/notification');
 //const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const Promise = require('bluebird');
@@ -52,27 +54,31 @@ const bonusHelpers = {
             count: house.coins,
             userID: user._id,
             type: BONUS_TYPES.FREE
-        }).then(request => {
-            ctx.request = request;
-            const query = {
-                userID: user._id,
-                usedTimestamp: {$exists: false}
-            };
-            return Coin.find(query)
-                .sort({createdAt: 1})
-                .limit(house.coins);
-        }).then(coins => {
-            return Promise.map(coins, coin => coin.update({
-                $set: {
-                    usedTimestamp: Date.now(),
-                    usedCoffeeHouseID: house._id,
-                }
-            }))
-        }).then(() => {
-            return Promise.map(house.admins, userID => {
-                return createFreeRequestNote(userID, ctx.request)
+        })
+            .then(request => {
+                ctx.request = request;
+                const query = {
+                    userID: user._id,
+                    usedTimestamp: {$exists: false}
+                };
+                return Coin.find(query)
+                    .sort({createdAt: 1})
+                    .limit(house.coins);
             })
-        });
+            .then(coins => {
+                return Promise.map(coins, coin => coin.update({
+                    $set: {
+                        usedTimestamp: Date.now(),
+                        usedCoffeeHouseID: house._id,
+                    }
+                }))
+            })
+            .then(() => createFreeRequestSentNote(ctx.request))
+            .then(() => {
+                return Promise.map(house.admins, userID => {
+                    return createFreeRequestNote(userID, ctx.request)
+                })
+            });
     },
 
     createCoinRequest(userID, house, count) {
@@ -81,9 +87,12 @@ const bonusHelpers = {
             count,
             userID,
         }).then(request => {
-            return Promise.map(house.admins, userID => {
-                return createCoinRequestNote(userID, request);
-            })
+            return Promise.join(
+                createCoinRequestSentNote(request),
+                Promise.map(house.admins, userID => {
+                    return createCoinRequestNote(userID, request);
+                })
+            );
         });
     },
 

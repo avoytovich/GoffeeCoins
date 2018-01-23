@@ -11,7 +11,7 @@
  * @apiParam {Float} lat Latitude (url query)
  *
  * @apiParamExample {url} Url-Example
- * http://54.72.192.165:8030/api/v1/coffeeHouse/coords?lng=22.290801&lat=48.616542
+ * http://52.19.188.118:8030/api/v1/coffeeHouse/coords?lng=22.290801&lat=48.616542
  *
  * @apiSuccess {Array} CoffeeHouses `[{_id, name, avatarUrl, location: [lng,lat], address}]`
  *
@@ -37,7 +37,7 @@
  * @apiParam {Float} lat Latitude (url query)
  *
  * @apiParamExample {url} Url-Example
- * http://54.72.192.165:8030/api/v1/coffeeHouse/wifi?lng=22.290801&lat=48.616542
+ * http://52.19.188.118:8030/api/v1/coffeeHouse/wifi?lng=22.290801&lat=48.616542
  *
  * @apiSuccess {Array} CoffeeHouses `[{_id, name, avatarUrl, address, location: [lng,lat], wifi: {bssid, wifiPassword, ssid, welcomeMessage}}]`
  *
@@ -62,7 +62,7 @@
  * @apiParam {Strind} id CoffeeHouse (url param)
  *
  * @apiParamExample {url} Url-Example
- * http://54.72.192.165:8030/api/v1/coffeeHouse/59c9d506ce0e011b6d53d0c9
+ * http://52.19.188.118:8030/api/v1/coffeeHouse/59c9d506ce0e011b6d53d0c9
  *
  * @apiSuccess {String} _id CoffeeHouseID
  * @apiSuccess {String} avatarUrl url
@@ -96,7 +96,7 @@
  * @apiParam {Strind} id CoffeeHouse (url param)
  *
  * @apiParamExample {url} Url-Example
- * http://54.72.192.165:8030/api/v1/coffeeHouse/discharge/59c9d506ce0e011b6d53d0c9
+ * http://52.19.188.118:8030/api/v1/coffeeHouse/discharge/59c9d506ce0e011b6d53d0c9
  *
  * @apiSuccess {Boolean} success `true`
  * @apiSuccess {String} message `OK`

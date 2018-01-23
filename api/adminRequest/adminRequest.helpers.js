@@ -3,6 +3,9 @@
 const AdminRequest = require('../../models/adminRequest.model');
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const { checkHouse } = require('../bonusRequest/bonusRequest.helpers');
+const {
+    createAdminRequestConfirmedNote, removeAdminRequestNote
+} = require('../../helpers/notification');
 const { REQUEST_STATUSES } = require('../../constants');
 const ERRORS = require('../../constants/errors');
 const HttpError = require('./../../helpers/httpError.helper');
@@ -46,13 +49,18 @@ const adminRequestHelpers = {
                     $addToSet: {
                         admins: user._id
                     }
-                }, {new: true})
+                }, {
+                    new: true
+                }),
+                createAdminRequestConfirmedNote(request)
             ));
     },
 
     declineRequest(request) {
-        return request.update({ status: REQUEST_STATUSES.DECLINED });
-        // return request.remove();
+        return Promise.all([
+            request.update({ status: REQUEST_STATUSES.DECLINED }),
+            removeAdminRequestNote(request),
+        ]);
     },
 
 };

@@ -9,15 +9,13 @@
  *
  * @apiParam {String} requestID mongoId (url param)
  *
- * @apiSuccess {Boolean} success `true`
- * @apiSuccess {String} message `OK`
+ * @apiUse MyHttpSuccess
  *
  * @apiSuccessExample {json} Success-Response
  * {"status":true,"message":"OK"}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -32,15 +30,13 @@
  *
  * @apiParam {String} requestID mongoId (url param)
  *
- * @apiSuccess {Boolean} success `true`
- * @apiSuccess {String} message `OK`
+ * @apiUse MyHttpSuccess
  *
  * @apiSuccessExample {json} Success-Response
  * {"status":true,"message":"OK"}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -55,7 +51,6 @@
  *
  * @apiSuccess {Array} adminRequests `[{_id, status, createdAt, updatedAt, coffeeHouseID: { _id, name, avatarUrl, address, status }}]`
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
- * @apiError {String} key Error key
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */

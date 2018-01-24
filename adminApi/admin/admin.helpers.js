@@ -12,7 +12,7 @@ const adminHelpers = {
 
   forgotPassword(email) {
     const code = Crypto.randomBytes(16).toString('hex');
-    return Admin.findOne({ email })
+    return Admin.findOne({ email, 'disabled.removed': false })
       .then(admin => {
         if (!admin) {
           throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);

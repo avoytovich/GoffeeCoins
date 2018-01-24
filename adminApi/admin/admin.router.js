@@ -17,7 +17,7 @@ adminRouter.post('/login', (req, res, next) => {
 }, responseHandler(adminCtrl.login));
 
 adminRouter.put('/forgot-password', (req, res, next) => {
-    req.sanitizeBody('email').normalizeEmail();
+    req.sanitizeBody('email').escape().trim();
     next();
 }, responseHandler(adminCtrl.forgotPassword));
 
@@ -36,7 +36,7 @@ adminRouter.route('/owner')
     .put(responseHandler(adminCtrl.updateOwner))
     .post((req, res, next) => {
         req.sanitizeBody('name').trim();
-        req.sanitizeBody('email').normalizeEmail();
+        req.sanitizeBody('email').escape().trim();
         next();
     }, responseHandler(adminCtrl.createOwner, {
         status: CREATED.code

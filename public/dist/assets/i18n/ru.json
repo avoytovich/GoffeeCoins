@@ -66,7 +66,7 @@
 		"user_name_should_contain": "Имя пользователя должно включать",
 		"6_characters": "6 символов",
 		"passwords_not_identical": "Пароли не совпадают",
-		"social_links_SSID": "Социальные ссылки SSID (название wi-fi сети)",
+		"social_links_SSID": "SSID (название wi-fi сети)",
 		"wifi_wellcome_message": "Сообщение приветствия Wifi",
 		"BSSID_wifi_mac_address": "BSSID (wi-fi mac адрес)",
 		"wifi_password": "Wi-fi пароль",

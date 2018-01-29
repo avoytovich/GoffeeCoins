@@ -16,4 +16,9 @@ module.exports = {
         email: "leopesyk@ukr.net",
         from: "CoffeeCoin"
     },
+    AWS_s3: {
+        Access_KEY: env.S3_ACCESS_KEY || "AKIAJHI6EIE7I37DLQPQ",
+        Access_SECRET: env.S3_ACCESS_SECRET || "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",
+        S3_BUCKET: env.S3_BUCKET || "coffeecoin-dev",
+    }
 };

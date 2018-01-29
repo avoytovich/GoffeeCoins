@@ -7,6 +7,7 @@ const VALIDATIONS = require('../../constants/validations');
 const responseHandler = require('../../middleware/responseHandler');
 const { CREATED } = require('http-statuses');
 const pick = require('lodash/pick');
+const upload = require('../../libs/aws-s3').upload;
 
 
 housesRouter.route('/')
@@ -34,6 +35,8 @@ housesRouter.post('/remove-admin', (req, res, next) => {
     });
     next();
 }, responseHandler(housesCtrl.removeAdmin));
+
+//housesCtrl.post('/upload', upload.array('photos', 3), responseHandler(housesCtrl.uploadImage)),
 
 housesRouter.route('/:_id')
     .all(param('_id').isMongoId())

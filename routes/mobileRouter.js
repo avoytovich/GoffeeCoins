@@ -22,6 +22,7 @@ mobileRouter.use('/adminRequest', adminRequestRouter);
 mobileRouter.use('/bonusRequest', bonusesRouter);
 mobileRouter.use('/deviceToken', tokenRouter);
 mobileRouter.use('/notification', noteRouter);
+mobileRouter.use('/general', require('../api/general/general.router'));
 
 
 module.exports = mobileRouter;

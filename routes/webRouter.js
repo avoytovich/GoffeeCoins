@@ -25,5 +25,10 @@ webRouter.use('/coffeeHouse', housesRouter);
 webRouter.use('/adminRequest', adminRequestRouter);
 webRouter.use('/bonusRequest', bonusRequestRouter);
 webRouter.use('/user', userRouter);
+/*webRouter.use('/files', ({ files: { file } }, res) => {
+    console.log('here');
+    readFileAndPutTos3(file)
+        .then(url => res.json({ url }));
+});*/
 
 module.exports = webRouter;

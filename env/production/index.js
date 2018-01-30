@@ -16,4 +16,9 @@ module.exports = {
         email: "leopesyk@ukr.net",
         from: "CoffeeCoin"
     },
+    knoxConfig: {
+        key: 'AKIAJHI6EIE7I37DLQPQ',
+        secret: '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',
+        bucket: 'sbgboost',
+    }
 };

@@ -86,13 +86,14 @@ const coffeeHouseSchema = new mongoose.Schema({
 
 
 coffeeHouseSchema.statics.getHousesByLocation = function (coords) {
-    return this.find(createGeoQuery(coords, 5))
-        .select({
+    /*{
             name: 1,
             avatarUrl: 1,
             location: 1,
             address: 1,
-        })
+        }*/
+    return this.find(createGeoQuery(coords, 5))
+        .select('-admins -owner')
         .lean()
 };
 

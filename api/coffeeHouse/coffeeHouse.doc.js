@@ -11,15 +11,14 @@
  * @apiParam {Float} lat Latitude (url query)
  *
  * @apiParamExample {url} Url-Example
- * http://52.19.188.118:8030/api/v1/coffeeHouse/coords?lng=22.290801&lat=48.616542
+ * http://54.72.192.165:8030/api/v1/coffeeHouse/coords?lng=22.290801&lat=48.616542
  *
- * @apiSuccess {Array} CoffeeHouses `[{_id, name, avatarUrl, location: [lng,lat], address}]`
+ * @apiSuccess {Array} CoffeeHouses `[{_id, name, avatarUrl, bannerUrls, description, coins, location: [lng,lat], address, socials, wifi}]`
  *
  * @apiSuccessExample {json} Success-Response:
- * [{"_id": "59c9d506ce0e011b6d53d0cb","avatarUrl": "http://www.coffeeshopcompany.ru/upload/medialibrary/b79/IMG_3244.JPG","location": [22.290801,48.616542],"address": "Prospekt","name": "Totem2"}]
+ * [{"_id": "59c9d506ce0e011b6d53d0cb","avatarUrl": "http://www.coffeeshopcompany.ru/upload/medialibrary/b79/IMG_3244.JPG", "bannerUrls": ["http://www.coffeeshopcompany.ru/banner"], "description": "stuffs about this coffeeHouses", "coins": 10,"location": [22.290801,48.616542],"address": "Prospekt","name": "Totem2", "socials": {"facebook": "blablabla"}, "wifi": {"bssid": "hallo", "ssid": "wifi", "welcomeMessage": "greeting"} }]
  *
  * @apiUse MyHttpError
- * @apiUse MyHttpErrorExtend
  */
 
 

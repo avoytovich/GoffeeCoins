@@ -6101,6 +6101,7 @@ var SuperAdminUsersComponent = (function () {
         this.userService = userService;
         this.dialog = dialog;
         this.site = site;
+        this.dataSource = new __WEBPACK_IMPORTED_MODULE_5__angular_material__["m" /* MatTableDataSource */]();
         this.displayedColumns = ['avatar', 'name', 'since', 'status', 'control'];
     }
     SuperAdminUsersComponent.prototype.createAdminRequest = function (userId) {
@@ -6146,7 +6147,10 @@ var SuperAdminUsersComponent = (function () {
             if (params.id) {
                 _this.coffeeHouseId = params.id;
                 _this.socketIOService.inCoffeeHouse(params.id); // '59c9d506ce0e011b6d53d0c9'
-                _this.coffeeHousesService.getVisitors(params.id).subscribe(function (visitors) {
+                _this.coffeeHousesService.getVisitors(params.id).subscribe(function (data) {
+                    var visitors = data.filter(function (item) {
+                        return item;
+                    });
                     _this.dataSource = new __WEBPACK_IMPORTED_MODULE_5__angular_material__["m" /* MatTableDataSource */](visitors); // TEST_ITEMS
                     _this.dataSource.paginator = _this.paginator;
                     _this.dataSource.sort = _this.sort;
@@ -6307,7 +6311,7 @@ var environment = {
         messagingSenderId: '252000032222'
     },
     baseUrl: 'http://localhost:8031/api/v1/',
-    //baseUrl: 'http://52.19.188.118:8031/api/v1/',
+    // baseUrl: 'http://52.19.188.118:8031/api/v1/',
     toastr: {
         timeOut: 6000,
         positionClass: 'toast-bottom-right',

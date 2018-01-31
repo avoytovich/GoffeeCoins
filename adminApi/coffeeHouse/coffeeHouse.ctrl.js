@@ -4,6 +4,7 @@ const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Visitor = require('../../models/visitor.model');
 const AdminRequest = require('../../models/adminRequest.model');
 const User = require('../../models/user.model');
+const Admin = require('../../models/admin.model');
 const logger = require('../../libs/logger');
 const { ADMIN_TYPES, REQUEST_STATUSES } = require('../../constants');
 const { COFFEEHOUSE } = require('../../constants/errors');
@@ -37,7 +38,11 @@ const housesCtrl = {
             body.owner = user._id;
         }
         const data = pick(body, housesCtrl.fields);
-        return CoffeeHouse.create(data);
+
+        return CoffeeHouse.create(data).then((house) => {
+            return Admin.findByIdAndUpdate(data.owner, { $addToSet: { coffeeHouseID: house._id } })
+                .then(() => house);
+        });
     },
 
     getHouses({ user, query }) {
@@ -161,9 +166,27 @@ const housesCtrl = {
                     //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 
-                return CoffeeHouse.findByIdAndRemove(_id);
+                return Promise.join(
+                    CoffeeHouse.findByIdAndRemove(_id),
+                    Admin.find({ coffeeHouseID: _id })
+                        .then(admins => Promise.map(admins, admin => {
+                            var index = admin.coffeeHouseID.indexOf(_id);
+                            if (index > -1) {
+                                admin.coffeeHouseID.splice(index, 1);
+                                return admin.save();
+                            }
+                            return admin;
+                        }))
+                ).then(data => {
+                    return data[0];
+                })
             });
-    }
+    },
+
+    uploadImage() {
+
+
+    },
 };
 
 module.exports = housesCtrl;

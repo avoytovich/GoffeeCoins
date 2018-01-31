@@ -4,10 +4,11 @@ const housesRouter = require('express').Router();
 const { param } = require('express-validator/check');
 const housesCtrl = require('./coffeeHouse.ctrl');
 const VALIDATIONS = require('../../constants/validations');
+const config = require('../../env');
 const responseHandler = require('../../middleware/responseHandler');
 const { CREATED } = require('http-statuses');
 const pick = require('lodash/pick');
-const upload = require('../../libs/aws-s3').upload;
+const upload = require('../../libs/aws-s3').upload(config.AWS_s3.S3_BUCKET);
 
 
 housesRouter.route('/')
@@ -36,7 +37,7 @@ housesRouter.post('/remove-admin', (req, res, next) => {
     next();
 }, responseHandler(housesCtrl.removeAdmin));
 
-//housesCtrl.post('/upload', upload.array('photos', 3), responseHandler(housesCtrl.uploadImage)),
+housesRouter.post('/upload', upload.single('image'), responseHandler(housesCtrl.uploadImage)),
 
 housesRouter.route('/:_id')
     .all(param('_id').isMongoId())

@@ -28,7 +28,8 @@ const adminCtrl = {
 
     fields: [
         'name',
-        'email'
+        'email',
+        'avatarUrl'
     ],
 
 
@@ -48,6 +49,10 @@ const adminCtrl = {
 
     me({ user }) {
         return user;
+    },
+
+    uploadImage({ file }) {
+        return Promise.resolve(file.location)        
     },
 
     activateOwner({ body: { id, name, activationCode, password } }) {

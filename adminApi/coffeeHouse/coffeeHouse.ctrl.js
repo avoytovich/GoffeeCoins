@@ -179,9 +179,8 @@ const housesCtrl = {
             });
     },
 
-    uploadImage() {
-
-
+    uploadImage({ file }) {
+        return Promise.resolve(file.location)        
     },
 };
 

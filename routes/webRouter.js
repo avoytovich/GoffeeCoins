@@ -20,11 +20,11 @@ webRouter.use(morgan('web'));
 
 webRouter.use('/admin', adminUserRouter);
 // webRouter.use(isAuthenticated);
+webRouter.use('/general', require('../api/general/general.router'));
 webRouter.use(passport.authenticate('jwt', { session: false }));
 webRouter.use('/coffeeHouse', housesRouter);
 webRouter.use('/adminRequest', adminRequestRouter);
 webRouter.use('/bonusRequest', bonusRequestRouter);
 webRouter.use('/user', userRouter);
-webRouter.use('/general', require('../api/general/general.router'));
 
 module.exports = webRouter;

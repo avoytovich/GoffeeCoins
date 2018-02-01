@@ -16,13 +16,13 @@ const noteRouter = require('../api/notification/notification.router');
 mobileRouter.use(morgan('mobile'));
 mobileRouter.use('/user', userRouter);
 mobileRouter.use('/coffeeHouse', housesRouter);
+mobileRouter.use('/general', require('../api/general/general.router'));
 mobileRouter.use(passport.authenticate('jwt', { session: false }));
 mobileRouter.use(languageMiddleware);
 mobileRouter.use('/adminRequest', adminRequestRouter);
 mobileRouter.use('/bonusRequest', bonusesRouter);
 mobileRouter.use('/deviceToken', tokenRouter);
 mobileRouter.use('/notification', noteRouter);
-mobileRouter.use('/general', require('../api/general/general.router'));
 
 
 module.exports = mobileRouter;

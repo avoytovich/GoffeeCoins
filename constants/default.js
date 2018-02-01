@@ -24,6 +24,7 @@ module.exports = {
         description: 'Internal Coffee shop',
         address: String,
         status: COFFEE_HOUSE_STATUSES.OFFLINE,
+        internal: true,
     },
     CHE: {
         "avatarUrl" : "http://www.mikocoffee.com/uk/wp-content/uploads/sites/5/2017/02/Mushroom-coffee.jpg",

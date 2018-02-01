@@ -93,7 +93,7 @@ coffeeHouseSchema.statics.getHousesByLocation = function (coords) {
             address: 1,
         }*/
     return this.find(createGeoQuery(coords, 5))
-        .select('-admins -owner')
+        .select('-admins -owner +location')
         .lean()
 };
 

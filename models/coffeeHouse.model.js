@@ -10,6 +10,7 @@ const {
 
 
 const createGeoQuery = ({ lng, lat }, radius) => ({
+    // internal: false,
     status: COFFEE_HOUSE_STATUSES.ONLINE,
     location: {
         $geoWithin: {

@@ -49,7 +49,7 @@
 /**
  * @api {post} /api/v1/user/login Login
  * @apiName Login
- * @apiDHttpErrorescription ## Used to get token
+ * @apiDescription ## Used to get token
  * @apiGroup Auth
  * @apiVersion 0.1.0
  *

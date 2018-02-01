@@ -2,6 +2,7 @@
 
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Visitor = require('../../models/visitor.model');
+const Note = require('../../models/notification.model');
 const AdminRequest = require('../../models/adminRequest.model');
 const User = require('../../models/user.model');
 const Admin = require('../../models/admin.model');
@@ -163,26 +164,17 @@ const housesCtrl = {
     removeHouse({ params: { _id }, body, user }) {
         return checkHouse(_id)
             .then(house => {
-                if (!user.isOwnerInCoffeeHouse(house._id) &&
-                    !user.isGlobalAdmin()) {
+                if (!user.isOwnerInCoffeeHouse(house._id) && !user.isGlobalAdmin()) {
                     throw HttpError.forbidden(COFFEEHOUSE.NOT_OWNER);
                     //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 
-                return Promise.join(
+                return Promise.all([
                     CoffeeHouse.findByIdAndRemove(_id),
-                    Admin.find({ coffeeHouseID: _id })
-                        .then(admins => Promise.map(admins, admin => {
-                            var index = admin.coffeeHouseID.indexOf(_id);
-                            if (index > -1) {
-                                admin.coffeeHouseID.splice(index, 1);
-                                return admin.save();
-                            }
-                            return admin;
-                        }))
-                ).then(data => {
-                    return data[0];
-                })
+                    Admin.update({ coffeeHouseID: _id }, { $pull: { coffeeHouseID: _id } }, { multi: true }),
+                    Note.deleteMany({coffeeHouseID: _id}),
+                    User.update({adminInCoffeeHouses: _id}, {$pull: {adminInCoffeeHouses: _id}}, {multi: true}),
+                ]);
             });
     },
 

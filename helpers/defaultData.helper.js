@@ -4,6 +4,8 @@ const logger = require('../libs/logger');
 const Admin = require('../models/admin.model');
 const CoffeeHouse = require('../models/coffeeHouse.model');
 const Visitor = require('../models/visitor.model');
+const Note = require('../models/notification.model');
+const AdminRequest = require('../models/adminRequest.model');
 const Promise = require('bluebird');
 const {
     GLOBAL_ADMIN,
@@ -44,3 +46,11 @@ Promise.join(
 
 Visitor.find({exitTime: {$exists: false}})
     .then(visits => Promise.map(visits, visit => visit.getOut()));
+
+CoffeeHouse.find({})
+    .select('_id')
+    .then(houses => houses.map(house => house._id))
+    .then(housesIds => Promise.all([
+        Note.deleteMany({coffeeHouseID: { $nin: housesIds } }),
+        AdminRequest.deleteMany({ coffeeHouseID: { $nin: housesIds } }),
+    ]));

@@ -161,7 +161,7 @@ const housesCtrl = {
             }));
     },
 
-    removeHouse({ params: { _id }, body, user }) {
+    removeHouse({ params: { _id }, user }) {
         return checkHouse(_id)
             .then(house => {
                 if (!user.isOwnerInCoffeeHouse(house._id) && !user.isGlobalAdmin()) {
@@ -173,7 +173,8 @@ const housesCtrl = {
                     CoffeeHouse.findByIdAndRemove(_id),
                     Admin.update({ coffeeHouseID: _id }, { $pull: { coffeeHouseID: _id } }, { multi: true }),
                     Note.deleteMany({coffeeHouseID: _id}),
-                    User.update({adminInCoffeeHouses: _id}, {$pull: {adminInCoffeeHouses: _id}}, {multi: true}),
+                    User.update({ adminInCoffeeHouses: _id }, { $pull: { adminInCoffeeHouses: _id } }, { multi: true }),
+                    AdminRequest.deleteMany({ coffeeHouseID: _id }),
                 ]);
             });
     },

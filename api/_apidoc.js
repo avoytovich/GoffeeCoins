@@ -270,6 +270,47 @@
  */
 
 /**
+ * @api {get} /api/v1/general/constants
+ * @apiName Get constants
+ * @apiDescription ## Get constants
+ * @apiGroup General
+ * @apiVersion 0.0.0
+ *
+ * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
+ *
+ * @apiSuccess {Object} constants Contain constants `{"REQUEST_STATUSES": {CREATED, ACCEPTED, DECLINED}, "BONUS_TYPES": {COIN, FREE}, "LANGUAGES": {UA, RU, EN}, "ERROR": {"firebase": {notFound, another}, "db": {notFound, forbidden, serverError, unauthorized, badRequest}}`
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * {"REQUEST_STATUSES":{"CREATED":"CREATED","ACCEPTED":"ACCEPTED","DECLINED":"DECLINED"},"BONUS_TYPES":{"COIN":"COIN","FREE":"FREE"},"LANGUAGES":{"UA":"UA","RU":"RU","EN":"EN"},"ERROR":{"firebase":{"notFound":"NOT_FOUND_IN_FIREBASE","another":"ANOTHER_FIREBASE_ERROR"},"db":{"notFound":"NOT_FOUND_IN_DB","forbidden":"FORBIDDEN","serverError":"SERVER_ERROR","unauthorized":"UNAUTHORIZED","badRequest":"BAD_REQUEST"}}}
+ *
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
+ */
+
+/**
+ * @api {post} /api/v1/general/file
+ * @apiName Upload file
+ * @apiDescription ## Upload file
+ * @apiGroup General
+ * @apiVersion 0.0.0
+ *
+ * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
+ *
+ * @apiParam {File} file Upload file
+ *
+ * @apiParamExample {file} Upload file Example
+ * screenshoot.jpg
+ *
+ * @apiSuccess {Object} url Contain url `{url}`
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * {"url":"https://coffeecoin-dev.s3.amazonaws.com/coffeeCoins/1517411242882_Screenshot_from_2018-01-30_13-46-52.png"}
+ *
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
+ */
+
+/**
  * @api {get} /api/v1/coffeeHouse/notification?lang=UA
  * @apiName Get notifications
  * @apiDescription ## Get notifications about your actions

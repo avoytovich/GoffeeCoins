@@ -77,6 +77,9 @@ const housesCtrl = {
             coffeeHouseID: _id,
             exitTime: { $exists: false }
         });
+        // TODO: тут баг з тим, що відвідувач не є користувачем!
+        // його запису не знаходить і повертає null але у масиві
+        // є пофік на фронті але це не вихід
         const visitorsId = visitors.map(visitor => visitor.userID);
         return Promise.map(visitorsId, id => {
             return User.getUser(id, socketHelpers.defaultFields.join(' ') + ' adminInCoffeeHouses');
@@ -183,9 +186,8 @@ const housesCtrl = {
             });
     },
 
-    uploadImage() {
-
-
+    uploadImage({ file }) {
+        return Promise.resolve(file.location)        
     },
 };
 

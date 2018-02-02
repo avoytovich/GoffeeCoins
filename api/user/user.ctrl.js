@@ -105,7 +105,7 @@ const userApiMethods = {
             .select('name avatarUrl')
             .lean()
             .then(users => Promise.map(users, async user => {
-                user.coins = await Coin.getUnusedCoinCount(user._id);
+                user.coins = await Coin.count({ userID: user._id });
                 user.coffeeHouseCoins = DEFAULT_COIN_COUNT;
                 return user;
             }));

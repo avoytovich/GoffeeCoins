@@ -14,10 +14,6 @@ const {
 } = require('../constants/default');
 
 
-// TODO: REMOVE THIS!!
-const User = require('../models/user.model');
-User.create({_id: '123', name: 'Example', avatarUrl: 'Example', }, function (err, small) {});
-
 Admin.getOrCreate(GLOBAL_ADMIN)
     .then(admin => logger.info('Global Admin created'))
     .catch(err => logger.error(err));
@@ -41,7 +37,7 @@ Promise.join(
         })
     }
 }).then(house => logger.info('Owner and house created'))
-    .catch(err => logger.error(err));
+    .catch(logger.error);
 
 
 Visitor.find({exitTime: {$exists: false}})
@@ -54,3 +50,15 @@ CoffeeHouse.find({})
         Note.deleteMany({coffeeHouseID: { $nin: housesIds } }),
         AdminRequest.deleteMany({ coffeeHouseID: { $nin: housesIds } }),
     ]));
+
+CoffeeHouse.update({
+    internal: {
+        $exists: false,
+    }
+}, {
+    $set: {
+        internal: false,
+    }
+}, {
+    multi: true,
+}).exec();

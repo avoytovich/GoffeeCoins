@@ -9,14 +9,13 @@ const {
 } = require('../constants/index');
 
 
-const createGeoQuery = ({ lng, lat }, radius) => ({
-    // internal: false,
+const createGeoQuery = ({ lng, lat, rad }) => ({
     status: COFFEE_HOUSE_STATUSES.ONLINE,
     location: {
         $geoWithin: {
             $centerSphere: [
                 [lng, lat],
-                radius / 6371    //radius in km / radius of The Earth
+                rad / 6371    //radius in km / radius of The Earth
             ]
         }
     }
@@ -87,7 +86,8 @@ const coffeeHouseSchema = new mongoose.Schema({
 
 
 coffeeHouseSchema.statics.getHousesByLocation = function (coords) {
-    return this.find(createGeoQuery(coords, 5))
+    //console.log('debug1', createGeoQuery(coords).location.$geoWithin.$centerSphere);
+    return this.find(createGeoQuery(coords))
         .select({
             name: 1,
             address: 1,

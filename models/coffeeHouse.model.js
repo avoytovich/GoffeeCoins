@@ -102,7 +102,6 @@ coffeeHouseSchema.statics.getHousesByLocation = function (coords) {
         .lean()
 };
 
-
 coffeeHouseSchema.statics.getWifiInfo = function (coords) {
     return this.find(createGeoQuery(coords, 100))
         .select({

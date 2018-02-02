@@ -32,6 +32,7 @@ const housesApiMethods = {
             .lean()
             .then(async house => {
                 if (!house) throw HttpError.notFound();
+                if (house.internal) throw HttpError.forbidden(COFFEEHOUSE.INTERNAL);
                 //if (!house) throw NOT_FOUND.createError();
                 if (user) {
                     house = await getHouseWithLastVisit(user._id, house);

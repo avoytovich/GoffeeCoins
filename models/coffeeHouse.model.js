@@ -87,7 +87,6 @@ const coffeeHouseSchema = new mongoose.Schema({
 
 
 coffeeHouseSchema.statics.getHousesByLocation = function (coords, radius=5) {
-    //console.log('debug1', createGeoQuery(coords).location.$geoWithin.$centerSphere);
     return this.find(createGeoQuery(coords, radius))
         .select({
             name: 1,

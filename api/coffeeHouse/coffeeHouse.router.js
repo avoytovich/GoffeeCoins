@@ -10,8 +10,10 @@ const passport = require('../../libs/passport');
 const checkCoords = (req, res, next) => {
     req.checkQuery('lat').notEmpty().isFloat();
     req.checkQuery('lng').notEmpty().isFloat();
+    req.checkQuery('radius').notEmpty().isNumeric();
     req.sanitizeQuery('lat').toFloat();
     req.sanitizeQuery('lng').toFloat();
+    req.sanitizeQuery('radius').toFloat();
     next();
 };
 

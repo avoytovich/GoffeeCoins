@@ -10,7 +10,7 @@ const {
 
 
 const createGeoQuery = ({ lng, lat }, radius) => ({
-    // internal: false,
+    //internal: false,
     status: COFFEE_HOUSE_STATUSES.ONLINE,
     location: {
         $geoWithin: {
@@ -86,8 +86,8 @@ const coffeeHouseSchema = new mongoose.Schema({
 }, modelOptions);
 
 
-coffeeHouseSchema.statics.getHousesByLocation = function (coords) {
-    return this.find(createGeoQuery(coords, 5))
+coffeeHouseSchema.statics.getHousesByLocation = function (coords, radius=5) {
+    return this.find(createGeoQuery(coords, radius))
         .select({
             name: 1,
             address: 1,

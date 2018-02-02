@@ -14,8 +14,8 @@ const HttpError = require('./../../helpers/httpError.helper');
 
 const housesApiMethods = {
 
-    getHousesList({ query: { lng, lat }, user }) {
-        return CoffeeHouse.getHousesByLocation({ lng, lat })
+    getHousesList({ query: { lng, lat, radius }, user }) {
+        return CoffeeHouse.getHousesByLocation({ lng, lat }, radius)
             .then(houses => {
                 if (user) {
                     return Promise.map(houses, house => {

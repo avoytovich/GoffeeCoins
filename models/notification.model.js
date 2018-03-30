@@ -2,17 +2,17 @@
 
 const mongoose = require('../libs/mongoose');
 const {
-    modelOptions,
-    MODELS,
-    NOTIFICATIONS,
-} = require('../constants/index');
+    modelOptions, MODELS, NOTIFICATIONS,
+} = require('../constants');
 
 const queryHelper = query => {
     return query
-        .select('-userID -createdAt')
+        .select('-userID')
         .populate('bonusRequest', 'count type')
         .populate('coffeeHouseID', 'name avatarUrl')
         .populate('sender', 'name avatarUrl')
+        .sort({ createdAt: -1 })
+        .limit(30)
         //.populate('adminRequest', '_id')
         .lean()
 };

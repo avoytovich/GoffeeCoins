@@ -2,20 +2,22 @@
 
 const Admin = require('../../models/admin.model');
 const Crypto = require('crypto');
-const { NOT_FOUND, FORBIDDEN, CREATED } = require('http-statuses');
+//const { NOT_FOUND, FORBIDDEN, CREATED } = require('http-statuses');
 const ERRORS = require('../../constants/errors');
 const { FirebaseAuth } = require('../../libs/firebase');
 const mailjet = require('../../libs/mailjet');
 const config = require('../../env');
+const HttpError = require('./../../helpers/httpError.helper');
 
 const adminHelpers = {
 
   forgotPassword(email) {
     const code = Crypto.randomBytes(16).toString('hex');
-    return Admin.findOne({ email })
+    return Admin.findOne({ email, 'disabled.removed': false })
       .then(admin => {
         if (!admin) {
-          throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+            throw HttpError.notFound(ERRORS.USER.NOT_FOUND);
+            //throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
         }
 
         admin.verificationCode = code;
@@ -41,29 +43,35 @@ const adminHelpers = {
 
   activateOwner(id, name, activationCode, password) {
     if (!id) {
-      throw NOT_FOUND.createError("id is missing");
+      throw HttpError.notFound("id is missing");
+      //throw NOT_FOUND.createError("id is missing");
     }
 
     if (!activationCode) {
-      throw NOT_FOUND.createError("Activation code is missing");
+      throw HttpError.notFound("Activation code is missing");
+      //throw NOT_FOUND.createError("Activation code is missing");
     }
 
     if (!password) {
-      throw NOT_FOUND.createError("Password is missing");
+        throw HttpError.notFound("Password is missing");
+        //throw NOT_FOUND.createError("Password is missing");
     }
 
     if (!name) {
-      throw NOT_FOUND.createError("Name is missing");
+        throw HttpError.notFound("Name is missing");
+        //throw NOT_FOUND.createError("Name is missing");
     }
 
     return Admin.findById(id)
       .then(admin => {
         if (!admin) {
-          throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+          throw HttpError.notFound(ERRORS.USER.NOT_FOUND);
+          //throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
         }
 
         if (admin.activationCode !== activationCode) {
-          throw NOT_FOUND.createError('Activation code not found');
+            throw HttpError.notFound('Activation code not found');
+            //throw NOT_FOUND.createError('Activation code not found');
         }
 
         return FirebaseAuth.getUser(id).then(user => {
@@ -82,25 +90,30 @@ const adminHelpers = {
 
   resetPassword(id, code, password) {
     if (!id) {
-      throw NOT_FOUND.createError("Id is missing");
+      throw HttpError.notFound("Id is missing");
+      //throw NOT_FOUND.createError("Id is missing");
     }
 
     if (!code) {
-      throw NOT_FOUND.createError("Verification code is missing");
+      throw HttpError.notFound("Verification code is missing");
+      //throw NOT_FOUND.createError("Verification code is missing");
     }
 
     if (!password) {
-      throw NOT_FOUND.createError("Password is missing");
+      throw HttpError.notFound("Password is missing");
+      //throw NOT_FOUND.createError("Password is missing");
     }
 
     return Admin.findById(id)
       .then(admin => {
         if (!admin) {
-          throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+          throw HttpError.notFound(ERRORS.USER.NOT_FOUND);
+          //throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
         }
 
         if (admin.verificationCode !== code) {
-          throw NOT_FOUND.createError('Verification code not found');
+          throw HttpError.notFound('Verification code not found');
+          //throw NOT_FOUND.createError('Verification code not found');
         }
 
         return FirebaseAuth.getUser(id).then(user => {

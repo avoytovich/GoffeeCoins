@@ -9,7 +9,8 @@ const { DEFAULT_COIN_COUNT } = require('../../constants');
 const { COFFEEHOUSE, OWNER_ADMIN } = require('../../constants/default');
 const { checkUserOnFirebase } = require('../../helpers/auth.helper');
 const { createFriendRegisteredNote } = require('../../helpers/notification');
-const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
+const HttpError = require('./../../helpers/httpError.helper');
+//const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const pick = require('lodash/pick');
 const Promise = require('bluebird');
 
@@ -61,7 +62,8 @@ const userApiMethods = {
             User.findOne(query)
         ).then(([user, referalUser]) => {
             if (!user || !referalUser) {
-                throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+                throw HttpError.notFound(ERRORS.USER.NOT_FOUND);
+                //throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
             }
             return Promise.join(
                 user.update({
@@ -79,7 +81,8 @@ const userApiMethods = {
             .then(firebaseUser => User.getUser(_id))
             .then(user => {
                 if (!user) {
-                    throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
+                    throw HttpError.notFound(ERRORS.USER.NOT_FOUND);
+                    //throw NOT_FOUND.createError(ERRORS.USER.NOT_FOUND);
                 }
                 return {
                     user,
@@ -102,45 +105,44 @@ const userApiMethods = {
             .select('name avatarUrl')
             .lean()
             .then(users => Promise.map(users, async user => {
-                user.coins = await Coin.getUnusedCoinCount(user._id);
+                user.coins = await Coin.count({ userID: user._id });
                 user.coffeeHouseCoins = DEFAULT_COIN_COUNT;
                 return user;
             }));
     },
 
-    getBonusForInvited({ params: { _id }, user }) {
-        const ctx = {};
-        return User.getUser(_id, '+referalId')
-            .then(friend => {
-                if (!friend) throw NOT_FOUND.createError();
-                if (String(friend.referalId) !== String(user._id)) {
-                    throw FORBIDDEN.createError(ERRORS.USER.NOT_INVITED);
-                }
-                if (friend.coins < DEFAULT_COIN_COUNT) {
-                    throw FORBIDDEN.createError(
-                        ERRORS.BONUS_REQUESTS.NOT_ENOUGHT_BONUSES
-                    );
-                }
-                ctx.friend = friend;
-                return Promise.join(
-                    BonusRequest.create({
-                        userID: user._id,
-                        coffeeHouseID: COFFEEHOUSE._id,
-                        count: DEFAULT_COIN_COUNT,
-                    }),
-                    BonusRequest.create({
-                        userID: friend._id,
-                        coffeeHouseID: COFFEEHOUSE._id,
-                        count: DEFAULT_COIN_COUNT,
-                    })
-                );
+    async getBonusForInvited({ params: { _id }, user }) {
+        const friend = await User.getUser(_id, '+referalId');
+        if (!friend) {
+            throw HttpError.notFound();
+            // throw NOT_FOUND.createError();
+        }
+        friend.coins = await Coin.count({ userID: _id });
+        if (String(friend.referalId) !== String(user._id)) {
+            throw HttpError.forbidden(ERRORS.USER.NOT_INVITED);
+            //throw FORBIDDEN.createError(ERRORS.USER.NOT_INVITED);
+        }
+        if (friend.coins < DEFAULT_COIN_COUNT) {
+            throw HttpError.forbidden(ERRORS.BONUS_REQUESTS.NOT_ENOUGHT_BONUSES);
+            // throw FORBIDDEN.createError(ERRORS.BONUS_REQUESTS.NOT_ENOUGHT_BONUSES);
+        }
+        const requests = await Promise.join(
+            BonusRequest.create({
+                userID: user._id,
+                coffeeHouseID: COFFEEHOUSE._id,
+                count: DEFAULT_COIN_COUNT,
+            }),
+            BonusRequest.create({
+                userID: friend._id,
+                coffeeHouseID: COFFEEHOUSE._id,
+                count: DEFAULT_COIN_COUNT,
             })
-            .then(requests => Promise.map(requests, request => {
-                return request.confirm(OWNER_ADMIN.id)
-            }))
-            .then(() => ctx.friend.update({ $unset: { referalId: 1 } }))
-            .then(() => Coin.getUnusedCoinCount(user._id))
-            .then(coins => ({ coins }));
+        );
+        await Promise.map(requests, request => {
+            return request.confirm(OWNER_ADMIN.id)
+        });
+        await friend.update({ $unset: { referalId: 1 } });
+        return { coins: await Coin.getUnusedCoinCount(user._id) };
     },
 };
 

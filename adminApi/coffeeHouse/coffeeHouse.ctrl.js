@@ -2,18 +2,21 @@
 
 const CoffeeHouse = require('../../models/coffeeHouse.model');
 const Visitor = require('../../models/visitor.model');
+const Note = require('../../models/notification.model');
 const AdminRequest = require('../../models/adminRequest.model');
 const User = require('../../models/user.model');
+const Admin = require('../../models/admin.model');
 const logger = require('../../libs/logger');
 const { ADMIN_TYPES, REQUEST_STATUSES } = require('../../constants');
 const { COFFEEHOUSE } = require('../../constants/errors');
 const Promise = require('bluebird');
 const pick = require('lodash/pick');
-const { FORBIDDEN, NOT_FOUND } = require('http-statuses');
+//const { FORBIDDEN, NOT_FOUND } = require('http-statuses');
 const { checkHouse } = require('../../api/bonusRequest/bonusRequest.helpers');
 const socketHelpers = require('../../api/socket/io.helpers');
 const { discharge } = require('../../api/coffeeHouse/coffeeHouse.ctrl');
 const { updateUserAdminField, updateOwnerField } = require('../../adminApi/coffeeHouse/coffeeHouse.helpers');
+const HttpError = require('./../../helpers/httpError.helper');
 
 const housesCtrl = {
 
@@ -36,7 +39,11 @@ const housesCtrl = {
             body.owner = user._id;
         }
         const data = pick(body, housesCtrl.fields);
-        return CoffeeHouse.create(data);
+
+        return CoffeeHouse.create(data).then((house) => {
+            return Admin.findByIdAndUpdate(data.owner, { $addToSet: { coffeeHouseID: house._id } })
+                .then(() => house);
+        });
     },
 
     getHouses({ user, query }) {
@@ -61,7 +68,7 @@ const housesCtrl = {
         return CoffeeHouse.findById(_id, '+location')
             .populate('admins owner', 'name avatarUrl createdAt')
             .then(house => {
-                if (!house) throw NOT_FOUND.createError();
+                if (!house) throw HttpError.notFound();/*NOT_FOUND.createError();*/
                 return house;
             })
     },
@@ -71,6 +78,9 @@ const housesCtrl = {
             coffeeHouseID: _id,
             exitTime: { $exists: false }
         });
+        // TODO: тут баг з тим, що відвідувач не є користувачем!
+        // його запису не знаходить і повертає null але у масиві
+        // є пофік на фронті але це не вихід
         const visitorsId = visitors.map(visitor => visitor.userID);
         return Promise.map(visitorsId, id => {
             return User.getUser(id, socketHelpers.defaultFields.join(' ') + ' adminInCoffeeHouses');
@@ -89,7 +99,8 @@ const housesCtrl = {
 
     removeAdmin({ body: { coffeeHouseID, userID }, user }) {
         if (user.isOwnerInCoffeeHouse(coffeeHouseID)) {
-            throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+            throw HttpError.forbidden(COFFEEHOUSE.NOT_OWNER);
+            //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
         }
         const data = {
             userID,
@@ -128,7 +139,8 @@ const housesCtrl = {
             .then(house => {
                 if (!user.isOwnerInCoffeeHouse(house._id) &&
                     !user.isGlobalAdmin()) {
-                    throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+                    throw HttpError.forbidden(COFFEEHOUSE.NOT_OWNER);
+                    //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 
                 return CoffeeHouse.findByIdAndUpdate(_id, {
@@ -149,17 +161,27 @@ const housesCtrl = {
             }));
     },
 
-    removeHouse({ params: { _id }, body, user }) {
+    removeHouse({ params: { _id }, user }) {
         return checkHouse(_id)
             .then(house => {
-                if (!user.isOwnerInCoffeeHouse(house._id) &&
-                    !user.isGlobalAdmin()) {
-                    throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+                if (!user.isOwnerInCoffeeHouse(house._id) && !user.isGlobalAdmin()) {
+                    throw HttpError.forbidden(COFFEEHOUSE.NOT_OWNER);
+                    //throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
                 }
 
-                return CoffeeHouse.findByIdAndRemove(_id);
+                return Promise.all([
+                    CoffeeHouse.findByIdAndRemove(_id),
+                    Admin.update({ coffeeHouseID: _id }, { $pull: { coffeeHouseID: _id } }, { multi: true }),
+                    Note.deleteMany({coffeeHouseID: _id}),
+                    User.update({ adminInCoffeeHouses: _id }, { $pull: { adminInCoffeeHouses: _id } }, { multi: true }),
+                    AdminRequest.deleteMany({ coffeeHouseID: _id }),
+                ]);
             });
-    }
+    },
+
+    uploadImage({ file }) {
+        return Promise.resolve(file.location)        
+    },
 };
 
 module.exports = housesCtrl;

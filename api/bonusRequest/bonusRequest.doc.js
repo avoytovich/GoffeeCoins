@@ -3,6 +3,7 @@
  * @apiName Send bonus request
  * @apiDescription ##
  * @apiGroup Bonus Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -20,8 +21,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"coins":10}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -30,6 +31,7 @@
  * @apiName Get Bonus Requests
  * @apiDescription ## Get Bonus Requests if you are admin
  * @apiGroup Bonus Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -40,8 +42,8 @@
  * @apiSuccessExample {json} Success-Response
  * [{"_id":"59ca53f8061c020dbf51f98d","count":16,"userID":{"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"https://pbs.twimg.com/profile_images/903926754489880576/jmBtVUwD_400x400.jpg"},"createdAt":1506691675784,"type":"COIN"}]
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -50,19 +52,19 @@
  * @apiName Confirm Bonus Request
  * @apiDescription ## Confirm Bonus Request if you are admin
  * @apiGroup Bonus Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
  * @apiParam {String} requestID mongoId (url param)
  *
- * @apiSuccess {Boolean} success `true`
- * @apiSuccess {String} message `OK`
+ * @apiUse MyHttpSuccess
  *
  * @apiSuccessExample {json} Success-Response
  * {"status":true,"message":"OK"}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -71,17 +73,17 @@
  * @apiName Reject Bonus Request
  * @apiDescription ## Reject Bonus Request if you are admin
  * @apiGroup Bonus Request
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
  * @apiParam {String} requestID mongoId (url param)
  *
- * @apiSuccess {Boolean} success `true`
- * @apiSuccess {String} message `OK`
+ * @apiUse MyHttpSuccess
  *
  * @apiSuccessExample {json} Success-Response
  * {"status":true,"message":"OK"}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */

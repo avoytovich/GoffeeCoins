@@ -3,6 +3,7 @@
  * @apiName SignUp
  * @apiDescription ## Save new user information created by firebase
  * @apiGroup Auth
+ * @apiVersion 0.1.0
  *
  * @apiParam {String} _id Users UID from firebase.
  * @apiParam {String} name Users Name.
@@ -14,8 +15,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"user":{"coins":0,"_id":"1ZGHn5F5bqYn5UUnvhHcEl1hI9o1","name":"bvd","referalID":"1ZGHn5","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxWkdIbjVGNWJxWW41VVVudmhIY0VsMWhJOW8xIiwiaWF0IjoxNTA2NjA4NDQxfQ.nsT6boaZhxnMKhq-WRb-Z5KeGhBG8ny8ValKrCzuMPQ"}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -24,6 +25,7 @@
  * @apiName Link referal user
  * @apiDescription ## Used to get token
  * @apiGroup Auth
+ * @apiVersion 0.1.0
  *
  * @apiParam {String} _id Users UID from firebase.
  * @apiParam {String} referalID Your friend referalID.
@@ -39,8 +41,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -49,6 +51,7 @@
  * @apiName Login
  * @apiDescription ## Used to get token
  * @apiGroup Auth
+ * @apiVersion 0.1.0
  *
  * @apiParam {String} _id Users UID from firebase.
  *
@@ -58,8 +61,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"user":{"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Qlg5SzJ1bDRnWnJ1SU9zTFhKb0VYQmZ1aFIyIiwidHlwZSI6IlVzZXIiLCJpYXQiOjE1MTIxMjE4OTR9.6U02XHTNqbGkQN6nTdgKSFadx93fiI523JgPDMdk5EQ"}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -68,6 +71,7 @@
  * @apiName Get Me
  * @apiDescription ## Get current user
  * @apiGroup User
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -82,8 +86,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"referalID":"5BX9K2","coffeeHouseCoins":10,"adminRequestsCount":0,"coins":67,"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"seruy","avatarUrl":"loreMPixel.com/400/200","adminInCoffeeHouses":[]}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -92,6 +96,7 @@
  * @apiName Update Me
  * @apiDescription ## Update current user information
  * @apiGroup User
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
@@ -108,8 +113,8 @@
  * @apiSuccessExample {json} Success-Response
  * {"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","referalID":"5BX9K2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","adminInCoffeeHouses":[]}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -118,16 +123,17 @@
  * @apiName Get invited friends
  * @apiDescription ## Get invited friends
  * @apiGroup User
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
- * @apiSuccess {Array} Users `[{_id, name, avatarUrl, coins}]`
+ * @apiSuccess {Array} Users `[{_id, name, avatarUrl, coins, coffeeHouseCoins}]`
  *
  * @apiSuccessExample {json} Success-Response
- * [{"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","coins":17000000000}]
+ * [{"_id":"5BX9K2ul4gZruIOsLXJoEXBfuhR2","name":"Opa","avatarUrl":"http://www.lorempixel.com/people/400/200","coins":17000000000,"coffeeHouseCoins":10}]
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */
 
 
@@ -136,19 +142,20 @@
  * @apiName Get bonus for invite
  * @apiDescription ## Get bonus for invited friends
  * @apiGroup User
+ * @apiVersion 0.1.0
  *
  * @apiHeader {String} Authorization User authorization token `JWT eyJhbGci...`
  *
  * @apiParam {String} _id your friend UID. (url param)
  *
  * @apiParamExample {url} Url-Example
- * http://54.72.192.165:8030/api/v1/user/invited/5BX9K2ul4gZruIOsLXJoEXBfuhR2
+ * http://52.19.188.118:8030/api/v1/user/invited/5BX9K2ul4gZruIOsLXJoEXBfuhR2
  *
  * @apiSuccess {Number} coins your coins
  *
  * @apiSuccessExample {json} Success-Response
  * {"coins":17000000000}
  *
- * @apiError {Boolean} success `false`
- * @apiError {String} message Error message
+ * @apiUse MyHttpError
+ * @apiUse MyHttpErrorExtend
  */

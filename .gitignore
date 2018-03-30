@@ -49,5 +49,6 @@ jspm_packages
 .yarn-integrity
 
 .idea
+.vscode
 apidoc
 package-lock.json

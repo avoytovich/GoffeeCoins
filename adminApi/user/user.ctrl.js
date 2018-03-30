@@ -6,9 +6,10 @@ const { DEFAULT_COIN_COUNT } = require('../../constants');
 const { COFFEEHOUSE, OWNER_ADMIN } = require('../../constants/default');
 const { checkUserOnFirebase } = require('../../helpers/auth.helper');
 const { createFriendRegisteredNote } = require('../../helpers/notification');
-const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
+//const { NOT_FOUND, FORBIDDEN } = require('http-statuses');
 const pick = require('lodash/pick');
 const Promise = require('bluebird');
+const HttpError = require('./../../helpers/httpError.helper');
 
 
 const userApiMethods = {
@@ -24,7 +25,8 @@ const userApiMethods = {
 
     removeUser({ params: { _id }, body, user }) {
         if (!user.isGlobalAdmin()) {
-            throw FORBIDDEN.createError(COFFEEHOUSE.NOT_OWNER);
+            throw HttpError.forbidden(ERRORS.COFFEEHOUSE.NOT_OWNER);
+            //throw FORBIDDEN.createError(ERRORS.COFFEEHOUSE.NOT_OWNER);
         }
 
         return User.findByIdAndRemove(_id);

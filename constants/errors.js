@@ -30,6 +30,8 @@ module.exports = {
         NOT_ADMIN: 'This action is only allowed to administrators!',
         NOT_OWNER: 'This action is only allowed to owner!',
         NOT_USER: 'This action is only allowed to users, not administrators!',
+        INTERNAL: 'Forbidden. This house is not public.',
+        STATUS: (s) => ``
     },
     INVALID_TOKEN: 'Invalid device token!',
 };
